@@ -88,7 +88,7 @@ async function main() {
   console.log(`\n🚀 Initializing: ${DISPLAY_NAME} (${APP_NAME})`)
   
   // 1. Recursive String Replacement
-  console.log('\nStep 1/4: Replacing boilerplate strings...')
+  console.log('\nStep 1/8: Replacing boilerplate strings...')
   const files = await walkDir(ROOT_DIR)
   let changedFiles = 0
 
@@ -111,7 +111,7 @@ async function main() {
   console.log(`  ✅ Updated ${changedFiles} files.`)
 
   // 2. Database Provisioning
-  console.log('\nStep 2/4: Provisioning D1 Database...')
+  console.log('\nStep 2/8: Provisioning D1 Database...')
   const dbName = `${APP_NAME}-db`
   console.log(`  Running: npx wrangler d1 create ${dbName}`)
   
@@ -138,7 +138,7 @@ async function main() {
   }
 
   // 3. Extract DB ID and rewrite wrangler.json
-  console.log('\nStep 3/4: Linking Database to wrangler.json...')
+  console.log('\nStep 3/8: Linking Database to wrangler.json...')
   // Match both key=value format and wrangler table format (│ DB │ uuid │)
   const idMatch = d1Output.match(/database_id[=:]\s*"?([a-fA-F0-9-]+)"?/) || d1Output.match(/│\s*DB\s*│\s*([a-fA-F0-9-]+)\s*│/)
   
@@ -175,7 +175,7 @@ async function main() {
   }
 
   // 4. Reset README
-  console.log('\nStep 4/4: Resetting README.md...')
+  console.log('\nStep 4/8: Resetting README.md...')
   const readmeContent = `# ${DISPLAY_NAME}
 
 **${APP_NAME}** — initialized from \`nuxt-v4-template\`.
@@ -197,14 +197,14 @@ Pushes to \`main\` are automatically built and deployed via the GitHub Actions C
   console.log(`  ✅ Generated fresh README.`)
 
   // 5. Doppler Registration
-  console.log('\nStep 5/7: Provisioning Doppler Project...')
+  console.log('\nStep 5/8: Provisioning Doppler Project...')
   console.log(`  Running: doppler projects create ${APP_NAME}`)
   try {
     execSync(`doppler projects create ${APP_NAME} --description "${DISPLAY_NAME} auto-provisioned"`, { encoding: 'utf-8', stdio: 'pipe' })
     console.log(`  ✅ Doppler project created: ${APP_NAME}`)
     
     // Bind core cross-project keys
-    execSync(`doppler secrets set CLOUDFLARE_API_TOKEN='\${narduk-enterprise-apps.prd.CLOUDFLARE_API_TOKEN}' CLOUDFLARE_ACCOUNT_ID='\${narduk-enterprise-apps.prd.CLOUDFLARE_ACCOUNT_ID}' POSTHOG_PUBLIC_KEY='\${narduk-analytics.prd.POSTHOG_PUBLIC_KEY}' --project ${APP_NAME} --config prd`, { stdio: 'pipe' })
+    execSync(`doppler secrets set CLOUDFLARE_API_TOKEN='\${narduk-enterprise-apps.prd.CLOUDFLARE_API_TOKEN}' CLOUDFLARE_ACCOUNT_ID='\${narduk-enterprise-apps.prd.CLOUDFLARE_ACCOUNT_ID}' POSTHOG_PUBLIC_KEY='\${narduk-analytics.prd.POSTHOG_PUBLIC_KEY}' POSTHOG_HOST='\${narduk-analytics.prd.POSTHOG_HOST}' --project ${APP_NAME} --config prd`, { stdio: 'pipe' })
     console.log(`  ✅ Synced Cloudflare & PostHog core credentials.`)
   } catch (error: any) {
     const stderr = error.stderr || ''
@@ -215,8 +215,34 @@ Pushes to \`main\` are automatically built and deployed via the GitHub Actions C
     }
   }
 
-  // 6. Analytics Provisioning
-  console.log('\nStep 6/7: Bootstrapping Google Analytics & IndexNow...')
+  // 6. Doppler Service Token → GitHub Secret
+  console.log('\nStep 6/8: Adding Doppler token to GitHub repository...')
+  try {
+    // Generate a Doppler service token for CI/CD
+    const dopplerToken = execSync(
+      `doppler configs tokens create ci-deploy --project ${APP_NAME} --config prd --plain`,
+      { encoding: 'utf-8', stdio: 'pipe' }
+    ).trim()
+
+    if (!dopplerToken) {
+      throw new Error('Doppler returned an empty token.')
+    }
+
+    // Upload to GitHub as a repository secret via gh CLI
+    execSync(`gh secret set DOPPLER_TOKEN --body "${dopplerToken}"`, { encoding: 'utf-8', stdio: 'pipe' })
+    console.log(`  ✅ DOPPLER_TOKEN set as GitHub Actions secret.`)
+  } catch (error: any) {
+    const stderr = error.stderr || error.message || ''
+    if (stderr.includes('token') && stderr.includes('already exists')) {
+      console.log(`  ⚠️ Doppler CI token already exists. Skipping.`)
+    } else {
+      console.warn(`  ⚠️ Failed to set DOPPLER_TOKEN on GitHub: ${stderr}`)
+      console.warn('  Ensure you are logged into gh (gh auth login) and have a git remote set.')
+    }
+  }
+
+  // 7. Analytics Provisioning
+  console.log('\nStep 7/8: Bootstrapping Google Analytics & IndexNow...')
   try {
     const toolsDir = path.join(ROOT_DIR, 'tools')
     if (await fs.stat(path.join(toolsDir, 'setup-analytics.ts')).catch(() => null)) {
@@ -241,8 +267,8 @@ Pushes to \`main\` are automatically built and deployed via the GitHub Actions C
     console.warn(`  ⚠️ Failed to execute analytics pipeline: ${error.message}`)
   }
 
-  // 7. Cleanup
-  console.log('\nStep 7/7: Self-Destruct Sequence...')
+  // 8. Cleanup
+  console.log('\nStep 8/8: Self-Destruct Sequence...')
   // Remove this script
   await fs.unlink(path.join(ROOT_DIR, 'tools', 'init.ts'))
   // Attempt to remove tools directory if empty
