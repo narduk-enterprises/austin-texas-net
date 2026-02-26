@@ -62,7 +62,7 @@ interface ArticleOptions {
 }
 
 export function useArticleSchema(options: ArticleOptions) {
-  const { headline, description, datePublished, dateModified, author, image, section, tags } = options
+  const { headline, description, datePublished, dateModified, author, section } = options
 
   const authors = Array.isArray(author) ? author : [author]
 
@@ -173,13 +173,13 @@ interface LocalBusinessOptions {
 }
 
 export function useLocalBusinessSchema(options: LocalBusinessOptions) {
-  const { name, description, _image, telephone, email, address, geo, openingHours, priceRange, url } = options
+  const { name, description, image, telephone, email, address, geo, openingHours, priceRange, url } = options
 
   const business: Record<string, any> = {
     '@type': 'LocalBusiness',
     name,
     description,
-    image: _image,
+    image,
     telephone,
     email,
     url,

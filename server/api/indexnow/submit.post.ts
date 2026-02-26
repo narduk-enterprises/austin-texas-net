@@ -66,7 +66,8 @@ export default defineEventHandler(async (event) => {
         status: response.status,
         ok: response.status >= 200 && response.status < 300,
       })
-    } catch (error: any) {
+    } catch (_error: any) {
+      console.warn(`[IndexNow] Failed to ping ${engine}:`, _error.message)
       results.push({
         engine,
         status: 0,

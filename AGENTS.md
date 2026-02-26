@@ -110,6 +110,27 @@ These are opt-in feature recipes. Follow them when the project needs a specific 
 
 ---
 
+## 🚀 Initialization Routine (New Projects)
+
+**When:** You have just cloned this template to begin a new application.
+**CRITICAL:** This must be your very first step before writing any code.
+
+**Steps:**
+
+1. Run the mass-replacer script from the root directory:
+   ```bash
+   npm run init -- --name="your-app-name" --display="Your Display Name" --url="https://yoururl.com"
+   ```
+   _(This will rename the project, create the Cloudflare D1 database, spin up the Doppler project, rewrite `wrangler.json`, and then self-destruct.)_
+2. Configure your Doppler secrets (see Secrets & Env below).
+3. Pull Doppler secrets and initialize the local database schema:
+   ```bash
+   doppler setup && npm run db:migrate
+   ```
+4. Commit the initialization.
+
+---
+
 ## 🔑 Recipe: Secrets & Environment (Doppler)
 
 **When:** Always. This is the standard for all projects.
