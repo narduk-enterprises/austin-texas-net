@@ -83,7 +83,7 @@ const prepSections = [
   {
     title: 'Pipes & Plumbing',
     icon: 'i-lucide-droplets',
-    color: 'text-blue-500',
+    color: 'text-primary',
     items: [
       'Insulate exposed pipes in attics, garages, and along exterior walls with foam sleeves.',
       'Locate your main water shut-off valve — know how to turn it off in an emergency.',
@@ -95,7 +95,7 @@ const prepSections = [
   {
     title: 'Plants & Landscaping',
     icon: 'i-lucide-leaf',
-    color: 'text-emerald-500',
+    color: 'text-primary',
     items: [
       'Cover tender plants with frost cloth or old bedsheets — not plastic (traps moisture).',
       'Move potted tropicals (citrus, plumeria, bougainvillea) into the garage or indoors.',
@@ -107,7 +107,7 @@ const prepSections = [
   {
     title: 'Pets & Animals',
     icon: 'i-lucide-paw-print',
-    color: 'text-amber-500',
+    color: 'text-primary',
     items: [
       'Bring ALL pets indoors when temps drop below 32°F — no exceptions.',
       'Outdoor water bowls freeze quickly; check and refresh with warm water every few hours.',
@@ -118,7 +118,7 @@ const prepSections = [
   {
     title: 'Emergency Supplies',
     icon: 'i-lucide-package',
-    color: 'text-violet-500',
+    color: 'text-primary',
     items: [
       'Stock 3+ days of water (1 gallon per person per day).',
       'Fill your car with gas before the freeze — stations lose power during outages.',
@@ -132,7 +132,7 @@ const prepSections = [
   {
     title: 'Home & Power',
     icon: 'i-lucide-home',
-    color: 'text-orange-500',
+    color: 'text-primary',
     items: [
       'Set thermostat to at least 68°F before the freeze — your home is a thermal battery.',
       'Seal drafts around windows and doors with towels, weatherstripping, or plastic film.',
@@ -144,7 +144,7 @@ const prepSections = [
   {
     title: 'Vehicle Prep',
     icon: 'i-lucide-car',
-    color: 'text-slate-500',
+    color: 'text-primary',
     items: [
       'Check antifreeze levels and tire pressure (drops ~1 PSI per 10°F).',
       'Keep an emergency kit in the car: blanket, water, snacks, phone charger, flashlight.',

@@ -87,7 +87,8 @@ const chartData = computed(() => historyData.value?.data || [])
 function createPinElement(
   spot: WaterSpot,
   isSelected: boolean,
-): { element: HTMLElement; cleanup?: () => void } {
+): any {
+  if (import.meta.server) return { element: {} as HTMLElement }
   const el = document.createElement('div')
   el.innerHTML = `
     <div style="display:flex;flex-direction:column;align-items:center;gap:2px;width:max-content;${isSelected ? 'z-index:100;' : 'z-index:1;'}">

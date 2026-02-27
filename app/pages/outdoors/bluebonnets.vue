@@ -138,7 +138,9 @@ const BLUEBONNET_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 
 function createBluebonnetPin(
   item: BluebonnetItem,
   _isSelected: boolean,
-): { element: HTMLElement; cleanup?: () => void } {
+): any {
+  if (import.meta.server) return { element: {} as HTMLElement }
+
   const wrapper = document.createElement('div')
   wrapper.innerHTML = BLUEBONNET_SVG
   wrapper.style.cursor = 'pointer'
@@ -192,7 +194,9 @@ const BOUQUET_POSITIONS = [
 function createBluebonnetCluster(
   _cluster: { memberAnnotations: unknown[]; coordinate: unknown },
   count: number,
-): HTMLElement {
+): HTMLElement | any {
+  if (import.meta.server) return {} as HTMLElement
+
   const el = document.createElement('div')
   el.style.cssText = 'position:relative;display:flex;align-items:center;justify-content:center;'
 
@@ -387,12 +391,12 @@ useHead({
           Explore
           <strong class="text-default">{{ totalCount.toLocaleString() }}</strong>
           citizen-science observations from
-          <a
+          <ULink
             href="https://www.inaturalist.org"
             target="_blank"
             rel="noopener noreferrer"
             class="text-primary hover:underline"
-            >iNaturalist</a
+            >iNaturalist</ULink
           >.
         </p>
       </div>
@@ -632,19 +636,19 @@ useHead({
       <!-- iNaturalist attribution -->
       <div class="pt-4 border-t border-default text-xs text-dimmed leading-relaxed">
         Data from
-        <a
+        <ULink
           href="https://www.inaturalist.org"
           target="_blank"
           rel="noopener noreferrer"
           class="text-primary hover:underline"
-          >iNaturalist</a
+          >iNaturalist</ULink
         >. Observations contributed by citizen scientists for
-        <a
+        <ULink
           href="https://www.inaturalist.org/taxa/49564-Lupinus-texensis"
           target="_blank"
           rel="noopener noreferrer"
           class="text-primary hover:underline"
-          >Lupinus texensis</a
+          >Lupinus texensis</ULink
         >.
       </div>
     </UContainer>
@@ -798,9 +802,8 @@ useHead({
                     variant="soft"
                     color="primary"
                     size="xs"
-                    icon="i-lucide-external-link"
+                    trailing-icon="i-lucide-external-link"
                     label="View on iNaturalist"
-                    trailing
                   />
                 </div>
               </div>

@@ -431,7 +431,7 @@ const categorizedTopics = computed(() => {
                 <span
                   v-for="(q, qi) in (topic.searchQueries as string[]).slice(0, 2)"
                   :key="qi"
-                  class="inline-flex items-center px-1.5 py-0.5 rounded bg-primary/5 border border-primary/10 text-[9px] text-primary-600 dark:text-primary-400 font-medium truncate max-w-[120px]"
+                  class="inline-flex items-center px-1.5 py-0.5 rounded bg-primary/5 border border-primary/10 text-[9px] text-primary dark:text-muted font-medium truncate max-w-[120px]"
                 >
                   {{ q }}
                 </span>
@@ -907,7 +907,7 @@ const categorizedTopics = computed(() => {
                       </div>
                       <p class="text-xs text-muted truncate">
                         <!-- eslint-disable-next-line atx/no-raw-tailwind-colors -->
-                        <span class="font-medium text-amber-600 dark:text-amber-400">{{
+                        <span class="font-medium text-primary dark:text-muted">{{
                           spot.knownFor
                         }}</span>
                         <span class="mx-1.5 text-dimmed">·</span>
@@ -921,7 +921,7 @@ const categorizedTopics = computed(() => {
                       class="flex items-center gap-1 text-xs font-bold text-muted shrink-0"
                     >
                       <!-- eslint-disable-next-line atx/no-raw-tailwind-colors -->
-                      <UIcon name="i-lucide-star" class="size-3.5 text-amber-400" />
+                      <UIcon name="i-lucide-star" class="size-3.5 text-muted" />
                       {{ spot.rating }}
                     </div>
                   </button>

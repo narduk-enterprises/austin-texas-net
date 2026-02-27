@@ -25,9 +25,9 @@ const filteredSites = computed(() => {
 })
 
 const difficultyColor = (d: string) => {
-  if (d === 'beginner') return 'text-green-500'
-  if (d === 'intermediate') return 'text-yellow-500'
-  return 'text-red-500'
+  if (d === 'beginner') return 'text-primary'
+  if (d === 'intermediate') return 'text-primary'
+  return 'text-primary'
 }
 </script>
 

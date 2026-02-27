@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { murals, neighborhoods, allTags, type Mural } from '~/data/murals'
+import { murals, neighborhoods, allTags } from '~/data/murals'
 
 const { items: breadcrumbs } = useBreadcrumbs()
 

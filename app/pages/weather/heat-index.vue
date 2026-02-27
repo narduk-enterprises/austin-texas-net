@@ -284,28 +284,28 @@ const upcomingTemps = computed(() => {
           </h2>
           <div v-if="isHeatSeason" class="grid grid-cols-2 sm:grid-cols-4 gap-2">
             <div class="flex items-center gap-2 p-2 rounded-lg">
-              <div class="size-3 rounded-full shrink-0 bg-green-500" />
+              <div class="size-3 rounded-full shrink-0 bg-elevated" />
               <div>
                 <span class="text-xs font-bold">Comfortable</span>
                 <span class="text-[0.65rem] text-dimmed ml-1">&lt; 80°F</span>
               </div>
             </div>
             <div class="flex items-center gap-2 p-2 rounded-lg">
-              <div class="size-3 rounded-full shrink-0 bg-yellow-500" />
+              <div class="size-3 rounded-full shrink-0 bg-elevated" />
               <div>
                 <span class="text-xs font-bold">Caution</span>
                 <span class="text-[0.65rem] text-dimmed ml-1">80–90°F</span>
               </div>
             </div>
             <div class="flex items-center gap-2 p-2 rounded-lg">
-              <div class="size-3 rounded-full shrink-0 bg-orange-500" />
+              <div class="size-3 rounded-full shrink-0 bg-elevated" />
               <div>
                 <span class="text-xs font-bold">Extreme Caution</span>
                 <span class="text-[0.65rem] text-dimmed ml-1">90–105°F</span>
               </div>
             </div>
             <div class="flex items-center gap-2 p-2 rounded-lg">
-              <div class="size-3 rounded-full shrink-0 bg-red-500" />
+              <div class="size-3 rounded-full shrink-0 bg-elevated" />
               <div>
                 <span class="text-xs font-bold">Danger</span>
                 <span class="text-[0.65rem] text-dimmed ml-1">105°F+</span>
@@ -314,28 +314,28 @@ const upcomingTemps = computed(() => {
           </div>
           <div v-else class="grid grid-cols-2 sm:grid-cols-4 gap-2">
             <div class="flex items-center gap-2 p-2 rounded-lg">
-              <div class="size-3 rounded-full shrink-0 bg-green-500" />
+              <div class="size-3 rounded-full shrink-0 bg-elevated" />
               <div>
                 <span class="text-xs font-bold">Comfortable</span>
                 <span class="text-[0.65rem] text-dimmed ml-1">&gt; 45°F</span>
               </div>
             </div>
             <div class="flex items-center gap-2 p-2 rounded-lg">
-              <div class="size-3 rounded-full shrink-0 bg-sky-500" />
+              <div class="size-3 rounded-full shrink-0 bg-elevated" />
               <div>
                 <span class="text-xs font-bold">Chilly</span>
                 <span class="text-[0.65rem] text-dimmed ml-1">32–45°F</span>
               </div>
             </div>
             <div class="flex items-center gap-2 p-2 rounded-lg">
-              <div class="size-3 rounded-full shrink-0 bg-blue-600" />
+              <div class="size-3 rounded-full shrink-0 bg-elevated" />
               <div>
                 <span class="text-xs font-bold">Cold — Freeze Risk</span>
                 <span class="text-[0.65rem] text-dimmed ml-1">15–32°F</span>
               </div>
             </div>
             <div class="flex items-center gap-2 p-2 rounded-lg">
-              <div class="size-3 rounded-full shrink-0 bg-purple-600" />
+              <div class="size-3 rounded-full shrink-0 bg-elevated" />
               <div>
                 <span class="text-xs font-bold">Extreme Cold</span>
                 <span class="text-[0.65rem] text-dimmed ml-1">&lt; 15°F</span>

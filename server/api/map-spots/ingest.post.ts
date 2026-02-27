@@ -13,7 +13,7 @@ import { z } from 'zod'
 import { mapSpotsTable } from '~~/server/database/schema'
 import { searchAppleMaps } from '~~/server/utils/appleMapToken'
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 
 const bodySchema = z.object({
   category: z.string().min(1),

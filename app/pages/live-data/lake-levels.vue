@@ -95,9 +95,10 @@ const chartData = computed(() => {
 function createPinElement(
   spot: LakeSpot,
   isSelected: boolean,
-): { element: HTMLElement; cleanup?: () => void } {
-  const pct = spot.percentFull != null ? Math.round(spot.percentFull) : null
+): any {
+  if (import.meta.server) return { element: {} as HTMLElement }
 
+  const pct = spot.percentFull != null ? Math.round(spot.percentFull) : null
   /* eslint-disable atx/no-inline-hex -- MapKit pin fill status gradient */
   const fillColor =
     pct != null ? (pct >= 80 ? '#22c55e' : pct >= 50 ? '#f59e0b' : '#ef4444') : '#06b6d4'
@@ -120,16 +121,16 @@ function formatNumber(n: number | null): string {
 
 function percentFullColor(pct: number | null): string {
   if (pct == null) return 'text-muted'
-  if (pct >= 80) return 'text-green-500'
-  if (pct >= 50) return 'text-amber-500'
-  return 'text-red-500'
+  if (pct >= 80) return 'text-primary'
+  if (pct >= 50) return 'text-primary'
+  return 'text-primary'
 }
 
 function percentFullBg(pct: number | null): string {
-  if (pct == null) return 'bg-neutral-400'
-  if (pct >= 80) return 'bg-green-500'
-  if (pct >= 50) return 'bg-amber-500'
-  return 'bg-red-500'
+  if (pct == null) return 'bg-muted'
+  if (pct >= 80) return 'bg-elevated'
+  if (pct >= 50) return 'bg-elevated'
+  return 'bg-elevated'
 }
 </script>
 

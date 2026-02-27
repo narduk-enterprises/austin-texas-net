@@ -120,14 +120,14 @@ const statCards = computed(() => {
           :key="alert.id"
           class="rounded-xl border-2 p-4"
           :class="{
-            'border-red-500/40 bg-red-50 dark:bg-red-950/20':
+            'border-default/40 bg-muted dark:bg-elevated/20':
               alert.severity === 'Extreme' || alert.severity === 'Severe',
-            'border-amber-500/40 bg-amber-50 dark:bg-amber-950/20': alert.severity === 'Moderate',
-            'border-sky-500/40 bg-sky-50 dark:bg-sky-950/20': alert.severity === 'Minor',
+            'border-default/40 bg-muted dark:bg-elevated/20': alert.severity === 'Moderate',
+            'border-default/40 bg-muted dark:bg-elevated/20': alert.severity === 'Minor',
           }"
         >
           <div class="flex items-start gap-3">
-            <UIcon name="i-lucide-alert-triangle" class="size-5 shrink-0 mt-0.5 text-amber-600" />
+            <UIcon name="i-lucide-alert-triangle" class="size-5 shrink-0 mt-0.5 text-primary" />
             <div class="flex-1 min-w-0">
               <div class="flex items-center gap-2 mb-1">
                 <UBadge

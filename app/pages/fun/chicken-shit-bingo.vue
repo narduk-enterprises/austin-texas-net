@@ -26,7 +26,7 @@ const toggleFaq = (id: number) => {
       <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
       <div class="space-y-8 sm:space-y-12">
         <section class="text-center py-8 sm:py-12">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-500/10 text-yellow-500 text-xs font-medium mb-4">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-elevated/10 text-primary text-xs font-medium mb-4">
         <UIcon name="i-lucide-egg" class="size-3.5" />
         Only in Austin
       </div>
@@ -37,7 +37,7 @@ const toggleFaq = (id: number) => {
     </section>
 
     <!-- Main Info Card -->
-    <section class="glass-card p-6 sm:p-8 border-yellow-500/20">
+    <section class="glass-card p-6 sm:p-8 border-default/20">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
           <h2 class="text-lg font-semibold font-display mb-3">{{ bingoInfo.venue }}</h2>
@@ -60,7 +60,7 @@ const toggleFaq = (id: number) => {
         <div class="space-y-3">
           <div class="glass-card p-4 text-center">
             <div class="text-xs text-dimmed mb-1">Cover Charge</div>
-            <div class="text-2xl font-bold text-green-500 font-display">{{ bingoInfo.coverCharge }}</div>
+            <div class="text-2xl font-bold text-primary font-display">{{ bingoInfo.coverCharge }}</div>
           </div>
           <div class="glass-card p-4 text-center">
             <div class="text-xs text-dimmed mb-1">Bingo Card</div>
@@ -75,7 +75,7 @@ const toggleFaq = (id: number) => {
       <h2 class="text-xl font-semibold font-display mb-4">First-Timer Tips</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div v-for="tip in tips" :key="tip.id" class="glass-card p-5">
-          <UIcon :name="tip.icon" class="size-6 text-yellow-500 mb-3" />
+          <UIcon :name="tip.icon" class="size-6 text-primary mb-3" />
           <h3 class="text-sm font-semibold font-display mb-1">{{ tip.title }}</h3>
           <p class="text-xs text-muted">{{ tip.description }}</p>
         </div>
@@ -87,13 +87,15 @@ const toggleFaq = (id: number) => {
       <h2 class="text-xl font-semibold font-display mb-4">Frequently Asked Questions</h2>
       <div class="space-y-2">
         <div v-for="faq in faqs" :key="faq.id" class="glass-card overflow-hidden">
-          <button
-            class="w-full flex items-center justify-between p-4 text-left"
+          <UButton
+            variant="ghost"
+            color="neutral"
+            class="w-full flex items-center justify-between p-4 text-left rounded-none hover:bg-elevated"
             @click="toggleFaq(faq.id)"
           >
             <span class="text-sm font-semibold font-display pr-4">{{ faq.question }}</span>
             <UIcon :name="openFaq === faq.id ? 'i-lucide-chevron-up' : 'i-lucide-chevron-down'" class="size-4 text-dimmed shrink-0" />
-          </button>
+          </UButton>
           <div v-if="openFaq === faq.id" class="px-4 pb-4">
             <p class="text-sm text-muted">{{ faq.answer }}</p>
           </div>

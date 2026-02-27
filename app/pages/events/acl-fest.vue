@@ -82,14 +82,14 @@ useSchemaOrg([
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div class="space-y-4">
               <div class="flex gap-3">
-                <UIcon name="i-lucide-droplets" class="size-5 text-blue-500 shrink-0 mt-0.5" />
+                <UIcon name="i-lucide-droplets" class="size-5 text-primary shrink-0 mt-0.5" />
                 <div>
                   <h4 class="text-sm font-semibold">Stay Hydrated</h4>
                   <p class="text-sm text-muted">Texas Octobers can still hit 90°F. Bring an empty reusable water bottle and use the free hydration stations.</p>
                 </div>
               </div>
               <div class="flex gap-3">
-                <UIcon name="i-lucide-sun" class="size-5 text-yellow-500 shrink-0 mt-0.5" />
+                <UIcon name="i-lucide-sun" class="size-5 text-primary shrink-0 mt-0.5" />
                 <div>
                   <h4 class="text-sm font-semibold">Sun Protection</h4>
                   <p class="text-sm text-muted">Sunscreen, hats, and sunglasses are mandatory. Shade is limited near the main stages.</p>
@@ -98,14 +98,14 @@ useSchemaOrg([
             </div>
             <div class="space-y-4">
               <div class="flex gap-3">
-                <UIcon name="i-lucide-briefcase" class="size-5 text-neutral-500 shrink-0 mt-0.5" />
+                <UIcon name="i-lucide-briefcase" class="size-5 text-primary shrink-0 mt-0.5" />
                 <div>
                   <h4 class="text-sm font-semibold">Clear Bag Policy</h4>
                   <p class="text-sm text-muted">All bags must be clear plastic, vinyl, or PVC. Small clutch purses are allowed but must be searched.</p>
                 </div>
               </div>
               <div class="flex gap-3">
-                <UIcon name="i-lucide-footprints" class="size-5 text-green-500 shrink-0 mt-0.5" />
+                <UIcon name="i-lucide-footprints" class="size-5 text-primary shrink-0 mt-0.5" />
                 <div>
                   <h4 class="text-sm font-semibold">Comfortable Shoes</h4>
                   <p class="text-sm text-muted">You will walk miles every day between stages. Do not wear untested or unsupportive shoes.</p>

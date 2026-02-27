@@ -1,0 +1,71 @@
+
+> austin-texas-net@1.0.0 prelint /Users/narduk/code/austin-texas-net
+> (test -f .nuxt/eslint.config.mjs || nuxt prepare) && (test -f eslint-plugin-nuxt-ui/dist/index.js || pnpm run build:plugins)
+
+
+> austin-texas-net@1.0.0 lint /Users/narduk/code/austin-texas-net
+> eslint .
+
+
+/Users/narduk/code/austin-texas-net/app/pages/live-data/lake-levels.vue
+  106:14  error  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  nuxt-guardrails/no-ssr-dom-access
+
+/Users/narduk/code/austin-texas-net/app/pages/live-data/water-temps.vue
+  91:14  error  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  nuxt-guardrails/no-ssr-dom-access
+
+/Users/narduk/code/austin-texas-net/app/pages/login.vue
+  81:22  error  Unguarded window access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  nuxt-guardrails/no-ssr-dom-access
+  87:3   error  Unguarded window access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  nuxt-guardrails/no-ssr-dom-access
+
+/Users/narduk/code/austin-texas-net/app/pages/neighborhoods/index.vue
+  281:13  error  Unknown prop "enter-key-hint" on UInput. See https://ui.nuxt.com/docs/components/input  nuxt-ui/no-unknown-component-prop
+  292:15  error  Unknown prop "icon" on USelect. See https://ui.nuxt.com/docs/components/select          nuxt-ui/no-unknown-component-prop
+  299:15  error  Unknown prop "icon" on USelect. See https://ui.nuxt.com/docs/components/select          nuxt-ui/no-unknown-component-prop
+
+/Users/narduk/code/austin-texas-net/app/pages/outdoors/bluebonnets.vue
+  142:19  error  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  nuxt-guardrails/no-ssr-dom-access
+  196:14  error  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  nuxt-guardrails/no-ssr-dom-access
+  390:11  error  Use <ULink> instead of <a> for consistent theming                                                                                                          atx/prefer-ulink
+  635:9   error  Use <ULink> instead of <a> for consistent theming                                                                                                          atx/prefer-ulink
+  642:9   error  Use <ULink> instead of <a> for consistent theming                                                                                                          atx/prefer-ulink
+  803:21  error  Unknown prop "trailing" on UButton. See https://ui.nuxt.com/docs/components/button                                                                         nuxt-ui/no-unknown-component-prop
+
+/Users/narduk/code/austin-texas-net/app/pages/outdoors/kayak-launches.vue
+  2:41  warning  'LaunchSite' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+/Users/narduk/code/austin-texas-net/app/pages/real-estate/housing-map.vue
+  128:14  error  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  nuxt-guardrails/no-ssr-dom-access
+
+/Users/narduk/code/austin-texas-net/app/pages/real-estate/market-trends.vue
+  225:11  error  Use <UTable> instead of native <table>  atx/no-native-table
+
+/Users/narduk/code/austin-texas-net/app/pages/real-estate/median-home-prices.vue
+  183:14  error  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  nuxt-guardrails/no-ssr-dom-access
+
+/Users/narduk/code/austin-texas-net/app/pages/real-estate/new-developments.vue
+  72:14  error  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  nuxt-guardrails/no-ssr-dom-access
+
+/Users/narduk/code/austin-texas-net/app/pages/real-estate/property-tax-guide.vue
+   88:15  error  Use <UFormField> instead of native <label>                                              atx/no-native-form
+   90:15  error  Use <UInput (or UInputNumber/UInputDate for specific types)> instead of native <input>  atx/no-native-input
+  105:15  error  Use <UFormField> instead of native <label>                                              atx/no-native-form
+  145:11  error  Use <UTable> instead of native <table>                                                  atx/no-native-table
+
+/Users/narduk/code/austin-texas-net/app/pages/real-estate/rent-trends.vue
+  141:14  error  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  nuxt-guardrails/no-ssr-dom-access
+
+/Users/narduk/code/austin-texas-net/app/pages/weather/drought-status.vue
+  150:56  error  Hardcoded hex color "#1e293b" — extract to a composable, CSS variable, or Tailwind token  atx/no-inline-hex
+
+/Users/narduk/code/austin-texas-net/autofix.js
+  14:27  warning  'colNum' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  14:35  warning  'level' is assigned a value but never used. Allowed unused vars must match /^_/u   @typescript-eslint/no-unused-vars
+  34:7   warning  'offset' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  40:11  warning  'isVue' is assigned a value but never used. Allowed unused vars must match /^_/u   @typescript-eslint/no-unused-vars
+
+/Users/narduk/code/austin-texas-net/tools/setup-analytics.ts
+  10:10  warning  'httpsJson' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+✖ 29 problems (23 errors, 6 warnings)
+
+ ELIFECYCLE  Command failed with exit code 1.

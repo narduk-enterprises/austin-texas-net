@@ -105,11 +105,11 @@ const stars = computed(() => {
         <div v-if="spot.rating" class="flex items-center gap-1 ml-auto">
           <template v-for="i in stars.full" :key="`df${i}`">
             <!-- eslint-disable-next-line atx/no-raw-tailwind-colors -->
-            <UIcon name="i-lucide-star" class="size-4 text-amber-400 fill-amber-400" />
+            <UIcon name="i-lucide-star" class="size-4 text-muted fill-amber-400" />
           </template>
           <template v-if="stars.half">
             <!-- eslint-disable-next-line atx/no-raw-tailwind-colors -->
-            <UIcon name="i-lucide-star-half" class="size-4 text-amber-400" />
+            <UIcon name="i-lucide-star-half" class="size-4 text-muted" />
           </template>
           <template v-for="i in stars.empty" :key="`de${i}`">
             <UIcon name="i-lucide-star" class="size-4 text-default/15" />
@@ -135,11 +135,11 @@ const stars = computed(() => {
         <div>
           <!-- eslint-disable atx/no-raw-tailwind-colors -- amber accent colors -->
           <span
-            class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400"
+            class="text-xs font-bold uppercase tracking-wider text-primary dark:text-muted"
             >Known For</span
           >
 
-          <p class="text-sm font-semibold text-amber-800 dark:text-amber-300 mt-0.5">
+          <p class="text-sm font-semibold text-primary dark:text-muted mt-0.5">
             {{ spot.knownFor }}
           </p>
         </div>

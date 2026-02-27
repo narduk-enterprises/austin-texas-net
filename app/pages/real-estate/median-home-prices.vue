@@ -202,7 +202,7 @@ function formatYoy(change: number | null): string {
 
 function yoyColor(change: number | null): string {
   if (change == null) return 'text-muted'
-  return change >= 0 ? 'text-green-500' : 'text-red-500'
+  return change >= 0 ? 'text-primary' : 'text-primary'
 }
 
 function priceTierLabel(value: number): string {

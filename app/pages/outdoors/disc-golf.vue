@@ -17,10 +17,10 @@ const selectedDifficulty = ref('')
 const filteredCourses = computed(() => courses.filter(c => !selectedDifficulty.value || c.difficulty === selectedDifficulty.value).sort((a, b) => b.rating - a.rating))
 
 const diffColor = (d: string) => {
-  if (d === 'beginner') return 'bg-green-500/10 text-green-500'
-  if (d === 'intermediate') return 'bg-yellow-500/10 text-yellow-500'
-  if (d === 'advanced') return 'bg-orange-500/10 text-orange-500'
-  return 'bg-red-500/10 text-red-500'
+  if (d === 'beginner') return 'bg-elevated/10 text-primary'
+  if (d === 'intermediate') return 'bg-elevated/10 text-primary'
+  if (d === 'advanced') return 'bg-elevated/10 text-primary'
+  return 'bg-elevated/10 text-primary'
 }
 const totalHoles = computed(() => courses.reduce((sum, c) => sum + c.holes, 0))
 </script>
@@ -57,7 +57,7 @@ const totalHoles = computed(() => courses.reduce((sum, c) => sum + c.holes, 0))
           <div class="flex items-start justify-between mb-2">
             <h3 class="text-base font-semibold font-display">{{ course.name }}</h3>
             <div class="flex items-center gap-1.5 shrink-0 ml-2">
-              <UIcon name="i-lucide-star" class="size-3.5 text-yellow-500" />
+              <UIcon name="i-lucide-star" class="size-3.5 text-primary" />
               <span class="text-sm font-medium">{{ course.rating }}</span>
             </div>
           </div>

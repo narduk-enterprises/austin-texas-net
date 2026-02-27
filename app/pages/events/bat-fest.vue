@@ -104,7 +104,7 @@ useHead(() => ({
           <UIcon name="i-lucide-bat" class="size-4 text-primary/35 bat-float" />
         </div>
 
-    <main class="relative mx-auto flex w-full max-w-6xl flex-col gap-5 px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
+    <div class="relative mx-auto flex w-full max-w-6xl flex-col gap-5 px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
       <BatCountdownHero
         :countdown-state="countdownState"
         :today-date-label="todayDateLabel"
@@ -120,10 +120,10 @@ useHead(() => ({
 
       <BatWeeklyForecast :forecast="weeklyForecast" />
 
-      <footer class="pb-2 text-center text-xs text-dimmed sm:text-sm">
+      <div class="pb-2 text-center text-xs text-dimmed sm:text-sm">
         Bat emergence estimates use Austin astronomical calculations (30.2672°N, 97.7431°W) with a +20 minute emergence offset.
-      </footer>
-    </main>
+      </div>
+    </div>
   </div>
 
   <!-- ══════ More in Events ══════ -->

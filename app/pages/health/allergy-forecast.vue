@@ -26,18 +26,18 @@ useSchemaOrg([
 
 // Placeholder data for the static UI shell
 const mainAllergens = [
-  { name: 'Cedar', level: 'Low', pct: 15, color: 'bg-green-500' },
-  { name: 'Oak', level: 'High', pct: 85, color: 'bg-red-500' },
-  { name: 'Elm', level: 'Moderate', pct: 45, color: 'bg-yellow-500' },
-  { name: 'Mold', level: 'Low', pct: 20, color: 'bg-green-500' },
+  { name: 'Cedar', level: 'Low', pct: 15, color: 'bg-elevated' },
+  { name: 'Oak', level: 'High', pct: 85, color: 'bg-elevated' },
+  { name: 'Elm', level: 'Moderate', pct: 45, color: 'bg-elevated' },
+  { name: 'Mold', level: 'Low', pct: 20, color: 'bg-elevated' },
 ]
 
 const upcomingDays = [
-  { day: 'Mon', level: 'High', color: 'text-red-500 bg-red-500/10' },
-  { day: 'Tue', level: 'High', color: 'text-red-500 bg-red-500/10' },
-  { day: 'Wed', level: 'Moderate', color: 'text-yellow-500 bg-yellow-500/10' },
-  { day: 'Thu', level: 'Low', color: 'text-green-500 bg-green-500/10' },
-  { day: 'Fri', level: 'Low', color: 'text-green-500 bg-green-500/10' },
+  { day: 'Mon', level: 'High', color: 'text-primary bg-elevated/10' },
+  { day: 'Tue', level: 'High', color: 'text-primary bg-elevated/10' },
+  { day: 'Wed', level: 'Moderate', color: 'text-primary bg-elevated/10' },
+  { day: 'Thu', level: 'Low', color: 'text-primary bg-elevated/10' },
+  { day: 'Fri', level: 'Low', color: 'text-primary bg-elevated/10' },
 ]
 </script>
 
@@ -50,7 +50,7 @@ const upcomingDays = [
       <div class="space-y-8 sm:space-y-12">
         <!-- Hero Section -->
         <section class="text-center py-8 sm:py-12 animate-fade-up">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 text-red-500 text-xs font-medium mb-4">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-elevated/10 text-primary text-xs font-medium mb-4">
             <UIcon name="i-lucide-activity" class="size-3.5" />
             Seasonal Tracking
           </div>
@@ -64,11 +64,11 @@ const upcomingDays = [
 
         <!-- Current Status Mockup -->
         <section class="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-up-delay-1">
-          <div class="glass-card p-6 border-t-2 border-t-red-500">
+          <div class="glass-card p-6 border-default border-t-red-500">
             <h3 class="text-sm font-semibold uppercase tracking-widest text-muted mb-4">Top Allergen Today</h3>
             <div class="flex items-center justify-between mb-4">
               <span class="text-3xl font-bold font-display text-default">Oak Pollen</span>
-              <div class="px-3 py-1 rounded-md bg-red-500/10 text-red-500 font-bold text-sm tracking-wide">
+              <div class="px-3 py-1 rounded-md bg-elevated/10 text-primary font-bold text-sm tracking-wide">
                 HIGH
               </div>
             </div>

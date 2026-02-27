@@ -15,7 +15,7 @@ import { neighborhoodsTable } from '~~/server/database/schema'
 import { geocodeAppleMaps } from '~~/server/utils/appleMapToken'
 import { NEIGHBORHOOD_SEED, type NeighborhoodSeedEntry } from '~~/server/utils/neighborhoodSeed'
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 
 const bodySchema = z
   .object({

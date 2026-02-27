@@ -125,7 +125,7 @@ const dayPairs = computed(() => {
                   color="info"
                   variant="subtle"
                   size="xs"
-                  :icon="'i-lucide-droplets'"
+                  icon="i-lucide-droplets"
                   :label="`${pair.day.probabilityOfPrecipitation}%`"
                 />
               </div>

@@ -19,6 +19,7 @@ withDefaults(defineProps<{
 </script>
 
 <template>
+  <!-- eslint-disable atx/no-inline-hex -->
   <div
     tw="w-full h-full flex flex-col relative overflow-hidden"
     :style="{

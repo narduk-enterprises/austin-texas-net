@@ -30,7 +30,7 @@ const skullIcons = (n: number) => Array.from({ length: 5 }, (_, i) => i < n)
       <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
       <div class="space-y-8 sm:space-y-12">
         <section class="text-center py-8 sm:py-12">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 text-purple-400 text-xs font-medium mb-4">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-elevated/10 text-muted text-xs font-medium mb-4">
         <UIcon name="i-lucide-ghost" class="size-3.5" />
         Enter If You Dare
       </div>
@@ -51,7 +51,7 @@ const skullIcons = (n: number) => Array.from({ length: 5 }, (_, i) => i < n)
     <section>
       <h2 class="text-xl font-semibold font-display mb-4">{{ filteredPlaces.length }} Haunted Locations</h2>
       <div class="space-y-4">
-        <article v-for="place in filteredPlaces" :key="place.id" class="glass-card p-5 hover:border-purple-500/30 transition-colors duration-200">
+        <article v-for="place in filteredPlaces" :key="place.id" class="glass-card p-5 hover:border-default/30 transition-colors duration-200">
           <div class="flex items-start justify-between mb-2">
             <h3 class="text-base font-semibold font-display">{{ place.name }}</h3>
             <div class="flex items-center gap-0.5 shrink-0 ml-2">
@@ -61,13 +61,13 @@ const skullIcons = (n: number) => Array.from({ length: 5 }, (_, i) => i < n)
             </div>
           </div>
           <div class="flex flex-wrap gap-2 mb-3">
-            <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-purple-500/10 text-purple-400 uppercase tracking-wider">{{ place.type }}</span>
+            <span class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-elevated/10 text-muted uppercase tracking-wider">{{ place.type }}</span>
             <span class="text-xs text-dimmed">Est. {{ place.yearEstablished }}</span>
             <span v-if="place.tourAvailable" class="px-2 py-0.5 text-[10px] font-medium rounded-full bg-primary/10 text-primary">Tour Available</span>
           </div>
           <p class="text-sm text-muted mb-3">{{ place.story }}</p>
           <div class="flex items-center gap-1.5 text-xs text-dimmed mb-2">
-            <UIcon name="i-lucide-ghost" class="size-3.5 text-purple-400" />
+            <UIcon name="i-lucide-ghost" class="size-3.5 text-muted" />
             Ghost: <strong class="text-default">{{ place.ghostName }}</strong>
           </div>
           <div class="flex items-center gap-1.5 text-xs text-dimmed">

@@ -156,7 +156,7 @@ function formatYoy(change: number | null): string {
 
 function yoyColor(change: number | null): string {
   if (change == null) return 'text-muted'
-  return change >= 0 ? 'text-red-500' : 'text-green-500' // Rent increases are bad for renters
+  return change >= 0 ? 'text-primary' : 'text-primary' // Rent increases are bad for renters
 }
 </script>
 

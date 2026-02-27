@@ -34,7 +34,7 @@ useSchemaOrg([
       <div class="space-y-8 sm:space-y-12">
         <!-- Hero Section -->
         <section class="text-center py-8 sm:py-12 animate-fade-up">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-500/10 text-green-500 text-xs font-medium mb-4">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-elevated/10 text-primary text-xs font-medium mb-4">
             <UIcon name="i-lucide-wind" class="size-3.5" />
             AQI Monitor
           </div>
@@ -48,12 +48,12 @@ useSchemaOrg([
 
         <!-- Current AQI Mockup -->
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-4 animate-fade-up-delay-1">
-          <div class="glass-card p-8 flex flex-col items-center justify-center text-center border-t-2 border-t-green-500">
+          <div class="glass-card p-8 flex flex-col items-center justify-center text-center border-default border-t-green-500">
             <h3 class="text-sm font-semibold uppercase tracking-widest text-muted mb-6">Current Index</h3>
             
-            <div class="size-40 rounded-full border-[12px] border-green-500/20 flex flex-col items-center justify-center relative mb-6">
+            <div class="size-40 rounded-full border-[12px] border-default/20 flex flex-col items-center justify-center relative mb-6">
               <div class="absolute inset-0 rounded-full border-[12px] border-transparent border-t-green-500 border-r-green-500 transform -rotate-45"></div>
-              <span class="text-5xl font-black font-display text-green-500">42</span>
+              <span class="text-5xl font-black font-display text-primary">42</span>
               <span class="text-xs font-bold text-muted uppercase tracking-widest mt-1">AQI</span>
             </div>
             
@@ -69,7 +69,7 @@ useSchemaOrg([
               </div>
               <p class="text-3xl font-bold mb-1">10<span class="text-sm text-muted font-normal"> µg/m³</span></p>
               <div class="w-full bg-muted rounded-full h-1.5 mt-2">
-                <div class="bg-green-500 h-full rounded-full w-[20%]"></div>
+                <div class="bg-elevated h-full rounded-full w-[20%]"></div>
               </div>
             </div>
             
@@ -80,7 +80,7 @@ useSchemaOrg([
               </div>
               <p class="text-3xl font-bold mb-1">14<span class="text-sm text-muted font-normal"> µg/m³</span></p>
               <div class="w-full bg-muted rounded-full h-1.5 mt-2">
-                <div class="bg-green-500 h-full rounded-full w-[15%]"></div>
+                <div class="bg-elevated h-full rounded-full w-[15%]"></div>
               </div>
             </div>
             
@@ -91,7 +91,7 @@ useSchemaOrg([
               </div>
               <p class="text-3xl font-bold mb-1">38<span class="text-sm text-muted font-normal"> ppb</span></p>
               <div class="w-full bg-muted rounded-full h-1.5 mt-2">
-                <div class="bg-yellow-500 h-full rounded-full w-[45%]"></div>
+                <div class="bg-elevated h-full rounded-full w-[45%]"></div>
               </div>
               <p class="text-xs text-dimmed mt-2">Ozone levels typically peak during hot, sunny summer afternoons in Austin.</p>
             </div>
@@ -102,29 +102,29 @@ useSchemaOrg([
         <section class="glass-card p-6 sm:p-8 animate-fade-up-delay-2">
           <h2 class="text-xl font-semibold font-display mb-6">Understanding the AQI Scale</h2>
           <div class="space-y-3">
-            <div class="flex items-center gap-4 p-3 rounded-lg bg-green-500/5">
-              <div class="w-16 text-center font-bold text-sm bg-green-500 text-white rounded py-1">0-50</div>
+            <div class="flex items-center gap-4 p-3 rounded-lg bg-elevated/5">
+              <div class="w-16 text-center font-bold text-sm bg-elevated text-white rounded py-1">0-50</div>
               <div>
                 <strong class="text-sm">Good</strong>
                 <p class="text-xs text-muted">Air quality is satisfactory.</p>
               </div>
             </div>
-            <div class="flex items-center gap-4 p-3 rounded-lg bg-yellow-500/5">
-              <div class="w-16 text-center font-bold text-sm bg-yellow-500 text-white rounded py-1">51-100</div>
+            <div class="flex items-center gap-4 p-3 rounded-lg bg-elevated/5">
+              <div class="w-16 text-center font-bold text-sm bg-elevated text-white rounded py-1">51-100</div>
               <div>
                 <strong class="text-sm">Moderate</strong>
                 <p class="text-xs text-muted">Acceptable, but there may be risk for exquisitely sensitive people.</p>
               </div>
             </div>
-            <div class="flex items-center gap-4 p-3 rounded-lg bg-orange-500/5">
-              <div class="w-16 text-center font-bold text-sm bg-orange-500 text-white rounded py-1">101-150</div>
+            <div class="flex items-center gap-4 p-3 rounded-lg bg-elevated/5">
+              <div class="w-16 text-center font-bold text-sm bg-elevated text-white rounded py-1">101-150</div>
               <div>
                 <strong class="text-sm">Unhealthy (Sensitive Groups)</strong>
                 <p class="text-xs text-muted">People with lung disease, older adults, and children are at greater risk.</p>
               </div>
             </div>
-            <div class="flex items-center gap-4 p-3 rounded-lg bg-red-500/5">
-              <div class="w-16 text-center font-bold text-sm bg-red-500 text-white rounded py-1">151-200</div>
+            <div class="flex items-center gap-4 p-3 rounded-lg bg-elevated/5">
+              <div class="w-16 text-center font-bold text-sm bg-elevated text-white rounded py-1">151-200</div>
               <div>
                 <strong class="text-sm">Unhealthy</strong>
                 <p class="text-xs text-muted">Everyone may begin to experience health effects.</p>

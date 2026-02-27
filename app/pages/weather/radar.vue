@@ -79,14 +79,14 @@ function alertSeverityColor(severity: string): 'error' | 'warning' | 'info' | 'n
           :key="alert.id"
           class="rounded-xl border-2 p-4"
           :class="{
-            'border-red-500/40 bg-red-50 dark:bg-red-950/20':
+            'border-default/40 bg-muted dark:bg-elevated/20':
               alert.severity === 'Extreme' || alert.severity === 'Severe',
-            'border-amber-500/40 bg-amber-50 dark:bg-amber-950/20': alert.severity === 'Moderate',
-            'border-sky-500/40 bg-sky-50 dark:bg-sky-950/20': alert.severity === 'Minor',
+            'border-default/40 bg-muted dark:bg-elevated/20': alert.severity === 'Moderate',
+            'border-default/40 bg-muted dark:bg-elevated/20': alert.severity === 'Minor',
           }"
         >
           <div class="flex items-center gap-2">
-            <UIcon name="i-lucide-alert-triangle" class="size-4 text-amber-600 shrink-0" />
+            <UIcon name="i-lucide-alert-triangle" class="size-4 text-primary shrink-0" />
             <UBadge
               :color="alertSeverityColor(alert.severity)"
               variant="subtle"
@@ -100,7 +100,7 @@ function alertSeverityColor(severity: string): 'error' | 'warning' | 'info' | 'n
 
       <!-- Radar Embed -->
       <section class="mb-10 animate-fade-up-delay-2">
-        <div class="rounded-2xl border border-default overflow-hidden bg-neutral-900">
+        <div class="rounded-2xl border border-default overflow-hidden bg-elevated">
           <ClientOnly>
             <iframe
               :src="RADAR_EMBED_URL"
@@ -111,10 +111,10 @@ function alertSeverityColor(severity: string): 'error' | 'warning' | 'info' | 'n
               allowfullscreen
             />
             <template #fallback>
-              <div class="flex items-center justify-center bg-neutral-900" style="height: 500px">
+              <div class="flex items-center justify-center bg-elevated" style="height: 500px">
                 <div class="text-center">
-                  <UIcon name="i-lucide-radar" class="size-10 text-neutral-400 mb-2" />
-                  <p class="text-sm text-neutral-400">Loading radar…</p>
+                  <UIcon name="i-lucide-radar" class="size-10 text-muted mb-2" />
+                  <p class="text-sm text-muted">Loading radar…</p>
                 </div>
               </div>
             </template>

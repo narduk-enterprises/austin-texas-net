@@ -76,6 +76,7 @@ async function handleSubmit() {
 }
 
 function handleApple() {
+  if (import.meta.server) return
   const params = new URLSearchParams({
     client_id: 'com.atxapps',
     redirect_uri: `${window.location.origin}/api/auth/apple-callback`,

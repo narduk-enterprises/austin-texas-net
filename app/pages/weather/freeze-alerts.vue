@@ -134,10 +134,10 @@ const pipeProtectionTips = [
         <div
           v-for="alert in freezeAlerts"
           :key="alert.id"
-          class="rounded-xl border-2 border-blue-500/40 bg-blue-50 dark:bg-blue-950/20 p-4"
+          class="rounded-xl border-2 border-default/40 bg-muted dark:bg-elevated/20 p-4"
         >
           <div class="flex items-start gap-3">
-            <UIcon name="i-lucide-snowflake" class="size-5 shrink-0 mt-0.5 text-blue-600" />
+            <UIcon name="i-lucide-snowflake" class="size-5 shrink-0 mt-0.5 text-primary" />
             <div class="flex-1 min-w-0">
               <div class="flex items-center gap-2 mb-1">
                 <UBadge color="error" variant="subtle" size="xs" :label="alert.event" />
@@ -204,14 +204,14 @@ const pipeProtectionTips = [
             class="flex flex-col items-center gap-2 rounded-xl border p-4 text-center"
             :class="
               night.isFreezing
-                ? 'border-blue-500/30 bg-blue-50 dark:bg-blue-950/20'
+                ? 'border-default/30 bg-muted dark:bg-elevated/20'
                 : 'border-default bg-default'
             "
           >
             <span class="text-sm font-bold">{{ night.name }}</span>
             <span
               class="text-2xl font-extrabold font-display"
-              :class="night.isFreezing ? 'text-blue-600 dark:text-blue-400' : ''"
+              :class="night.isFreezing ? 'text-primary dark:text-muted' : ''"
             >
               {{ night.low }}°F
             </span>
@@ -238,7 +238,7 @@ const pipeProtectionTips = [
             :key="i"
             class="flex items-start gap-3 p-4 rounded-xl border border-default bg-default"
           >
-            <UIcon :name="tip.icon" class="size-5 shrink-0 mt-0.5 text-sky-500" />
+            <UIcon :name="tip.icon" class="size-5 shrink-0 mt-0.5 text-primary" />
             <p class="text-sm text-muted leading-relaxed">{{ tip.text }}</p>
           </div>
         </div>

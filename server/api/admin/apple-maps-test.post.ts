@@ -16,7 +16,7 @@
 import { z } from 'zod'
 import { getAppleMapsAccessToken } from '~~/server/utils/appleMapToken'
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 
 const bodySchema = z.object({
   endpoint: z.enum(['search', 'geocode', 'reverseGeocode', 'neighborhood', 'searchAddress']),

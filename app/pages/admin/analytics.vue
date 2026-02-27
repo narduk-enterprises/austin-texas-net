@@ -30,31 +30,31 @@ const stats = computed(() => {
       label: 'Active Users',
       value: totals[0]?.value || '0',
       icon: 'i-lucide-users',
-      color: 'text-blue-500',
+      color: 'text-primary',
     },
     {
       label: 'Sessions',
       value: totals[1]?.value || '0',
       icon: 'i-lucide-zap',
-      color: 'text-amber-500',
+      color: 'text-primary',
     },
     {
       label: 'Page Views',
       value: totals[2]?.value || '0',
       icon: 'i-lucide-file-text',
-      color: 'text-emerald-500',
+      color: 'text-primary',
     },
     {
       label: 'Bounce Rate',
       value: (Number(totals[3]?.value || 0) * 100).toFixed(1) + '%',
       icon: 'i-lucide-percent',
-      color: 'text-rose-500',
+      color: 'text-primary',
     },
     {
       label: 'Avg Session',
       value: Math.round(Number(totals[4]?.value || 0)) + 's',
       icon: 'i-lucide-clock',
-      color: 'text-violet-500',
+      color: 'text-primary',
     },
   ]
 })

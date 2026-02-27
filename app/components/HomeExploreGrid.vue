@@ -21,7 +21,7 @@ const { categories } = useSiteData()
           <!-- eslint-disable atx/no-raw-tailwind-colors -- brand hover colors -->
           <NuxtLink
             :to="`/${cat.slug}/`"
-            class="group flex items-center gap-3 min-h-[52px] py-3 -mx-3 px-3 rounded-xl hover:bg-emerald-50/60 dark:hover:bg-white/5 active:bg-emerald-100/50 dark:active:bg-white/10 transition-colors"
+            class="group flex items-center gap-3 min-h-[52px] py-3 -mx-3 px-3 rounded-xl hover:bg-muted/60 dark:hover:bg-white/5 active:bg-muted/50 dark:active:bg-white/10 transition-colors"
           >
             <div
               class="flex items-center justify-center size-10 rounded-xl shrink-0"
@@ -53,7 +53,7 @@ const { categories } = useSiteData()
             <NuxtLink
               v-if="cat.subApps.filter(a => a.status === 'live').length > 3"
               :to="`/${cat.slug}/`"
-              class="flex items-center gap-1.5 min-h-[44px] py-2 text-[14px] font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors mt-1"
+              class="flex items-center gap-1.5 min-h-[44px] py-2 text-[14px] font-semibold text-primary dark:text-muted hover:text-primary dark:hover:text-muted transition-colors mt-1"
             >
               Show all
               <UIcon name="i-lucide-arrow-right" class="size-4" />

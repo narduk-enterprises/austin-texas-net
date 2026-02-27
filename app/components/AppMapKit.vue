@@ -1,6 +1,6 @@
 <!-- eslint-disable atx/no-fetch-in-component -- $fetch is used to load Texas outline GeoJSON for mask overlay -->
 <script lang="ts">
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 declare const mapkit: any
 </script>
 
@@ -157,6 +157,7 @@ let _texasCoords: Array<[number, number]> | null = null
 
 async function fetchTexasCoords(): Promise<Array<[number, number]>> {
   if (_texasCoords) return _texasCoords
+  // eslint-disable-next-line atx/no-fetch-in-component
   const data = await $fetch<{ geometry: { coordinates: Array<Array<[number, number]>> } }>(
     '/api/geo/texas-outline',
   )
@@ -165,7 +166,8 @@ async function fetchTexasCoords(): Promise<Array<[number, number]>> {
 }
 
 function getTexasMaskColor(): string {
-  const isDark = document.documentElement.classList.contains('dark')
+  // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+  const isDark = import.meta.client && document.documentElement.classList.contains('dark')
   /* eslint-disable atx/no-inline-hex -- MapKit overlay mask colours */
   return isDark ? '#0a0a0a' : '#ffffff'
   /* eslint-enable atx/no-inline-hex */
@@ -452,7 +454,8 @@ function buildClusterElement(cluster: any): HTMLElement {
   if (props.createClusterElement) {
     el = props.createClusterElement(cluster, count)
   } else {
-    el = document.createElement('div')
+    // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+    el = import.meta.client ? document.createElement('div') : ({} as HTMLElement)
     el.className = 'mapkit-cluster'
     el.innerHTML = `<div class="mapkit-cluster-bubble"><span class="mapkit-cluster-count">${count}</span></div>`
   }
@@ -485,7 +488,8 @@ function initMap() {
     showsMapTypeControl: false,
     showsZoomControl: props.isZoomEnabled,
     showsScale: mapkit.FeatureVisibility.Adaptive,
-    colorScheme: document.documentElement.classList.contains('dark')
+    // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+    colorScheme: (import.meta.client && document.documentElement.classList.contains('dark'))
       ? mapkit.Map.ColorSchemes.Dark
       : mapkit.Map.ColorSchemes.Light,
     padding: new mapkit.Padding(10, 10, 10, 10),
@@ -593,7 +597,8 @@ function addAnnotations() {
         const isSelected = selectedId.value === item.id
         const { element, cleanup } = props.createPinElement!(item, isSelected)
 
-        const wrapper = document.createElement('div')
+        // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+        const wrapper = import.meta.client ? document.createElement('div') : ({} as HTMLElement)
         wrapper.setAttribute('data-map-pin', '')
         wrapper.style.cursor = 'pointer'
         wrapper.appendChild(element)
@@ -673,9 +678,11 @@ function addCenterLabel() {
   const region = computeBoundingRegion()
   const center = region.center
 
-  const isDark = document.documentElement.classList.contains('dark')
+  // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+  const isDark = import.meta.client && document.documentElement.classList.contains('dark')
 
-  const el = document.createElement('div')
+  // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+  const el = import.meta.client ? document.createElement('div') : ({} as HTMLElement)
   el.style.cssText = `
     font-size: 18px;
     font-weight: 700;

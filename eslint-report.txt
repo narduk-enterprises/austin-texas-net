@@ -1,0 +1,292 @@
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/app.vue[24m[0m
+[0m  [2m66:25[22m  [31merror[39m  Raw Tailwind color "text-gray-900" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m69:49[22m  [31merror[39m  Raw Tailwind color "text-gray-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m69:49[22m  [31merror[39m  Raw Tailwind color "text-gray-400" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m69:49[22m  [31merror[39m  Raw Tailwind color "text-gray-900" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/components/AppMapKit.vue[24m[0m
+[0m  [2m160:22[22m  [31merror[39m  Move `$fetch()` to a composable in `app/composables/`. Pages should receive data via composable return values                                              [2matx/no-fetch-in-component[22m[0m
+[0m  [2m168:18[22m  [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m  [2m455:10[22m  [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m  [2m488:18[22m  [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m  [2m596:25[22m  [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m  [2m676:18[22m  [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m  [2m678:14[22m  [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/components/BatViewingSpotsMap.client.vue[24m[0m
+[0m   [2m25:23[22m  [31merror[39m  Hardcoded hex color "#6d28d9" — extract to a composable, CSS variable, or Tailwind token  [2matx/no-inline-hex[22m[0m
+[0m   [2m25:35[22m  [31merror[39m  Hardcoded hex color "#4338ca" — extract to a composable, CSS variable, or Tailwind token  [2matx/no-inline-hex[22m[0m
+[0m   [2m78:21[22m  [31merror[39m  Hardcoded hex color "#ffffff" — extract to a composable, CSS variable, or Tailwind token  [2matx/no-inline-hex[22m[0m
+[0m  [2m106:30[22m  [31merror[39m  Do not delete dynamically computed property keys                                          [2m@typescript-eslint/no-dynamic-delete[22m[0m
+[0m  [2m124:30[22m  [31merror[39m  Do not delete dynamically computed property keys                                          [2m@typescript-eslint/no-dynamic-delete[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/components/HomeQuickChips.vue[24m[0m
+[0m  [2m35:13[22m  [31merror[39m  Unknown prop "to" on UBadge. See https://ui.nuxt.com/docs/components/badge  [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/components/OgImage/OgImageDefault.takumi.vue[24m[0m
+[0m   [2m69:18[22m  [31merror[39m  Hardcoded hex color "#1a2744" — extract to a composable, CSS variable, or Tailwind token  [2matx/no-inline-hex[22m[0m
+[0m   [2m88:18[22m  [31merror[39m  Hardcoded hex color "#4e5a70" — extract to a composable, CSS variable, or Tailwind token  [2matx/no-inline-hex[22m[0m
+[0m  [2m109:69[22m  [31merror[39m  Hardcoded hex color "#d4c9b8" — extract to a composable, CSS variable, or Tailwind token  [2matx/no-inline-hex[22m[0m
+[0m  [2m116:20[22m  [31merror[39m  Hardcoded hex color "#1a2744" — extract to a composable, CSS variable, or Tailwind token  [2matx/no-inline-hex[22m[0m
+[0m  [2m127:30[22m  [31merror[39m  Hardcoded hex color "#1a2744" — extract to a composable, CSS variable, or Tailwind token  [2matx/no-inline-hex[22m[0m
+[0m  [2m128:20[22m  [31merror[39m  Hardcoded hex color "#ffffff" — extract to a composable, CSS variable, or Tailwind token  [2matx/no-inline-hex[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/components/map/ContentView.vue[24m[0m
+[0m  [2m24:19[22m  [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/composables/useMapKit.ts[24m[0m
+[0m  [2m22:9[22m   [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering                    [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m  [2m22:9[22m   [31merror[39m  DOM access (window/document/localStorage) in composable requires client guard. Use if (import.meta.client) or onMounted(). See: https://vuejs.org/guide/scaling-up/ssr.html  [2mvue-official/no-composable-dom-access-without-client-guard[22m[0m
+[0m  [2m22:9[22m   [31merror[39m  DOM access (window/document/localStorage) in composable requires client guard. Use if (import.meta.client) or onMounted(). See: https://vuejs.org/guide/scaling-up/ssr.html  [2mvue-official/no-composable-dom-access-without-client-guard[22m[0m
+[0m  [2m26:20[22m  [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering                    [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m  [2m26:20[22m  [31merror[39m  DOM access (window/document/localStorage) in composable requires client guard. Use if (import.meta.client) or onMounted(). See: https://vuejs.org/guide/scaling-up/ssr.html  [2mvue-official/no-composable-dom-access-without-client-guard[22m[0m
+[0m  [2m26:20[22m  [31merror[39m  DOM access (window/document/localStorage) in composable requires client guard. Use if (import.meta.client) or onMounted(). See: https://vuejs.org/guide/scaling-up/ssr.html  [2mvue-official/no-composable-dom-access-without-client-guard[22m[0m
+[0m  [2m31:5[22m   [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering                    [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m  [2m31:5[22m   [31merror[39m  DOM access (window/document/localStorage) in composable requires client guard. Use if (import.meta.client) or onMounted(). See: https://vuejs.org/guide/scaling-up/ssr.html  [2mvue-official/no-composable-dom-access-without-client-guard[22m[0m
+[0m  [2m31:5[22m   [31merror[39m  DOM access (window/document/localStorage) in composable requires client guard. Use if (import.meta.client) or onMounted(). See: https://vuejs.org/guide/scaling-up/ssr.html  [2mvue-official/no-composable-dom-access-without-client-guard[22m[0m
+[0m  [2m62:7[22m   [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering                    [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m  [2m62:7[22m   [31merror[39m  DOM access (window/document/localStorage) in composable requires client guard. Use if (import.meta.client) or onMounted(). See: https://vuejs.org/guide/scaling-up/ssr.html  [2mvue-official/no-composable-dom-access-without-client-guard[22m[0m
+[0m  [2m62:7[22m   [31merror[39m  DOM access (window/document/localStorage) in composable requires client guard. Use if (import.meta.client) or onMounted(). See: https://vuejs.org/guide/scaling-up/ssr.html  [2mvue-official/no-composable-dom-access-without-client-guard[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/layouts/landing.vue[24m[0m
+[0m  [2m18:7[22m  [31merror[39m  Consider using <UHeader> or <div> instead of native <header>  [2matx/no-native-layout[22m[0m
+[0m  [2m39:7[22m  [31merror[39m  Consider using <UMain> or <div> instead of native <main>      [2matx/no-native-layout[22m[0m
+[0m  [2m46:7[22m  [31merror[39m  Consider using <UFooter> or <div> instead of native <footer>  [2matx/no-native-layout[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/admin/apple-maps.vue[24m[0m
+[0m  [2m186:14[22m  [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m  [2m337:64[22m  [31merror[39m  Unknown prop "as" on USelect. See https://ui.nuxt.com/docs/components/select                                                                               [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m  [2m337:75[22m  [31merror[39m  Unknown prop "label" on USelect. See https://ui.nuxt.com/docs/components/select                                                                            [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m  [2m342:13[22m  [31merror[39m  Unknown prop "label" on UInput. See https://ui.nuxt.com/docs/components/input                                                                              [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m  [2m349:13[22m  [31merror[39m  Unknown prop "label" on UInput. See https://ui.nuxt.com/docs/components/input                                                                              [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m  [2m360:13[22m  [31merror[39m  Unknown prop "label" on UInput. See https://ui.nuxt.com/docs/components/input                                                                              [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m  [2m368:13[22m  [31merror[39m  Unknown prop "label" on UInput. See https://ui.nuxt.com/docs/components/input                                                                              [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m  [2m394:13[22m  [31merror[39m  Unknown prop "label" on UInput. See https://ui.nuxt.com/docs/components/input                                                                              [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m  [2m400:13[22m  [31merror[39m  Unknown prop "label" on UInput. See https://ui.nuxt.com/docs/components/input                                                                              [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/admin/categories.vue[24m[0m
+[0m   [2m967:11[22m  [31merror[39m  Unknown prop "grouping" on UTable. See https://ui.nuxt.com/docs/components/table           [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m   [2m970:11[22m  [31merror[39m  Unknown prop "global-filter" on UTable. See https://ui.nuxt.com/docs/components/table      [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m   [2m971:11[22m  [31merror[39m  Unknown prop "column-filters" on UTable. See https://ui.nuxt.com/docs/components/table     [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m  [2m1328:19[22m  [31merror[39m  Unknown prop "model-value" on UCheckbox. See https://ui.nuxt.com/docs/components/checkbox  [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/admin/grid-crawler.vue[24m[0m
+[0m  [2m176:14[22m  [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m  [2m402:13[22m  [31merror[39m  Use <UFormField> instead of native <label>                                                                                                                 [2matx/no-native-form[22m[0m
+[0m  [2m403:15[22m  [31merror[39m  Use <UInput (or UInputNumber/UInputDate for specific types)> instead of native <input>                                                                     [2matx/no-native-input[22m[0m
+[0m  [2m406:13[22m  [31merror[39m  Use <UFormField> instead of native <label>                                                                                                                 [2matx/no-native-form[22m[0m
+[0m  [2m407:15[22m  [31merror[39m  Use <UInput (or UInputNumber/UInputDate for specific types)> instead of native <input>                                                                     [2matx/no-native-input[22m[0m
+[0m  [2m489:13[22m  [31merror[39m  Use <UFormField> instead of native <label>                                                                                                                 [2matx/no-native-form[22m[0m
+[0m  [2m494:15[22m  [31merror[39m  Use <UInput (or UInputNumber/UInputDate for specific types)> instead of native <input>                                                                     [2matx/no-native-input[22m[0m
+[0m  [2m602:13[22m  [31merror[39m  Unknown prop "label" on UInput. See https://ui.nuxt.com/docs/components/input                                                                              [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m  [2m610:13[22m  [31merror[39m  Unknown prop "label" on UInput. See https://ui.nuxt.com/docs/components/input                                                                              [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m  [2m630:13[22m  [31merror[39m  Unknown prop "label" on UInput. See https://ui.nuxt.com/docs/components/input                                                                              [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m  [2m636:11[22m  [31merror[39m  Use <UFormField> instead of native <label>                                                                                                                 [2matx/no-native-form[22m[0m
+[0m  [2m637:13[22m  [31merror[39m  Use <UInput (or UInputNumber/UInputDate for specific types)> instead of native <input>                                                                     [2matx/no-native-input[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/admin/posthog.vue[24m[0m
+[0m  [2m272:54[22m  [31merror[39m  Raw Tailwind color "text-amber-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m281:48[22m  [31merror[39m  Raw Tailwind color "text-violet-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)   [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m300:28[22m  [31merror[39m  Raw Tailwind color "bg-emerald-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m327:21[22m  [31merror[39m  Raw Tailwind color "bg-emerald-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m337:57[22m  [31merror[39m  Raw Tailwind color "text-emerald-300" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m372:54[22m  [31merror[39m  Raw Tailwind color "bg-neutral-400" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m393:56[22m  [31merror[39m  Raw Tailwind color "bg-neutral-400" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m454:49[22m  [31merror[39m  Raw Tailwind color "text-emerald-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m476:25[22m  [31merror[39m  Raw Tailwind color "bg-emerald-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m491:51[22m  [31merror[39m  Raw Tailwind color "text-blue-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)     [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m510:25[22m  [31merror[39m  Raw Tailwind color "bg-blue-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)       [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m522:52[22m  [31merror[39m  Raw Tailwind color "text-rose-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)     [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m541:25[22m  [31merror[39m  Raw Tailwind color "bg-rose-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)       [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m555:56[22m  [31merror[39m  Raw Tailwind color "text-rose-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)     [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m558:13[22m  [31merror[39m  Use <ULink> instead of <a> for consistent theming                                                                                                                [2matx/prefer-ulink[22m[0m
+[0m  [2m572:11[22m  [31merror[39m  Use <ULink> instead of <a> for consistent theming                                                                                                                [2matx/prefer-ulink[22m[0m
+[0m  [2m582:23[22m  [31merror[39m  Raw Tailwind color "text-rose-400" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)     [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m582:23[22m  [31merror[39m  Raw Tailwind color "text-rose-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)     [2matx/no-raw-tailwind-colors[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/admin/radar.vue[24m[0m
+[0m  [2m227:58[22m  [31merror[39m  Unknown prop "as" on USelect. See https://ui.nuxt.com/docs/components/select  [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m  [2m228:54[22m  [31merror[39m  Unknown prop "as" on USelect. See https://ui.nuxt.com/docs/components/select  [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/culture/street-art.vue[24m[0m
+[0m  [2m2:47[22m  [33mwarning[39m  'Mural' is defined but never used. Allowed unused vars must match /^_/u  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/events/acl-fest.vue[24m[0m
+[0m   [2m85:55[22m  [31merror[39m  Raw Tailwind color "text-blue-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)     [2matx/no-raw-tailwind-colors[22m[0m
+[0m   [2m92:50[22m  [31merror[39m  Raw Tailwind color "text-yellow-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)   [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m101:56[22m  [31merror[39m  Raw Tailwind color "text-neutral-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m108:57[22m  [31merror[39m  Raw Tailwind color "text-green-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/events/bat-fest.vue[24m[0m
+[0m  [2m107:5[22m  [31merror[39m  Consider using <UMain> or <div> instead of native <main>      [2matx/no-native-layout[22m[0m
+[0m  [2m123:7[22m  [31merror[39m  Consider using <UFooter> or <div> instead of native <footer>  [2matx/no-native-layout[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/events/rodeo-austin.vue[24m[0m
+[0m  [2m45:18[22m  [31merror[39m  Raw Tailwind color "bg-orange-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m45:18[22m  [31merror[39m  Raw Tailwind color "text-orange-400" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/events/trail-of-lights.vue[24m[0m
+[0m  [2m37:22[22m  [31merror[39m  Raw Tailwind color "bg-red-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m37:22[22m  [31merror[39m  Raw Tailwind color "text-red-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/fun/chicken-shit-bingo.vue[24m[0m
+[0m  [2m29:18[22m  [31merror[39m  Raw Tailwind color "bg-yellow-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)      [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m29:18[22m  [31merror[39m  Raw Tailwind color "text-yellow-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m40:20[22m  [31merror[39m  Raw Tailwind color "border-yellow-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m63:24[22m  [31merror[39m  Raw Tailwind color "text-green-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)     [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m78:41[22m  [31merror[39m  Raw Tailwind color "text-yellow-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m90:11[22m  [31merror[39m  Use <UButton> instead of native <button>                                                                                                                          [2matx/no-native-button[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/fun/haunted-austin.vue[24m[0m
+[0m  [2m33:18[22m  [31merror[39m  Raw Tailwind color "bg-purple-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)      [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m33:18[22m  [31merror[39m  Raw Tailwind color "text-purple-400" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m54:72[22m  [31merror[39m  Raw Tailwind color "border-purple-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m64:25[22m  [31merror[39m  Raw Tailwind color "bg-purple-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)      [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m64:25[22m  [31merror[39m  Raw Tailwind color "text-purple-400" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m70:48[22m  [31merror[39m  Raw Tailwind color "text-purple-400" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/health/air-quality.vue[24m[0m
+[0m   [2m37:22[22m  [31merror[39m  Raw Tailwind color "bg-green-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)      [2matx/no-raw-tailwind-colors[22m[0m
+[0m   [2m37:22[22m  [31merror[39m  Raw Tailwind color "text-green-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m   [2m54:24[22m  [31merror[39m  Raw Tailwind color "border-green-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m   [2m56:27[22m  [31merror[39m  Raw Tailwind color "text-green-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m   [2m72:28[22m  [31merror[39m  Raw Tailwind color "bg-green-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)      [2matx/no-raw-tailwind-colors[22m[0m
+[0m   [2m83:28[22m  [31merror[39m  Raw Tailwind color "bg-green-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)      [2matx/no-raw-tailwind-colors[22m[0m
+[0m   [2m94:28[22m  [31merror[39m  Raw Tailwind color "bg-yellow-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)     [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m105:24[22m  [31merror[39m  Raw Tailwind color "bg-green-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)      [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m106:26[22m  [31merror[39m  Raw Tailwind color "bg-green-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)      [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m112:24[22m  [31merror[39m  Raw Tailwind color "bg-yellow-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)     [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m113:26[22m  [31merror[39m  Raw Tailwind color "bg-yellow-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)     [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m119:24[22m  [31merror[39m  Raw Tailwind color "bg-orange-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)     [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m120:26[22m  [31merror[39m  Raw Tailwind color "bg-orange-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)     [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m126:24[22m  [31merror[39m  Raw Tailwind color "bg-red-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)        [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m127:26[22m  [31merror[39m  Raw Tailwind color "bg-red-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)        [2matx/no-raw-tailwind-colors[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/health/allergy-forecast.vue[24m[0m
+[0m  [2m53:22[22m  [31merror[39m  Raw Tailwind color "bg-red-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m53:22[22m  [31merror[39m  Raw Tailwind color "text-red-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m71:26[22m  [31merror[39m  Raw Tailwind color "bg-red-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m71:26[22m  [31merror[39m  Raw Tailwind color "text-red-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/live-data/lake-levels.vue[24m[0m
+[0m  [2m106:14[22m  [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/live-data/water-temps.vue[24m[0m
+[0m  [2m91:14[22m  [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/login.vue[24m[0m
+[0m  [2m81:22[22m  [31merror[39m  Unguarded window access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m  [2m87:3[22m   [31merror[39m  Unguarded window access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/neighborhoods/index.vue[24m[0m
+[0m  [2m281:13[22m  [31merror[39m  Unknown prop "enter-key-hint" on UInput. See https://ui.nuxt.com/docs/components/input  [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m  [2m292:15[22m  [31merror[39m  Unknown prop "icon" on USelect. See https://ui.nuxt.com/docs/components/select          [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m  [2m299:15[22m  [31merror[39m  Unknown prop "icon" on USelect. See https://ui.nuxt.com/docs/components/select          [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/outdoors/bluebonnets.vue[24m[0m
+[0m  [2m142:19[22m  [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m  [2m196:14[22m  [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m  [2m390:11[22m  [31merror[39m  Use <ULink> instead of <a> for consistent theming                                                                                                          [2matx/prefer-ulink[22m[0m
+[0m  [2m635:9[22m   [31merror[39m  Use <ULink> instead of <a> for consistent theming                                                                                                          [2matx/prefer-ulink[22m[0m
+[0m  [2m642:9[22m   [31merror[39m  Use <ULink> instead of <a> for consistent theming                                                                                                          [2matx/prefer-ulink[22m[0m
+[0m  [2m803:21[22m  [31merror[39m  Unknown prop "trailing" on UButton. See https://ui.nuxt.com/docs/components/button                                                                         [2mnuxt-ui/no-unknown-component-prop[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/outdoors/disc-golf.vue[24m[0m
+[0m  [2m60:49[22m  [31merror[39m  Raw Tailwind color "text-yellow-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/outdoors/kayak-launches.vue[24m[0m
+[0m  [2m2:41[22m  [33mwarning[39m  'LaunchSite' is defined but never used. Allowed unused vars must match /^_/u  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/outdoors/parks-guide.vue[24m[0m
+[0m   [2m37:22[22m  [31merror[39m  Raw Tailwind color "bg-green-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)     [2matx/no-raw-tailwind-colors[22m[0m
+[0m   [2m37:22[22m  [31merror[39m  Raw Tailwind color "text-green-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)   [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m109:57[22m  [31merror[39m  Raw Tailwind color "text-green-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)   [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m113:57[22m  [31merror[39m  Raw Tailwind color "text-yellow-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m117:53[22m  [31merror[39m  Raw Tailwind color "text-red-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)     [2matx/no-raw-tailwind-colors[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/real-estate/housing-map.vue[24m[0m
+[0m  [2m128:14[22m  [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/real-estate/market-trends.vue[24m[0m
+[0m  [2m225:11[22m  [31merror[39m  Use <UTable> instead of native <table>  [2matx/no-native-table[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/real-estate/median-home-prices.vue[24m[0m
+[0m  [2m183:14[22m  [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/real-estate/new-developments.vue[24m[0m
+[0m  [2m72:14[22m  [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/real-estate/property-tax-guide.vue[24m[0m
+[0m   [2m88:15[22m  [31merror[39m  Use <UFormField> instead of native <label>                                              [2matx/no-native-form[22m[0m
+[0m   [2m90:15[22m  [31merror[39m  Use <UInput (or UInputNumber/UInputDate for specific types)> instead of native <input>  [2matx/no-native-input[22m[0m
+[0m  [2m105:15[22m  [31merror[39m  Use <UFormField> instead of native <label>                                              [2matx/no-native-form[22m[0m
+[0m  [2m145:11[22m  [31merror[39m  Use <UTable> instead of native <table>                                                  [2matx/no-native-table[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/real-estate/rent-trends.vue[24m[0m
+[0m  [2m141:14[22m  [31merror[39m  Unguarded document access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering  [2mnuxt-guardrails/no-ssr-dom-access[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/weather/current-conditions.vue[24m[0m
+[0m  [2m123:13[22m  [31merror[39m  Raw Tailwind color "border-red-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m123:13[22m  [31merror[39m  Raw Tailwind color "bg-red-50" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)         [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m123:13[22m  [31merror[39m  Raw Tailwind color "bg-red-950" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)        [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m125:13[22m  [31merror[39m  Raw Tailwind color "border-amber-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m125:13[22m  [31merror[39m  Raw Tailwind color "bg-amber-50" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)       [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m125:13[22m  [31merror[39m  Raw Tailwind color "bg-amber-950" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)      [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m126:13[22m  [31merror[39m  Raw Tailwind color "border-sky-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m126:13[22m  [31merror[39m  Raw Tailwind color "bg-sky-50" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)         [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m126:13[22m  [31merror[39m  Raw Tailwind color "bg-sky-950" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)        [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m130:57[22m  [31merror[39m  Raw Tailwind color "text-amber-600" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/weather/drought-status.vue[24m[0m
+[0m  [2m150:56[22m  [31merror[39m  Hardcoded hex color "#1e293b" — extract to a composable, CSS variable, or Tailwind token  [2matx/no-inline-hex[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/weather/freeze-alerts.vue[24m[0m
+[0m  [2m137:17[22m  [31merror[39m  Raw Tailwind color "border-blue-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m137:17[22m  [31merror[39m  Raw Tailwind color "bg-blue-50" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)       [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m137:17[22m  [31merror[39m  Raw Tailwind color "bg-blue-950" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)      [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m140:52[22m  [31merror[39m  Raw Tailwind color "text-blue-600" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m207:19[22m  [31merror[39m  Raw Tailwind color "border-blue-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m207:19[22m  [31merror[39m  Raw Tailwind color "bg-blue-50" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)       [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m207:19[22m  [31merror[39m  Raw Tailwind color "bg-blue-950" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)      [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m214:42[22m  [31merror[39m  Raw Tailwind color "text-blue-600" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m214:42[22m  [31merror[39m  Raw Tailwind color "text-blue-400" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m241:43[22m  [31merror[39m  Raw Tailwind color "text-sky-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)     [2matx/no-raw-tailwind-colors[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/weather/heat-index.vue[24m[0m
+[0m  [2m287:26[22m  [31merror[39m  Raw Tailwind color "bg-green-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)   [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m294:26[22m  [31merror[39m  Raw Tailwind color "bg-yellow-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m301:26[22m  [31merror[39m  Raw Tailwind color "bg-orange-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m308:26[22m  [31merror[39m  Raw Tailwind color "bg-red-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)     [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m317:26[22m  [31merror[39m  Raw Tailwind color "bg-green-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)   [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m324:26[22m  [31merror[39m  Raw Tailwind color "bg-sky-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)     [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m331:26[22m  [31merror[39m  Raw Tailwind color "bg-blue-600" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m338:26[22m  [31merror[39m  Raw Tailwind color "bg-purple-600" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/app/pages/weather/radar.vue[24m[0m
+[0m   [2m82:13[22m  [31merror[39m  Raw Tailwind color "border-red-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m   [2m82:13[22m  [31merror[39m  Raw Tailwind color "bg-red-50" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)         [2matx/no-raw-tailwind-colors[22m[0m
+[0m   [2m82:13[22m  [31merror[39m  Raw Tailwind color "bg-red-950" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)        [2matx/no-raw-tailwind-colors[22m[0m
+[0m   [2m84:13[22m  [31merror[39m  Raw Tailwind color "border-amber-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m   [2m84:13[22m  [31merror[39m  Raw Tailwind color "bg-amber-50" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)       [2matx/no-raw-tailwind-colors[22m[0m
+[0m   [2m84:13[22m  [31merror[39m  Raw Tailwind color "bg-amber-950" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)      [2matx/no-raw-tailwind-colors[22m[0m
+[0m   [2m85:13[22m  [31merror[39m  Raw Tailwind color "border-sky-500" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m   [2m85:13[22m  [31merror[39m  Raw Tailwind color "bg-sky-50" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)         [2matx/no-raw-tailwind-colors[22m[0m
+[0m   [2m85:13[22m  [31merror[39m  Raw Tailwind color "bg-sky-950" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)        [2matx/no-raw-tailwind-colors[22m[0m
+[0m   [2m89:57[22m  [31merror[39m  Raw Tailwind color "text-amber-600" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m103:20[22m  [31merror[39m  Raw Tailwind color "bg-neutral-900" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m114:26[22m  [31merror[39m  Raw Tailwind color "bg-neutral-900" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)    [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m116:54[22m  [31merror[39m  Raw Tailwind color "text-neutral-400" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m  [2m117:28[22m  [31merror[39m  Raw Tailwind color "text-neutral-400" — use semantic classes instead (text-dimmed, text-muted, text-primary, bg-elevated, bg-muted, bg-default, border-default)  [2matx/no-raw-tailwind-colors[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/tools/gsc-toolbox.ts[24m[0m
+[0m  [2m141:9[22m  [31merror[39m  Unexpected lexical declaration in case block  [2mno-case-declarations[22m[0m
+[0m  [2m178:9[22m  [31merror[39m  Unexpected lexical declaration in case block  [2mno-case-declarations[22m[0m
+[0m[0m
+[0m[4m/Users/narduk/code/austin-texas-net/tools/setup-analytics.ts[24m[0m
+[0m   [2m10:10[22m  [33mwarning[39m  'httpsJson' is defined but never used. Allowed unused vars must match /^_/u  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m257:29[22m  [31merror[39m    A `require()` style import is forbidden                                      [2m@typescript-eslint/no-require-imports[22m[0m
+[0m  [2m480:29[22m  [31merror[39m    A `require()` style import is forbidden                                      [2m@typescript-eslint/no-require-imports[22m[0m
+[0m[0m
+[0m[31m[1m✖ 203 problems (200 errors, 3 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[0m

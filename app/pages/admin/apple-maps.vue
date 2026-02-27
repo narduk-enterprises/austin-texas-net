@@ -5,7 +5,7 @@ definePageMeta({ title: 'Apple Maps API Tester', middleware: 'auth' })
 const { ensureLoaded } = useAuth()
 await ensureLoaded()
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 
 // ─── Form State ───────────────────────────────────────────────
 const endpoint = ref('search')
@@ -183,7 +183,9 @@ const mapItems = computed(() => {
 
 function createPinElement(baseItem: { id: string; lat: number; lng: number }, isSelected: boolean) {
   const item = baseItem as { id: string; lat: number; lng: number; name: string; index: number }
-  const el = document.createElement('div')
+  
+  // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+  const el = import.meta.client ? document.createElement('div') : ({} as HTMLElement)
   el.className = `mapkit-pin${isSelected ? ' is-selected' : ''}`
   el.setAttribute('data-map-pin', '')
   el.innerHTML = `
@@ -334,39 +336,45 @@ function flatKeys(obj: any): Array<{ key: string; value: any }> {
 
       <div class="flex flex-col gap-4">
         <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-3">
-          <USelect v-model="endpoint" :items="endpointOptions" value-key="value" label="Endpoint" />
-          <UInput
-            v-model="query"
-            placeholder="Search query or address"
-            icon="i-lucide-search"
-            label="Query"
-          />
-          <UInput
-            v-model.number="limit"
-            type="number"
-            placeholder="10"
-            icon="i-lucide-hash"
-            label="Limit"
-          />
+          <UFormField label="Endpoint">
+            <USelect v-model="endpoint" :items="endpointOptions" />
+          </UFormField>
+          <UFormField label="Query">
+            <UInput
+              v-model="query"
+              placeholder="Search query or address"
+              icon="i-lucide-search"
+            />
+          </UFormField>
+          <UFormField label="Limit">
+            <UInput
+              v-model.number="limit"
+              type="number"
+              placeholder="10"
+              icon="i-lucide-hash"
+            />
+          </UFormField>
         </div>
 
         <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-3">
-          <UInput
-            v-model.number="lat"
-            type="number"
-            step="0.0001"
-            placeholder="30.2672"
-            icon="i-lucide-navigation"
-            label="Latitude"
-          />
-          <UInput
-            v-model.number="lng"
-            type="number"
-            step="0.0001"
-            placeholder="-97.7431"
-            icon="i-lucide-navigation"
-            label="Longitude"
-          />
+          <UFormField label="Latitude">
+            <UInput
+              v-model.number="lat"
+              type="number"
+              step="0.0001"
+              placeholder="30.2672"
+              icon="i-lucide-navigation"
+            />
+          </UFormField>
+          <UFormField label="Longitude">
+            <UInput
+              v-model.number="lng"
+              type="number"
+              step="0.0001"
+              placeholder="-97.7431"
+              icon="i-lucide-navigation"
+            />
+          </UFormField>
           <div class="flex items-end">
             <UButton
               variant="outline"
@@ -387,18 +395,20 @@ function flatKeys(obj: any): Array<{ key: string; value: any }> {
         </div>
 
         <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-3">
-          <UInput
-            v-model="resultTypeFilter"
-            placeholder="e.g. Poi, Address"
-            icon="i-lucide-filter"
-            label="resultTypeFilter (override)"
-          />
-          <UInput
-            v-model="includeAddressCategories"
-            placeholder="e.g. SubLocality, PostalCode"
-            icon="i-lucide-tag"
-            label="includeAddressCategories (override)"
-          />
+          <UFormField label="resultTypeFilter (override)">
+            <UInput
+              v-model="resultTypeFilter"
+              placeholder="e.g. Poi, Address"
+              icon="i-lucide-filter"
+            />
+          </UFormField>
+          <UFormField label="includeAddressCategories (override)">
+            <UInput
+              v-model="includeAddressCategories"
+              placeholder="e.g. SubLocality, PostalCode"
+              icon="i-lucide-tag"
+            />
+          </UFormField>
         </div>
 
         <UButton
@@ -730,7 +740,7 @@ function flatKeys(obj: any): Array<{ key: string; value: any }> {
         <div
           v-for="(h, i) in history"
           :key="i"
-          class="flex items-center gap-3 py-2 border-b border-default last:border-b-0 text-sm"
+          class="flex items-center gap-3 py-2 border-b border-default last:border-default text-sm"
         >
           <UBadge variant="subtle" color="neutral" size="xs" class="min-w-[100px] justify-center">
             {{ h.endpoint }}

@@ -78,8 +78,8 @@ const weekendCategories = [
       "C-Boy's Heart & Soul — blues, funk, and soul on South Congress",
       'Broken Spoke — authentic Texas two-stepping since 1964',
     ],
-    color: 'text-rose-600 dark:text-rose-400',
-    bgColor: 'bg-rose-100 dark:bg-rose-900/30',
+    color: 'text-primary dark:text-muted',
+    bgColor: 'bg-muted dark:bg-elevated/30',
   },
   {
     icon: 'i-lucide-sun',
@@ -93,8 +93,8 @@ const weekendCategories = [
       'Mount Bonnell — best sunset views of Lake Austin',
       'McKinney Falls State Park — waterfalls 15 min from downtown',
     ],
-    color: 'text-emerald-600 dark:text-emerald-400',
-    bgColor: 'bg-emerald-100 dark:bg-emerald-900/30',
+    color: 'text-primary dark:text-muted',
+    bgColor: 'bg-muted dark:bg-elevated/30',
   },
   {
     icon: 'i-lucide-utensils',
@@ -108,8 +108,8 @@ const weekendCategories = [
       'South Congress food crawl — from tacos to Thai to brunch',
       'Craft breweries — Jester King, Pinthouse, Live Oak',
     ],
-    color: 'text-amber-600 dark:text-amber-400',
-    bgColor: 'bg-amber-100 dark:bg-amber-900/30',
+    color: 'text-primary dark:text-muted',
+    bgColor: 'bg-muted dark:bg-elevated/30',
   },
   {
     icon: 'i-lucide-baby',
@@ -123,8 +123,8 @@ const weekendCategories = [
       'Zilker Zephyr miniature train and Zilker Botanical Garden',
       'Splash pads — Mueller, Liz Carpenter, Butler Shores',
     ],
-    color: 'text-sky-600 dark:text-sky-400',
-    bgColor: 'bg-sky-100 dark:bg-sky-900/30',
+    color: 'text-primary dark:text-muted',
+    bgColor: 'bg-muted dark:bg-elevated/30',
   },
   {
     icon: 'i-lucide-ticket',
@@ -138,8 +138,8 @@ const weekendCategories = [
       'Lady Bird Lake Trail — 10 miles of trail with skyline views',
       'Blues on the Green — free concert series at Zilker Park (summer)',
     ],
-    color: 'text-violet-600 dark:text-violet-400',
-    bgColor: 'bg-violet-100 dark:bg-violet-900/30',
+    color: 'text-primary dark:text-muted',
+    bgColor: 'bg-muted dark:bg-elevated/30',
   },
   {
     icon: 'i-lucide-palette',
@@ -153,8 +153,8 @@ const weekendCategories = [
       'The Contemporary Austin — modern art at Jones Center and Laguna Gloria',
       'Paramount Theatre — films, comedy, and live performances since 1915',
     ],
-    color: 'text-fuchsia-600 dark:text-fuchsia-400',
-    bgColor: 'bg-fuchsia-100 dark:bg-fuchsia-900/30',
+    color: 'text-primary dark:text-muted',
+    bgColor: 'bg-muted dark:bg-elevated/30',
   },
 ]
 

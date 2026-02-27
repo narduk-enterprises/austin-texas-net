@@ -9,7 +9,7 @@
  * Token is read from runtimeConfig.public.mapkitToken (injected via Doppler).
  */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 declare const mapkit: any
 
 const MAPKIT_SRC = 'https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js'
@@ -19,16 +19,23 @@ let initPromise: Promise<typeof mapkit> | null = null
 
 function loadScript(): Promise<void> {
   return new Promise((resolve, reject) => {
-    if (document.querySelector(`script[src="${MAPKIT_SRC}"]`)) {
+    if (!import.meta.client) {
       resolve()
       return
     }
-    const script = document.createElement('script')
-    script.src = MAPKIT_SRC
-    script.crossOrigin = 'anonymous'
-    script.onload = () => resolve()
-    script.onerror = () => reject(new Error('Failed to load MapKit JS'))
-    document.head.appendChild(script)
+
+    if (import.meta.client) {
+      if (document.querySelector(`script[src="${MAPKIT_SRC}"]`)) {
+        resolve()
+        return
+      }
+      const script = document.createElement('script')
+      script.src = MAPKIT_SRC
+      script.crossOrigin = 'anonymous'
+      script.onload = () => resolve()
+      script.onerror = () => reject(new Error('Failed to load MapKit JS'))
+      document.head.appendChild(script)
+    }
   })
 }
 
@@ -59,7 +66,9 @@ export function useMapKit() {
   initPromise
     .then(() => {
       ready.value = true
-      document.documentElement.dataset.mapkitLoaded = 'true'
+      if (import.meta.client) {
+        document.documentElement.dataset.mapkitLoaded = 'true'
+      }
     })
     .catch((err) => {
       error.value = err instanceof Error ? err.message : 'MapKit JS init failed'

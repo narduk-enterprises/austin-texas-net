@@ -63,10 +63,10 @@ const footerColumns = computed<FooterColumn[]>(() => {
         <UContainer>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-9 gap-x-6 gap-y-10">
             <div v-for="col in footerColumns" :key="col.label">
-              <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-4">{{ col.label }}</h3>
+              <h3 class="text-sm font-semibold text-primary dark:text-white mb-4">{{ col.label }}</h3>
               <ul class="space-y-3">
                 <li v-for="link in col.children" :key="String(link.to)">
-                  <NuxtLink :to="link.to" class="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white whitespace-normal break-words">
+                  <NuxtLink :to="link.to" class="text-sm text-primary dark:text-muted hover:text-primary dark:hover:text-white whitespace-normal break-words">
                     {{ link.label }}
                   </NuxtLink>
                 </li>

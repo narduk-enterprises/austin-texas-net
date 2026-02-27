@@ -17,11 +17,11 @@ const selectedType = ref('')
 const filteredEvents = computed(() => events.filter(e => !selectedType.value || e.type === selectedType.value))
 
 const typeColor = (t: string) => {
-  if (t === 'concert') return 'bg-purple-500/10 text-purple-400'
-  if (t === 'rodeo') return 'bg-orange-500/10 text-orange-400'
-  if (t === 'livestock') return 'bg-green-500/10 text-green-400'
-  if (t === 'carnival') return 'bg-pink-500/10 text-pink-400'
-  return 'bg-yellow-500/10 text-yellow-400'
+  if (t === 'concert') return 'bg-elevated/10 text-muted'
+  if (t === 'rodeo') return 'bg-elevated/10 text-muted'
+  if (t === 'livestock') return 'bg-elevated/10 text-muted'
+  if (t === 'carnival') return 'bg-elevated/10 text-muted'
+  return 'bg-elevated/10 text-muted'
 }
 
 const typeEmoji = (t: string) => {
@@ -42,7 +42,7 @@ const formatDate = (d: string) => new Date(d + 'T12:00:00').toLocaleDateString('
       <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
       <div class="space-y-8 sm:space-y-12">
         <section class="text-center py-8 sm:py-12">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 text-orange-400 text-xs font-medium mb-4">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-elevated/10 text-muted text-xs font-medium mb-4">
         <UIcon name="i-lucide-star" class="size-3.5" />
         March 14–22, 2026
       </div>

@@ -34,7 +34,7 @@ useSchemaOrg([
       <div class="space-y-8 sm:space-y-12">
         <!-- Hero Section -->
         <section class="text-center py-8 sm:py-12 animate-fade-up">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-500/10 text-green-500 text-xs font-medium mb-4">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-elevated/10 text-primary text-xs font-medium mb-4">
             <UIcon name="i-lucide-tree-pine" class="size-3.5" />
             300+ Parks
           </div>
@@ -48,7 +48,7 @@ useSchemaOrg([
 
         <!-- Top Parks -->
         <section class="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-up-delay-1">
-          <div class="glass-card p-6 border-t-2 border-t-primary">
+          <div class="glass-card p-6 border-default border-t-primary">
             <h3 class="text-xl font-display font-semibold mb-2">Zilker Metropolitan Park</h3>
             <p class="text-sm text-dimmed mb-4">The Crown Jewel of Austin</p>
             <p class="text-sm text-muted mb-4 line-clamp-3">
@@ -61,7 +61,7 @@ useSchemaOrg([
             </div>
           </div>
           
-          <div class="glass-card p-6 border-t-2 border-t-primary">
+          <div class="glass-card p-6 border-default border-t-primary">
             <h3 class="text-xl font-display font-semibold mb-2">Pease District Park</h3>
             <p class="text-sm text-dimmed mb-4">Recently Revitalized</p>
             <p class="text-sm text-muted mb-4 line-clamp-3">
@@ -74,7 +74,7 @@ useSchemaOrg([
             </div>
           </div>
           
-          <div class="glass-card p-6 border-t-2 border-t-primary">
+          <div class="glass-card p-6 border-default border-t-primary">
             <h3 class="text-xl font-display font-semibold mb-2">Mount Bonnell</h3>
             <p class="text-sm text-dimmed mb-4">Covert Park</p>
             <p class="text-sm text-muted mb-4 line-clamp-3">
@@ -87,7 +87,7 @@ useSchemaOrg([
             </div>
           </div>
 
-          <div class="glass-card p-6 border-t-2 border-t-primary">
+          <div class="glass-card p-6 border-default border-t-primary">
             <h3 class="text-xl font-display font-semibold mb-2">Roy G. Guerrero Park</h3>
             <p class="text-sm text-dimmed mb-4">East Austin Oasis</p>
             <p class="text-sm text-muted mb-4 line-clamp-3">
@@ -106,15 +106,15 @@ useSchemaOrg([
           <h2 class="text-xl font-semibold font-display mb-4">General Park Rules</h2>
           <ul class="text-sm text-muted space-y-3">
             <li class="flex items-start gap-2">
-              <UIcon name="i-lucide-check-circle" class="size-4 text-green-500 shrink-0 mt-0.5" />
+              <UIcon name="i-lucide-check-circle" class="size-4 text-primary shrink-0 mt-0.5" />
               <span><strong>Leave No Trace:</strong> Ensure you pack out all trash and recycling. Many parks have limited receptacle capacity on busy weekends.</span>
             </li>
             <li class="flex items-start gap-2">
-              <UIcon name="i-lucide-alert-circle" class="size-4 text-yellow-500 shrink-0 mt-0.5" />
+              <UIcon name="i-lucide-alert-circle" class="size-4 text-primary shrink-0 mt-0.5" />
               <span><strong>Dog Policies:</strong> While Austin is very dog-friendly, most parks require dogs to be leashed outside of designated off-leash zones (like Red Bud Isle and portions of Zilker).</span>
             </li>
             <li class="flex items-start gap-2">
-              <UIcon name="i-lucide-x-circle" class="size-4 text-red-500 shrink-0 mt-0.5" />
+              <UIcon name="i-lucide-x-circle" class="size-4 text-primary shrink-0 mt-0.5" />
               <span><strong>No Glass/Styrofoam:</strong> Glass containers and styrofoam coolers are strictly prohibited in all Austin city parks and waterways for safety and environmental reasons.</span>
             </li>
           </ul>

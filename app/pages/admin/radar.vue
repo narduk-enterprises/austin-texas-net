@@ -224,8 +224,8 @@ function diffColor(diff: number): 'success' | 'warning' | 'error' {
           placeholder="Search keywords..."
           class="flex-1"
         />
-        <USelect v-model="bucket" :items="bucketOptions" value-key="value" placeholder="Bucket" />
-        <USelect v-model="sort" :items="sortOptions" value-key="value" placeholder="Sort by" />
+        <USelect v-model="bucket" :items="bucketOptions" placeholder="Bucket" />
+        <USelect v-model="sort" :items="sortOptions" placeholder="Sort by" />
       </div>
     </UCard>
 
@@ -368,7 +368,7 @@ function diffColor(diff: number): 'success' | 'warning' | 'error' {
         <div
           v-for="(kw, i) in queue.data"
           :key="kw.id"
-          class="flex items-center gap-3 py-2 border-b border-default last:border-b-0"
+          class="flex items-center gap-3 py-2 border-b border-default last:border-default"
         >
           <span class="text-xs font-bold text-dimmed min-w-6 text-center">{{ i + 1 }}</span>
           <span class="flex-1 font-medium">{{ kw.keyword }}</span>

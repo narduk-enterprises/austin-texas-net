@@ -18,14 +18,14 @@ const chips = [
     <UContainer>
       <!-- eslint-disable atx/no-raw-tailwind-colors -- brand stone palette -->
       <div
-        class="rounded-2xl bg-stone-50/60 dark:bg-elevated/50 border border-stone-200/50 dark:border-default p-5 md:p-6 animate-fade-up-delay-2"
+        class="rounded-2xl bg-muted/60 dark:bg-elevated/50 border border-default/50 dark:border-default p-5 md:p-6 animate-fade-up-delay-2"
       >
         <div class="flex items-center gap-2 mb-4">
           <UIcon name="i-lucide-trending-up" class="size-4 text-primary" />
           <p class="text-xs font-bold uppercase tracking-wider text-muted">Popular</p>
         </div>
         <div class="flex flex-wrap gap-2">
-          <UBadge
+          <UButton
             v-for="chip in chips"
             :key="chip.to"
             :label="chip.label"
@@ -33,7 +33,6 @@ const chips = [
             variant="soft"
             size="lg"
             :to="chip.to"
-            as="NuxtLink"
             class="cursor-pointer hover:scale-105 hover:shadow-sm active:scale-100 transition-all duration-200"
           />
         </div>

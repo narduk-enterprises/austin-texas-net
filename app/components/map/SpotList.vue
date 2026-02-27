@@ -82,7 +82,7 @@ const { getIconPaths } = useMapIcons()
           <!-- eslint-disable-next-line atx/no-raw-tailwind-colors -->
           <p class="text-xs sm:text-sm text-muted truncate">
             <!-- eslint-disable-next-line atx/no-raw-tailwind-colors -->
-            <span class="font-medium text-amber-600 dark:text-amber-400">{{ spot.knownFor }}</span>
+            <span class="font-medium text-primary dark:text-muted">{{ spot.knownFor }}</span>
             <span class="mx-1.5 text-dimmed">·</span>
             {{ spot.neighborhood }}
             <span v-if="spot.area" class="map-list-area">{{ spot.area }}</span>
@@ -90,13 +90,13 @@ const { getIconPaths } = useMapIcons()
         </div>
         <div v-if="spot.rating" class="map-list-rating shrink-0">
           <!-- eslint-disable-next-line atx/no-raw-tailwind-colors -->
-          <UIcon name="i-lucide-star" class="size-3.5 text-amber-400" />
+          <UIcon name="i-lucide-star" class="size-3.5 text-muted" />
           <span>{{ spot.rating }}</span>
         </div>
         <!-- eslint-disable atx/no-raw-tailwind-colors -- amber hover accent -->
         <UIcon
           name="i-lucide-map-pin"
-          class="size-4 text-muted group-hover:text-amber-500 transition-colors shrink-0"
+          class="size-4 text-muted group-hover:text-primary transition-colors shrink-0"
         />
       </NuxtLink>
     </div>

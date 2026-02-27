@@ -123,40 +123,40 @@ const tracks = [
     title: 'Music',
     description:
       '2,000+ artists across 100+ venues. The largest music festival in the world by number of acts.',
-    color: 'text-emerald-600 dark:text-emerald-400',
-    bgColor: 'bg-emerald-100 dark:bg-emerald-900/30',
+    color: 'text-primary dark:text-muted',
+    bgColor: 'bg-muted dark:bg-elevated/30',
   },
   {
     icon: 'i-lucide-film',
     title: 'Film & TV',
     description:
       'World premieres, screenings, and panels from independent to major studio releases.',
-    color: 'text-violet-600 dark:text-violet-400',
-    bgColor: 'bg-violet-100 dark:bg-violet-900/30',
+    color: 'text-primary dark:text-muted',
+    bgColor: 'bg-muted dark:bg-elevated/30',
   },
   {
     icon: 'i-lucide-cpu',
     title: 'Interactive',
     description:
       'Tech, AI, startups, gaming, and the future of digital culture. The conference that launched Twitter.',
-    color: 'text-sky-600 dark:text-sky-400',
-    bgColor: 'bg-sky-100 dark:bg-sky-900/30',
+    color: 'text-primary dark:text-muted',
+    bgColor: 'bg-muted dark:bg-elevated/30',
   },
   {
     icon: 'i-lucide-mic',
     title: 'Comedy',
     description:
       'Stand-up showcases, sketch, improv, and podcast tapings from established and emerging comedians.',
-    color: 'text-amber-600 dark:text-amber-400',
-    bgColor: 'bg-amber-100 dark:bg-amber-900/30',
+    color: 'text-primary dark:text-muted',
+    bgColor: 'bg-muted dark:bg-elevated/30',
   },
   {
     icon: 'i-lucide-graduation-cap',
     title: 'SXSWedu',
     description:
       'Education innovation and learning design — the education-focused conference-within-a-conference.',
-    color: 'text-rose-600 dark:text-rose-400',
-    bgColor: 'bg-rose-100 dark:bg-rose-900/30',
+    color: 'text-primary dark:text-muted',
+    bgColor: 'bg-muted dark:bg-elevated/30',
   },
 ]
 

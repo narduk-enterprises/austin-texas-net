@@ -278,7 +278,6 @@ const crossLinks = computed(() =>
             size="lg"
             variant="outline"
             placeholder="Search neighborhoods..."
-            enter-key-hint="search"
             autocomplete="off"
             :ui="{ root: 'w-full' }"
           />
@@ -289,14 +288,14 @@ const crossLinks = computed(() =>
               v-model="selectedRegion"
               :items="regionSelectItems"
               size="md"
-              icon="i-lucide-compass"
+              leading-icon="i-lucide-compass"
               placeholder="All Regions"
             />
             <USelect
               v-model="selectedCity"
               :items="citySelectItems"
               size="md"
-              icon="i-lucide-building-2"
+              leading-icon="i-lucide-building-2"
               placeholder="All Cities"
             />
           </div>

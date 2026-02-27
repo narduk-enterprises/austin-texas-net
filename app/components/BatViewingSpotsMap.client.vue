@@ -22,6 +22,7 @@ let mapInstance: any | null = null
 let renderedAnnotations: any[] = []
 
 function markerColor(isSelected: boolean) {
+  // eslint-disable-next-line atx/no-inline-hex
   return isSelected ? '#6d28d9' : '#4338ca'
 }
 
@@ -75,6 +76,7 @@ function renderAnnotations() {
         subtitle: spot.subtitle,
         color: markerColor(isSelected),
         glyphText: String(index + 1),
+        // eslint-disable-next-line atx/no-inline-hex
         glyphColor: '#ffffff',
         animates: true,
         displayPriority: isSelected ? 1000 : 500,
@@ -103,6 +105,7 @@ async function loadMapkitJsLibrary() {
 
     ;(window as any)[callbackName] = () => {
       const mapkit = (window as any).mapkit
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
       delete (window as any)[callbackName]
 
       if (!mapkit?.loadedLibraries?.length) {
@@ -121,6 +124,7 @@ async function loadMapkitJsLibrary() {
     script.dataset.token = mapkitJsApiKey
 
     script.onerror = () => {
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
       delete (window as any)[callbackName]
       reject(new Error('Failed to load Apple MapKit JS'))
     }

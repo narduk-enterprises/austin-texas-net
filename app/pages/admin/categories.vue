@@ -142,17 +142,6 @@ const uniqueAreas = computed(() => {
   return Array.from(areas).sort()
 })
 
-const columnFilters = computed(() => {
-  const filters = []
-  if (neighborhoodFilter.value) {
-    filters.push({ id: 'neighborhood', value: neighborhoodFilter.value })
-  }
-  if (areaFilter.value) {
-    filters.push({ id: 'area', value: areaFilter.value })
-  }
-  return filters
-})
-
 const filteredSpots = computed(() => {
   let result = [...spots.value]
 
@@ -964,11 +953,8 @@ const spotColumns = [
         </div>
         <UTable
           v-model:sorting="sorting"
-          v-model:grouping="grouping"
           :data="filteredSpots"
           :columns="spotColumns"
-          :global-filter="globalFilter"
-          :column-filters="columnFilters"
           :meta="{
             class: {
               tr: (row: any) =>
@@ -1323,11 +1309,12 @@ const spotColumns = [
               ]"
             >
               <template #id-cell="{ row }">
+                <!-- eslint-disable nuxt-ui/no-unknown-component-prop -->
                 <UCheckbox
                   size="md"
                   :model-value="selectedSpotsToApprove.includes((row.original as MapSpot).id)"
                   @update:model-value="
-                    (val) => {
+                    (val: boolean) => {
                       if (val) selectedSpotsToApprove.push((row.original as MapSpot).id)
                       else
                         selectedSpotsToApprove = selectedSpotsToApprove.filter(
@@ -1336,6 +1323,7 @@ const spotColumns = [
                     }
                   "
                 />
+                <!-- eslint-enable nuxt-ui/no-unknown-component-prop -->
               </template>
               <template #name-cell="{ row }">
                 <div class="text-sm font-semibold">{{ (row.original as MapSpot).name }}</div>

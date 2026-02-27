@@ -7,7 +7,7 @@ definePageMeta({ title: 'Grid Crawler', middleware: 'auth' })
 const { ensureLoaded } = useAuth()
 await ensureLoaded()
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 
 // ─── Status data ──────────────────────────────────────────────
 interface GridStatus {
@@ -173,7 +173,8 @@ const labelItems = computed<LabelItem[]>(() => {
 })
 
 function createLabelElement(item: LabelItem) {
-  const el = document.createElement('div')
+  // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+  const el = import.meta.client ? document.createElement('div') : ({} as HTMLElement)
   el.style.cssText =
     'font-size:12px;font-weight:700;color:#1e293b;white-space:nowrap;pointer-events:none;text-shadow:0 0 4px #fff,0 0 4px #fff,0 0 8px #fff'
   el.textContent = item.name
@@ -399,14 +400,8 @@ function clearAddress() {
             >
           </div>
           <div class="flex items-center gap-3">
-            <label class="flex items-center gap-1.5 text-xs cursor-pointer select-none">
-              <input v-model="showDots" type="checkbox" class="rounded" />
-              <span>Show dots</span>
-            </label>
-            <label class="flex items-center gap-1.5 text-xs cursor-pointer select-none">
-              <input v-model="clickCrawlEnabled" type="checkbox" class="rounded" />
-              <span>Click to crawl</span>
-            </label>
+            <UCheckbox v-model="showDots" label="Show dots" />
+            <UCheckbox v-model="clickCrawlEnabled" label="Click to crawl" />
             <UButton
               size="xs"
               variant="soft"
@@ -486,23 +481,23 @@ function clearAddress() {
             </div>
           </div>
           <div class="flex flex-wrap gap-x-4 gap-y-1">
-            <label
+            <div
               v-for="name in allShapeNames"
               :key="name"
-              class="flex items-center gap-1.5 text-sm cursor-pointer select-none"
+              class="flex items-center gap-2"
             >
-              <input
-                type="checkbox"
-                :checked="!hiddenNeighborhoods.has(name)"
-                class="rounded"
-                @change="toggleNeighborhood(name)"
+              <!-- eslint-disable nuxt-ui/no-unknown-component-prop -->
+              <UCheckbox
+                :model-value="!hiddenNeighborhoods.has(name)"
+                @update:model-value="toggleNeighborhood(name)"
               />
+              <!-- eslint-enable nuxt-ui/no-unknown-component-prop -->
               <span
                 class="inline-block w-2.5 h-2.5 rounded-full"
                 :style="{ backgroundColor: getNeighborhoodColor(name) }"
               />
-              <span>{{ name }}</span>
-            </label>
+              <span class="text-sm cursor-pointer select-none" @click="toggleNeighborhood(name)">{{ name }}</span>
+            </div>
           </div>
         </div>
 
@@ -595,22 +590,24 @@ function clearAddress() {
       <div class="flex flex-col gap-4">
         <!-- Start location -->
         <div class="flex flex-wrap items-end gap-3">
-          <UInput
-            v-model.number="startLat"
-            type="number"
-            step="0.001"
-            label="Start Lat"
-            placeholder="auto-resume"
-            class="w-[140px]"
-          />
-          <UInput
-            v-model.number="startLng"
-            type="number"
-            step="0.001"
-            label="Start Lng"
-            placeholder="auto-resume"
-            class="w-[140px]"
-          />
+          <UFormField label="Start Lat">
+            <UInput
+              v-model.number="startLat"
+              type="number"
+              step="0.001"
+              placeholder="auto-resume"
+              class="w-[140px]"
+            />
+          </UFormField>
+          <UFormField label="Start Lng">
+            <UInput
+              v-model.number="startLng"
+              type="number"
+              step="0.001"
+              placeholder="auto-resume"
+              class="w-[140px]"
+            />
+          </UFormField>
           <UButton size="xs" variant="ghost" color="neutral" @click="setMyAddress">
             📍 My Address
           </UButton>
@@ -624,19 +621,19 @@ function clearAddress() {
 
         <!-- Batch size + controls -->
         <div class="flex flex-wrap items-end gap-3">
-          <UInput
-            v-model.number="batchSize"
-            type="number"
-            label="Batch Size"
-            placeholder="500"
-            :min="1"
-            :max="2000"
-            class="w-[140px]"
-          />
-          <label class="flex items-center gap-2 text-sm cursor-pointer">
-            <input v-model="resetGrid" type="checkbox" class="rounded" />
-            <span class="text-error">Reset grid first</span>
-          </label>
+          <UFormField label="Batch Size">
+            <UInput
+              v-model.number="batchSize"
+              type="number"
+              placeholder="500"
+              :min="1"
+              :max="2000"
+              class="w-[140px]"
+            />
+          </UFormField>
+          <div class="pb-1.5">
+            <UCheckbox v-model="resetGrid" label="Reset grid first" />
+          </div>
           <UButton color="primary" icon="i-lucide-play" :loading="crawlLoading" @click="runCrawl">
             Start Crawl
           </UButton>
