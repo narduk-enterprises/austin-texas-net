@@ -41,12 +41,22 @@ const { categories } = useSiteData()
           <!-- Sub-app links — each is a big full-width tap target -->
           <div class="pl-[52px]">
             <NuxtLink
-              v-for="app in cat.subApps.filter(a => a.status === 'live')"
+              v-for="app in cat.subApps.filter(a => a.status === 'live').slice(0, 3)"
               :key="app.slug"
               :to="`/${cat.slug}/${app.slug}/`"
               class="flex items-center min-h-[44px] py-2 text-[15px] font-medium text-default/70 hover:text-default active:text-default transition-colors"
             >
               {{ app.title }}
+            </NuxtLink>
+            
+            <!-- Show all link if there are more than 3 live apps -->
+            <NuxtLink
+              v-if="cat.subApps.filter(a => a.status === 'live').length > 3"
+              :to="`/${cat.slug}/`"
+              class="flex items-center gap-1.5 min-h-[44px] py-2 text-[14px] font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors mt-1"
+            >
+              Show all
+              <UIcon name="i-lucide-arrow-right" class="size-4" />
             </NuxtLink>
           </div>
         </div>
