@@ -121,9 +121,10 @@ const statCards = computed(() => {
           class="rounded-xl border-2 p-4"
           :class="{
             'border-default/40 bg-muted dark:bg-elevated/20':
-              alert.severity === 'Extreme' || alert.severity === 'Severe',
-            'border-default/40 bg-muted dark:bg-elevated/20': alert.severity === 'Moderate',
-            'border-default/40 bg-muted dark:bg-elevated/20': alert.severity === 'Minor',
+              alert.severity === 'Extreme' ||
+              alert.severity === 'Severe' ||
+              alert.severity === 'Moderate' ||
+              alert.severity === 'Minor',
           }"
         >
           <div class="flex items-start gap-3">

@@ -43,7 +43,7 @@ export function usePageSeo(opts: {
       twitterImage: opts.image,
     })
   } else {
-    defineOgImageComponent(opts.ogImageComponent || 'OgImageDefaultTakumi', {
+    defineOgImageComponent((opts.ogImageComponent || 'Takumi') as any, {
       title: opts.title,
       description: opts.description,
       ...(opts.ogImageProps || {}),

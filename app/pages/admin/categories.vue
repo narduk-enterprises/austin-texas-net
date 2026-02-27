@@ -1314,12 +1314,16 @@ const spotColumns = [
                   size="md"
                   :model-value="selectedSpotsToApprove.includes((row.original as MapSpot).id)"
                   @update:model-value="
-                    (val: boolean) => {
-                      if (val) selectedSpotsToApprove.push((row.original as MapSpot).id)
-                      else
+                    (val: boolean | 'indeterminate') => {
+                      if (val === true) {
+                        if (!selectedSpotsToApprove.includes((row.original as MapSpot).id)) {
+                          selectedSpotsToApprove.push((row.original as MapSpot).id)
+                        }
+                      } else {
                         selectedSpotsToApprove = selectedSpotsToApprove.filter(
                           (id) => id !== (row.original as MapSpot).id,
                         )
+                      }
                     }
                   "
                 />
