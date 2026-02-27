@@ -42,9 +42,7 @@ export function usePageSeo(opts: {
       ogImage: opts.image,
       twitterImage: opts.image,
     })
-  } else {
-    // Let @nuxtjs/seo (nuxt-og-image) generate it natively
-    defineOgImageComponent('OgImageDefault', {
+    defineOgImageComponent('OgImageDefaultTakumi', {
       title: opts.title,
       description: opts.description,
       ...(opts.ogImageProps || {}),

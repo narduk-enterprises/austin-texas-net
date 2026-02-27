@@ -109,7 +109,7 @@ export default defineNuxtConfig({
 
   ogImage: {
     defaults: {
-      component: 'OgImageDefault',
+      component: 'OgImageDefaultTakumi',
     },
   },
 
@@ -159,18 +159,6 @@ export default defineNuxtConfig({
       '/_nuxt/**': {
         headers: { 'Cache-Control': 'public, max-age=31536000, immutable' },
       },
-    },
-    rollupConfig: {
-      plugins: [
-        {
-          name: 'fix-og-image-mock',
-          resolveId(id: string) {
-            if (id.includes('nuxt-og-image') && id.includes('proxy-cjs')) {
-              return { id: './node_modules/nuxt-og-image/dist/runtime/mock/proxy-cjs.js', external: false }
-            }
-          },
-        },
-      ],
     },
   },
 
