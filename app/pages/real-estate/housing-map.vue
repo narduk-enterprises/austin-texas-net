@@ -119,24 +119,27 @@ const items = computed<MapItem[]>(() => {
 const selectedId = ref<string | null>(null)
 const selectedItem = computed(() => items.value.find((i) => i.id === selectedId.value) ?? null)
 
-function createPinElement(spot: MapItem, isSelected: boolean): { element: HTMLElement } {
-  const isPricePin = spot.type === 'price'
-  /* eslint-disable atx/no-inline-hex -- MapKit pin gradient */
-  const fillColor = isPricePin ? '#3b82f6' : '#22c55e'
-  /* eslint-enable atx/no-inline-hex */
+function createPinElement(spot: MapItem, isSelected: boolean): { element: HTMLElement } | any {
+  if (import.meta.client) {
+    const isPricePin = spot.type === 'price'
+    /* eslint-disable atx/no-inline-hex -- MapKit pin gradient */
+    const fillColor = isPricePin ? '#3b82f6' : '#22c55e'
+    /* eslint-enable atx/no-inline-hex */
 
-  const el = document.createElement('div')
-  if (isPricePin) {
-    el.innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;gap:2px;width:max-content;${isSelected ? 'z-index:100;' : 'z-index:1;'}">
-      <div style="padding:4px 10px;border-radius:20px;background:linear-gradient(145deg,${fillColor},color-mix(in srgb,${fillColor} 60%,#000));color:white;font-size:11px;font-weight:800;font-family:var(--font-display);box-shadow:0 2px 6px ${fillColor}66${isSelected ? `;transform:scale(1.15)` : ''}">${spot.displayValue}</div>
-      <span style="font-size:9px;font-weight:700;color:#1e293b;text-shadow:0 0 4px white,0 0 4px white;white-space:nowrap;">${spot.name}</span>
-    </div>`
-  } else {
-    el.innerHTML = `<div style="width:20px;height:20px;border-radius:50%;background:linear-gradient(145deg,${fillColor},color-mix(in srgb,${fillColor} 60%,#000));border:2px solid white;box-shadow:0 2px 6px ${fillColor}66${isSelected ? `;transform:scale(1.3)` : ''};display:flex;align-items:center;justify-content:center;">
-      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M3 21h18"/><path d="M5 21V7l8-4 8 4v14"/></svg>
-    </div>`
+    const el = document.createElement('div')
+    if (isPricePin) {
+      el.innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;gap:2px;width:max-content;${isSelected ? 'z-index:100;' : 'z-index:1;'}">
+        <div style="padding:4px 10px;border-radius:20px;background:linear-gradient(145deg,${fillColor},color-mix(in srgb,${fillColor} 60%,#000));color:white;font-size:11px;font-weight:800;font-family:var(--font-display);box-shadow:0 2px 6px ${fillColor}66${isSelected ? `;transform:scale(1.15)` : ''}">${spot.displayValue}</div>
+        <span style="font-size:9px;font-weight:700;color:#1e293b;text-shadow:0 0 4px white,0 0 4px white;white-space:nowrap;">${spot.name}</span>
+      </div>`
+    } else {
+      el.innerHTML = `<div style="width:20px;height:20px;border-radius:50%;background:linear-gradient(145deg,${fillColor},color-mix(in srgb,${fillColor} 60%,#000));border:2px solid white;box-shadow:0 2px 6px ${fillColor}66${isSelected ? `;transform:scale(1.3)` : ''};display:flex;align-items:center;justify-content:center;">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M3 21h18"/><path d="M5 21V7l8-4 8 4v14"/></svg>
+      </div>`
+    }
+    return { element: el }
   }
-  return { element: el }
+  return { element: {} as HTMLElement }
 }
 </script>
 

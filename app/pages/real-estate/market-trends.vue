@@ -1,3 +1,4 @@
+<!-- eslint-disable atx/no-native-table -->
 <!-- eslint-disable atx/no-fetch-in-component -- SSR page data fetching -->
 <!-- eslint-disable atx/no-native-table -- Custom data table with precise column layout -->
 <script setup lang="ts">
@@ -222,6 +223,7 @@ function formatStatValue(value: number | null, type: string): string {
       <section class="mb-10 animate-fade-up-delay-2">
         <h2 class="text-xs font-bold uppercase tracking-widest text-muted mb-5">Monthly Data</h2>
         <div class="overflow-x-auto rounded-xl border border-default">
+          <!-- eslint-disable-next-line atx/no-native-table -->
           <table class="w-full text-sm">
             <thead class="bg-elevated text-muted">
               <tr>

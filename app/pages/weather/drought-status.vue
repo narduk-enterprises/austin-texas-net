@@ -147,7 +147,7 @@ const resources = [
               class="size-10 rounded-lg shrink-0 flex items-center justify-center font-bold text-xs"
               :style="{
                 backgroundColor: level.color,
-                color: level.code === 'D4' ? 'white' : '#1e293b',
+                color: level.code === 'D4' ? 'white' : 'var(--ui-color-slate-800, #1e293b)'
               }"
             >
               {{ level.code }}

@@ -139,25 +139,31 @@ function createBluebonnetPin(
   item: BluebonnetItem,
   _isSelected: boolean,
 ): any {
-  if (import.meta.server) return { element: {} as HTMLElement }
+  if (import.meta.client) {
+    const wrapper = document.createElement('div')
+    wrapper.innerHTML = BLUEBONNET_SVG
+    wrapper.style.cursor = 'pointer'
 
-  const wrapper = document.createElement('div')
-  wrapper.innerHTML = BLUEBONNET_SVG
-  wrapper.style.cursor = 'pointer'
+    // Opacity based on quality grade
+    if (item.quality_grade === 'research') {
+      wrapper.style.opacity = '1'
+    } else if (item.has_photo) {
+      wrapper.style.opacity = '0.7'
+    } else {
+      wrapper.style.opacity = '0.45'
+    }
 
-  // Opacity based on quality grade
-  if (item.quality_grade === 'research') {
-    wrapper.style.opacity = '1'
-  } else if (item.has_photo) {
-    wrapper.style.opacity = '0.7'
-  } else {
-    wrapper.style.opacity = '0.45'
+    // Subtle drop shadow for depth
+    wrapper.style.filter = 'drop-shadow(0 1px 2px rgba(0,0,0,0.25))'
+
+    return {
+      element: wrapper,
+      cleanup: () => {
+        // cleanup observers if any
+      },
+    }
   }
-
-  // Subtle drop shadow for depth
-  wrapper.style.filter = 'drop-shadow(0 1px 2px rgba(0,0,0,0.25))'
-
-  return { element: wrapper }
+  return { element: {} as HTMLElement }
 }
 
 // ── Bluebonnet cluster factory ──────────────────────────────
@@ -195,49 +201,49 @@ function createBluebonnetCluster(
   _cluster: { memberAnnotations: unknown[]; coordinate: unknown },
   count: number,
 ): HTMLElement | any {
-  if (import.meta.server) return {} as HTMLElement
+  if (import.meta.client) {
+    const el = document.createElement('div')
+    el.style.cssText = 'position:relative;display:flex;align-items:center;justify-content:center;'
 
-  const el = document.createElement('div')
-  el.style.cssText = 'position:relative;display:flex;align-items:center;justify-content:center;'
+    // Choose layout tier based on count
+    const positions =
+      (count > 15 ? BOUQUET_POSITIONS[1] : BOUQUET_POSITIONS[0]) ?? BOUQUET_POSITIONS[0]!
+    const flowerSize = count > 15 ? 20 : 18
+    const wrapperSize = count > 15 ? 52 : 44
 
-  // Choose layout tier based on count
-  const positions =
-    (count > 15 ? BOUQUET_POSITIONS[1] : BOUQUET_POSITIONS[0]) ?? BOUQUET_POSITIONS[0]!
-  const flowerSize = count > 15 ? 20 : 18
-  const wrapperSize = count > 15 ? 52 : 44
-
-  // Build bouquet of flowers
-  let flowersHtml = ''
-  for (const pos of positions) {
-    flowersHtml += `<div style="
+    // Build bouquet of flowers
+    let flowersHtml = ''
+    for (const pos of positions) {
+      flowersHtml += `<div style="
       position:absolute;
       width:${flowerSize}px;height:${flowerSize}px;
       left:50%;top:50%;
       transform:translate(calc(-50% + ${pos.x}px), calc(-50% + ${pos.y}px));
       filter:drop-shadow(0 1px 2px rgba(0,0,0,0.2));
     ">${CLUSTER_FLOWER}</div>`
+    }
+
+    const badgeSize = count > 99 ? 22 : 18
+    const fontSize = count > 99 ? 9 : 10
+    flowersHtml += `<div style="
+      position:absolute;bottom:-4px;right:-4px;
+      min-width:${badgeSize}px;height:${badgeSize}px;padding:0 4px;
+      border-radius:${badgeSize}px;
+      background:linear-gradient(145deg,#4a4eae,#3b3f99);
+      box-shadow:0 1px 4px rgba(0,0,0,0.3),0 0 0 2px white;
+      display:flex;align-items:center;justify-content:center;
+      font-size:${fontSize}px;font-weight:800;font-family:var(--font-display);
+      color:white;line-height:1;
+    ">${count}</div>`
+
+    el.innerHTML = `<div style="
+      position:relative;width:${wrapperSize}px;height:${wrapperSize}px;
+      transition:transform 0.2s ease;cursor:pointer;
+    " onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'">${flowersHtml}</div>`
+
+    return el
   }
-
-  // Count badge
-  const badgeSize = count > 99 ? 22 : 18
-  const fontSize = count > 99 ? 9 : 10
-  flowersHtml += `<div style="
-    position:absolute;bottom:-4px;right:-4px;
-    min-width:${badgeSize}px;height:${badgeSize}px;padding:0 4px;
-    border-radius:${badgeSize}px;
-    background:linear-gradient(145deg,#4a4eae,#3b3f99);
-    box-shadow:0 1px 4px rgba(0,0,0,0.3),0 0 0 2px white;
-    display:flex;align-items:center;justify-content:center;
-    font-size:${fontSize}px;font-weight:800;font-family:var(--font-display);
-    color:white;line-height:1;
-  ">${count}</div>`
-
-  el.innerHTML = `<div style="
-    position:relative;width:${wrapperSize}px;height:${wrapperSize}px;
-    transition:transform 0.2s ease;cursor:pointer;
-  " onmouseover="this.style.transform='scale(1.15)'" onmouseout="this.style.transform='scale(1)'">${flowersHtml}</div>`
-
-  return el
+  return {} as HTMLElement
 }
 
 /** Format ISO date string as human-readable (e.g. "March 15, 2025") */

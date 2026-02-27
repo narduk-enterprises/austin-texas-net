@@ -76,16 +76,17 @@ async function handleSubmit() {
 }
 
 function handleApple() {
-  if (import.meta.server) return
-  const params = new URLSearchParams({
-    client_id: 'com.atxapps',
-    redirect_uri: `${window.location.origin}/api/auth/apple-callback`,
-    response_type: 'code id_token',
-    response_mode: 'form_post',
-    scope: 'name email',
-    state: (route.query.redirect as string) || '/',
-  })
-  window.location.href = `https://appleid.apple.com/auth/authorize?${params.toString()}`
+  if (import.meta.client) {
+    const params = new URLSearchParams({
+      client_id: 'com.atxapps',
+      redirect_uri: `${window.location.origin}/api/auth/apple-callback`,
+      response_type: 'code id_token',
+      response_mode: 'form_post',
+      scope: 'name email',
+      state: (route.query.redirect as string) || '/',
+    })
+    window.location.href = `https://appleid.apple.com/auth/authorize?${params.toString()}`
+  }
 }
 
 async function handleLogout() {

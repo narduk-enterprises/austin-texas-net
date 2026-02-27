@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { launchSites, waterBodies, type LaunchSite } from '~/data/kayak-launches'
+import { launchSites, waterBodies } from '~/data/kayak-launches'
 
 const { items: breadcrumbs } = useBreadcrumbs()
 

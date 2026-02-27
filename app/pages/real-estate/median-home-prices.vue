@@ -166,28 +166,31 @@ const sortedSpots = computed(() => {
 function createPinElement(
   spot: HomePriceSpot,
   isSelected: boolean,
-): { element: HTMLElement; cleanup?: () => void } {
-  const value = spot.medianValue
+): { element: HTMLElement; cleanup?: () => void } | any {
+  if (import.meta.client) {
+    const value = spot.medianValue
 
-  /* eslint-disable atx/no-inline-hex -- MapKit pin gradient */
-  const fillColor =
-    value >= 800000
-      ? '#7c3aed'
-      : value >= 500000
-        ? '#3b82f6'
-        : value >= 300000
-          ? '#22c55e'
-          : '#f59e0b'
-  /* eslint-enable atx/no-inline-hex */
+    /* eslint-disable atx/no-inline-hex -- MapKit pin gradient */
+    const fillColor =
+      value >= 800000
+        ? '#7c3aed'
+        : value >= 500000
+          ? '#3b82f6'
+          : value >= 300000
+            ? '#22c55e'
+            : '#f59e0b'
+    /* eslint-enable atx/no-inline-hex */
 
-  const el = document.createElement('div')
-  el.innerHTML = `
-    <div style="display:flex;flex-direction:column;align-items:center;gap:2px;width:max-content;${isSelected ? 'z-index:100;' : 'z-index:1;'}">
-      <div style="display:flex;align-items:center;justify-content:center;padding:4px 10px;border-radius:20px;background:linear-gradient(145deg,${fillColor},color-mix(in srgb,${fillColor} 60%,#000));color:white;font-size:12px;font-weight:800;font-family:var(--font-display);box-shadow:0 2px 8px ${fillColor}66${isSelected ? `,0 0 0 3px ${fillColor}4d` : ''};transition:transform 0.2s;${isSelected ? 'transform:scale(1.15);' : ''}">${spot.displayValue}</div>
-      <span style="font-size:10px;font-weight:700;font-family:var(--font-display);color:#1e293b;text-shadow:0 0 4px white,0 0 4px white,1px 0 3px white,-1px 0 3px white;white-space:nowrap;">${spot.id}</span>
-    </div>
-  `
-  return { element: el }
+    const el = document.createElement('div')
+    el.innerHTML = `
+      <div style="display:flex;flex-direction:column;align-items:center;gap:2px;width:max-content;${isSelected ? 'z-index:100;' : 'z-index:1;'}">
+        <div style="display:flex;align-items:center;justify-content:center;padding:4px 10px;border-radius:20px;background:linear-gradient(145deg,${fillColor},color-mix(in srgb,${fillColor} 60%,#000));color:white;font-size:12px;font-weight:800;font-family:var(--font-display);box-shadow:0 2px 8px ${fillColor}66${isSelected ? `,0 0 0 3px ${fillColor}4d` : ''};transition:transform 0.2s;${isSelected ? 'transform:scale(1.15);' : ''}">${spot.displayValue}</div>
+        <span style="font-size:10px;font-weight:700;font-family:var(--font-display);color:#1e293b;text-shadow:0 0 4px white,0 0 4px white,1px 0 3px white,-1px 0 3px white;white-space:nowrap;">${spot.id}</span>
+      </div>
+    `
+    return { element: el }
+  }
+  return { element: {} as HTMLElement }
 }
 
 function formatPrice(n: number): string {

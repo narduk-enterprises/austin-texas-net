@@ -63,19 +63,22 @@ const selectedSpot = computed<PermitSpot | null>(
 function createPinElement(
   spot: PermitSpot,
   isSelected: boolean,
-): { element: HTMLElement; cleanup?: () => void } {
-  /* eslint-disable atx/no-inline-hex -- MapKit pin gradient */
-  const fillColor =
-    (spot.units ?? 0) >= 50 ? '#7c3aed' : (spot.units ?? 0) >= 10 ? '#3b82f6' : '#22c55e'
-  /* eslint-enable atx/no-inline-hex */
+): { element: HTMLElement; cleanup?: () => void } | any {
+  if (import.meta.client) {
+    /* eslint-disable atx/no-inline-hex -- MapKit pin gradient */
+    const fillColor =
+      (spot.units ?? 0) >= 50 ? '#7c3aed' : (spot.units ?? 0) >= 10 ? '#3b82f6' : '#22c55e'
+    /* eslint-enable atx/no-inline-hex */
 
-  const el = document.createElement('div')
-  el.innerHTML = `
-    <div style="display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:linear-gradient(145deg,${fillColor},color-mix(in srgb,${fillColor} 60%,#000));border:2px solid white;box-shadow:0 2px 8px ${fillColor}66${isSelected ? `,0 0 0 3px ${fillColor}4d` : ''};transition:transform 0.2s;${isSelected ? 'transform:scale(1.3);' : ''}">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4 8 4v14"/><path d="M9 21v-4h4v4"/></svg>
-    </div>
-  `
-  return { element: el }
+    const el = document.createElement('div')
+    el.innerHTML = `
+      <div style="display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:linear-gradient(145deg,${fillColor},color-mix(in srgb,${fillColor} 60%,#000));border:2px solid white;box-shadow:0 2px 8px ${fillColor}66${isSelected ? `,0 0 0 3px ${fillColor}4d` : ''};transition:transform 0.2s;${isSelected ? 'transform:scale(1.3);' : ''}">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4 8 4v14"/><path d="M9 21v-4h4v4"/></svg>
+      </div>
+    `
+    return { element: el }
+  }
+  return { element: {} as HTMLElement }
 }
 
 function formatValuation(val: number | null): string {

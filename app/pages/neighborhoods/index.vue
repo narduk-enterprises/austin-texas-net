@@ -288,14 +288,12 @@ const crossLinks = computed(() =>
               v-model="selectedRegion"
               :items="regionSelectItems"
               size="md"
-              leading-icon="i-lucide-compass"
               placeholder="All Regions"
             />
             <USelect
               v-model="selectedCity"
               :items="citySelectItems"
               size="md"
-              leading-icon="i-lucide-building-2"
               placeholder="All Cities"
             />
           </div>

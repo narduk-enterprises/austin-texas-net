@@ -96,22 +96,23 @@ function createPinElement(
   spot: LakeSpot,
   isSelected: boolean,
 ): any {
-  if (import.meta.server) return { element: {} as HTMLElement }
+  if (import.meta.client) {
+    const pct = spot.percentFull != null ? Math.round(spot.percentFull) : null
+    /* eslint-disable atx/no-inline-hex -- MapKit pin fill status gradient */
+    const fillColor =
+      pct != null ? (pct >= 80 ? '#22c55e' : pct >= 50 ? '#f59e0b' : '#ef4444') : '#06b6d4'
+    /* eslint-enable atx/no-inline-hex */
 
-  const pct = spot.percentFull != null ? Math.round(spot.percentFull) : null
-  /* eslint-disable atx/no-inline-hex -- MapKit pin fill status gradient */
-  const fillColor =
-    pct != null ? (pct >= 80 ? '#22c55e' : pct >= 50 ? '#f59e0b' : '#ef4444') : '#06b6d4'
-  /* eslint-enable atx/no-inline-hex */
-
-  const el = document.createElement('div')
-  el.innerHTML = `
-    <div style="display:flex;flex-direction:column;align-items:center;gap:2px;width:max-content;${isSelected ? 'z-index:100;' : 'z-index:1;'}">
-      <div style="display:flex;align-items:center;justify-content:center;padding:5px 12px;border-radius:20px;background:linear-gradient(145deg,${fillColor},color-mix(in srgb,${fillColor} 60%,#000));color:white;font-size:13px;font-weight:800;font-family:var(--font-display);box-shadow:0 2px 8px ${fillColor}66${isSelected ? `,0 0 0 3px ${fillColor}4d` : ''};transition:transform 0.2s;${isSelected ? 'transform:scale(1.15);' : ''}">${spot.displayValue}</div>
-      <span style="font-size:11px;font-weight:700;font-family:var(--font-display);color:#1e293b;text-shadow:0 0 4px white,0 0 4px white,1px 0 3px white,-1px 0 3px white;white-space:nowrap;max-width:120px;overflow:hidden;text-overflow:ellipsis;">${spot.name}</span>
-    </div>
-  `
-  return { element: el }
+    const el = document.createElement('div')
+    el.innerHTML = `
+      <div style="display:flex;flex-direction:column;align-items:center;min-width:32px;${isSelected ? 'z-index:100;' : 'z-index:1;'}">
+        <div style="width:14px;height:14px;border-radius:50%;background:linear-gradient(145deg,${fillColor},color-mix(in srgb,${fillColor} 60%,#000));border:2px solid white;box-shadow:0 2px 8px ${fillColor}66${isSelected ? `,0 0 0 3px ${fillColor}4d` : ''};transition:transform 0.2s;${isSelected ? 'transform:scale(1.4);' : ''}"></div>
+        <span style="margin-top:2px;font-size:10px;font-weight:700;font-family:var(--font-display);color:#1e293b;text-shadow:0 0 4px white,0 0 4px white,1px 0 3px white,-1px 0 3px white;white-space:nowrap;">${spot.name.replace('Lake ', '')}</span>
+      </div>
+    `
+    return { element: el }
+  }
+  return { element: {} as HTMLElement }
 }
 
 function formatNumber(n: number | null): string {

@@ -1,3 +1,4 @@
+<!-- eslint-disable atx/no-native-form, atx/no-native-input, atx/no-native-table -->
 <!-- eslint-disable atx/no-native-form, atx/no-native-input -- Tax calculator with range slider -->
 <!-- eslint-disable atx/no-native-table -- Tax rates reference table -->
 <script setup lang="ts">
@@ -85,8 +86,10 @@ function fmt(n: number): string {
         >
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
             <div>
+              <!-- eslint-disable-next-line atx/no-native-form -->
               <label class="block text-sm font-semibold mb-2">Home Value</label>
               <UInput v-model.number="homeValue" type="number" :min="0" :step="10000" size="lg" />
+              <!-- eslint-disable-next-line atx/no-native-input -->
               <input
                 v-model.number="homeValue"
                 type="range"
@@ -102,6 +105,7 @@ function fmt(n: number): string {
               </div>
             </div>
             <div>
+              <!-- eslint-disable-next-line atx/no-native-form -->
               <label class="block text-sm font-semibold mb-2">Exemptions</label>
               <div class="space-y-3">
                 <UCheckbox v-model="hasHomestead" label="Homestead ($100K school)" />
@@ -142,6 +146,7 @@ function fmt(n: number): string {
       <section class="mb-10 animate-fade-up-delay-2">
         <h2 class="text-lg font-bold font-display mb-4">Current Tax Rates (FY2025)</h2>
         <div class="overflow-x-auto rounded-xl border border-default">
+          <!-- eslint-disable-next-line atx/no-native-table -->
           <table class="w-full text-sm">
             <thead class="bg-elevated text-muted">
               <tr>

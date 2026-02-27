@@ -88,15 +88,17 @@ function createPinElement(
   spot: WaterSpot,
   isSelected: boolean,
 ): any {
-  if (import.meta.server) return { element: {} as HTMLElement }
-  const el = document.createElement('div')
-  el.innerHTML = `
-    <div style="display:flex;flex-direction:column;align-items:center;gap:2px;width:max-content;${isSelected ? 'z-index:100;' : 'z-index:1;'}">
-      <div style="display:flex;align-items:center;justify-content:center;padding:4px 10px;border-radius:20px;background:linear-gradient(145deg,#06b6d4,#0e7490);color:white;font-size:13px;font-weight:800;font-family:var(--font-display);box-shadow:0 2px 8px rgba(6,182,212,0.4)${isSelected ? ',0 0 0 3px rgba(6,182,212,0.3)' : ''};transition:transform 0.2s;${isSelected ? 'transform:scale(1.15);' : ''}">${spot.displayValue}</div>
-      <span style="font-size:11px;font-weight:700;font-family:var(--font-display);color:#1e293b;text-shadow:0 0 4px white,0 0 4px white,1px 0 3px white,-1px 0 3px white;white-space:nowrap;max-width:100px;overflow:hidden;text-overflow:ellipsis;">${spot.name}</span>
-    </div>
-  `
-  return { element: el }
+  if (import.meta.client) {
+    const el = document.createElement('div')
+    el.innerHTML = `
+      <div style="display:flex;flex-direction:column;align-items:center;gap:2px;width:max-content;${isSelected ? 'z-index:100;' : 'z-index:1;'}">
+        <div style="display:flex;align-items:center;justify-content:center;padding:4px 8px;border-radius:12px;background:linear-gradient(145deg,#0ea5e9,color-mix(in srgb,#0ea5e9 60%,#000));border:2px solid white;color:white;font-size:12px;font-weight:700;box-shadow:0 2px 8px #0ea5e966${isSelected ? ',0 0 0 3px #0ea5e94d' : ''};transition:transform 0.2s;${isSelected ? 'transform:scale(1.15);' : ''}">${spot.displayValue}°</div>
+        <span style="font-size:10px;font-weight:700;font-family:var(--font-display);color:#1e293b;text-shadow:0 0 4px white,0 0 4px white,1px 0 3px white,-1px 0 3px white;white-space:nowrap;">${spot.name.replace(' at Austin', '')}</span>
+      </div>
+    `
+    return { element: el }
+  }
+  return { element: {} as HTMLElement }
 }
 
 function formatTimestamp(ts: string): string {
