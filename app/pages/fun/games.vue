@@ -130,5 +130,7 @@ const upcomingGames: GameCard[] = [
         </article>
       </div>
     </section>
+      </div>
+    </UContainer>
   </div>
 </template>
