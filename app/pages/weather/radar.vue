@@ -22,7 +22,6 @@ usePageSeo({
   title: 'Austin Weather Radar — Live NEXRAD Rain & Storm Tracker',
   description:
     'Live NEXRAD weather radar for Austin, TX. Track rain, thunderstorms, and severe weather in real-time across Central Texas.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('weather'),

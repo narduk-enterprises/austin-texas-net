@@ -21,7 +21,6 @@ usePageSeo({
   title: 'Things To Do in Austin This Weekend — Events, Music & Activities',
   description:
     "Your curated guide to what's happening in Austin this weekend — live music, outdoor activities, family events, food festivals, free things to do, and insider picks across ATX.",
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('events'),

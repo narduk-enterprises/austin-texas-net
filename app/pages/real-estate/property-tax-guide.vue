@@ -20,7 +20,6 @@ usePageSeo({
   title: 'Austin Property Tax Guide — Rates, Exemptions & Protest Tips',
   description:
     'Complete guide to Austin property taxes. Current rates, homestead exemptions, protest tips, and an interactive calculator.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('real-estate'),

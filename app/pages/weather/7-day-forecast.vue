@@ -21,7 +21,6 @@ usePageSeo({
   title: 'Austin 7-Day Forecast — Daily Highs, Lows & Conditions',
   description:
     'Austin 7-day weather forecast from the National Weather Service — daily temperatures, wind, precipitation chances, and detailed conditions.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('weather'),

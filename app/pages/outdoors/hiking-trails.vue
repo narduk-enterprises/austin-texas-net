@@ -21,7 +21,6 @@ usePageSeo({
   title: 'Best Hiking Trails in Austin, Texas — Trail Guide & Maps',
   description:
     'Complete guide to the best hiking trails in Austin, TX — Barton Creek Greenbelt, Turkey Creek, Walnut Creek, and more with difficulty ratings, trail distances, and conditions.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('outdoors'),

@@ -19,7 +19,6 @@ usePageSeo({
   title: 'Austin Cedar Pollen Count — Live Tracker & Forecast',
   description:
     'Live cedar pollen counts for Austin, TX. Track mountain cedar levels, view 5-day forecasts, historical trends, and get health tips during cedar fever season.',
-  ogImageComponent: 'OgImageCedarPollen',
 })
 
 useSchemaOrg([

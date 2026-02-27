@@ -32,7 +32,6 @@ usePageSeo({
   title: 'Austin Water Temperatures — Live Readings & Map',
   description:
     'Live water temperatures for Barton Springs, Lady Bird Lake, and Austin-area waterways. Real-time USGS data with historical charts.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('live-data'),

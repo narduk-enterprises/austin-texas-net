@@ -37,7 +37,6 @@ usePageSeo({
   title: 'New Developments in Austin — Construction Permits & Building Map',
   description:
     'Track new construction in Austin with an interactive map of building permits. See where new homes, apartments, and developments are being built.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('real-estate'),

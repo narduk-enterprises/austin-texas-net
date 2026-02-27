@@ -22,7 +22,6 @@ usePageSeo({
   title: 'SXSW 2026 Guide — Dates, Tips & Survival Guide for South by Southwest',
   description:
     'Complete SXSW guide for Austin — 2026 dates, badge info, free shows, venue map, survival tips, and local insider knowledge for South by Southwest.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('events'),

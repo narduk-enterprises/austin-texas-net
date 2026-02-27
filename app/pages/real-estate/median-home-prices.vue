@@ -103,7 +103,6 @@ usePageSeo({
   title: 'Median Home Prices in Austin by Zip Code — 2025 Data',
   description:
     'Explore median home prices across Austin, TX zip codes. Interactive map with Zillow ZHVI data, year-over-year changes, and neighborhood comparisons.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('real-estate'),

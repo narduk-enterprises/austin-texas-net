@@ -11,7 +11,6 @@ const { items: breadcrumbs } = useBreadcrumbs()
 usePageSeo({
   title: 'Austin Allergy Forecast — Oak, Cedar, Elm & Mold Tracker',
   description: 'Track the daily allergy forecast for Austin TX. Get counts and insights for Cedar, Oak, Elm, Ragweed, and Mold before you head outdoors.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('health'),

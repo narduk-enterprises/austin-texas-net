@@ -22,7 +22,6 @@ usePageSeo({
   title: 'Austin Freeze Alerts — Winter Weather Warnings & Pipe Protection',
   description:
     'Austin freeze alerts and winter weather status. Track freeze warnings, frost advisories, and pipe protection alerts for Central Texas.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('weather'),

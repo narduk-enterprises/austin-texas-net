@@ -11,7 +11,6 @@ const { items: breadcrumbs } = useBreadcrumbs()
 usePageSeo({
   title: 'Austin Air Quality Index (AQI) — Current Conditions',
   description: 'Check real-time air quality in Austin TX. Monitor ozone, PM2.5, and PM10 levels to plan your outdoor activities safely.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('health'),

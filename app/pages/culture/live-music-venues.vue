@@ -20,7 +20,6 @@ usePageSeo({
   title: 'Best Live Music Venues in Austin — The Live Music Capital Guide',
   description:
     "Complete guide to Austin's best live music venues — from legendary stages like Stubbs and Continental Club to hidden gems on Red River. Find shows by genre and neighborhood.",
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('culture'),

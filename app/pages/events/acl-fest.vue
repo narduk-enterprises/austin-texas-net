@@ -11,7 +11,6 @@ const { items: breadcrumbs } = useBreadcrumbs()
 usePageSeo({
   title: 'Austin City Limits (ACL) Music Festival Guide',
   description: 'Your guide to the ACL Music Festival held annually in Zilker Park. Find lineup info, dates, survival tips, and transportation options.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('events'),

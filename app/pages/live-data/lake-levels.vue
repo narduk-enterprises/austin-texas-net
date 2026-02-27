@@ -33,7 +33,6 @@ usePageSeo({
   title: 'Austin Lake Levels — Lake Travis, Lake Austin & More',
   description:
     'Live lake levels for Lake Travis, Lake Austin, Lake Buchanan, and area reservoirs. Real-time elevation, percent full, and historical charts.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('live-data'),

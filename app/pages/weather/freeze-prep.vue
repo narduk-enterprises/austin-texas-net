@@ -19,7 +19,6 @@ usePageSeo({
   title: 'Austin Freeze Prep Guide — Winter Storm Survival Checklist',
   description:
     'Complete freeze preparation guide for Austin, Texas. Pipe protection, plant safety, emergency supplies, power outage survival, and lessons from Winter Storm Uri.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('weather'),

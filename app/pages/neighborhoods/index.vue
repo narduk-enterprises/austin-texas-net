@@ -21,7 +21,6 @@ usePageSeo({
   title: 'Austin Neighborhoods — Every Corner of the ATX Metro',
   description:
     'Explore 80+ Austin neighborhoods from Leander to Buda — Downtown, South Congress, East Austin, Mueller, and more. Find your perfect area.',
-  ogImageComponent: 'OgImageCategory',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('neighborhoods'),

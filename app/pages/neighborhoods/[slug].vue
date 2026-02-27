@@ -64,7 +64,6 @@ usePageSeo({
   description:
     neighborhood.value.description ||
     `Explore ${displayName.value}${cityLabel.value} — local dining, activities, real estate, and everything you need to know about this Austin-area neighborhood.`,
-  ogImageComponent: 'OgImageNeighborhood',
   ogImageProps: {
     title: displayName.value,
     description: neighborhood.value.description,

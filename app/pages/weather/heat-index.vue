@@ -22,7 +22,6 @@ usePageSeo({
   title: 'Austin Heat Index — Feels-Like Temperature & Safety Tips',
   description:
     'Current heat index and feels-like temperature for Austin, TX. Includes wind chill in winter, heat safety levels, and protection tips.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('weather'),

@@ -20,7 +20,6 @@ usePageSeo({
   title: 'Austin Drought Status — U.S. Drought Monitor & Watering Restrictions',
   description:
     'Central Texas drought conditions from the U.S. Drought Monitor. Current drought classification, watering restriction status, and LCRA water supply updates.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('weather'),

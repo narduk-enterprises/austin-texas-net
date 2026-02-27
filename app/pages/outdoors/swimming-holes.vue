@@ -20,7 +20,6 @@ usePageSeo({
   title: 'Best Swimming Holes Near Austin, Texas — Springs, Pools & Natural Water',
   description:
     "Complete guide to the best swimming holes near Austin — Barton Springs, Hamilton Pool, Jacob's Well, Krause Springs, and hidden gems with hours, fees, and tips.",
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('outdoors'),

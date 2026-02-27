@@ -11,7 +11,6 @@ const { items: breadcrumbs } = useBreadcrumbs()
 usePageSeo({
   title: 'Austin Parks Guide — Zilker, Pease & Metropolitan Parks',
   description: 'Explore the best parks in Austin. From the immense Zilker Metropolitan Park to neighborhood green spaces and nature preserves.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('outdoors'),

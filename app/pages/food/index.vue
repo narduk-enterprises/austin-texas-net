@@ -15,7 +15,6 @@ if (!category.value) {
 
 usePageSeo({
   ...category.value.seo,
-  ogImageComponent: 'OgImageCategory',
   ogImageProps: {
     category: category.value.title,
     categoryColor: getCategoryHexColor(slug),

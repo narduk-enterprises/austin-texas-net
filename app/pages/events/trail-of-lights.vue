@@ -11,7 +11,6 @@ const { items: breadcrumbs } = useBreadcrumbs()
 usePageSeo({
   title: 'Austin Trail of Lights Guide',
   description: 'Everything you need to know about the Austin Trail of Lights in Zilker Park. Dates, parking info, and tips for this beloved holiday tradition.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('events'),

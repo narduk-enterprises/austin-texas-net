@@ -60,7 +60,6 @@ usePageSeo({
   title: subApp.value?.status === 'live' ? displayName.value : `${displayName.value} — Coming Soon`,
   description:
     subApp.value?.description ?? `${displayName.value} is coming soon to Austin-Texas.net.`,
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.value.title,
     categoryColor: getCategoryHexColor(categorySlug.value),

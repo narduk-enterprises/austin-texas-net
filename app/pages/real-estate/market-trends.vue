@@ -21,7 +21,6 @@ usePageSeo({
   title: 'Austin Housing Market Trends — Prices, Inventory & Sales Data',
   description:
     'Track Austin real estate market trends with monthly data on median home prices, homes sold, inventory, and days on market from Redfin.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('real-estate'),

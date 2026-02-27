@@ -250,7 +250,6 @@ usePageSeo({
   title: 'Austin Bluebonnet Map — Where to See Texas Wildflowers',
   description:
     'Find bluebonnets near Austin with our interactive sighting map. See where Texas bluebonnets are blooming now, best spots, peak season timing, and viewing tips.',
-  ogImageComponent: 'OgImageSubApp',
   ogImageProps: {
     category: category.title,
     categoryColor: getCategoryHexColor('outdoors'),
