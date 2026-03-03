@@ -39,7 +39,7 @@ export const siteCategories: SitemapCategory[] = [
       { slug: 'food-trucks', status: 'live' },
       { slug: 'happy-hours', status: 'live' },
       { slug: 'restaurant-map', status: 'live' },
-      { slug: 'crawfish', status: 'live' },
+      { slug: 'crawfish-season', status: 'live' },
       { slug: 'tex-mex', status: 'live' },
       { slug: 'brunch', status: 'live' },
       { slug: 'pizza', status: 'live' },

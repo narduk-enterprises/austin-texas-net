@@ -129,6 +129,21 @@ const foodTopics: TopicSeed[] = [
     description: 'A curated guide to the best dining in Austin.',
     searchQueries: ['best new restaurants austin texas 2026', 'top rated restaurants austin tx'],
   },
+  {
+    topicKey: 'crawfish-season',
+    topicLabel: 'Crawfish Season',
+    contentType: 'spots',
+    spotFile: 'crawfish.ts',
+    accentColor: 'red',
+    pinColor: '#dc2626',
+    icon: 'i-lucide-flame',
+    description: 'Where to buy live crawfish, best restaurants, and a classic Cajun boil recipe.',
+    searchQueries: [
+      'crawfish season austin tx',
+      'buy live crawfish austin',
+      'crawfish boils austin',
+    ],
+  },
 ]
 
 export default defineEventHandler(async (event) => {
