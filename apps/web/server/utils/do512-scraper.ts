@@ -264,15 +264,19 @@ function parseDo512Html(html: string, date: Date): Do512Event[] {
 function parseTime(time: string): string {
   if (!time) return '00:00:00'
 
-  const match = time.match(/(\d{1,2}):?(\d{2})?\s*(AM|PM)?/i)
-  if (!match) return '00:00:00'
+  const t = time.trim().toUpperCase()
+  const isPM = t.includes('PM')
+  const isAM = t.includes('AM')
+  const numeric = t.replace(/[AP]M/i, '').trim()
 
-  let hours = Number.parseInt(match[1] ?? '0', 10)
-  const minutes = match[2] ?? '00'
-  const ampm = match[3]?.toUpperCase()
+  const parts = numeric.split(':')
+  let hours = Number.parseInt(parts[0] ?? '0', 10)
+  const minutes = parts[1] ?? '00'
 
-  if (ampm === 'PM' && hours < 12) hours += 12
-  if (ampm === 'AM' && hours === 12) hours = 0
+  if (Number.isNaN(hours)) return '00:00:00'
+
+  if (isPM && hours < 12) hours += 12
+  if (isAM && hours === 12) hours = 0
 
   return `${String(hours).padStart(2, '0')}:${minutes}:00`
 }
