@@ -160,11 +160,7 @@ These are opt-in feature recipes. Follow them when the project needs a specific 
 
 All template derivatives should utilize **Doppler Cross-Project Secret Referencing** to avoid duplicating sensitive keys. Do not copy/paste keys manually.
 
-1. **`narduk-enterprise-apps` Hub**: This project holds infrastructure deploy credentials (e.g., `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`).
-2. **`narduk-analytics` Hub**: This project holds central management keys for generating analytics (e.g., `POSTHOG_PERSONAL_API_KEY`, `GA_ACCOUNT_ID`).
-3. **App Spoke (`<app-name>`)**: This is your new app's isolated project. Inherit the deploy credentials from the Hub using Doppler references:
-   - `CLOUDFLARE_API_TOKEN` = `${narduk-enterprise-apps.prd.CLOUDFLARE_API_TOKEN}`
-   - `CLOUDFLARE_ACCOUNT_ID` = `${narduk-enterprise-apps.prd.CLOUDFLARE_ACCOUNT_ID}`
+**This repo uses the same pattern as circuit-breaker-online:** a single hub **`narduk-nuxt-template`**. The spoke project `austin-texas-net` references Cloudflare, PostHog, GA, and GSC from that hub. Run `pnpm run doppler:sync-hub` once to set hub references in both prd and dev configs. App-specific secrets (e.g. `CLOUDFLARE_DATABASE_ID`, `CLOUDFLARE_D1_TOKEN`) stay in the austin-texas-net project. `doppler.yml` sets project `austin-texas-net` and config `dev`.
 
 **Reference:** See `austin-texas-net-examples/nuxt.config.ts` for the full runtimeConfig block and `austin-texas-net-examples/AGENT_ANALYTICS.md` for automation script details.
 
