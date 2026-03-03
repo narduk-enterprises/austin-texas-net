@@ -12,6 +12,7 @@
  */
 
 import { getCategoryHexColor } from '~/utils/categoryHexColors'
+
 const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('outdoors')!
 const siblings = category.subApps.filter((a) => a.slug !== 'bluebonnets')
@@ -105,7 +106,7 @@ const hasEverSelected = ref(false)
 
 const selectedObs = computed<ObservationPoint | null>(() => {
   if (!selectedId.value) return null
-  const idx = parseInt(selectedId.value.replace('bb-', ''))
+  const idx = Number.parseInt(selectedId.value.replace('bb-', ''))
   return observations.value[idx] ?? null
 })
 

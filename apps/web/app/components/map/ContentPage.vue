@@ -33,9 +33,9 @@ const mapView = ref<{ scrollToSpot: (id: string) => void } | null>(null)
 function slugify(name: string): string {
   return name
     .toLowerCase()
-    .replace(/['']/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '')
+    .replaceAll('\'', '')
+    .replaceAll(/[^a-z0-9]+/g, '-')
+    .replaceAll(/(^-|-$)/g, '')
 }
 
 /** Build a lookup from slug → spot for URL matching */

@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
   const db = useDatabase(event)
   const id = Number(getRouterParam(event, 'id'))
 
-  if (!id || isNaN(id)) {
+  if (!id || Number.isNaN(id)) {
     throw createError({ statusCode: 400, message: 'Invalid keyword ID' })
   }
 

@@ -28,7 +28,7 @@ const ACCESS_TOKEN_REFRESH_WINDOW_MS = 60_000
 const DEVELOPER_TOKEN_REFRESH_WINDOW_MS = 60_000
 
 function normalizePrivateKey(secretKey: string) {
-  return secretKey.includes('\\n') ? secretKey.replace(/\\n/g, '\n') : secretKey
+  return secretKey.includes('\\n') ? secretKey.replaceAll('\\n', '\n') : secretKey
 }
 
 function toNumber(value: unknown, fallback: number) {
@@ -41,7 +41,7 @@ function decodeJwtPayload(token: string) {
     const payloadSegment = token.split('.')[1]
     if (!payloadSegment) return null
 
-    let normalized = payloadSegment.replace(/-/g, '+').replace(/_/g, '/')
+    let normalized = payloadSegment.replaceAll('-', '+').replaceAll('_', '/')
     while (normalized.length % 4 !== 0) {
       normalized += '='
     }

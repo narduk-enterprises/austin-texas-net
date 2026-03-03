@@ -47,15 +47,15 @@ export function convexHull(points: Point2D[]): Point2D[] {
   const hull = [pivot, sorted[0]!]
 
   for (let i = 1; i < sorted.length; i++) {
-    let top = hull[hull.length - 1]!
-    let nextToTop = hull[hull.length - 2]!
+    let top = hull.at(-1)!
+    let nextToTop = hull.at(-2)!
     const current = sorted[i]!
 
     // While the turn from nextToTop → top → current is not counter-clockwise, pop
     while (hull.length >= 2 && cross(nextToTop, top, current) <= 0) {
       hull.pop()
-      top = hull[hull.length - 1]!
-      nextToTop = hull[hull.length - 2]!
+      top = hull.at(-1)!
+      nextToTop = hull.at(-2)!
     }
 
     hull.push(current)

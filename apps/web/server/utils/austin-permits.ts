@@ -92,8 +92,8 @@ export async function fetchBuildingPermits(): Promise<BuildingPermit[]> {
     const permitNumber = row.permit_num || row.permit_number || ''
     if (!permitNumber) continue
 
-    const lat = row.latitude ? parseFloat(row.latitude) : (row.location?.latitude ? parseFloat(row.location.latitude) : null)
-    const lng = row.longitude ? parseFloat(row.longitude) : (row.location?.longitude ? parseFloat(row.location.longitude) : null)
+    const lat = row.latitude ? Number.parseFloat(row.latitude) : (row.location?.latitude ? Number.parseFloat(row.location.latitude) : null)
+    const lng = row.longitude ? Number.parseFloat(row.longitude) : (row.location?.longitude ? Number.parseFloat(row.location.longitude) : null)
 
     const issueDate = row.issued_date
       ? row.issued_date.substring(0, 10) // Strip time portion
@@ -102,11 +102,11 @@ export async function fetchBuildingPermits(): Promise<BuildingPermit[]> {
 
     permits.push({
       permitNumber,
-      lat: lat && !isNaN(lat) ? lat : null,
-      lng: lng && !isNaN(lng) ? lng : null,
+      lat: lat && !Number.isNaN(lat) ? lat : null,
+      lng: lng && !Number.isNaN(lng) ? lng : null,
       description: row.description || '',
-      units: row.housing_units ? parseInt(row.housing_units, 10) || null : null,
-      valuation: row.project_valuation ? parseFloat(row.project_valuation) || null : null,
+      units: row.housing_units ? Number.parseInt(row.housing_units, 10) || null : null,
+      valuation: row.project_valuation ? Number.parseFloat(row.project_valuation) || null : null,
       issueDate,
       workClass: row.work_class || 'New',
       status: row.status_current || '',

@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 500, statusMessage: 'PostHog API key not configured' })
   }
 
-  const days = parseInt(query.days) || 30
+  const days = Number.parseInt(query.days) || 30
 
   try {
     // Entry pages — first page viewed in a session

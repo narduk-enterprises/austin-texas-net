@@ -81,8 +81,8 @@ export default defineCachedEventHandler(
 
     let yearRange = { min: new Date().getFullYear(), max: new Date().getFullYear() }
     if (rangeResult && rangeResult.minDate && rangeResult.maxDate) {
-      const minYear = parseInt(rangeResult.minDate.substring(0, 4))
-      const maxYear = parseInt(rangeResult.maxDate.substring(0, 4))
+      const minYear = Number.parseInt(rangeResult.minDate.substring(0, 4))
+      const maxYear = Number.parseInt(rangeResult.maxDate.substring(0, 4))
       yearRange = { min: minYear, max: maxYear }
     }
 

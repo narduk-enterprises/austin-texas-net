@@ -66,7 +66,7 @@ export default defineEventHandler(async (event) => {
     return {
       categories: siteCategories.map((cat) => ({
         slug: cat.slug,
-        title: cat.slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
+        title: cat.slug.replaceAll('-', ' ').replaceAll(/\b\w/g, (c) => c.toUpperCase()),
         tagline: '',
         icon: 'i-lucide-folder',
         color: 'text-primary',
@@ -74,7 +74,7 @@ export default defineEventHandler(async (event) => {
         seo: { title: '', description: '' },
         subApps: cat.subApps.map((app) => ({
           slug: app.slug,
-          title: app.slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
+          title: app.slug.replaceAll('-', ' ').replaceAll(/\b\w/g, (c) => c.toUpperCase()),
           description: '',
           status: app.status,
         })),

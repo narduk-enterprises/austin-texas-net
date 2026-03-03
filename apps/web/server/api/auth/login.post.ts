@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import { verifyCredentials, signJwt, setAuthCookie, createSession, toPublicUser } from '../../utils/auth'
+
 const loginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(1, 'Password is required'),

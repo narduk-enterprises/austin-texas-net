@@ -37,11 +37,11 @@ let cachedToken: CachedToken | null = null
 async function importPrivateKey(pemKey: string): Promise<CryptoKey> {
   // Strip PEM headers and whitespace
   const pemBody = pemKey
-    .replace(/-----BEGIN PRIVATE KEY-----/g, '')
-    .replace(/-----END PRIVATE KEY-----/g, '')
-    .replace(/-----BEGIN EC PRIVATE KEY-----/g, '')
-    .replace(/-----END EC PRIVATE KEY-----/g, '')
-    .replace(/\s/g, '')
+    .replaceAll('-----BEGIN PRIVATE KEY-----', '')
+    .replaceAll('-----END PRIVATE KEY-----', '')
+    .replaceAll('-----BEGIN EC PRIVATE KEY-----', '')
+    .replaceAll('-----END EC PRIVATE KEY-----', '')
+    .replaceAll(/\s/g, '')
 
   const binaryStr = atob(pemBody)
   const bytes = new Uint8Array(binaryStr.length)
@@ -71,7 +71,7 @@ function base64url(input: ArrayBuffer | string): string {
     for (const b of bytes) binary += String.fromCharCode(b)
     str = btoa(binary)
   }
-  return str.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
+  return str.replaceAll('+', '-').replaceAll('/', '_').replace(/=+$/, '')
 }
 
 /**

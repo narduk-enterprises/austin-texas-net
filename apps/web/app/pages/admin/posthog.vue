@@ -151,7 +151,7 @@ const deviceColors: Record<string, string> = {
 const formatLabel = (label: string) => {
   if (!label) return ''
   const parts = (label || '').split('-')
-  return parts.length === 3 ? `${parts[1]}/${parseInt(parts[2] || '0')}` : label
+  return parts.length === 3 ? `${parts[1]}/${Number.parseInt(parts[2] || '0')}` : label
 }
 
 const dateRangeText = computed(() => {

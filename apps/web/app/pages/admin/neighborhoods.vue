@@ -116,9 +116,9 @@ const saving = ref(false)
 function slugify(name: string): string {
   return name
     .toLowerCase()
-    .replace(/['']/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '')
+    .replaceAll('\'', '')
+    .replaceAll(/[^a-z0-9]+/g, '-')
+    .replaceAll(/^-|-$/g, '')
 }
 
 function openEdit(hood?: Neighborhood) {

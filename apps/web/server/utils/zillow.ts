@@ -128,16 +128,16 @@ export async function fetchZillowHomeValues(): Promise<ZillowHomeValue[]> {
       const valueStr = row[recentStartIdx + j]
       if (!valueStr || valueStr === '') continue
 
-      const value = parseFloat(valueStr)
-      if (isNaN(value)) continue
+      const value = Number.parseFloat(valueStr)
+      if (Number.isNaN(value)) continue
 
       // Calculate YoY change
       let yoyChange: number | null = null
       if (j >= 12) {
         const prevStr = row[recentStartIdx + j - 12]
         if (prevStr && prevStr !== '') {
-          const prevValue = parseFloat(prevStr)
-          if (!isNaN(prevValue) && prevValue > 0) {
+          const prevValue = Number.parseFloat(prevStr)
+          if (!Number.isNaN(prevValue) && prevValue > 0) {
             yoyChange = (value - prevValue) / prevValue
           }
         }
@@ -194,15 +194,15 @@ export async function fetchZillowRentIndex(): Promise<ZillowRentValue[]> {
       const valueStr = row[recentStartIdx + j]
       if (!valueStr || valueStr === '') continue
 
-      const value = parseFloat(valueStr)
-      if (isNaN(value)) continue
+      const value = Number.parseFloat(valueStr)
+      if (Number.isNaN(value)) continue
 
       let yoyChange: number | null = null
       if (j >= 12) {
         const prevStr = row[recentStartIdx + j - 12]
         if (prevStr && prevStr !== '') {
-          const prevValue = parseFloat(prevStr)
-          if (!isNaN(prevValue) && prevValue > 0) {
+          const prevValue = Number.parseFloat(prevStr)
+          if (!Number.isNaN(prevValue) && prevValue > 0) {
             yoyChange = (value - prevValue) / prevValue
           }
         }

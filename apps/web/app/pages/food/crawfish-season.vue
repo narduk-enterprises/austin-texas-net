@@ -133,7 +133,7 @@ function openDirections(spot: CrawfishSpot) {
               class="w-full h-56 sm:h-72 md:h-[28rem] object-cover"
               loading="eager"
             >
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+            <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
             <div class="absolute inset-0 bg-[#fef3c7] mix-blend-overlay"></div>
             <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-10 md:p-12 flex items-end justify-between">
               <div class="max-w-3xl z-10 transition-transform duration-500 group-hover:translate-x-2">
@@ -380,7 +380,7 @@ function openDirections(spot: CrawfishSpot) {
                 <UIcon name="i-lucide-shopping-cart" class="size-7" />
                 Ingredients
               </h3>
-              <ul class="space-y-3 relative z-10 flex-grow">
+              <ul class="space-y-3 relative z-10 grow">
                 <li v-for="ing in boilRecipe.ingredients" :key="ing.item" class="flex items-center justify-between gap-4 text-sm sm:text-base group py-0.5 border-b border-white/10 last:border-0 hover:bg-white/5 rounded px-2 -mx-2 transition-colors">
                   <span class="font-medium opacity-95 group-hover:opacity-100">{{ ing.item }}</span>
                   <span class="font-black bg-white/20 text-white px-2.5 py-1 rounded-md text-sm shrink-0 shadow-sm">{{ ing.amount }}</span>
@@ -469,7 +469,7 @@ function openDirections(spot: CrawfishSpot) {
             <div v-for="faq in crawfishFaqs" :key="faq.id" class="glass-card overflow-hidden">
               <UButton
                 variant="ghost"
-                color="amber"
+                color="warning"
                 class="w-full flex items-center justify-between p-4 text-left rounded-none hover:bg-elevated"
                 @click="toggleFaq(faq.id)"
               >

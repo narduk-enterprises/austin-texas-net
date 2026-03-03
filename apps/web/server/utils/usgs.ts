@@ -112,7 +112,7 @@ function parseUsgsResponse(data: UsgsResponse): UsgsReading[] {
     const latestValues = ts.values[0]?.value
     if (!latestValues?.length) continue
 
-    const latest = latestValues[latestValues.length - 1]
+    const latest = latestValues.at(-1)
     if (!latest || latest.value === '-999999') continue
 
     readings.push({
@@ -122,7 +122,7 @@ function parseUsgsResponse(data: UsgsResponse): UsgsReading[] {
       lng: geo.longitude,
       parameterCode: paramCode,
       parameterName: paramName,
-      value: parseFloat(latest.value),
+      value: Number.parseFloat(latest.value),
       unit,
       timestamp: latest.dateTime,
     })

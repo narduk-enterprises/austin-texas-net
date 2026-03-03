@@ -212,7 +212,7 @@ function simplifyRing(ring: any[], tolerance: number): any[] {
     let maxDist = 0
     let maxIdx = 0
     const first = points[0]
-    const last = points[points.length - 1]
+    const last = points.at(-1)
 
     for (let i = 1; i < points.length - 1; i++) {
       const d = perpDist(points[i]!, first, last)
@@ -231,7 +231,7 @@ function simplifyRing(ring: any[], tolerance: number): any[] {
   }
 
   const result = dp(ring, tolerance)
-  if (result.length > 2 && result[0] !== result[result.length - 1]) {
+  if (result.length > 2 && result[0] !== result.at(-1)) {
     result.push(result[0])
   }
   return result

@@ -73,7 +73,7 @@ export function parseKxanJs(jsText: string): KxanPollenData {
       reportDate = dateMatch[1]
     } else {
       const d = new Date(dateMatch[0])
-      if (!isNaN(d.getTime())) {
+      if (!Number.isNaN(d.getTime())) {
         reportDate = d.toISOString().split('T')[0] as string
       }
     }
@@ -109,7 +109,7 @@ function parseAllergenArray(jsText: string, varName: string): KxanAllergenHistor
   let entryMatch: RegExpExecArray | null
   while ((entryMatch = entryRegex.exec(arrayContent)) !== null) {
     const dateStr = entryMatch[1]?.replace(/\//g, '-') ?? '' // 2026/01/09 → 2026-01-09
-    const count = parseInt(entryMatch[2] ?? '0', 10)
+    const count = Number.parseInt(entryMatch[2] ?? '0', 10)
     if (dateStr) entries.push({ date: dateStr, count })
   }
 

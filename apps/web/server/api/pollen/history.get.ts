@@ -67,7 +67,7 @@ export default defineEventHandler(async (event) => {
         aggregation: 'weekly',
         days,
         earliest: results.length > 0 ? (results[0] as WeeklyRow).date : null,
-        latest: results.length > 0 ? (results[results.length - 1] as WeeklyRow).date : null,
+        latest: results.length > 0 ? (results.at(-1) as WeeklyRow).date : null,
       },
     }
   }
@@ -91,7 +91,7 @@ export default defineEventHandler(async (event) => {
       aggregation: 'daily',
       days,
       earliest: results.length > 0 ? results[0]!.date : null,
-      latest: results.length > 0 ? results[results.length - 1]!.date : null,
+      latest: results.length > 0 ? results.at(-1)!.date : null,
     },
   }
 })

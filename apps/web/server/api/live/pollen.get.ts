@@ -62,7 +62,7 @@ export default defineCachedEventHandler(
       const kxanData = await scrapeKxanPollen()
 
       const latestCedar =
-        kxanData.cedar.length > 0 ? kxanData.cedar[kxanData.cedar.length - 1]! : null
+        kxanData.cedar.length > 0 ? kxanData.cedar.at(-1)! : null
 
       const history = kxanData.cedar.map((r) => ({
         date: r.date,
@@ -90,7 +90,7 @@ export default defineCachedEventHandler(
       const cedarData = await fetchAustinCedar(30)
 
       const latest =
-        cedarData.readings.length > 0 ? cedarData.readings[cedarData.readings.length - 1]! : null
+        cedarData.readings.length > 0 ? cedarData.readings.at(-1)! : null
 
       const history = cedarData.readings.map((r) => ({
         date: r.date,

@@ -6,6 +6,7 @@
  * Falls through to a 404 if neither category nor sub-app exist.
  */
 import { getCategoryHexColor } from '~/utils/categoryHexColors'
+
 definePageMeta({ layout: 'fullscreen' })
 
 const route = useRoute()
@@ -32,7 +33,7 @@ const isSpots = computed(
 const displayName = computed(
   () =>
     subApp.value?.title ??
-    slug.value.replace(/-/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase()),
+    slug.value.replaceAll('-', ' ').replaceAll(/\b\w/g, (l: string) => l.toUpperCase()),
 )
 
 const accentColor = computed(

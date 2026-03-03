@@ -141,7 +141,7 @@ const handleBlur = () => {
                   size="sm"
                   variant="soft"
                   color="neutral"
-                  class="ml-auto flex-shrink-0"
+                  class="ml-auto shrink-0"
                 >
                   Category
                 </UBadge>

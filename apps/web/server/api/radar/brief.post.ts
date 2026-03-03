@@ -38,7 +38,7 @@ export default defineEventHandler(async (event) => {
   const isSeasonal = subtypes.includes('SEASONAL')
 
   // Build suggested title
-  const titleKw = kw.keyword.replace(/\b\w/g, (c: string) => c.toUpperCase())
+  const titleKw = kw.keyword.replaceAll(/\b\w/g, (c: string) => c.toUpperCase())
   let suggestedTitle = `${titleKw} — ${new Date().getFullYear()} Guide`
   if (isEvent) suggestedTitle = `${titleKw} — What to Know in ${new Date().getFullYear()}`
   if (isMap) suggestedTitle = `${titleKw} — Map & Locations`

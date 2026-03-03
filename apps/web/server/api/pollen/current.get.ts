@@ -28,7 +28,7 @@ export default defineEventHandler(async (event) => {
   try {
     const kxan = await scrapeKxanPollen()
     if (kxan.cedar.length > 0) {
-      const latestKxan = kxan.cedar[kxan.cedar.length - 1]!
+      const latestKxan = kxan.cedar.at(-1)!
       kxanLive = {
         date: latestKxan.date,
         count: latestKxan.count,
@@ -40,9 +40,9 @@ export default defineEventHandler(async (event) => {
     }
     // Allergen breakdown — latest count from each array
     allergens = {
-      cedar: kxan.cedar.length > 0 ? kxan.cedar[kxan.cedar.length - 1]!.count : 0,
-      elm: kxan.elm.length > 0 ? kxan.elm[kxan.elm.length - 1]!.count : 0,
-      mold: kxan.mold.length > 0 ? kxan.mold[kxan.mold.length - 1]!.count : 0,
+      cedar: kxan.cedar.length > 0 ? kxan.cedar.at(-1)!.count : 0,
+      elm: kxan.elm.length > 0 ? kxan.elm.at(-1)!.count : 0,
+      mold: kxan.mold.length > 0 ? kxan.mold.at(-1)!.count : 0,
       levels: kxan.levels,
     }
   } catch {

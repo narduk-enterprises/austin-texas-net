@@ -64,23 +64,23 @@ export interface RedfinMarketStat {
 function parseTSV(text: string): { headers: string[]; rows: string[][] } {
   const lines = text.split('\n').filter((l) => l.trim())
   if (lines.length < 2) return { headers: [], rows: [] }
-  const headers = lines[0]!.split('\t').map((h) => h.trim().replace(/"/g, ''))
+  const headers = lines[0]!.split('\t').map((h) => h.trim().replaceAll('"', ''))
   const rows = lines
     .slice(1)
-    .map((line) => line.split('\t').map((cell) => cell.trim().replace(/"/g, '')))
+    .map((line) => line.split('\t').map((cell) => cell.trim().replaceAll('"', '')))
   return { headers, rows }
 }
 
 function safeFloat(val: string | undefined): number | null {
   if (!val || val === '' || val === 'NaN') return null
-  const n = parseFloat(val)
-  return isNaN(n) ? null : n
+  const n = Number.parseFloat(val)
+  return Number.isNaN(n) ? null : n
 }
 
 function safeInt(val: string | undefined): number | null {
   if (!val || val === '' || val === 'NaN') return null
-  const n = parseInt(val, 10)
-  return isNaN(n) ? null : n
+  const n = Number.parseInt(val, 10)
+  return Number.isNaN(n) ? null : n
 }
 
 /**
@@ -147,7 +147,7 @@ async function fetchRedfinRegion(
 
   const results: RedfinMarketStat[] = []
   const periodIdx =
-    headers.indexOf('period_end') !== -1
+    headers.includes('period_end')
       ? headers.indexOf('period_end')
       : headers.indexOf('month_date_yyyymm')
   const medianIdx = headers.indexOf('median_sale_price')

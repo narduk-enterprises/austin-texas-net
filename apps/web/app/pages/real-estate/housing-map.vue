@@ -6,6 +6,7 @@
  */
 
 import { getCategoryHexColor } from '~/utils/categoryHexColors'
+
 definePageMeta({ layout: 'fullscreen' })
 
 interface MapItem {

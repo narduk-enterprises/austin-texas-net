@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import { createUser, createSession, getUserByEmail, signJwt, setAuthCookie, toPublicUser } from '../../utils/auth'
+
 const signupSchema = z.object({
   email: z.string().email(),
   password: z.string().min(8, 'Password must be at least 8 characters'),

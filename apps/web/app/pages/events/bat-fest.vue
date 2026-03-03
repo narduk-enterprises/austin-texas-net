@@ -97,7 +97,7 @@ useHead(() => ({
       <div class="relative isolate min-h-full overflow-hidden rounded-2xl border border-default bg-default mb-10">
         <div aria-hidden="true" class="pointer-events-none absolute -left-24 -top-24 size-72 rounded-full bg-primary/15 blur-3xl" />
         <div aria-hidden="true" class="pointer-events-none absolute -right-20 top-8 size-64 rounded-full bg-primary/10 blur-3xl" />
-        <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/5" />
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-linear-to-b from-primary/5 via-transparent to-primary/5" />
         <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-4 hidden justify-around px-6 md:flex">
           <UIcon name="i-lucide-bat" class="size-4 text-primary/35 bat-float" />
           <UIcon name="i-lucide-bat" class="size-3.5 text-primary/30 bat-float bat-float-delay" />

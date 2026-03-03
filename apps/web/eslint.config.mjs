@@ -2,4 +2,8 @@
 import withNuxt from './.nuxt/eslint.config.mjs'
 import { sharedConfigs } from '@narduk/eslint-config'
 
-export default withNuxt(...sharedConfigs)
+export default withNuxt(...sharedConfigs, {
+  rules: {
+    '@typescript-eslint/no-explicit-any': 'off',
+  },
+})

@@ -73,7 +73,7 @@ function toNumber(value: unknown, fallback: number) {
 }
 
 function normalizeName(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, '')
+  return value.toLowerCase().replaceAll(/[^a-z0-9]+/g, '')
 }
 
 /**
@@ -139,8 +139,8 @@ function toFoodSpot(
   const name = (result.name || result.displayName || '').trim()
   if (!name) return null
 
-  const lat = toNumber(result.coordinate?.latitude, NaN)
-  const lng = toNumber(result.coordinate?.longitude, NaN)
+  const lat = toNumber(result.coordinate?.latitude, Number.NaN)
+  const lng = toNumber(result.coordinate?.longitude, Number.NaN)
   if (!Number.isFinite(lat) || !Number.isFinite(lng)) return null
 
   // Verify the result is actually in Austin

@@ -139,8 +139,8 @@ export async function scrapeDo512Events(): Promise<EventsResult> {
   })
 
   const startStr = weekendDates[0] ? formatDateStr(weekendDates[0]) : ''
-  const endStr = weekendDates[weekendDates.length - 1]
-    ? formatDateStr(weekendDates[weekendDates.length - 1]!)
+  const endStr = weekendDates.at(-1)
+    ? formatDateStr(weekendDates.at(-1)!)
     : ''
 
   return {
@@ -267,7 +267,7 @@ function parseTime(time: string): string {
   const match = time.match(/(\d{1,2}):?(\d{2})?\s*(AM|PM)?/i)
   if (!match) return '00:00:00'
 
-  let hours = parseInt(match[1] ?? '0', 10)
+  let hours = Number.parseInt(match[1] ?? '0', 10)
   const minutes = match[2] ?? '00'
   const ampm = match[3]?.toUpperCase()
 

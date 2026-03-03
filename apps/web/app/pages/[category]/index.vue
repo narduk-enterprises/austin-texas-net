@@ -5,6 +5,7 @@
  * Unknown slugs → 404.
  */
 import { getCategoryHexColor } from '~/utils/categoryHexColors'
+
 const route = useRoute()
 const { getCategoryBySlug } = useSiteData()
 

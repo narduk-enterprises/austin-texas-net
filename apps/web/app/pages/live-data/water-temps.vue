@@ -184,7 +184,7 @@ function formatTimestamp(ts: string): string {
           <!-- Station Info -->
           <div class="flex items-start gap-4 mb-4">
             <div
-              class="flex items-center justify-center size-11 rounded-full bg-gradient-to-br from-primary to-primary/70 shadow-lg"
+              class="flex items-center justify-center size-11 rounded-full bg-linear-to-br from-primary to-primary/70 shadow-lg"
             >
               <UIcon name="i-lucide-thermometer" class="size-5 text-white" />
             </div>
@@ -256,7 +256,7 @@ function formatTimestamp(ts: string): string {
             @click="selectedId = spot.id"
           >
             <div
-              class="flex items-center justify-center size-9 rounded-full bg-gradient-to-br from-primary to-primary/70 shadow-sm shrink-0"
+              class="flex items-center justify-center size-9 rounded-full bg-linear-to-br from-primary to-primary/70 shadow-sm shrink-0"
             >
               <UIcon name="i-lucide-thermometer" class="size-4 text-white" />
             </div>
@@ -267,7 +267,7 @@ function formatTimestamp(ts: string): string {
               </p>
             </div>
             <div
-              class="flex items-center rounded-full bg-gradient-to-br from-primary to-primary/70 px-2.5 py-1 text-[13px] font-extrabold font-display text-white shadow-sm"
+              class="flex items-center rounded-full bg-linear-to-br from-primary to-primary/70 px-2.5 py-1 text-[13px] font-extrabold font-display text-white shadow-sm"
             >
               {{ spot.displayValue }}
             </div>

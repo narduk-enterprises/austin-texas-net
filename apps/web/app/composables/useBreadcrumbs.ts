@@ -30,13 +30,13 @@ export function useBreadcrumbs() {
       path += `/${segment}`
       const category = getCategoryBySlug(segment)
       const label =
-        category?.title ?? segment.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
+        category?.title ?? segment.replaceAll('-', ' ').replaceAll(/\b\w/g, (c) => c.toUpperCase())
       result.push({ label, to: `${path}/` })
     }
 
     // Last item is current page — no link
     if (result.length > 1) {
-      const last = result[result.length - 1]
+      const last = result.at(-1)
       if (last) delete last.to
     }
 

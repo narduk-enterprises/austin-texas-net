@@ -20,7 +20,7 @@ const breadcrumbs = computed(() => {
   const route = useRoute()
   const items = baseBreadcrumbs.value.map((item) => ({ ...item }))
   // Make the last base item a link again (it was un-linked as "current page")
-  const lastItem = items[items.length - 1]
+  const lastItem = items.at(-1)
   if (lastItem) {
     lastItem.to = route.path.replace(/\/$/, '') + '/'
   }

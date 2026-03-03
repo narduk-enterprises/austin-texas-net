@@ -184,7 +184,7 @@ export function generateMockHistory(days: number = 30): PollenData['history'] {
  */
 export function generateMockPollenData(): PollenData {
   const history = generateMockHistory(30)
-  const currentEntry = history[history.length - 1]
+  const currentEntry = history.at(-1)
   const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
   const now = new Date()
   const conditions = ['Clear', 'Partly Cloudy', 'Cloudy', 'Clear', 'Partly Cloudy']
