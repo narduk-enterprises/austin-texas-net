@@ -22,11 +22,11 @@
     "db:studio": "pnpm --filter web run db:studio",
     "db:generate": "pnpm --filter web run db:generate",
     "db:seed-from-prod": "doppler run --project austin-texas-net --config dev -- pnpm --filter web run db:seed-from-prod",
-    "generate:favicons": "node scripts/generate-favicons.mjs",
+    "generate:favicons": "npx tsx tools/generate-favicons.ts",
     "dev:kill": "sh scripts/dev-kill.sh",
-    "predev": "node tools/check-setup.js",
-    "prebuild": "node tools/check-setup.js",
-    "predeploy": "node tools/check-setup.js"
+    "predev": "node tools/check-setup.cjs",
+    "prebuild": "node tools/check-setup.cjs",
+    "predeploy": "node tools/check-setup.cjs"
   },
   "pnpm": {
     "overrides": {
