@@ -28,13 +28,16 @@ importers:
       sharp:
         specifier: ^0.34.5
         version: 0.34.5
+      tsx:
+        specifier: ^4.21.0
+        version: 4.21.0
       turbo:
         specifier: ^2.8.12
         version: 2.8.12
 
   apps/web:
     dependencies:
-      '@loganrenz/narduk-nuxt-template-layer':
+      '@narduk-enterprises/narduk-nuxt-template-layer':
         specifier: workspace:*
         version: link:../../layers/narduk-nuxt-layer
       '@narduk/eslint-config':

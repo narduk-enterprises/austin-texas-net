@@ -19,7 +19,7 @@
     "quality": "pnpm run lint && pnpm run typecheck"
   },
   "dependencies": {
-    "@loganrenz/narduk-nuxt-template-layer": "workspace:*",
+    "@narduk-enterprises/narduk-nuxt-template-layer": "workspace:*",
     "@narduk/eslint-config": "workspace:*",
     "@nuxt/content": "^3.11.2",
     "@nuxt/image": "^2.0.0",

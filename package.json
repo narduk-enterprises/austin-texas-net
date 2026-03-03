@@ -23,7 +23,10 @@
     "db:generate": "pnpm --filter web run db:generate",
     "db:seed-from-prod": "doppler run --project austin-texas-net --config dev -- pnpm --filter web run db:seed-from-prod",
     "generate:favicons": "node scripts/generate-favicons.mjs",
-    "dev:kill": "sh scripts/dev-kill.sh"
+    "dev:kill": "sh scripts/dev-kill.sh",
+    "predev": "node tools/check-setup.js",
+    "prebuild": "node tools/check-setup.js",
+    "predeploy": "node tools/check-setup.js"
   },
   "pnpm": {
     "overrides": {
@@ -52,6 +55,7 @@
     "concurrently": "^9.2.1",
     "googleapis": "^171.4.0",
     "sharp": "^0.34.5",
-    "turbo": "^2.8.12"
+    "turbo": "^2.8.12",
+    "tsx": "^4.21.0"
   }
 }

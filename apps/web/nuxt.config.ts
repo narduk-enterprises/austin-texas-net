@@ -5,7 +5,7 @@ import pkg from './package.json'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineNuxtConfig({
-  extends: ['@loganrenz/narduk-nuxt-template-layer'],
+  extends: ['@narduk-enterprises/narduk-nuxt-template-layer'],
 
   modules: ['@nuxt/content', 'nitro-cloudflare-dev'],
 
