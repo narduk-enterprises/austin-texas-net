@@ -128,7 +128,7 @@ function openDirections(spot: CrawfishSpot) {
 
       <div class="space-y-10 sm:space-y-14">
         <!-- ═══ HERO ═══ -->
-        <section class="relative overflow-hidden rounded-3xl border-4 border-orange-500/20 shadow-xl shadow-orange-500/5 group">
+        <section class="relative overflow-hidden rounded-3xl border-4 border-primary/20 shadow-xl shadow-primary/5 group">
           <div class="relative">
             <img
               src="/images/crawfish-boil-hero.png"
@@ -137,14 +137,14 @@ function openDirections(spot: CrawfishSpot) {
               loading="eager"
             >
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-            <div class="absolute inset-0 bg-orange-900/10 mix-blend-overlay"></div>
+            <div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
             <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-10 md:p-12 flex items-end justify-between">
               <div class="max-w-3xl z-10 transition-transform duration-500 group-hover:translate-x-2">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/95 text-white text-xs font-bold font-display uppercase tracking-wider mb-4 border border-orange-400/50 shadow-lg shadow-orange-500/30 backdrop-blur-md">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/95 text-white text-xs font-bold font-display uppercase tracking-wider mb-4 border border-primary/60/50 shadow-lg shadow-primary/30 backdrop-blur-md">
                   🦞 It's Crawfish Season
                 </div>
                 <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black font-display tracking-tight text-white drop-shadow-2xl">
-                  Crawfish Season <span class="text-orange-400">in Austin</span>
+                  Crawfish Season <span class="text-primary">in Austin</span>
                 </h1>
                 <p class="mt-4 text-white/95 text-base sm:text-lg lg:text-xl drop-shadow-md font-medium max-w-2xl leading-relaxed">
                   Where to buy 'em, where to eat 'em, and how to boil 'em right. Your complete guide to mudbug season in the 512.
@@ -165,7 +165,7 @@ function openDirections(spot: CrawfishSpot) {
             :variant="activeSection === section.id ? 'solid' : 'ghost'"
             :color="activeSection === section.id ? 'primary' : 'neutral'"
             class="rounded-full !font-bold font-display tracking-wide transition-all duration-300 px-5 py-2"
-            :class="activeSection === section.id ? 'shadow-lg shadow-orange-500/30 scale-105 ring-2 ring-orange-500/50 ring-offset-2 ring-offset-background bg-orange-600 hover:bg-orange-500 text-white' : 'bg-white/50 dark:bg-surface/50 hover:bg-orange-50 dark:hover:bg-orange-900/20 hover:scale-105 border border-default hover:text-orange-600 dark:hover:text-orange-400'"
+            :class="activeSection === section.id ? 'shadow-lg shadow-primary/30 scale-105 ring-2 ring-primary/50 ring-offset-2 ring-offset-background bg-primary hover:bg-primary text-white' : 'bg-white/50 dark:bg-surface/50 hover:bg-primary/5 dark:hover:bg-primary/20 hover:scale-105 border border-default hover:text-primary dark:hover:text-primary'"
             :icon="section.icon"
             @click="scrollToSection(section.id)"
           >
@@ -191,7 +191,7 @@ function openDirections(spot: CrawfishSpot) {
               :color="mapMode === 'markets' ? 'primary' : 'neutral'"
               size="md"
               class="rounded-full font-bold shadow-sm transition-transform hover:scale-105"
-              :class="mapMode === 'markets' ? 'bg-orange-600 hover:bg-orange-500 text-white' : 'text-orange-600 dark:text-orange-400'"
+              :class="mapMode === 'markets' ? 'bg-primary hover:bg-primary text-white' : 'text-primary dark:text-primary'"
               icon="i-lucide-shopping-bag"
               @click="handleMapModeToggle('markets')"
             >
@@ -202,7 +202,7 @@ function openDirections(spot: CrawfishSpot) {
               :color="mapMode === 'restaurants' ? 'primary' : 'neutral'"
               size="md"
               class="rounded-full font-bold shadow-sm transition-transform hover:scale-105"
-              :class="mapMode === 'restaurants' ? 'bg-orange-600 hover:bg-orange-500 text-white' : 'text-orange-600 dark:text-orange-400'"
+              :class="mapMode === 'restaurants' ? 'bg-primary hover:bg-primary text-white' : 'text-primary dark:text-primary'"
               icon="i-lucide-utensils"
               @click="handleMapModeToggle('restaurants')"
             >
@@ -212,7 +212,7 @@ function openDirections(spot: CrawfishSpot) {
 
           <!-- Map -->
           <ClientOnly>
-            <div class="rounded-3xl overflow-hidden border border-default elevation-2 shadow-lg shadow-black/5 ring-4 ring-orange-50 dark:ring-orange-950/20">
+            <div class="rounded-3xl overflow-hidden border border-default elevation-2 shadow-lg shadow-black/5 ring-4 ring-primary/10 dark:ring-primary/20">
               <AppMapKit
                 v-model:selected-id="selectedId"
                 :items="mapItems"
@@ -322,46 +322,46 @@ function openDirections(spot: CrawfishSpot) {
         </section>
 
         <!-- ═══ RECIPE ═══ -->
-        <section id="section-recipe" class="scroll-mt-24 space-y-10 bg-orange-50/50 dark:bg-orange-950/10 p-6 sm:p-10 rounded-[2.5rem] border border-orange-100 dark:border-orange-900/30">
+        <section id="section-recipe" class="scroll-mt-24 space-y-10 bg-primary/5/50 dark:bg-primary/10 p-6 sm:p-10 rounded-[2.5rem] border border-primary/20 dark:border-primary/30">
           <div class="text-center pt-4">
-            <div class="inline-flex items-center justify-center p-4 rounded-full bg-orange-100 dark:bg-orange-900/50 text-orange-600 dark:text-orange-400 mb-6 shadow-sm">
+            <div class="inline-flex items-center justify-center p-4 rounded-full bg-primary/10 dark:bg-primary/50 text-primary dark:text-primary mb-6 shadow-sm">
                <UIcon name="i-lucide-flame" class="size-8" />
             </div>
-            <h2 class="text-3xl sm:text-5xl font-black font-display text-orange-600 dark:text-orange-400 drop-shadow-sm">
+            <h2 class="text-3xl sm:text-5xl font-black font-display text-primary dark:text-primary drop-shadow-sm">
               {{ boilRecipe.title }}
             </h2>
             <p class="mt-4 text-muted text-base sm:text-lg max-w-xl mx-auto font-medium">
-              Everything you need to throw a proper crawfish boil in your backyard. Feeds <span class="text-orange-600 dark:text-orange-400 font-bold bg-orange-100 dark:bg-orange-900/40 px-2 py-0.5 rounded-lg">{{ boilRecipe.servings }}</span>.
+              Everything you need to throw a proper crawfish boil in your backyard. Feeds <span class="text-primary dark:text-primary font-bold bg-primary/10 dark:bg-primary/40 px-2 py-0.5 rounded-lg">{{ boilRecipe.servings }}</span>.
             </p>
           </div>
 
           <!-- Recipe stats -->
           <div class="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
-            <div class="bg-white dark:bg-surface p-5 rounded-2xl shadow-sm border border-default text-center hover:border-orange-300 transition-colors group">
+            <div class="bg-white dark:bg-surface p-5 rounded-2xl shadow-sm border border-default text-center hover:border-primary/40 transition-colors group">
               <div class="text-xs text-dimmed mb-1 uppercase tracking-wider font-bold">Prep Time</div>
-              <div class="text-xl sm:text-2xl font-black font-display text-orange-600 dark:text-orange-400 group-hover:scale-105 transition-transform">{{ boilRecipe.prepTime }}</div>
+              <div class="text-xl sm:text-2xl font-black font-display text-primary dark:text-primary group-hover:scale-105 transition-transform">{{ boilRecipe.prepTime }}</div>
             </div>
-            <div class="bg-white dark:bg-surface p-5 rounded-2xl shadow-sm border border-default text-center hover:border-orange-300 transition-colors group">
+            <div class="bg-white dark:bg-surface p-5 rounded-2xl shadow-sm border border-default text-center hover:border-primary/40 transition-colors group">
               <div class="text-xs text-dimmed mb-1 uppercase tracking-wider font-bold">Cook Time</div>
-              <div class="text-xl sm:text-2xl font-black font-display text-orange-600 dark:text-orange-400 group-hover:scale-105 transition-transform">{{ boilRecipe.cookTime }}</div>
+              <div class="text-xl sm:text-2xl font-black font-display text-primary dark:text-primary group-hover:scale-105 transition-transform">{{ boilRecipe.cookTime }}</div>
             </div>
-            <div class="bg-white dark:bg-surface p-5 rounded-2xl shadow-sm border border-default text-center hover:border-orange-300 transition-colors group">
+            <div class="bg-white dark:bg-surface p-5 rounded-2xl shadow-sm border border-default text-center hover:border-primary/40 transition-colors group">
               <div class="text-xs text-dimmed mb-1 uppercase tracking-wider font-bold">Total Time</div>
-              <div class="text-xl sm:text-2xl font-black font-display text-orange-600 dark:text-orange-400 group-hover:scale-105 transition-transform">{{ boilRecipe.totalTime }}</div>
+              <div class="text-xl sm:text-2xl font-black font-display text-primary dark:text-primary group-hover:scale-105 transition-transform">{{ boilRecipe.totalTime }}</div>
             </div>
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 relative mt-12">
             <!-- Equipment -->
             <div class="bg-white dark:bg-surface p-8 rounded-3xl shadow-sm border border-default flex flex-col items-center sm:items-start text-center sm:text-left">
-              <h3 class="text-2xl font-black font-display mb-6 flex flex-col sm:flex-row items-center gap-3 text-orange-600 dark:text-orange-400 w-full pb-4 border-b border-default">
+              <h3 class="text-2xl font-black font-display mb-6 flex flex-col sm:flex-row items-center gap-3 text-primary dark:text-primary w-full pb-4 border-b border-default">
                 <UIcon name="i-lucide-wrench" class="size-7" />
                 Equipment Needed
               </h3>
               <ul class="space-y-4 w-full">
                 <li v-for="(item, i) in boilRecipe.equipment" :key="i" class="flex items-start justify-center sm:justify-start gap-4">
-                  <div class="mt-1 w-6 h-6 rounded-full bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center shrink-0">
-                    <UIcon name="i-lucide-check" class="size-3.5 text-orange-600 dark:text-orange-400 font-bold" />
+                  <div class="mt-1 w-6 h-6 rounded-full bg-primary/10 dark:bg-primary/50 flex items-center justify-center shrink-0">
+                    <UIcon name="i-lucide-check" class="size-3.5 text-primary dark:text-primary font-bold" />
                   </div>
                   <span class="text-sm sm:text-base font-medium text-foreground py-0.5">{{ item }}</span>
                 </li>
@@ -369,7 +369,7 @@ function openDirections(spot: CrawfishSpot) {
             </div>
 
             <!-- Ingredients -->
-            <div class="bg-orange-600 dark:bg-orange-900/50 text-white p-8 rounded-3xl shadow-lg relative overflow-hidden flex flex-col">
+            <div class="bg-primary dark:bg-primary/50 text-white p-8 rounded-3xl shadow-lg relative overflow-hidden flex flex-col">
               <div class="absolute -right-4 -bottom-4 w-64 opacity-30 transform rotate-12 transition-transform duration-700 hover:rotate-6">
                  <img src="/images/ingredients_graphic.png" alt="Decorative ingredients" class="w-full h-auto brightness-200 contrast-150">
               </div>
@@ -386,49 +386,49 @@ function openDirections(spot: CrawfishSpot) {
               
               <div class="mt-8 p-5 bg-white/10 rounded-2xl backdrop-blur-md border border-white/30 relative z-10 flex gap-5 items-center shadow-inner">
                  <img src="/images/ingredients_graphic.png" alt="Ingredients" class="w-20 h-20 object-contain hidden sm:block drop-shadow-lg scale-110">
-                 <p class="text-sm font-medium leading-relaxed opacity-100"><span class="font-black uppercase tracking-wider text-orange-200 drop-shadow-sm">Cajun Secret:</span> Don't skimp on the seasoning. The more garlic and lemon, the better the boil.</p>
+                 <p class="text-sm font-medium leading-relaxed opacity-100"><span class="font-black uppercase tracking-wider text-primary/40 drop-shadow-sm">Cajun Secret:</span> Don't skimp on the seasoning. The more garlic and lemon, the better the boil.</p>
               </div>
             </div>
           </div>
 
           <!-- Steps -->
-          <div class="mt-16 pt-8 border-t border-orange-200/50 dark:border-orange-900/30">
+          <div class="mt-16 pt-8 border-t border-primary/30/50 dark:border-primary/30">
             <h3 class="text-3xl font-black font-display mb-12 text-center flex items-center justify-center gap-3 text-foreground">
-              <UIcon name="i-lucide-list-ordered" class="size-8 text-orange-600 dark:text-orange-400" />
+              <UIcon name="i-lucide-list-ordered" class="size-8 text-primary dark:text-primary" />
               Step-by-Step Guide
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative pb-8">
               <!-- Vertical Line for timeline effect -->
-              <div class="absolute left-1/2 top-0 bottom-4 w-1.5 bg-orange-200/50 dark:bg-orange-800/30 hidden md:block -translate-x-1/2 rounded-full" />
+              <div class="absolute left-1/2 top-0 bottom-4 w-1.5 bg-primary/20/50 dark:bg-primary/30 hidden md:block -translate-x-1/2 rounded-full" />
               
               <div v-for="(step, idx) in boilRecipe.steps" :key="step.id" class="relative group" :class="idx % 2 === 0 ? 'md:pr-12' : 'md:pl-12 md:col-start-2'">
                 
                 <!-- The timeline node -->
-                <div class="absolute top-8 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-orange-50 dark:bg-orange-950 border-4 border-orange-200 dark:border-orange-800 z-10 shadow-md group-hover:scale-110 group-hover:border-orange-500 transition-all duration-300" :class="idx % 2 === 0 ? '-right-6 translate-x-1/2' : '-left-6 -translate-x-1/2'">
-                   <span class="text-base font-black text-orange-600 dark:text-orange-400">{{ step.id }}</span>
+                <div class="absolute top-8 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-primary/5 dark:bg-primary border-4 border-primary/30 dark:border-primary z-10 shadow-md group-hover:scale-110 group-hover:border-primary transition-all duration-300" :class="idx % 2 === 0 ? '-right-6 translate-x-1/2' : '-left-6 -translate-x-1/2'">
+                   <span class="text-base font-black text-primary dark:text-primary">{{ step.id }}</span>
                 </div>
                 
-                <div class="bg-white dark:bg-surface p-7 sm:p-8 rounded-3xl shadow-sm border border-default group-hover:border-orange-300 dark:group-hover:border-orange-700 transition-all duration-300 group-hover:shadow-xl h-full flex flex-col relative overflow-hidden group-hover:-translate-y-1">
+                <div class="bg-white dark:bg-surface p-7 sm:p-8 rounded-3xl shadow-sm border border-default group-hover:border-primary/40 dark:group-hover:border-primary transition-all duration-300 group-hover:shadow-xl h-full flex flex-col relative overflow-hidden group-hover:-translate-y-1">
                   <!-- Subtle background number -->
-                  <div class="absolute -right-4 -top-8 text-9xl font-black font-display text-orange-50 dark:text-orange-950/20 opacity-50 z-0 pointer-events-none transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
+                  <div class="absolute -right-4 -top-8 text-9xl font-black font-display text-primary/10 dark:text-primary/20 opacity-50 z-0 pointer-events-none transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
                     {{ step.id }}
                   </div>
                   
                   <div class="relative z-10 flex items-center gap-4 mb-5">
-                    <div class="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/50 text-orange-600 dark:text-orange-400 font-black text-base shrink-0 shadow-sm border border-orange-200 dark:border-orange-800">
+                    <div class="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/50 text-primary dark:text-primary font-black text-base shrink-0 shadow-sm border border-primary/30 dark:border-primary">
                       {{ step.id }}
                     </div>
-                    <h4 class="font-display font-black text-xl text-foreground group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">Step {{ step.id }}</h4>
+                    <h4 class="font-display font-black text-xl text-foreground group-hover:text-primary dark:group-hover:text-primary transition-colors">Step {{ step.id }}</h4>
                   </div>
                   
                   <p class="text-base leading-relaxed text-muted relative z-10 flex-grow">{{ step.instruction }}</p>
                   
-                  <div v-if="step.tip" class="mt-6 bg-orange-50 dark:bg-orange-900/20 rounded-2xl p-5 flex gap-4 border border-orange-200/50 dark:border-orange-800/30 relative z-10 relative overflow-hidden">
-                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-orange-500 rounded-l-2xl"></div>
+                  <div v-if="step.tip" class="mt-6 bg-primary/5 dark:bg-primary/20 rounded-2xl p-5 flex gap-4 border border-primary/30/50 dark:border-primary/30 relative z-10 relative overflow-hidden">
+                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-2xl"></div>
                     <div class="shrink-0 mt-0.5">
-                       <UIcon name="i-lucide-lightbulb" class="size-6 text-orange-500" />
+                       <UIcon name="i-lucide-lightbulb" class="size-6 text-primary" />
                     </div>
-                    <p class="text-sm font-semibold text-orange-900 dark:text-orange-100 leading-relaxed">{{ step.tip }}</p>
+                    <p class="text-sm font-semibold text-primary dark:text-primary/20 leading-relaxed">{{ step.tip }}</p>
                   </div>
                   
                   <!-- Conditional Graphics based on step ID -->
@@ -451,14 +451,14 @@ function openDirections(spot: CrawfishSpot) {
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div v-for="tip in crawfishTips" :key="tip.id" class="bg-white dark:bg-surface p-8 rounded-3xl border border-default hover:border-orange-300 dark:hover:border-orange-700 shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 relative overflow-hidden">
-              <div class="absolute -right-4 -top-4 w-24 h-24 bg-orange-50 dark:bg-orange-950/20 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500 ease-out z-0"></div>
+            <div v-for="tip in crawfishTips" :key="tip.id" class="bg-white dark:bg-surface p-8 rounded-3xl border border-default hover:border-primary/40 dark:hover:border-primary shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 relative overflow-hidden">
+              <div class="absolute -right-4 -top-4 w-24 h-24 bg-primary/5 dark:bg-primary/20 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500 ease-out z-0"></div>
               
               <div class="relative z-10">
-                <div class="w-16 h-16 rounded-2xl bg-orange-100 dark:bg-orange-900/40 border border-orange-200 dark:border-orange-800 flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300 shadow-sm">
-                  <UIcon :name="tip.icon" class="size-8 text-orange-600 dark:text-orange-400" />
+                <div class="w-16 h-16 rounded-2xl bg-primary/10 dark:bg-primary/40 border border-primary/30 dark:border-primary flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300 shadow-sm">
+                  <UIcon :name="tip.icon" class="size-8 text-primary dark:text-primary" />
                 </div>
-                <h3 class="text-xl font-bold font-display mb-3 text-foreground group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">{{ tip.title }}</h3>
+                <h3 class="text-xl font-bold font-display mb-3 text-foreground group-hover:text-primary dark:group-hover:text-primary transition-colors">{{ tip.title }}</h3>
                 <p class="text-sm sm:text-base text-muted leading-relaxed font-medium">{{ tip.description }}</p>
               </div>
             </div>
