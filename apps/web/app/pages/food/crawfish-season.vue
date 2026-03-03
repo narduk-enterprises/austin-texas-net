@@ -1,3 +1,4 @@
+<!-- eslint-disable atx/no-raw-tailwind-colors -->
 <script setup lang="ts">
 /**
  * food/crawfish-season.vue — Crawfish Season mini app.
@@ -137,7 +138,7 @@ function openDirections(spot: CrawfishSpot) {
               loading="eager"
             >
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-            <div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+            <div class="absolute inset-0 bg-[#fef3c7] mix-blend-overlay"></div>
             <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-10 md:p-12 flex items-end justify-between">
               <div class="max-w-3xl z-10 transition-transform duration-500 group-hover:translate-x-2">
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/95 text-white text-xs font-bold font-display uppercase tracking-wider mb-4 border border-primary/60/50 shadow-lg shadow-primary/30 backdrop-blur-md">
@@ -165,7 +166,7 @@ function openDirections(spot: CrawfishSpot) {
             :variant="activeSection === section.id ? 'solid' : 'ghost'"
             :color="activeSection === section.id ? 'primary' : 'neutral'"
             class="rounded-full !font-bold font-display tracking-wide transition-all duration-300 px-5 py-2"
-            :class="activeSection === section.id ? 'shadow-lg shadow-primary/30 scale-105 ring-2 ring-primary/50 ring-offset-2 ring-offset-background bg-primary hover:bg-primary text-white' : 'bg-white/50 dark:bg-surface/50 hover:bg-primary/5 dark:hover:bg-primary/20 hover:scale-105 border border-default hover:text-primary dark:hover:text-primary'"
+            :class="activeSection === section.id ? 'shadow-lg shadow-primary/30 scale-105 ring-2 ring-primary/50 ring-offset-2 ring-offset-background bg-primary hover:bg-primary text-white' : 'bg-white border-2 border-[#450a0a] shadow-[4px_4px_0_0_rgba(69,10,10,1)] hover:bg-[#fef3c7] :bg-primary/20 hover:scale-105 border border-[#450a0a] border-4 shadow-[8px_8px_0_0_rgba(69,10,10,1)] hover:shadow-[12px_12px_0_0_rgba(69,10,10,1)] hover:-translate-y-1 transition-all hover:text-primary :text-primary'"
             :icon="section.icon"
             @click="scrollToSection(section.id)"
           >
@@ -179,10 +180,10 @@ function openDirections(spot: CrawfishSpot) {
             <div class="flex justify-center mb-6">
               <img src="/images/crawfish_market_icon_1772521599751.png" alt="Crawfish Sack" class="w-32 h-32 object-contain drop-shadow-xl hover:scale-110 transition-transform duration-300">
             </div>
-            <h2 class="text-3xl sm:text-4xl font-black font-display text-foreground">
+            <h2 class="text-3xl sm:text-4xl font-black font-display text-[#450a0a]">
               Where to Buy Live Crawfish
             </h2>
-            <p class="mt-3 text-muted text-sm sm:text-base max-w-xl mx-auto font-medium">
+            <p class="mt-3 text-[#450a0a]/80 text-sm sm:text-base max-w-xl mx-auto font-medium">
               The best spots in Austin to pick up a sack of live crawfish for your backyard boil.
             </p>
           </div>
@@ -194,7 +195,7 @@ function openDirections(spot: CrawfishSpot) {
               :color="mapMode === 'markets' ? 'primary' : 'neutral'"
               size="md"
               class="rounded-full font-bold shadow-sm transition-transform hover:scale-105"
-              :class="mapMode === 'markets' ? 'bg-primary hover:bg-primary text-white' : 'text-primary dark:text-primary'"
+              :class="mapMode === 'markets' ? 'bg-primary hover:bg-primary text-white' : 'text-primary '"
               icon="i-lucide-shopping-bag"
               @click="handleMapModeToggle('markets')"
             >
@@ -205,7 +206,7 @@ function openDirections(spot: CrawfishSpot) {
               :color="mapMode === 'restaurants' ? 'primary' : 'neutral'"
               size="md"
               class="rounded-full font-bold shadow-sm transition-transform hover:scale-105"
-              :class="mapMode === 'restaurants' ? 'bg-primary hover:bg-primary text-white' : 'text-primary dark:text-primary'"
+              :class="mapMode === 'restaurants' ? 'bg-primary hover:bg-primary text-white' : 'text-primary '"
               icon="i-lucide-utensils"
               @click="handleMapModeToggle('restaurants')"
             >
@@ -215,7 +216,7 @@ function openDirections(spot: CrawfishSpot) {
 
           <!-- Map -->
           <ClientOnly>
-            <div class="rounded-3xl overflow-hidden border border-default elevation-2 shadow-lg shadow-black/5 ring-4 ring-primary/10 dark:ring-primary/20">
+            <div class="rounded-3xl overflow-hidden border border-[#450a0a] border-4 shadow-[8px_8px_0_0_rgba(69,10,10,1)] hover:shadow-[12px_12px_0_0_rgba(69,10,10,1)] hover:-translate-y-1 transition-all elevation-2 shadow-lg shadow-black/5 ring-4 ring-primary/10 ">
               <AppMapKit
                 v-model:selected-id="selectedId"
                 :items="mapItems"
@@ -240,18 +241,18 @@ function openDirections(spot: CrawfishSpot) {
                 <h3 class="font-display text-lg font-bold leading-tight">{{ spot.name }}</h3>
                 <span
                   v-if="spot.priceRange"
-                  class="text-xs font-semibold px-2 py-0.5 rounded-full bg-primary/10 text-primary shrink-0"
+                  class="text-xs font-semibold px-2 py-0.5 rounded-full bg-[#fef3c7] text-primary shrink-0"
                 >
                   {{ spot.priceRange }}
                 </span>
               </div>
               <p class="text-sm text-primary font-medium mb-2">{{ spot.neighborhood }}</p>
-              <p v-if="spot.notes" class="text-xs text-muted mb-3 line-clamp-3">{{ spot.notes }}</p>
-              <div class="flex items-center gap-2 text-xs text-dimmed mb-1">
+              <p v-if="spot.notes" class="text-xs text-[#450a0a]/80 mb-3 line-clamp-3">{{ spot.notes }}</p>
+              <div class="flex items-center gap-2 text-xs text-[#991b1b]/70 mb-1">
                 <UIcon name="i-lucide-map-pin" class="size-3.5 shrink-0" />
                 <span class="truncate">{{ spot.address }}</span>
               </div>
-              <div v-if="spot.phone" class="flex items-center gap-2 text-xs text-dimmed">
+              <div v-if="spot.phone" class="flex items-center gap-2 text-xs text-[#991b1b]/70">
                 <UIcon name="i-lucide-phone" class="size-3.5 shrink-0" />
                 <span>{{ spot.phone }}</span>
               </div>
@@ -275,10 +276,10 @@ function openDirections(spot: CrawfishSpot) {
             <div class="flex justify-center mb-6">
               <img src="/images/crawfish_restaurant_icon_1772521611530.png" alt="Restaurant Table" class="w-32 h-32 object-contain drop-shadow-xl hover:scale-110 transition-transform duration-300 rounded-3xl">
             </div>
-            <h2 class="text-3xl sm:text-4xl font-black font-display text-foreground">
+            <h2 class="text-3xl sm:text-4xl font-black font-display text-[#450a0a]">
               Best Crawfish Restaurants
             </h2>
-            <p class="mt-3 text-muted text-sm sm:text-base max-w-xl mx-auto font-medium">
+            <p class="mt-3 text-[#450a0a]/80 text-sm sm:text-base max-w-xl mx-auto font-medium">
               Skip the boil and let someone else do the work. These spots serve the best crawfish in Austin.
             </p>
           </div>
@@ -295,7 +296,7 @@ function openDirections(spot: CrawfishSpot) {
                 <h3 class="font-display text-lg font-bold leading-tight">{{ spot.name }}</h3>
                 <span
                   v-if="spot.priceRange"
-                  class="text-xs font-semibold px-2 py-0.5 rounded-full bg-primary/10 text-primary shrink-0"
+                  class="text-xs font-semibold px-2 py-0.5 rounded-full bg-[#fef3c7] text-primary shrink-0"
                 >
                   {{ spot.priceRange }}
                 </span>
@@ -304,12 +305,12 @@ function openDirections(spot: CrawfishSpot) {
                 {{ spot.specialty }}
               </p>
               <p class="text-xs text-primary font-medium mb-2">{{ spot.neighborhood }}</p>
-              <p v-if="spot.notes" class="text-xs text-muted mb-3 line-clamp-3">{{ spot.notes }}</p>
-              <div class="flex items-center gap-2 text-xs text-dimmed mb-1">
+              <p v-if="spot.notes" class="text-xs text-[#450a0a]/80 mb-3 line-clamp-3">{{ spot.notes }}</p>
+              <div class="flex items-center gap-2 text-xs text-[#991b1b]/70 mb-1">
                 <UIcon name="i-lucide-map-pin" class="size-3.5 shrink-0" />
                 <span class="truncate">{{ spot.address }}</span>
               </div>
-              <div v-if="spot.phone" class="flex items-center gap-2 text-xs text-dimmed">
+              <div v-if="spot.phone" class="flex items-center gap-2 text-xs text-[#991b1b]/70">
                 <UIcon name="i-lucide-phone" class="size-3.5 shrink-0" />
                 <span>{{ spot.phone }}</span>
               </div>
@@ -328,54 +329,54 @@ function openDirections(spot: CrawfishSpot) {
         </section>
 
         <!-- ═══ RECIPE ═══ -->
-        <section id="section-recipe" class="scroll-mt-24 space-y-10 bg-primary/5/50 dark:bg-primary/10 p-6 sm:p-10 rounded-[2.5rem] border border-primary/20 dark:border-primary/30">
+        <section id="section-recipe" class="scroll-mt-24 space-y-10 bg-[#fef3c7]/50  p-6 sm:p-10 rounded-[2.5rem] border border-primary/20 ">
           <div class="text-center pt-4">
-            <div class="inline-flex items-center justify-center p-4 rounded-full bg-primary/10 dark:bg-primary/50 text-primary dark:text-primary mb-6 shadow-sm">
+            <div class="inline-flex items-center justify-center p-4 rounded-full bg-[#fef3c7]  text-primary  mb-6 shadow-sm">
                <UIcon name="i-lucide-flame" class="size-8" />
             </div>
-            <h2 class="text-3xl sm:text-5xl font-black font-display text-primary dark:text-primary drop-shadow-sm">
+            <h2 class="text-3xl sm:text-5xl font-black font-display text-primary  drop-shadow-sm">
               {{ boilRecipe.title }}
             </h2>
-            <p class="mt-4 text-muted text-base sm:text-lg max-w-xl mx-auto font-medium">
-              Everything you need to throw a proper crawfish boil in your backyard. Feeds <span class="text-primary dark:text-primary font-bold bg-primary/10 dark:bg-primary/40 px-2 py-0.5 rounded-lg">{{ boilRecipe.servings }}</span>.
+            <p class="mt-4 text-[#450a0a]/80 text-base sm:text-lg max-w-xl mx-auto font-medium">
+              Everything you need to throw a proper crawfish boil in your backyard. Feeds <span class="text-primary  font-bold bg-[#fef3c7]  px-2 py-0.5 rounded-lg">{{ boilRecipe.servings }}</span>.
             </p>
           </div>
 
           <!-- Recipe stats -->
           <div class="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
-            <div class="bg-white dark:bg-surface p-5 rounded-2xl shadow-sm border border-default text-center hover:border-primary/40 transition-colors group">
-              <div class="text-xs text-dimmed mb-1 uppercase tracking-wider font-bold">Prep Time</div>
-              <div class="text-xl sm:text-2xl font-black font-display text-primary dark:text-primary group-hover:scale-105 transition-transform">{{ boilRecipe.prepTime }}</div>
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-[#450a0a] border-4 shadow-[8px_8px_0_0_rgba(69,10,10,1)] hover:shadow-[12px_12px_0_0_rgba(69,10,10,1)] hover:-translate-y-1 transition-all text-center hover:border-primary/40 transition-colors group">
+              <div class="text-xs text-[#991b1b]/70 mb-1 uppercase tracking-wider font-bold">Prep Time</div>
+              <div class="text-xl sm:text-2xl font-black font-display text-primary  group-hover:scale-105 transition-transform">{{ boilRecipe.prepTime }}</div>
             </div>
-            <div class="bg-white dark:bg-surface p-5 rounded-2xl shadow-sm border border-default text-center hover:border-primary/40 transition-colors group">
-              <div class="text-xs text-dimmed mb-1 uppercase tracking-wider font-bold">Cook Time</div>
-              <div class="text-xl sm:text-2xl font-black font-display text-primary dark:text-primary group-hover:scale-105 transition-transform">{{ boilRecipe.cookTime }}</div>
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-[#450a0a] border-4 shadow-[8px_8px_0_0_rgba(69,10,10,1)] hover:shadow-[12px_12px_0_0_rgba(69,10,10,1)] hover:-translate-y-1 transition-all text-center hover:border-primary/40 transition-colors group">
+              <div class="text-xs text-[#991b1b]/70 mb-1 uppercase tracking-wider font-bold">Cook Time</div>
+              <div class="text-xl sm:text-2xl font-black font-display text-primary  group-hover:scale-105 transition-transform">{{ boilRecipe.cookTime }}</div>
             </div>
-            <div class="bg-white dark:bg-surface p-5 rounded-2xl shadow-sm border border-default text-center hover:border-primary/40 transition-colors group">
-              <div class="text-xs text-dimmed mb-1 uppercase tracking-wider font-bold">Total Time</div>
-              <div class="text-xl sm:text-2xl font-black font-display text-primary dark:text-primary group-hover:scale-105 transition-transform">{{ boilRecipe.totalTime }}</div>
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-[#450a0a] border-4 shadow-[8px_8px_0_0_rgba(69,10,10,1)] hover:shadow-[12px_12px_0_0_rgba(69,10,10,1)] hover:-translate-y-1 transition-all text-center hover:border-primary/40 transition-colors group">
+              <div class="text-xs text-[#991b1b]/70 mb-1 uppercase tracking-wider font-bold">Total Time</div>
+              <div class="text-xl sm:text-2xl font-black font-display text-primary  group-hover:scale-105 transition-transform">{{ boilRecipe.totalTime }}</div>
             </div>
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 relative mt-12">
             <!-- Equipment -->
-            <div class="bg-white dark:bg-surface p-8 rounded-3xl shadow-sm border border-default flex flex-col items-center sm:items-start text-center sm:text-left">
-              <h3 class="text-2xl font-black font-display mb-6 flex flex-col sm:flex-row items-center gap-3 text-primary dark:text-primary w-full pb-4 border-b border-default">
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-[#450a0a] border-4 shadow-[8px_8px_0_0_rgba(69,10,10,1)] hover:shadow-[12px_12px_0_0_rgba(69,10,10,1)] hover:-translate-y-1 transition-all flex flex-col items-center sm:items-start text-center sm:text-left">
+              <h3 class="text-2xl font-black font-display mb-6 flex flex-col sm:flex-row items-center gap-3 text-primary  w-full pb-4 border-b border-[#450a0a] border-4 shadow-[8px_8px_0_0_rgba(69,10,10,1)] hover:shadow-[12px_12px_0_0_rgba(69,10,10,1)] hover:-translate-y-1 transition-all">
                 <UIcon name="i-lucide-wrench" class="size-7" />
                 Equipment Needed
               </h3>
               <ul class="space-y-4 w-full">
                 <li v-for="(item, i) in boilRecipe.equipment" :key="i" class="flex items-start justify-center sm:justify-start gap-4">
-                  <div class="mt-1 w-6 h-6 rounded-full bg-primary/10 dark:bg-primary/50 flex items-center justify-center shrink-0">
-                    <UIcon name="i-lucide-check" class="size-3.5 text-primary dark:text-primary font-bold" />
+                  <div class="mt-1 w-6 h-6 rounded-full bg-[#fef3c7]  flex items-center justify-center shrink-0">
+                    <UIcon name="i-lucide-check" class="size-3.5 text-primary  font-bold" />
                   </div>
-                  <span class="text-sm sm:text-base font-medium text-foreground py-0.5">{{ item }}</span>
+                  <span class="text-sm sm:text-base font-medium text-[#450a0a] py-0.5">{{ item }}</span>
                 </li>
               </ul>
             </div>
 
             <!-- Ingredients -->
-            <div class="bg-primary dark:bg-primary/50 text-white p-8 rounded-3xl shadow-lg relative overflow-hidden flex flex-col">
+            <div class="bg-primary  text-white p-8 rounded-3xl shadow-lg relative overflow-hidden flex flex-col">
               <div class="absolute -right-4 -bottom-4 w-64 opacity-60 transform rotate-12 transition-transform duration-700 hover:rotate-6">
                  <img src="/images/crawfish_corn_potato_1772521681540.png" alt="Decorative ingredients" class="w-full h-auto brightness-110 contrast-125 rounded-2xl mix-blend-luminosity">
               </div>
@@ -398,26 +399,26 @@ function openDirections(spot: CrawfishSpot) {
           </div>
 
           <!-- Steps -->
-          <div class="mt-16 pt-8 border-t border-primary/30/50 dark:border-primary/30">
-            <h3 class="text-3xl font-black font-display mb-12 text-center flex items-center justify-center gap-3 text-foreground">
-              <UIcon name="i-lucide-list-ordered" class="size-8 text-primary dark:text-primary" />
+          <div class="mt-16 pt-8 border-t border-primary/30/50 ">
+            <h3 class="text-3xl font-black font-display mb-12 text-center flex items-center justify-center gap-3 text-[#450a0a]">
+              <UIcon name="i-lucide-list-ordered" class="size-8 text-primary " />
               Step-by-Step Guide
             </h3>
             <div class="max-w-4xl mx-auto">
               <UTimeline :items="boilRecipe.steps.map(s => ({ title: `Step ${s.id}`, description: s.instruction, icon: 'i-lucide-check-circle', tip: s.tip, id: s.id }))" class="pl-4 md:pl-0">
                 <template #wrapper="{ item }">
-                  <div class="bg-white dark:bg-surface p-6 sm:p-8 rounded-3xl shadow-sm border-4 border-default hover:border-primary/40 transition-all duration-300 mb-8 overflow-hidden relative group">
-                    <div class="absolute -right-4 -top-8 text-9xl font-black font-display text-primary/5 dark:text-primary/10 opacity-50 z-0 pointer-events-none transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
+                  <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border-4 border-[#450a0a] border-4 shadow-[8px_8px_0_0_rgba(69,10,10,1)] hover:shadow-[12px_12px_0_0_rgba(69,10,10,1)] hover:-translate-y-1 transition-all hover:border-primary/40 transition-all duration-300 mb-8 overflow-hidden relative group">
+                    <div class="absolute -right-4 -top-8 text-9xl font-black font-display text-primary/5  opacity-50 z-0 pointer-events-none transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
                       {{ item.id }}
                     </div>
                     <div class="relative z-10">
-                      <p class="text-base leading-relaxed text-muted">{{ item.description }}</p>
-                      <div v-if="item.tip" class="mt-6 bg-primary/5 dark:bg-primary/20 rounded-2xl p-5 flex gap-4 border border-primary/30/50 dark:border-primary/30 overflow-hidden relative">
+                      <p class="text-base leading-relaxed text-[#450a0a]/80">{{ item.description }}</p>
+                      <div v-if="item.tip" class="mt-6 bg-[#fef3c7]  rounded-2xl p-5 flex gap-4 border border-primary/30/50  overflow-hidden relative">
                         <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-2xl"></div>
                         <div class="shrink-0 mt-0.5">
                           <UIcon name="i-lucide-lightbulb" class="size-6 text-primary" />
                         </div>
-                        <p class="text-sm font-semibold text-primary dark:text-primary/20 leading-relaxed">{{ item.tip }}</p>
+                        <p class="text-sm font-semibold text-primary  leading-relaxed">{{ item.tip }}</p>
                       </div>
                       
                       <!-- AI Graphics for specific steps -->
@@ -442,22 +443,22 @@ function openDirections(spot: CrawfishSpot) {
         <!-- ═══ PRO TIPS ═══ -->
         <section id="section-tips" class="scroll-mt-24 space-y-10">
           <div class="text-center">
-            <h2 class="text-3xl sm:text-4xl font-black font-display text-foreground">Pro Tips</h2>
-            <p class="mt-3 text-muted text-sm sm:text-base max-w-xl mx-auto font-medium">
+            <h2 class="text-3xl sm:text-4xl font-black font-display text-[#450a0a]">Pro Tips</h2>
+            <p class="mt-3 text-[#450a0a]/80 text-sm sm:text-base max-w-xl mx-auto font-medium">
               Wisdom from Austin's crawfish veterans. Follow these and you'll boil like a Cajun.
             </p>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div v-for="tip in crawfishTips" :key="tip.id" class="bg-white dark:bg-surface p-8 rounded-3xl border border-default hover:border-primary/40 dark:hover:border-primary shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 relative overflow-hidden">
-              <div class="absolute -right-4 -top-4 w-24 h-24 bg-primary/5 dark:bg-primary/20 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500 ease-out z-0"></div>
+            <div v-for="tip in crawfishTips" :key="tip.id" class="bg-white p-8 rounded-3xl border border-[#450a0a] border-4 shadow-[8px_8px_0_0_rgba(69,10,10,1)] hover:shadow-[12px_12px_0_0_rgba(69,10,10,1)] hover:-translate-y-1 transition-all hover:border-primary/40 :border-primary shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 relative overflow-hidden">
+              <div class="absolute -right-4 -top-4 w-24 h-24 bg-[#fef3c7]  rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500 ease-out z-0"></div>
               
               <div class="relative z-10">
-                <div class="w-16 h-16 rounded-2xl bg-primary/10 dark:bg-primary/40 border border-primary/30 dark:border-primary flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300 shadow-sm">
-                  <UIcon :name="tip.icon" class="size-8 text-primary dark:text-primary" />
+                <div class="w-16 h-16 rounded-2xl bg-[#fef3c7]  border border-primary/30  flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300 shadow-sm">
+                  <UIcon :name="tip.icon" class="size-8 text-primary " />
                 </div>
-                <h3 class="text-xl font-bold font-display mb-3 text-foreground group-hover:text-primary dark:group-hover:text-primary transition-colors">{{ tip.title }}</h3>
-                <p class="text-sm sm:text-base text-muted leading-relaxed font-medium">{{ tip.description }}</p>
+                <h3 class="text-xl font-bold font-display mb-3 text-[#450a0a] group-hover:text-primary :text-primary transition-colors">{{ tip.title }}</h3>
+                <p class="text-sm sm:text-base text-[#450a0a]/80 leading-relaxed font-medium">{{ tip.description }}</p>
               </div>
             </div>
           </div>
@@ -472,18 +473,18 @@ function openDirections(spot: CrawfishSpot) {
             <div v-for="faq in crawfishFaqs" :key="faq.id" class="glass-card overflow-hidden">
               <UButton
                 variant="ghost"
-                color="neutral"
+                color="amber"
                 class="w-full flex items-center justify-between p-4 text-left rounded-none hover:bg-elevated"
                 @click="toggleFaq(faq.id)"
               >
                 <span class="text-sm font-semibold font-display pr-4">{{ faq.question }}</span>
                 <UIcon
                   :name="openFaq === faq.id ? 'i-lucide-chevron-up' : 'i-lucide-chevron-down'"
-                  class="size-4 text-dimmed shrink-0"
+                  class="size-4 text-[#991b1b]/70 shrink-0"
                 />
               </UButton>
               <div v-if="openFaq === faq.id" class="px-4 pb-4">
-                <p class="text-sm text-muted leading-relaxed">{{ faq.answer }}</p>
+                <p class="text-sm text-[#450a0a]/80 leading-relaxed">{{ faq.answer }}</p>
               </div>
             </div>
           </div>
@@ -492,13 +493,13 @@ function openDirections(spot: CrawfishSpot) {
         <!-- ═══ ABOUT ═══ -->
         <section class="glass-card p-6 sm:p-8 space-y-4">
           <h2 class="text-xl font-semibold font-display">About Crawfish Season in Austin</h2>
-          <p class="text-sm text-muted leading-relaxed">
+          <p class="text-sm text-[#450a0a]/80 leading-relaxed">
             Crawfish season in Austin has become one of the city's most anticipated culinary events. While Texas doesn't have the deep-rooted crawfish traditions of Louisiana, Austin's food scene has more than made up for it. Every spring, backyards across the city fire up their propane burners, Cajun seasoning fills the air, and neighbors gather around newspaper-covered tables for the communal ritual of the crawfish boil.
           </p>
-          <p class="text-sm text-muted leading-relaxed">
+          <p class="text-sm text-[#450a0a]/80 leading-relaxed">
             Austin's crawfish culture blends classic Cajun traditions with the city's signature melting-pot flavor. You'll find Vietnamese-Cajun garlic butter crawfish at spots like LA Crawfish, traditional Southern boils at Shoal Creek Saloon, and everything in between. The city's Asian supermarkets — 99 Ranch, H Mart, and MT Supermarket — have become go-to sources for affordable live crawfish by the sack, often beating traditional seafood markets on price.
           </p>
-          <p class="text-sm text-muted leading-relaxed">
+          <p class="text-sm text-[#450a0a]/80 leading-relaxed">
             Peak season runs from March through May, when crawfish are at their largest and most plentiful. Early season (January–February) crawfish tend to be smaller and pricier. By June, the season winds down. Whether you're a seasoned boiler or trying your first mudbug, Austin offers everything from grab-and-go sacks to full-service Cajun restaurants. Just remember: suck the heads, pinch the tails, and always keep the beer cold.
           </p>
         </section>
