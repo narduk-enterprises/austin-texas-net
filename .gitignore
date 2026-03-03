@@ -5,6 +5,9 @@
 .nitro
 .cache
 
+# Turbo
+.turbo/cache
+
 # Node dependencies
 node_modules
 

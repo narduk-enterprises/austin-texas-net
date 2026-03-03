@@ -10,9 +10,9 @@
 import { siteCategories } from '~~/server/utils/siteCategories'
 
 export default defineEventHandler(async (event) => {
-  const db = useDatabase(event)
-
   try {
+    const db = useDatabase(event)
+
     // Dynamic imports so we don't crash if the table doesn't exist
     const { siteCategoriesTable, contentPipelineTopics } = await import('~~/server/database/schema')
     const { eq } = await import('drizzle-orm')
