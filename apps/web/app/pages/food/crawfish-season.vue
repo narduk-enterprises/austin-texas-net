@@ -145,7 +145,7 @@ function openDirections(spot: CrawfishSpot) {
                   🦞 It's Crawfish Season
                 </div>
                 <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black font-display tracking-tight text-white drop-shadow-2xl">
-                  Crawfish Season <span class="text-primary">in Austin</span>
+                  Crawfish Season <span class="text-white drop-shadow-md">in Austin</span>
                 </h1>
                 <p class="mt-4 text-white/95 text-base sm:text-lg lg:text-xl drop-shadow-md font-medium max-w-2xl leading-relaxed">
                   Where to buy 'em, where to eat 'em, and how to boil 'em right. Your complete guide to mudbug season in the 512.
