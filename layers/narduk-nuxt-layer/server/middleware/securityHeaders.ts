@@ -14,11 +14,12 @@ export default defineEventHandler((event) => {
     'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
     'Content-Security-Policy': [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://us.i.posthog.com https://us-assets.i.posthog.com https://cdn.apple-mapkit.com",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://us.i.posthog.com https://us-assets.i.posthog.com https://cdn.apple-mapkit.com https://static.cloudflareinsights.com",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: https:",
       "font-src 'self' https://fonts.gstatic.com",
-      "connect-src 'self' https://www.google-analytics.com https://us.i.posthog.com https://us-assets.i.posthog.com https://cdn.apple-mapkit.com https://*.apple-mapkit.com https://maps-api.apple.com",
+      "connect-src 'self' https://www.google-analytics.com https://us.i.posthog.com https://us-assets.i.posthog.com https://cdn.apple-mapkit.com https://*.apple-mapkit.com https://maps-api.apple.com https://cloudflareinsights.com",
+      "worker-src 'self' blob:",
       "frame-ancestors 'none'",
     ].join('; '),
   })
