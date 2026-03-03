@@ -27,13 +27,28 @@ export default defineEventHandler(async (event) => {
   const body = await readBody<{ urls?: string[] }>(event).catch(() => ({} as { urls?: string[] }))
   let urls = body?.urls || []
 
-  // Default: submit the homepage + sitemap URL if no URLs provided
+  // Default: submit all URLs from the sitemap endpoint if no URLs provided
   if (!urls.length) {
     const base = siteUrl.replace(/\/$/, '')
-    urls = [
-      base + '/',
-      base + '/sitemap.xml',
-    ]
+    try {
+      const sitemapUrls = await $fetch<Array<{ loc: string }>>('/api/sitemap-urls')
+      if (sitemapUrls && Array.isArray(sitemapUrls)) {
+        urls = sitemapUrls.map(u => {
+          const path = u.loc.startsWith('/') ? u.loc : `/${u.loc}`
+          return base + path
+        })
+      }
+    } catch (err: any) {
+      console.error('[IndexNow] Failed to fetch sitemap URLs:', err.message)
+    }
+
+    // Fallback if fetch fails
+    if (!urls.length) {
+      urls = [
+        base + '/',
+        base + '/sitemap.xml',
+      ]
+    }
   }
 
   const host = new URL(siteUrl).host
@@ -74,6 +89,25 @@ export default defineEventHandler(async (event) => {
         ok: false,
       })
     }
+  }
+
+  // Also ping Google with the sitemap location
+  try {
+    const sitemapFallback = `${siteUrl.replace(/\/$/, '')}/sitemap.xml`
+    const googlePingUrl = `https://www.google.com/ping?sitemap=${encodeURIComponent(sitemapFallback)}`
+    const googleRes = await fetch(googlePingUrl)
+    results.push({
+      engine: 'https://www.google.com/ping',
+      status: googleRes.status,
+      ok: googleRes.status >= 200 && googleRes.status < 300,
+    })
+  } catch (_error: any) {
+    console.warn(`[Google Ping] Failed to ping Google:`, _error.message)
+    results.push({
+      engine: 'https://www.google.com/ping',
+      status: 0,
+      ok: false,
+    })
   }
 
   return {
