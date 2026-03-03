@@ -15,8 +15,6 @@ const category = getCategoryBySlug('events')!
 const siblings = category.subApps.filter((a) => a.slug !== 'this-weekend')
 const crossLinks = categories.value.filter((c) => c.slug !== 'events').slice(0, 4)
 
-const { items: breadcrumbs } = useBreadcrumbs()
-
 usePageSeo({
   title: 'Things To Do in Austin This Weekend — Events, Music & Activities',
   description:
@@ -288,7 +286,6 @@ const resources = [
   <div>
     <SubAppTopbar title="This Weekend" />
     <UContainer class="py-8 md:py-12">
-      <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
       <!-- ══════ Header ══════ -->
       <div class="mb-8 animate-fade-up">
         <div class="flex items-center gap-3 mb-4">

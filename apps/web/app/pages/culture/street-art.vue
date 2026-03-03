@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { murals, neighborhoods, allTags } from '~/data/murals'
 
-const { items: breadcrumbs } = useBreadcrumbs()
-
 usePageSeo({
   title: 'Austin Street Art & Murals Map — Find Graffiti & Public Art',
   description: 'Explore Austin\'s best street art, murals, and graffiti on an interactive guide. Discover muralists, photo spots, and hidden gems across the city.',
@@ -38,7 +36,6 @@ const stats = computed(() => ({
   <div>
     <SubAppTopbar title="Street Art" />
     <UContainer class="py-8 md:py-12">
-      <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
       <div class="space-y-8 sm:space-y-12">
         <!-- Hero -->
     <section class="text-center py-8 sm:py-12">

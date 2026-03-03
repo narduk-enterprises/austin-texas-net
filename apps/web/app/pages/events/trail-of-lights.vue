@@ -6,8 +6,6 @@ const category = getCategoryBySlug('events')!
 const siblings = category.subApps.filter((a) => a.slug !== 'trail-of-lights')
 const crossLinks = categories.value.filter((c) => c.slug !== 'events').slice(0, 4)
 
-const { items: breadcrumbs } = useBreadcrumbs()
-
 usePageSeo({
   title: 'Austin Trail of Lights Guide',
   description: 'Everything you need to know about the Austin Trail of Lights in Zilker Park. Dates, parking info, and tips for this beloved holiday tradition.',
@@ -56,8 +54,6 @@ useSchemaOrg([
   <div>
     <SubAppTopbar title="Trail of Lights" />
     <UContainer class="py-8 md:py-12">
-      <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
-      
       <div class="space-y-8 sm:space-y-12">
         <!-- Hero Section -->
         <section class="text-center py-8 sm:py-12 animate-fade-up">

@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { courses, difficulties } from '~/data/disc-golf-courses'
 
-const { items: breadcrumbs } = useBreadcrumbs()
-
 usePageSeo({
   title: 'Austin Disc Golf Courses — Course Finder & Reviews',
   description: 'Find every disc golf course in Austin TX. Hole layouts, difficulty ratings, reviews, parking tips, and directions for all skill levels.',
@@ -29,7 +27,6 @@ const totalHoles = computed(() => courses.reduce((sum, c) => sum + c.holes, 0))
   <div>
     <SubAppTopbar title="Disc Golf Courses" />
     <UContainer class="py-8 md:py-12">
-      <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
       <div class="space-y-8 sm:space-y-12">
         <section class="text-center py-8 sm:py-12">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-medium mb-4">

@@ -18,8 +18,6 @@ import {
 } from '~/data/crawfish'
 import type { CrawfishSpot } from '~/data/crawfish'
 
-const { items: breadcrumbs } = useBreadcrumbs()
-
 usePageSeo({
   title: 'Crawfish Season in Austin TX — Where to Buy, Eat & Boil',
   description:
@@ -125,8 +123,6 @@ function openDirections(spot: CrawfishSpot) {
     <SubAppTopbar title="Crawfish Season" />
 
     <UContainer class="py-8 md:py-12">
-      <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
-
       <div class="space-y-10 sm:space-y-14">
         <!-- ═══ HERO ═══ -->
         <section class="relative overflow-hidden rounded-3xl border-4 border-primary/20 shadow-xl shadow-primary/5 group">

@@ -6,8 +6,6 @@ const category = getCategoryBySlug('health')!
 const siblings = category.subApps.filter((a) => a.slug !== 'allergy-forecast')
 const crossLinks = categories.value.filter((c) => c.slug !== 'health').slice(0, 4)
 
-const { items: breadcrumbs } = useBreadcrumbs()
-
 usePageSeo({
   title: 'Austin Allergy Forecast — Oak, Cedar, Elm & Mold Tracker',
   description: 'Track the daily allergy forecast for Austin TX. Get counts and insights for Cedar, Oak, Elm, Ragweed, and Mold before you head outdoors.',
@@ -45,8 +43,6 @@ const upcomingDays = [
   <div>
     <SubAppTopbar title="Allergy Forecast" />
     <UContainer class="py-8 md:py-12">
-      <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
-      
       <div class="space-y-8 sm:space-y-12">
         <!-- Hero Section -->
         <section class="text-center py-8 sm:py-12 animate-fade-up">

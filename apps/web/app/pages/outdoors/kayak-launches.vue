@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { launchSites, waterBodies } from '~/data/kayak-launches'
 
-const { items: breadcrumbs } = useBreadcrumbs()
-
 usePageSeo({
   title: 'Austin Kayak Launch Sites — Paddleboard, Canoe & Kayak Guide',
   description: 'Find the best kayak, canoe, and paddleboard launch sites in Austin TX. Water conditions, parking info, difficulty ratings, and local tips.',
@@ -35,7 +33,6 @@ const difficultyColor = (d: string) => {
   <div>
     <SubAppTopbar title="Kayak Launches" />
     <UContainer class="py-8 md:py-12">
-      <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
       <div class="space-y-8 sm:space-y-12">
         <section class="text-center py-8 sm:py-12">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-medium mb-4">

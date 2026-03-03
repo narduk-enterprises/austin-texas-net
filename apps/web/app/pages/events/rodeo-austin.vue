@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { events, foodVendors, parkingTips, eventTypes } from '~/data/rodeo-events'
 
-const { items: breadcrumbs } = useBreadcrumbs()
-
 usePageSeo({
   title: 'Rodeo Austin 2026 — Schedule, Concerts, Tickets & Food Guide',
   description: 'Your complete guide to Rodeo Austin 2026. Concert lineup, rodeo schedule, ticket prices, food vendors, parking, and insider tips.',
@@ -69,7 +67,6 @@ const formatDate = (d: string) => new Date(d + 'T12:00:00').toLocaleDateString('
   <div>
     <SubAppTopbar title="Rodeo Austin" />
     <UContainer class="py-8 md:py-12">
-      <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
       <div class="space-y-8 sm:space-y-12">
         <section class="text-center py-8 sm:py-12">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-elevated/10 text-muted text-xs font-medium mb-4">

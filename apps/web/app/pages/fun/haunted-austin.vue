@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { hauntedPlaces, placeTypes } from '~/data/haunted-locations'
 
-const { items: breadcrumbs } = useBreadcrumbs()
-
 usePageSeo({
   title: 'Haunted Austin — Ghost Tours, Haunted Places & Spooky History',
   description: 'Explore Austin\'s most haunted locations. Ghost stories, paranormal history, guided tour info, and spine-chilling tales from the Texas capital.',
@@ -27,7 +25,6 @@ const skullIcons = (n: number) => Array.from({ length: 5 }, (_, i) => i < n)
   <div>
     <SubAppTopbar title="Haunted Austin" />
     <UContainer class="py-8 md:py-12">
-      <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
       <div class="space-y-8 sm:space-y-12">
         <section class="text-center py-8 sm:py-12">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-elevated/10 text-muted text-xs font-medium mb-4">

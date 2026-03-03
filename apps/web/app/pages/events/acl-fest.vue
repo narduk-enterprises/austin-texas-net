@@ -6,8 +6,6 @@ const category = getCategoryBySlug('events')!
 const siblings = category.subApps.filter((a) => a.slug !== 'acl-fest')
 const crossLinks = categories.value.filter((c) => c.slug !== 'events').slice(0, 4)
 
-const { items: breadcrumbs } = useBreadcrumbs()
-
 usePageSeo({
   title: 'Austin City Limits (ACL) Music Festival Guide',
   description: 'Your guide to the ACL Music Festival held annually in Zilker Park. Find lineup info, dates, survival tips, and transportation options.',
@@ -83,8 +81,6 @@ useSchemaOrg([
   <div>
     <SubAppTopbar title="ACL Fest Guide" />
     <UContainer class="py-8 md:py-12">
-      <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
-      
       <div class="space-y-8 sm:space-y-12">
         <!-- Hero Section -->
         <section class="text-center py-8 sm:py-12 animate-fade-up">

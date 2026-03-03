@@ -16,8 +16,6 @@ const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('outdoors')!
 const siblings = category.subApps.filter((a) => a.slug !== 'bluebonnets')
 const crossLinks = categories.value.filter((c) => c.slug !== 'outdoors').slice(0, 4)
-const { items: breadcrumbs } = useBreadcrumbs()
-
 // ── Year filter ────────────────────────────────────────────
 const currentYear = new Date().getFullYear()
 const selectedYear = ref<string>(String(currentYear))
@@ -376,7 +374,6 @@ useHead({
   <div>
     <SubAppTopbar title="Bluebonnet Sightings Map" />
     <UContainer class="py-8 md:py-12">
-      <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
       <!-- ══════ Hero Section ══════ -->
       <div class="mb-8 animate-fade-up">
         <div class="flex items-center gap-3 mb-4">

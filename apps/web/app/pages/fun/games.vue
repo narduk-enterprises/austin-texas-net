@@ -4,8 +4,6 @@ usePageSeo({
   description: 'ATX Games is the launchpad for playable browser games from ATX Apps.',
 })
 
-const { items: breadcrumbs } = useBreadcrumbs()
-
 interface GameCard {
   slug: string
   name: string
@@ -57,7 +55,6 @@ const upcomingGames: GameCard[] = [
   <div>
     <SubAppTopbar title="Games Portal" />
     <UContainer class="py-8 md:py-12">
-      <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
       <div class="grid min-h-[calc(100dvh-8.5rem)] grid-rows-[auto,1fr,auto] gap-3 sm:gap-4">
         <section class="glass-card px-4 py-3.5 sm:px-5">
       <div class="flex flex-wrap items-center justify-between gap-2.5">

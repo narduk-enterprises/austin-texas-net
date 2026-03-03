@@ -6,8 +6,6 @@ const category = getCategoryBySlug('health')!
 const siblings = category.subApps.filter((a) => a.slug !== 'air-quality')
 const crossLinks = categories.value.filter((c) => c.slug !== 'health').slice(0, 4)
 
-const { items: breadcrumbs } = useBreadcrumbs()
-
 usePageSeo({
   title: 'Austin Air Quality Index (AQI) — Current Conditions',
   description: 'Check real-time air quality in Austin TX. Monitor ozone, PM2.5, and PM10 levels to plan your outdoor activities safely.',
@@ -29,8 +27,6 @@ useSchemaOrg([
   <div>
     <SubAppTopbar title="Air Quality" />
     <UContainer class="py-8 md:py-12">
-      <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
-      
       <div class="space-y-8 sm:space-y-12">
         <!-- Hero Section -->
         <section class="text-center py-8 sm:py-12 animate-fade-up">

@@ -17,8 +17,6 @@ const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('weather')!
 const siblings = category.subApps.filter((a) => a.slug !== 'current-conditions')
 const crossLinks = categories.value.filter((c) => c.slug !== 'weather').slice(0, 4)
-const { items: breadcrumbs } = useBreadcrumbs()
-
 usePageSeo({
   title: 'Austin Weather Now — Current Conditions, Temperature & Wind',
   description:
@@ -100,7 +98,6 @@ const statCards = computed(() => {
   <div>
     <SubAppTopbar title="Current Weather" />
     <UContainer class="py-8 md:py-12">
-      <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
       <!-- Header -->
       <div class="flex items-center gap-3 mb-8 animate-fade-up">
         <div class="flex items-center justify-center size-12 rounded-2xl" :class="category.bgColor">

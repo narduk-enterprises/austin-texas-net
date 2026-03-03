@@ -16,8 +16,6 @@ const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('real-estate')!
 const siblings = category.subApps.filter((a) => a.slug !== 'market-trends' && a.status === 'live')
 const crossLinks = categories.value.filter((c) => c.slug !== 'real-estate').slice(0, 4)
-const { items: breadcrumbs } = useBreadcrumbs()
-
 usePageSeo({
   title: 'Austin Housing Market Trends — Prices, Inventory & Sales Data',
   description:
@@ -123,7 +121,6 @@ function formatStatValue(value: number | null, type: string): string {
   <div>
     <SubAppTopbar title="Market Trends" />
     <UContainer class="py-8 md:py-12">
-      <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
       <!-- Header -->
       <div class="mb-8 animate-fade-up">
         <div class="flex items-center gap-3 mb-4">

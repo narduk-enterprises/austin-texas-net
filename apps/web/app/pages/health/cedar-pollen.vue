@@ -13,8 +13,6 @@ const category = getCategoryBySlug('health')!
 const siblings = category.subApps.filter((a) => a.slug !== 'cedar-pollen')
 const crossLinks = categories.value.filter((c) => c.slug !== 'health').slice(0, 4)
 
-const { items: breadcrumbs } = useBreadcrumbs()
-
 usePageSeo({
   title: 'Austin Cedar Pollen Count — Live Tracker & Forecast',
   description:
@@ -133,7 +131,6 @@ const healthTips = computed(() => {
   <div>
     <SubAppTopbar title="Cedar Pollen Tracker" />
     <UContainer class="py-8 md:py-12">
-      <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
       <!-- Header -->
       <div class="mb-8 animate-fade-up">
         <div class="flex items-center gap-3 mb-4">

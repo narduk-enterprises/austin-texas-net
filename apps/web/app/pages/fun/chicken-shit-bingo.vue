@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { bingoInfo, faqs, tips } from '~/data/chicken-shit-bingo-locations'
 
-const { items: breadcrumbs } = useBreadcrumbs()
-
 usePageSeo({
   title: 'Chicken Shit Bingo at Little Longhorn Saloon — Austin TX Guide',
   description: 'Everything about Chicken Shit Bingo at the Little Longhorn Saloon in Austin. Schedule, rules, how to play, what to expect, and tips for first-timers.',
@@ -23,7 +21,6 @@ const toggleFaq = (id: number) => {
   <div>
     <SubAppTopbar title="Chicken Shit Bingo" />
     <UContainer class="py-8 md:py-12">
-      <UBreadcrumb v-if="breadcrumbs.length > 0" :items="breadcrumbs" class="mb-6" />
       <div class="space-y-8 sm:space-y-12">
         <section class="text-center py-8 sm:py-12">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-elevated/10 text-primary text-xs font-medium mb-4">
