@@ -131,7 +131,7 @@ function openDirections(spot: CrawfishSpot) {
         <section class="relative overflow-hidden rounded-3xl border-4 border-primary/20 shadow-xl shadow-primary/5 group">
           <div class="relative">
             <img
-              src="/images/crawfish-boil-hero.png"
+              src="/images/crawfish_hero_vibrant_1772521588676.png"
               alt="A traditional Cajun crawfish boil spread with bright red crawfish, corn, potatoes, and cold beer"
               class="w-full h-56 sm:h-72 md:h-[28rem] object-cover"
               loading="eager"
@@ -151,7 +151,7 @@ function openDirections(spot: CrawfishSpot) {
                 </p>
               </div>
               <div class="hidden md:block w-32 lg:w-48 xl:w-56 z-10 transform translate-y-6 hover:scale-110 hover:-rotate-3 transition-all duration-500">
-                <img src="/images/crawfish_mascot.png" alt="Happy Crawfish Mascot" class="w-full h-auto drop-shadow-2xl brightness-105 filter contrast-105">
+                <img src="/images/crawfish_mascot_happy_2_1772521712147.png" alt="Happy Crawfish Mascot" class="w-full h-auto drop-shadow-2xl brightness-105 filter contrast-105">
               </div>
             </div>
           </div>
@@ -176,6 +176,9 @@ function openDirections(spot: CrawfishSpot) {
         <!-- ═══ BUY A SACK ═══ -->
         <section id="section-buy" class="scroll-mt-24 space-y-8">
           <div class="text-center">
+            <div class="flex justify-center mb-6">
+              <img src="/images/crawfish_market_icon_1772521599751.png" alt="Crawfish Sack" class="w-32 h-32 object-contain drop-shadow-xl hover:scale-110 transition-transform duration-300">
+            </div>
             <h2 class="text-3xl sm:text-4xl font-black font-display text-foreground">
               Where to Buy Live Crawfish
             </h2>
@@ -269,6 +272,9 @@ function openDirections(spot: CrawfishSpot) {
         <!-- ═══ RESTAURANTS ═══ -->
         <section id="section-eat" class="scroll-mt-24 space-y-8">
           <div class="text-center">
+            <div class="flex justify-center mb-6">
+              <img src="/images/crawfish_restaurant_icon_1772521611530.png" alt="Restaurant Table" class="w-32 h-32 object-contain drop-shadow-xl hover:scale-110 transition-transform duration-300 rounded-3xl">
+            </div>
             <h2 class="text-3xl sm:text-4xl font-black font-display text-foreground">
               Best Crawfish Restaurants
             </h2>
@@ -370,8 +376,8 @@ function openDirections(spot: CrawfishSpot) {
 
             <!-- Ingredients -->
             <div class="bg-primary dark:bg-primary/50 text-white p-8 rounded-3xl shadow-lg relative overflow-hidden flex flex-col">
-              <div class="absolute -right-4 -bottom-4 w-64 opacity-30 transform rotate-12 transition-transform duration-700 hover:rotate-6">
-                 <img src="/images/ingredients_graphic.png" alt="Decorative ingredients" class="w-full h-auto brightness-200 contrast-150">
+              <div class="absolute -right-4 -bottom-4 w-64 opacity-60 transform rotate-12 transition-transform duration-700 hover:rotate-6">
+                 <img src="/images/crawfish_corn_potato_1772521681540.png" alt="Decorative ingredients" class="w-full h-auto brightness-110 contrast-125 rounded-2xl mix-blend-luminosity">
               </div>
               <h3 class="text-2xl font-black font-display mb-6 flex items-center gap-3 text-white w-full pb-4 border-b border-white/20 relative z-10">
                 <UIcon name="i-lucide-shopping-cart" class="size-7" />
@@ -385,7 +391,7 @@ function openDirections(spot: CrawfishSpot) {
               </ul>
               
               <div class="mt-8 p-5 bg-white/10 rounded-2xl backdrop-blur-md border border-white/30 relative z-10 flex gap-5 items-center shadow-inner">
-                 <img src="/images/ingredients_graphic.png" alt="Ingredients" class="w-20 h-20 object-contain hidden sm:block drop-shadow-lg scale-110">
+                 <img src="/images/crawfish_seasoning_bag_1772521637005.png" alt="Ingredients" class="w-20 h-20 object-contain hidden sm:block drop-shadow-lg scale-110 rounded-lg">
                  <p class="text-sm font-medium leading-relaxed opacity-100"><span class="font-black uppercase tracking-wider text-primary/40 drop-shadow-sm">Cajun Secret:</span> Don't skimp on the seasoning. The more garlic and lemon, the better the boil.</p>
               </div>
             </div>
@@ -397,46 +403,38 @@ function openDirections(spot: CrawfishSpot) {
               <UIcon name="i-lucide-list-ordered" class="size-8 text-primary dark:text-primary" />
               Step-by-Step Guide
             </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative pb-8">
-              <!-- Vertical Line for timeline effect -->
-              <div class="absolute left-1/2 top-0 bottom-4 w-1.5 bg-primary/20/50 dark:bg-primary/30 hidden md:block -translate-x-1/2 rounded-full" />
-              
-              <div v-for="(step, idx) in boilRecipe.steps" :key="step.id" class="relative group" :class="idx % 2 === 0 ? 'md:pr-12' : 'md:pl-12 md:col-start-2'">
-                
-                <!-- The timeline node -->
-                <div class="absolute top-8 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-primary/5 dark:bg-primary border-4 border-primary/30 dark:border-primary z-10 shadow-md group-hover:scale-110 group-hover:border-primary transition-all duration-300" :class="idx % 2 === 0 ? '-right-6 translate-x-1/2' : '-left-6 -translate-x-1/2'">
-                   <span class="text-base font-black text-primary dark:text-primary">{{ step.id }}</span>
-                </div>
-                
-                <div class="bg-white dark:bg-surface p-7 sm:p-8 rounded-3xl shadow-sm border border-default group-hover:border-primary/40 dark:group-hover:border-primary transition-all duration-300 group-hover:shadow-xl h-full flex flex-col relative overflow-hidden group-hover:-translate-y-1">
-                  <!-- Subtle background number -->
-                  <div class="absolute -right-4 -top-8 text-9xl font-black font-display text-primary/10 dark:text-primary/20 opacity-50 z-0 pointer-events-none transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
-                    {{ step.id }}
-                  </div>
-                  
-                  <div class="relative z-10 flex items-center gap-4 mb-5">
-                    <div class="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/50 text-primary dark:text-primary font-black text-base shrink-0 shadow-sm border border-primary/30 dark:border-primary">
-                      {{ step.id }}
+            <div class="max-w-4xl mx-auto">
+              <UTimeline :items="boilRecipe.steps.map(s => ({ title: `Step ${s.id}`, description: s.instruction, icon: 'i-lucide-check-circle', tip: s.tip, id: s.id }))" class="pl-4 md:pl-0">
+                <template #wrapper="{ item }">
+                  <div class="bg-white dark:bg-surface p-6 sm:p-8 rounded-3xl shadow-sm border-4 border-default hover:border-primary/40 transition-all duration-300 mb-8 overflow-hidden relative group">
+                    <div class="absolute -right-4 -top-8 text-9xl font-black font-display text-primary/5 dark:text-primary/10 opacity-50 z-0 pointer-events-none transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
+                      {{ item.id }}
                     </div>
-                    <h4 class="font-display font-black text-xl text-foreground group-hover:text-primary dark:group-hover:text-primary transition-colors">Step {{ step.id }}</h4>
-                  </div>
-                  
-                  <p class="text-base leading-relaxed text-muted relative z-10 flex-grow">{{ step.instruction }}</p>
-                  
-                  <div v-if="step.tip" class="mt-6 bg-primary/5 dark:bg-primary/20 rounded-2xl p-5 flex gap-4 border border-primary/30/50 dark:border-primary/30 relative z-10 relative overflow-hidden">
-                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-2xl"></div>
-                    <div class="shrink-0 mt-0.5">
-                       <UIcon name="i-lucide-lightbulb" class="size-6 text-primary" />
+                    <div class="relative z-10">
+                      <p class="text-base leading-relaxed text-muted">{{ item.description }}</p>
+                      <div v-if="item.tip" class="mt-6 bg-primary/5 dark:bg-primary/20 rounded-2xl p-5 flex gap-4 border border-primary/30/50 dark:border-primary/30 overflow-hidden relative">
+                        <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-2xl"></div>
+                        <div class="shrink-0 mt-0.5">
+                          <UIcon name="i-lucide-lightbulb" class="size-6 text-primary" />
+                        </div>
+                        <p class="text-sm font-semibold text-primary dark:text-primary/20 leading-relaxed">{{ item.tip }}</p>
+                      </div>
+                      
+                      <!-- AI Graphics for specific steps -->
+                      <div v-if="item.id === 1" class="mt-8 flex justify-center">
+                        <img src="/images/crawfish_boil_tub_1772521760084.png" alt="Washing Crawfish" class="w-full max-w-[320px] rounded-2xl h-auto object-cover border-4 border-primary/20 drop-shadow-xl hover:scale-105 transition-transform duration-500">
+                      </div>
+                      <div v-if="item.id === 8" class="mt-8 flex justify-center">
+                        <img src="/images/crawfish_pot_boiling_1772521624797.png" alt="Boiling Pot" class="w-full max-w-[320px] rounded-2xl h-auto object-cover border-4 border-primary/20 drop-shadow-xl hover:scale-105 transition-transform duration-500 hover:-rotate-2">
+                      </div>
+                      <div v-if="item.id === 12" class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <img src="/images/crawfish_newspaper_table_1772521737132.png" alt="Feast" class="w-full rounded-2xl h-auto object-cover shadow-lg border-4 border-primary/20 hover:scale-105 transition-transform duration-500">
+                        <img src="/images/crawfish_cold_beer_1772521694686.png" alt="Cold Beer" class="w-full rounded-2xl h-auto object-cover shadow-lg border-4 border-primary/20 hover:scale-105 transition-transform duration-500">
+                      </div>
                     </div>
-                    <p class="text-sm font-semibold text-primary dark:text-primary/20 leading-relaxed">{{ step.tip }}</p>
                   </div>
-                  
-                  <!-- Conditional Graphics based on step ID -->
-                  <div v-if="step.id === 8" class="mt-8 flex justify-center relative z-10">
-                    <img src="/images/boil_pot_graphic.png" alt="Boiling Crawfish" class="w-full max-w-[280px] h-auto object-contain drop-shadow-xl hover:scale-105 transition-transform duration-500 hover:-rotate-2">
-                  </div>
-                </div>
-              </div>
+                </template>
+              </UTimeline>
             </div>
           </div>
         </section>
