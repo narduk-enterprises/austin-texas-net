@@ -165,10 +165,17 @@ export default defineEventHandler(async (event) => {
       .get()
 
     if (existing) {
-      // Only update search queries if they haven't been customized
+      // Sync label, description, and visual metadata in case they were updated in code
       await db
         .update(contentPipelineTopics)
-        .set({ updatedAt: new Date().toISOString() })
+        .set({
+          topicLabel: topic.topicLabel,
+          description: topic.description || null,
+          icon: topic.icon || null,
+          accentColor: topic.accentColor || null,
+          pinColor: topic.pinColor || null,
+          updatedAt: new Date().toISOString()
+        })
         .where(eq(contentPipelineTopics.id, existing.id))
       updated++
     } else {
