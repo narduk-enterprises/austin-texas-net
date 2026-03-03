@@ -96,7 +96,8 @@ export function parseKxanJs(jsText: string): KxanPollenData {
  * We extract the date string and the `a:` count value.
  */
 function parseAllergenArray(jsText: string, varName: string): KxanAllergenHistory[] {
-  // Find the array block
+  // Find the array block — varName is internally controlled (aryCedar/aryElm/aryMold)
+  // eslint-disable-next-line security/detect-non-literal-regexp
   const arrayRegex = new RegExp(`var ${varName}\\s*=\\s*\\[([\\s\\S]*?)\\];`, 'm')
   const match = jsText.match(arrayRegex)
   if (!match) return []
@@ -122,6 +123,8 @@ function parseAllergenArray(jsText: string, varName: string): KxanAllergenHistor
  */
 function extractLevel(jsText: string, allergen: string): string {
   // Pattern: <div class="allergen_value">Cedar - Very high</div>
+  // allergen is internally controlled (Cedar/Elm/Mold)
+  // eslint-disable-next-line security/detect-non-literal-regexp
   const regex = new RegExp(`allergen_value[^>]*>\\s*${allergen}\\s*-\\s*([^<]+)<`, 'i')
   const match = jsText.match(regex)
   if (match?.[1]) {

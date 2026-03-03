@@ -1,6 +1,19 @@
 import { eq } from 'drizzle-orm'
 import { schema } from '../../database'
 
+/** Constant-time string comparison to prevent timing attacks on secret values. */
+function constantTimeEqual(a: string, b: string): boolean {
+  const encoder = new TextEncoder()
+  const bufA = encoder.encode(a)
+  const bufB = encoder.encode(b)
+  if (bufA.byteLength !== bufB.byteLength) return false
+  let diff = 0
+  for (let i = 0; i < bufA.byteLength; i++) {
+    diff |= bufA[i]! ^ bufB[i]!
+  }
+  return diff === 0
+}
+
 /**
  * POST /api/radar/ingest
  *
@@ -18,7 +31,7 @@ export default defineEventHandler(async (event) => {
   const apiKey = getHeader(event, 'x-api-key')
 
   if (apiKey) {
-    if (apiKey !== config.ingestApiKey) {
+    if (!constantTimeEqual(apiKey, config.ingestApiKey as string)) {
       throw createError({ statusCode: 401, message: 'Unauthorized' })
     }
   } else {
