@@ -21,7 +21,7 @@
     </div>
 
     <!-- Content -->
-    <UContainer class="relative py-4 md:py-6 lg:py-8 flex justify-center">
+    <UContainer class="relative py-4 md:py-6 lg:py-8 flex flex-col items-center">
       <img
         src="/images/austin-logo-rope-all-things.svg"
         alt="AUSTIN-TEXAS.NET — Live, local intelligence."
@@ -32,6 +32,8 @@
       />
       <!-- Hidden h1 for SEO — screen readers and crawlers see this -->
       <h1 class="sr-only">AUSTIN-TEXAS.NET — Live, local intelligence</h1>
+      
+      <HomeSearch class="animate-fade-up-delay-1 mt-6 md:mt-8 w-full px-4" />
     </UContainer>
   </section>
 </template>
