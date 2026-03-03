@@ -1,6 +1,6 @@
 {
   "name": "austin-texas-net",
-  "version": "1.7.8",
+  "version": "1.7.9",
   "private": true,
   "packageManager": "pnpm@10.28.0",
   "scripts": {
