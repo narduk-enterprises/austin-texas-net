@@ -35,7 +35,7 @@ function slugify(name: string): string {
 export default defineEventHandler(async (event) => {
   const now = new Date().toISOString()
   // Build time is baked in at deploy — use for static content pages
-  const buildTime = __BUILD_TIME__ || now
+  const buildTime = typeof __BUILD_TIME__ !== 'undefined' ? __BUILD_TIME__ : now
 
   // ── Dynamic data from DB ─────────────────────────────────────
   let neighborhoodSlugs: { slug: string; updatedAt?: string | null }[] = []
@@ -52,8 +52,8 @@ export default defineEventHandler(async (event) => {
     ])
     neighborhoodSlugs = neighborhoodsRows
     allSpots = spotsRows
-  } catch {
-    // Table might not exist yet during dev — return empty
+  } catch (err) {
+    console.error('[sitemap-urls] Error fetching dynamic data:', err)
   }
 
   // Build a lookup for subAppSlug -> categorySlug
