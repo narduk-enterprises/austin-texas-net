@@ -1,8 +1,0 @@
-
-> austin-texas-net@1.0.0 typecheck /Users/narduk/code/austin-texas-net
-> npx nuxt typecheck
-
-ℹ Nuxt Icon server bundle mode is set to remote
-app/composables/usePageSeo.ts(46,28): error TS2345: Argument of type 'string' is not assignable to parameter of type 'keyof OgImageComponents'.
-app/composables/useSeo.ts(128,28): error TS2345: Argument of type '"OgImageDefaultTakumi"' is not assignable to parameter of type 'keyof OgImageComponents'.
- ELIFECYCLE  Command failed with exit code 1.

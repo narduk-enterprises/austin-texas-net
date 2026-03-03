@@ -9,8 +9,38 @@ usePageSeo({
 })
 
 useSchemaOrg([
-  defineWebPage({ name: 'Rodeo Austin 2026 Guide' }),
-  defineWebSite({ name: 'Rodeo Austin Guide' }),
+  defineWebPage({
+    name: 'Rodeo Austin 2026 — Schedule, Concerts, Tickets & Food Guide',
+    description:
+      'Your complete guide to Rodeo Austin 2026. Concert lineup, rodeo schedule, ticket prices, food vendors, parking, and insider tips.',
+  }),
+  {
+    '@type': 'Event',
+    name: 'Rodeo Austin 2026',
+    startDate: '2026-03-14',
+    endDate: '2026-03-22',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    eventStatus: 'https://schema.org/EventScheduled',
+    location: {
+      '@type': 'Place',
+      name: 'Travis County Expo Center',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '7311 Decker Ln',
+        addressLocality: 'Austin',
+        addressRegion: 'TX',
+        postalCode: '78724',
+        addressCountry: 'US',
+      },
+    },
+    description:
+      'Rodeo Austin — rodeo competitions, live concerts, carnival rides, livestock shows, and over 250,000 visitors across 9 days.',
+    organizer: {
+      '@type': 'Organization',
+      name: 'Rodeo Austin',
+      url: 'https://www.rodeoaustin.com',
+    },
+  },
 ])
 
 const selectedType = ref('')

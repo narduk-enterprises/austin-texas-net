@@ -144,6 +144,80 @@ useSeoMeta({
   ogDescription: spotSeoDescription,
 })
 
+// ── LocalBusiness JSON-LD for Google local search ──────────────
+// Emits structured data for map spots — either a single LocalBusiness
+// when a specific spot is selected, or an ItemList of all spots.
+const localBusinessJsonLd = computed(() => {
+  const siteUrl = 'https://austin-texas.net'
+
+  function spotToLocalBusiness(spot: MapSpot) {
+    return {
+      '@type': 'LocalBusiness',
+      name: spot.name,
+      ...(spot.description && { description: spot.description }),
+      ...(spot.address && {
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: spot.address,
+          addressLocality: 'Austin',
+          addressRegion: 'TX',
+          addressCountry: 'US',
+        },
+      }),
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: spot.lat,
+        longitude: spot.lng,
+      },
+      ...(spot.url && { url: spot.url }),
+      ...(spot.priceRange && { priceRange: spot.priceRange }),
+      ...(spot.rating && spot.rating > 0 && {
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: spot.rating,
+          bestRating: 5,
+        },
+      }),
+    }
+  }
+
+  if (selectedSpot.value) {
+    // Single selected spot
+    return {
+      '@context': 'https://schema.org',
+      ...spotToLocalBusiness(selectedSpot.value),
+    }
+  }
+
+  // ItemList of all spots for the category page view
+  if (props.spots.length === 0) return null
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: props.config.title,
+    itemListElement: props.spots.slice(0, 20).map((spot, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        ...spotToLocalBusiness(spot),
+        url: `${siteUrl}${route.path}?spot=${slugify(spot.name)}`,
+      },
+    })),
+  }
+})
+
+useHead(() => ({
+  script: localBusinessJsonLd.value
+    ? [
+        {
+          key: 'local-business-jsonld',
+          type: 'application/ld+json',
+          children: JSON.stringify(localBusinessJsonLd.value),
+        },
+      ]
+    : [],
+}))
+
 // ── Spot URL helper (used by SpotList for crawlable links) ─────
 function spotUrl(spot: MapSpot): string {
   return `${route.path}?spot=${slugify(spot.name)}`

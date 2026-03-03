@@ -22,6 +22,60 @@ useSchemaOrg([
     name: 'Austin City Limits (ACL) Music Festival Guide',
     description: 'Comprehensive guide to the Austin City Limits Music Festival in Zilker Park.',
   }),
+  {
+    '@type': 'Event',
+    name: 'ACL Fest 2026 — Weekend 1',
+    startDate: '2026-10-02',
+    endDate: '2026-10-04',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    eventStatus: 'https://schema.org/EventScheduled',
+    location: {
+      '@type': 'Place',
+      name: 'Zilker Metropolitan Park',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '2100 Barton Springs Rd',
+        addressLocality: 'Austin',
+        addressRegion: 'TX',
+        postalCode: '78704',
+        addressCountry: 'US',
+      },
+    },
+    description:
+      'Austin City Limits Music Festival Weekend 1 — over 100 acts across 9 stages in Zilker Park.',
+    organizer: {
+      '@type': 'Organization',
+      name: 'C3 Presents',
+      url: 'https://www.aclfestival.com',
+    },
+  },
+  {
+    '@type': 'Event',
+    name: 'ACL Fest 2026 — Weekend 2',
+    startDate: '2026-10-09',
+    endDate: '2026-10-11',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    eventStatus: 'https://schema.org/EventScheduled',
+    location: {
+      '@type': 'Place',
+      name: 'Zilker Metropolitan Park',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '2100 Barton Springs Rd',
+        addressLocality: 'Austin',
+        addressRegion: 'TX',
+        postalCode: '78704',
+        addressCountry: 'US',
+      },
+    },
+    description:
+      'Austin City Limits Music Festival Weekend 2 — the second weekend of ACL Fest in Zilker Park.',
+    organizer: {
+      '@type': 'Organization',
+      name: 'C3 Presents',
+      url: 'https://www.aclfestival.com',
+    },
+  },
 ])
 </script>
 

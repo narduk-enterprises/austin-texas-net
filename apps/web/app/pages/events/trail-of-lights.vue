@@ -22,6 +22,33 @@ useSchemaOrg([
     name: 'Austin Trail of Lights Guide',
     description: 'Complete guide to the Austin Trail of Lights holiday event in Zilker Park.',
   }),
+  {
+    '@type': 'Event',
+    name: 'Austin Trail of Lights 2026',
+    startDate: '2026-12-05',
+    endDate: '2026-12-23',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    eventStatus: 'https://schema.org/EventScheduled',
+    location: {
+      '@type': 'Place',
+      name: 'Zilker Metropolitan Park',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '2100 Barton Springs Rd',
+        addressLocality: 'Austin',
+        addressRegion: 'TX',
+        postalCode: '78704',
+        addressCountry: 'US',
+      },
+    },
+    description:
+      'A 1.25-mile walk through Zilker Park featuring more than 2 million lights, 90 lighted holiday trees, and over 70 holiday displays. Austin\'s most beloved holiday tradition since 1965.',
+    organizer: {
+      '@type': 'Organization',
+      name: 'Trail of Lights Foundation',
+      url: 'https://www.austintrailoflights.org',
+    },
+  },
 ])
 </script>
 

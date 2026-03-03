@@ -4,10 +4,25 @@
  * Auto-generates URLs from the server-side category registry
  * (server/utils/siteCategories.ts) plus dynamic neighborhood slugs
  * from the D1 database. No manual URL lists to maintain.
+ *
+ * lastmod strategy:
+ * - Live data pages (weather, pollen, lake levels): current timestamp (actually changes frequently)
+ * - Static content pages: build timestamp (changes only on deploy)
+ * - Map spots / neighborhoods: updatedAt from D1 (changes when data is edited)
  */
+
 import { eq } from 'drizzle-orm'
 import { neighborhoodsTable, mapSpotsTable } from '~~/server/database/schema'
 import { siteCategories } from '~~/server/utils/siteCategories'
+
+declare const __BUILD_TIME__: string
+
+/** Sub-apps whose data genuinely changes hourly/daily */
+const LIVE_DATA_SLUGS = new Set([
+  'cedar-pollen', 'allergy-forecast', 'air-quality',
+  'current-conditions', 'radar', '7-day-forecast', 'heat-index', 'freeze-alerts',
+  'water-temps', 'lake-levels', 'this-weekend', 'drought-status',
+])
 
 function slugify(name: string): string {
   return name
@@ -19,21 +34,23 @@ function slugify(name: string): string {
 
 export default defineEventHandler(async (event) => {
   const now = new Date().toISOString()
+  // Build time is baked in at deploy — use for static content pages
+  const buildTime = __BUILD_TIME__ || now
 
   // ── Dynamic data from DB ─────────────────────────────────────
-  let neighborhoodSlugs: string[] = []
-  let allSpots: { name: string; contentType: string }[] = []
+  let neighborhoodSlugs: { slug: string; updatedAt?: string | null }[] = []
+  let allSpots: { name: string; contentType: string; updatedAt?: string | null }[] = []
   try {
     const db = useDatabase(event)
     const [neighborhoodsRows, spotsRows] = await Promise.all([
-      db.select({ slug: neighborhoodsTable.slug }).from(neighborhoodsTable).all(),
+      db.select({ slug: neighborhoodsTable.slug, updatedAt: neighborhoodsTable.updatedAt }).from(neighborhoodsTable).all(),
       db
-        .select({ name: mapSpotsTable.name, contentType: mapSpotsTable.contentType })
+        .select({ name: mapSpotsTable.name, contentType: mapSpotsTable.contentType, updatedAt: mapSpotsTable.updatedAt })
         .from(mapSpotsTable)
         .where(eq(mapSpotsTable.status, 'approved'))
         .all(),
     ])
-    neighborhoodSlugs = neighborhoodsRows.map((r) => r.slug)
+    neighborhoodSlugs = neighborhoodsRows
     allSpots = spotsRows
   } catch {
     // Table might not exist yet during dev — return empty
@@ -63,7 +80,7 @@ export default defineEventHandler(async (event) => {
       loc: `/${cat.slug}/`,
       changefreq: 'weekly',
       priority: cat.priority ?? 0.9,
-      lastmod: now,
+      lastmod: buildTime,
     })
 
     for (const app of cat.subApps) {
@@ -72,7 +89,7 @@ export default defineEventHandler(async (event) => {
         loc: `/${cat.slug}/${app.slug}/`,
         changefreq: app.changefreq ?? 'weekly',
         priority: app.priority ?? 0.8,
-        lastmod: now,
+        lastmod: LIVE_DATA_SLUGS.has(app.slug) ? now : buildTime,
       })
     }
   }
@@ -85,18 +102,18 @@ export default defineEventHandler(async (event) => {
         loc: `/${categorySlug}/${spot.contentType}/?spot=${slugify(spot.name)}`,
         changefreq: 'monthly',
         priority: 0.7,
-        lastmod: now,
+        lastmod: spot.updatedAt || buildTime,
       })
     }
   }
 
   // ── Neighborhoods (dynamic from DB) ──────────────────────
-  for (const slug of neighborhoodSlugs) {
+  for (const nh of neighborhoodSlugs) {
     urls.push({
-      loc: `/neighborhoods/${slug}/`,
+      loc: `/neighborhoods/${nh.slug}/`,
       changefreq: 'monthly',
       priority: 0.6,
-      lastmod: now,
+      lastmod: nh.updatedAt || buildTime,
     })
   }
 
