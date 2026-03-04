@@ -171,6 +171,13 @@ function isInClientContext(node, context) {
     if (current.type === "IfStatement" && current.test && current.test.type === "UnaryExpression" && current.test.operator === "!" && isImportMetaClient(current.test.argument)) {
       return true;
     }
+    if (current.type === "ConditionalExpression" && current.test) {
+      if (isImportMetaClient(current.test)) {
+        if (current.consequent === node || node.parent === current.consequent) {
+          return true;
+        }
+      }
+    }
     if (current.type === "CallExpression" && current.callee && (current.callee.name === "onMounted" || current.callee.name === "onUnmounted" || current.callee.name === "onBeforeUnmount" || current.callee.name === "onUpdated" || current.callee.name === "onBeforeUpdate")) {
       return true;
     }

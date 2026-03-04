@@ -13,7 +13,7 @@ export function isInClientContext(
   context: RuleContext<string, any[]>
 ): boolean {
   let current: any = node.parent
-  
+
   while (current) {
     // Check for import.meta.client guard
     if (
@@ -23,7 +23,7 @@ export function isInClientContext(
     ) {
       return isImportMetaClient(current.test)
     }
-    
+
     // Check for early return pattern: if (!import.meta.client) return ...; window...
     if (
       current.type === 'IfStatement' &&
@@ -35,23 +35,33 @@ export function isInClientContext(
       // This is a guard that returns early if NOT client, so the code after is client-only
       return true
     }
-    
+
+    // Check for ternary guard: import.meta.client ? document : null
+    if (current.type === 'ConditionalExpression' && current.test) {
+      if (isImportMetaClient(current.test)) {
+        // If node is in the 'consequent' branch, it's client-only
+        if (current.consequent === node || (node.parent === current.consequent)) {
+          return true
+        }
+      }
+    }
+
     // Check for lifecycle hooks (client-only)
     if (
       current.type === 'CallExpression' &&
       current.callee &&
       (current.callee.name === 'onMounted' ||
-       current.callee.name === 'onUnmounted' ||
-       current.callee.name === 'onBeforeUnmount' ||
-       current.callee.name === 'onUpdated' ||
-       current.callee.name === 'onBeforeUpdate')
+        current.callee.name === 'onUnmounted' ||
+        current.callee.name === 'onBeforeUnmount' ||
+        current.callee.name === 'onUpdated' ||
+        current.callee.name === 'onBeforeUpdate')
     ) {
       return true
     }
-    
+
     current = current.parent
   }
-  
+
   return false
 }
 
@@ -132,7 +142,7 @@ export function isDomAccess(node: any): { type: 'window' | 'document' | 'localSt
   if (node.type !== 'MemberExpression') {
     return { type: null, member: null }
   }
-  
+
   if (
     node.object &&
     node.object.type === 'Identifier' &&
@@ -143,7 +153,7 @@ export function isDomAccess(node: any): { type: 'window' | 'document' | 'localSt
       member: node.property && node.property.name ? node.property.name : null,
     }
   }
-  
+
   if (
     node.object &&
     node.object.type === 'Identifier' &&
@@ -154,7 +164,7 @@ export function isDomAccess(node: any): { type: 'window' | 'document' | 'localSt
       member: node.property && node.property.name ? node.property.name : null,
     }
   }
-  
+
   if (
     node.object &&
     node.object.type === 'Identifier' &&
@@ -165,7 +175,7 @@ export function isDomAccess(node: any): { type: 'window' | 'document' | 'localSt
       member: node.property && node.property.name ? node.property.name : null,
     }
   }
-  
+
   return { type: null, member: null }
 }
 
@@ -180,7 +190,7 @@ export function getScriptAST(ast: AST.ESLintProgram): any {
       return ast
     }
   }
-  
+
   return ast
 }
 

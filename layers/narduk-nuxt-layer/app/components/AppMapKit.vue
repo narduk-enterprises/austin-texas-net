@@ -158,7 +158,7 @@ let _texasCoords: Array<[number, number]> | null = null
 
 async function fetchTexasCoords(): Promise<Array<[number, number]>> {
   if (_texasCoords) return _texasCoords
-  // eslint-disable-next-line atx/no-fetch-in-component, nuxt-guardrails/no-raw-fetch -- client-only GeoJSON load inside async fn, not setup-level
+  // eslint-disable-next-line atx/no-fetch-in-component -- client-only GeoJSON load inside async fn, not setup-level
   const data = await $fetch<{ geometry: { coordinates: Array<Array<[number, number]>> } }>(
     '/api/geo/texas-outline',
   )
@@ -456,8 +456,7 @@ function buildClusterElement(cluster: { coordinate: unknown; memberAnnotations: 
   if (props.createClusterElement) {
     el = props.createClusterElement(cluster, count)
   } else {
-    // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
-    el = import.meta.client ? document.createElement('div') : ({} as HTMLElement)
+    el = import.meta.client ? document.createElement('div') : ({} /* @ts-expect-error */)
     el.className = 'mapkit-cluster'
     el.innerHTML = `<div class="mapkit-cluster-bubble"><span class="mapkit-cluster-count">${count}</span></div>`
   }
