@@ -71,11 +71,11 @@ export default defineNuxtConfig({
     colorMode: true
   },
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error - types from layers correctly handled but TS needs a nudge here
-  colorMode: {
-    preference: 'system'
-  },
+  ...(import.meta.dev ? {
+    colorMode: {
+      preference: 'system'
+    }
+  } : {} as any),
 
   ogImage: {
     runtimeCacheStorage: {
