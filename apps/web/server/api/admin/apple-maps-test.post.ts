@@ -14,9 +14,8 @@
  *   includeAddressCategories — optional: "SubLocality" | "PostalCode" | etc.
  */
 import { z } from 'zod'
-import { getAppleMapsAccessToken } from '~~/server/utils/appleMapToken'
 
- 
+
 
 const bodySchema = z.object({
   endpoint: z.enum(['search', 'geocode', 'reverseGeocode', 'neighborhood', 'searchAddress']),

@@ -117,11 +117,6 @@ export default defineNuxtConfig({
     name: 'Austin Texas',
   },
 
-  ogImage: {
-    defaults: {
-      component: 'OgImageDefaultTakumi',
-    },
-  },
 
   sitemap: {
     sources: ['/api/sitemap-urls'],

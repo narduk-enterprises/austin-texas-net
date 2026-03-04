@@ -1,5 +1,6 @@
 import { z } from 'zod'
 
+const GSC_WRITE_SCOPES = ['https://www.googleapis.com/auth/webmasters']
 const SITE_URL = 'sc-domain:austin-texas.net'
 
 const bodySchema = z.object({

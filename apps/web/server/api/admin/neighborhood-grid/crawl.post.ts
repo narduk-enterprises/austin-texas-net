@@ -22,7 +22,6 @@
 import { z } from 'zod'
 import { sql } from 'drizzle-orm'
 import { neighborhoodGrid } from '~~/server/database/schema'
-import { getAppleMapsAccessToken } from '~~/server/utils/appleMapToken'
 import {
   GRID_ROWS,
   GRID_COLS,
@@ -78,13 +77,13 @@ export default defineEventHandler(async (event) => {
 
   const batch: CrawlPoint[] = isFocusCrawl
     ? await generateFocusBatch(
-        db,
-        parsed.focusLat!,
-        parsed.focusLng!,
-        parsed.focusRadiusKm ?? 2,
-        parsed.focusStepMeters ?? 100,
-        batchSize,
-      )
+      db,
+      parsed.focusLat!,
+      parsed.focusLng!,
+      parsed.focusRadiusKm ?? 2,
+      parsed.focusStepMeters ?? 100,
+      batchSize,
+    )
     : await generateGridBatch(db, parsed.startLat, parsed.startLng, batchSize)
 
   if (batch.length === 0) {

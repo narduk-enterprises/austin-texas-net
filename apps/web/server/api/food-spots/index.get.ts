@@ -6,13 +6,6 @@
  * and region (from the neighborhoods API's neighborhood→region mapping).
  * Caches results for 12 hours.
  */
-import {
-  getDeveloperToken,
-  getAccessToken,
-  searchPlaces,
-  type AppleMapsCreds,
-  type AppleMapsSearchResult,
-} from '../../utils/apple-maps'
 
 const AUSTIN_CENTER = { lat: 30.2672, lng: -97.7431 }
 

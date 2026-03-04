@@ -10,7 +10,6 @@
  */
 import type { H3Event } from 'h3'
 import { getHeader } from 'h3'
-import { getMapKitJsToken } from '~~/server/utils/appleMapToken'
 
 function getOriginFromRequest(event: H3Event): string {
   const origin = getHeader(event, 'origin')
