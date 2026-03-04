@@ -120,7 +120,7 @@ const items = computed<MapItem[]>(() => {
 const selectedId = ref<string | null>(null)
 const selectedItem = computed(() => items.value.find((i) => i.id === selectedId.value) ?? null)
 
-function createPinElement(spot: MapItem, isSelected: boolean): { element: HTMLElement } | any {
+function createPinElement(spot: MapItem, isSelected: boolean): { element: HTMLElement } {
   if (import.meta.client) {
     const isPricePin = spot.type === 'price'
     /* eslint-disable atx/no-inline-hex -- MapKit pin gradient */

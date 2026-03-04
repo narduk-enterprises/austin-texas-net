@@ -96,7 +96,7 @@ const chartData = computed(() => {
 function createPinElement(
   spot: LakeSpot,
   isSelected: boolean,
-): any {
+): { element: HTMLElement } {
   if (import.meta.client) {
     const pct = spot.percentFull != null ? Math.round(spot.percentFull) : null
     /* eslint-disable atx/no-inline-hex -- MapKit pin fill status gradient */

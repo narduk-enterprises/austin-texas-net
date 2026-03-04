@@ -166,7 +166,7 @@ async function fetchTexasCoords(): Promise<Array<[number, number]>> {
 }
 
 function getTexasMaskColor(): string {
-  // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+   
   const isDark = import.meta.client && document.documentElement.classList.contains('dark')
   /* eslint-disable atx/no-inline-hex -- MapKit overlay mask colours */
   return isDark ? '#0a0a0a' : '#ffffff'
@@ -488,7 +488,7 @@ function initMap() {
     showsMapTypeControl: false,
     showsZoomControl: props.isZoomEnabled,
     showsScale: mapkit.FeatureVisibility.Adaptive,
-    // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+     
     colorScheme: (import.meta.client && document.documentElement.classList.contains('dark'))
       ? mapkit.Map.ColorSchemes.Dark
       : mapkit.Map.ColorSchemes.Light,
@@ -678,7 +678,7 @@ function addCenterLabel() {
   const region = computeBoundingRegion()
   const center = region.center
 
-  // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+   
   const isDark = import.meta.client && document.documentElement.classList.contains('dark')
 
    

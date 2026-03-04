@@ -63,7 +63,7 @@ const selectedSpot = computed<PermitSpot | null>(
 function createPinElement(
   spot: PermitSpot,
   isSelected: boolean,
-): { element: HTMLElement; cleanup?: () => void } | any {
+): { element: HTMLElement; cleanup?: () => void } {
   if (import.meta.client) {
     /* eslint-disable atx/no-inline-hex -- MapKit pin gradient */
     const fillColor =

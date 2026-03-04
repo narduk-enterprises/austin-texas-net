@@ -130,7 +130,7 @@ const sortedSpots = computed(() => {
 function createPinElement(
   spot: RentSpot,
   isSelected: boolean,
-): { element: HTMLElement; cleanup?: () => void } | any {
+): { element: HTMLElement; cleanup?: () => void } {
   if (import.meta.client) {
     const rent = spot.medianRent
 

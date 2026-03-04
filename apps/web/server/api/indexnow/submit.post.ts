@@ -38,8 +38,8 @@ export default defineEventHandler(async (event) => {
           return base + path
         })
       }
-    } catch (err: any) {
-      console.error('[IndexNow] Failed to fetch sitemap URLs:', err.message)
+    } catch (err: unknown) {
+      console.error('[IndexNow] Failed to fetch sitemap URLs:', err instanceof Error ? err.message : err)
     }
 
     // Fallback if fetch fails
@@ -81,8 +81,8 @@ export default defineEventHandler(async (event) => {
         status: response.status,
         ok: response.status >= 200 && response.status < 300,
       })
-    } catch (_error: any) {
-      console.warn(`[IndexNow] Failed to ping ${engine}:`, _error.message)
+    } catch (_error: unknown) {
+      console.warn(`[IndexNow] Failed to ping ${engine}:`, _error instanceof Error ? _error.message : _error)
       results.push({
         engine,
         status: 0,
@@ -101,8 +101,8 @@ export default defineEventHandler(async (event) => {
       status: googleRes.status,
       ok: googleRes.status >= 200 && googleRes.status < 300,
     })
-  } catch (_error: any) {
-    console.warn(`[Google Ping] Failed to ping Google:`, _error.message)
+  } catch (_error: unknown) {
+    console.warn(`[Google Ping] Failed to ping Google:`, _error instanceof Error ? _error.message : _error)
     results.push({
       engine: 'https://www.google.com/ping',
       status: 0,

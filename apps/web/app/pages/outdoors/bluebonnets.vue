@@ -137,7 +137,7 @@ const BLUEBONNET_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 
 function createBluebonnetPin(
   item: BluebonnetItem,
   _isSelected: boolean,
-): any {
+): { element: HTMLElement; cleanup?: () => void } {
   if (import.meta.client) {
     const wrapper = document.createElement('div')
     wrapper.innerHTML = BLUEBONNET_SVG
@@ -199,7 +199,7 @@ const BOUQUET_POSITIONS = [
 function createBluebonnetCluster(
   _cluster: { memberAnnotations: unknown[]; coordinate: unknown },
   count: number,
-): HTMLElement | any {
+): HTMLElement {
   if (import.meta.client) {
     const el = document.createElement('div')
     el.style.cssText = 'position:relative;display:flex;align-items:center;justify-content:center;'

@@ -87,7 +87,7 @@ const chartData = computed(() => historyData.value?.data || [])
 function createPinElement(
   spot: WaterSpot,
   isSelected: boolean,
-): any {
+): { element: HTMLElement } {
   if (import.meta.client) {
     const el = document.createElement('div')
     el.innerHTML = `

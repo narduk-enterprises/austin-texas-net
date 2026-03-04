@@ -63,7 +63,7 @@ function createPinElement(
   item: CrawfishSpot,
   isSelected: boolean,
 ): { element: HTMLElement; cleanup?: () => void } {
-  // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+   
   const wrapper = document.createElement('div')
   wrapper.className = `mapkit-pin${isSelected ? ' is-selected' : ''}`
   wrapper.innerHTML = `
@@ -96,7 +96,7 @@ const sections = [
 
 function scrollToSection(id: string) {
   activeSection.value = id
-  // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+   
   const el = document.getElementById(`section-${id}`)
   el?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }

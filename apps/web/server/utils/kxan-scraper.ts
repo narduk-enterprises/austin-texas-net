@@ -109,7 +109,7 @@ function parseAllergenArray(jsText: string, varName: string): KxanAllergenHistor
   const entryRegex = /new Date\('(\d{4}\/\d{2}\/\d{2})'\)[^}]*a:\s*(\d+)/g
   let entryMatch: RegExpExecArray | null
   while ((entryMatch = entryRegex.exec(arrayContent)) !== null) {
-    const dateStr = entryMatch[1]?.replace(/\//g, '-') ?? '' // 2026/01/09 → 2026-01-09
+    const dateStr = entryMatch[1]?.replaceAll('/', '-') ?? '' // 2026/01/09 → 2026-01-09
     const count = Number.parseInt(entryMatch[2] ?? '0', 10)
     if (dateStr) entries.push({ date: dateStr, count })
   }
