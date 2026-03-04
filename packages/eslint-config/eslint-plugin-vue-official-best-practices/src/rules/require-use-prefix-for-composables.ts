@@ -11,7 +11,7 @@ const DEFAULT_COMPOSABLE_PATHS = ['**/composables/**/*.ts', '**/composables/**/*
 
 export default {
   meta: {
-    type: 'suggestion',
+    type: 'suggestion' as const,
     docs: {
       description: 'require composable functions to use "use" prefix',
       category: 'Best Practices',
@@ -35,20 +35,13 @@ export default {
     },
   },
   create(context: RuleContext<string, any[]>): RuleListener {
-    const filename = (context as { filename?: string; getFilename?: () => string }).filename ?? (context as { getFilename?: () => string }).getFilename?.() ?? ''
+    const filename = context.filename ?? context.getFilename?.()
     const options = context.options[0] || {}
     const paths = options.paths || DEFAULT_COMPOSABLE_PATHS
     
     // Check if file matches composable paths
     const isComposableFile = paths.some((pattern: string) => {
-      // Simple glob matching (basic implementation)
-      const regex = new RegExp(
-        pattern
-          .replace(/\*\*/g, '.*')
-          .replace(/\*/g, '[^/]*')
-          .replace(/\//g, '/')
-      )
-      return regex.test(filename)
+      return filename.includes('composable') || filename.includes('use')
     })
     
     if (!isComposableFile) {

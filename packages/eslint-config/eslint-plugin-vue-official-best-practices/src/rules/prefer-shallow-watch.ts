@@ -9,7 +9,7 @@ import { VUE_BEST_PRACTICES } from '../utils/vue-docs-urls'
 
 export default {
   meta: {
-    type: 'suggestion',
+    type: 'suggestion' as const,
     docs: {
       description: 'prefer shallow watch over deep watch',
       category: 'Performance',
@@ -32,7 +32,7 @@ export default {
     },
   },
   create(context: RuleContext<string, any[]>): RuleListener {
-    const parserServices = context.parserServices as any
+    const parserServices = (context.sourceCode?.parserServices ?? context.parserServices) as any
     const options = context.options[0] || {}
     const strict = options.strict !== false // Default: true
     
@@ -62,7 +62,7 @@ export default {
           
           if (hasDeep) {
             // Check for suppression comment
-            const sourceCode = context.getSourceCode()
+            const sourceCode = context.sourceCode ?? (context as any).getSourceCode()
             const comments = sourceCode.getCommentsBefore(node)
             
             const hasSuppression = comments.some((comment: any) =>

@@ -173,7 +173,7 @@ const labelItems = computed<LabelItem[]>(() => {
 })
 
 function createLabelElement(item: LabelItem) {
-  // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+   
   const el = import.meta.client ? document.createElement('div') : ({} as HTMLElement)
   el.style.cssText =
     'font-size:12px;font-weight:700;color:#1e293b;white-space:nowrap;pointer-events:none;text-shadow:0 0 4px #fff,0 0 4px #fff,0 0 8px #fff'

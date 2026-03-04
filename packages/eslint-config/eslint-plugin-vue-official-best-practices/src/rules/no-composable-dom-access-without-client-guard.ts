@@ -10,7 +10,7 @@ import { isDomAccess, isInClientContext } from '../utils/ast-utils'
 
 export default {
   meta: {
-    type: 'problem',
+    type: 'problem' as const,
     docs: {
       description: 'require client guard for DOM access in composables',
       category: 'Best Practices',
@@ -33,7 +33,7 @@ export default {
     },
   },
   create(context: RuleContext<string, any[]>): RuleListener {
-    const filename = (context as { filename?: string; getFilename?: () => string }).filename ?? (context as { getFilename?: () => string }).getFilename?.() ?? ''
+    const filename = context.filename ?? context.getFilename?.()
     const options = context.options[0] || {}
     const allowProcessClient = options.allowProcessClient === true
     
@@ -90,6 +90,9 @@ export default {
       'Identifier'(node: any) {
         // Check for direct window/document/localStorage identifiers
         if (['window', 'document', 'localStorage'].includes(node.name)) {
+          if (node.parent && node.parent.type === 'MemberExpression' && node.parent.object === node) {
+            return // Will be handled by MemberExpression visitor
+          }
           checkDomAccess(node)
         }
       },

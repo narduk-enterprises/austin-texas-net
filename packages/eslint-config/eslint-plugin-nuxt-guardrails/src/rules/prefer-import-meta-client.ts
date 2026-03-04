@@ -4,19 +4,19 @@
  * Detects process.client/process.server and recommends import.meta.client/server
  */
 
-import type { RuleContext, RuleListener } from 'eslint'
+import type { Rule } from 'eslint'
 import { isProcessClient, isProcessServer } from '../utils/ast-utils'
 import type { PluginOptions } from '../types'
 
 export default {
   meta: {
-    type: 'suggestion',
+    type: 'suggestion' as const,
     docs: {
       description: 'prefer import.meta.client/server over process.client/server',
       category: 'Best Practices',
       recommended: true,
     },
-    fixable: 'code',
+    fixable: 'code' as const,
     schema: [
       {
         type: 'object',
@@ -34,7 +34,7 @@ export default {
       preferImportMetaServer: 'Use import.meta.server instead of process.server. See: https://nuxt.com/docs/4.x/guide/concepts/rendering',
     },
   },
-  create(context: RuleContext<string, PluginOptions[]>): RuleListener {
+  create(context: Rule.RuleContext): Rule.RuleListener {
     const options = context.options[0] || {}
     const allowProcessClientServer = options.allowProcessClientServer || false
     

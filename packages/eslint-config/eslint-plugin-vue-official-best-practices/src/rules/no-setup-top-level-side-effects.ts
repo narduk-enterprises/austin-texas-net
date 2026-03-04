@@ -11,7 +11,7 @@ import { isNuxtMode, isAllowedNuxtComposable } from '../utils/nuxt-detection'
 
 export default {
   meta: {
-    type: 'problem',
+    type: 'problem' as const,
     docs: {
       description: 'disallow top-level side effects in <script setup>',
       category: 'Best Practices',
@@ -25,7 +25,7 @@ export default {
     },
   },
   create(context: RuleContext<string, any[]>): RuleListener {
-    const parserServices = context.parserServices as any
+    const parserServices = (context.sourceCode?.parserServices ?? context.parserServices) as any
     const isNuxt = isNuxtMode(context)
     
     if (!parserServices || !parserServices.defineTemplateBodyVisitor) {

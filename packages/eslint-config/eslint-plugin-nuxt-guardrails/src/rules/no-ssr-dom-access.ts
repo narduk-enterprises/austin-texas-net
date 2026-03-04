@@ -4,12 +4,12 @@
  * Detects unguarded window/document/localStorage access in server context
  */
 
-import type { RuleContext, RuleListener } from 'eslint'
+import type { Rule } from 'eslint'
 import { isDomAccess, isInClientContext, isImportMetaClient } from '../utils/ast-utils'
 
 export default {
   meta: {
-    type: 'problem',
+    type: 'problem' as const,
     docs: {
       description: 'disallow unguarded DOM access in server context',
       category: 'Best Practices',
@@ -20,9 +20,9 @@ export default {
       unguardedDomAccess: 'Unguarded {{type}} access may cause SSR errors. Use onMounted() or guard with import.meta.client. See: https://nuxt.com/docs/4.x/guide/concepts/rendering',
     },
   },
-  create(context: RuleContext<string, any[]>): RuleListener {
-    const filename = (context as { filename?: string; getFilename?: () => string }).filename ?? (context as { getFilename?: () => string }).getFilename?.() ?? ''
-    const parserServices = context.parserServices as any
+  create(context: Rule.RuleContext): Rule.RuleListener {
+    const filename = context.filename ?? (context as any).getFilename?.() ?? ''
+    const parserServices = (context.sourceCode?.parserServices ?? (context as any).parserServices) as any
     
     // Skip client-only files
     if (filename.includes('.client.') || filename.includes('.client/')) {

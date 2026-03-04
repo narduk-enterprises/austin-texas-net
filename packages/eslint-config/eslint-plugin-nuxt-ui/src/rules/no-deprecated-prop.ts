@@ -16,7 +16,10 @@ export interface RuleContext {
     node: AST.Node
     messageId: string
     data?: Record<string, string>
-    fix?: (_fixer: { replaceTextRange: (_range: [number, number], _text: string) => unknown }) => unknown
+    fix?: (_fixer: {
+      replaceTextRange: (_range: [number, number], _text: string) => unknown,
+      replaceText: (_node: any, _text: string) => unknown
+    }) => unknown
   }) => void
   getSourceCode: () => { getText: (_node?: AST.Node) => string }
   sourceCode: {
@@ -31,13 +34,13 @@ export interface RuleContext {
 
 export default {
   meta: {
-    type: 'problem',
+    type: 'problem' as const,
     docs: {
       description: 'disallow deprecated props on Nuxt UI components',
       category: 'Possible Errors',
       recommended: true,
     },
-    fixable: 'code',
+    fixable: 'code' as const,
     schema: [
       {
         type: 'object',
@@ -70,6 +73,7 @@ export default {
     // Use defineTemplateBodyVisitor for Vue template AST nodes
     // Access via sourceCode.parserServices (not context.parserServices)
     const parserServices = context.sourceCode?.parserServices
+
     if (!parserServices || !parserServices.defineTemplateBodyVisitor) {
       // Fallback for non-Vue files or if parser services aren't available
       return {}
@@ -127,6 +131,9 @@ export default {
               },
               fix: deprecated.replacedBy && attr.key.range
                 ? (fixer) => {
+                    if (deprecated.replacedBy!.includes('=')) {
+                      return fixer.replaceText(attr, deprecated.replacedBy!)
+                    }
                     return fixer.replaceTextRange(attr.key.range!, deprecated.replacedBy!)
                   }
                 : undefined,

@@ -35,7 +35,7 @@ var require_script_setup_default = {
     }
   },
   create(context) {
-    const parserServices = context.parserServices;
+    const parserServices = context.sourceCode?.parserServices ?? context.parserServices;
     const options = context.options[0] || {};
     const allowOptionsApi = options.allowOptionsApi !== false;
     if (!parserServices || !parserServices.defineTemplateBodyVisitor) {
@@ -94,6 +94,9 @@ function isDomAccess(node) {
     return { type: null, member: null };
   }
   if (node.type === "Identifier") {
+    if (node.parent && node.parent.type === "MemberExpression" && node.parent.object === node) {
+      return { type: null, member: null };
+    }
     if (node.name === "window") {
       return { type: "window", member: null };
     }
@@ -150,7 +153,7 @@ function isLiteral(node) {
 function isTopLevel(node) {
   let current = node.parent;
   while (current) {
-    if (current.type === "FunctionDeclaration" || current.type === "FunctionExpression" || current.type === "ArrowFunctionExpression" || current.type === "ClassDeclaration" || current.type === "ClassExpression" || current.type === "MethodDefinition") {
+    if (current.type === "BlockStatement" || current.type === "IfStatement" || current.type === "ForStatement" || current.type === "ForInStatement" || current.type === "ForOfStatement" || current.type === "WhileStatement" || current.type === "SwitchStatement" || current.type === "TryStatement" || current.type === "CatchClause" || current.type === "FunctionDeclaration" || current.type === "FunctionExpression" || current.type === "ArrowFunctionExpression" || current.type === "ClassDeclaration" || current.type === "ClassExpression" || current.type === "MethodDefinition") {
       return false;
     }
     if (current.type === "Program") {
@@ -162,11 +165,8 @@ function isTopLevel(node) {
 }
 var nuxtCache = null;
 var cacheKey = null;
-function getCwd(context) {
-  return context.cwd ?? context.getCwd?.() ?? process.cwd();
-}
 function isNuxtMode(context) {
-  const cwd = getCwd(context);
+  const cwd = context.cwd ?? context.getCwd?.();
   if (cacheKey === cwd && nuxtCache !== null) {
     return nuxtCache;
   }
@@ -236,7 +236,7 @@ var no_setup_top_level_side_effects_default = {
     }
   },
   create(context) {
-    const parserServices = context.parserServices;
+    const parserServices = context.sourceCode?.parserServices ?? context.parserServices;
     const isNuxt = isNuxtMode(context);
     if (!parserServices || !parserServices.defineTemplateBodyVisitor) {
       return {};
@@ -312,7 +312,7 @@ var no_async_computed_getter_default = {
     }
   },
   create(context) {
-    const parserServices = context.parserServices;
+    const parserServices = context.sourceCode?.parserServices ?? context.parserServices;
     if (!parserServices || !parserServices.defineTemplateBodyVisitor) {
       return {};
     }
@@ -370,7 +370,7 @@ var prefer_shallow_watch_default = {
     }
   },
   create(context) {
-    const parserServices = context.parserServices;
+    const parserServices = context.sourceCode?.parserServices ?? context.parserServices;
     const options = context.options[0] || {};
     const strict2 = options.strict !== false;
     if (!parserServices || !parserServices.defineTemplateBodyVisitor) {
@@ -385,7 +385,7 @@ var prefer_shallow_watch_default = {
             return key === "deep" && prop.value?.value === true;
           });
           if (hasDeep) {
-            const sourceCode = context.getSourceCode();
+            const sourceCode = context.sourceCode ?? context.getSourceCode();
             const comments = sourceCode.getCommentsBefore(node);
             const hasSuppression = comments.some(
               (comment) => comment.value.includes("vue-official allow-deep-watch")
@@ -443,6 +443,10 @@ var no_template_complex_expressions_default = {
             type: "number",
             default: 3
           },
+          maxCallArgs: {
+            type: "number",
+            default: 1
+          },
           allowedFunctions: {
             type: "array",
             items: { type: "string" }
@@ -456,10 +460,11 @@ var no_template_complex_expressions_default = {
     }
   },
   create(context) {
-    const parserServices = context.parserServices;
+    const parserServices = context.sourceCode?.parserServices ?? context.parserServices;
     const options = context.options[0] || {};
     const maxTernaryDepth = options.maxTernaryDepth ?? 1;
     const maxLogicalOps = options.maxLogicalOps ?? 3;
+    const maxCallArgs = options.maxCallArgs ?? 1;
     const allowedFunctions = options.allowedFunctions || DEFAULT_WHITELIST;
     if (!parserServices || !parserServices.defineTemplateBodyVisitor) {
       return {};
@@ -479,6 +484,22 @@ var no_template_complex_expressions_default = {
         return Math.max(leftCount, rightCount);
       }
       return count;
+    };
+    const isComplexArg = (n) => {
+      if (!n || typeof n !== "object") return false;
+      if (n.type === "ConditionalExpression") return true;
+      if (n.type === "LogicalExpression") return true;
+      if (n.type === "CallExpression" && n.arguments.length > 0) return true;
+      for (const key in n) {
+        if (key === "parent" || key === "loc" || key === "range") continue;
+        const child = n[key];
+        if (Array.isArray(child)) {
+          if (child.some(isComplexArg)) return true;
+        } else if (child && typeof child === "object" && child.type) {
+          if (isComplexArg(child)) return true;
+        }
+      }
+      return false;
     };
     const checkExpression = (node) => {
       const ternaryDepth = countTernaryDepth(node);
@@ -503,13 +524,27 @@ var no_template_complex_expressions_default = {
         if (!n || typeof n !== "object") return;
         if (n.type === "CallExpression" && n.arguments.length > 0) {
           const callee = n.callee;
-          if (callee.type === "Identifier" && !allowedFunctions.includes(callee.name)) {
+          const calleeName = callee.type === "Identifier" ? callee.name : null;
+          if (calleeName && allowedFunctions.includes(calleeName)) {
+            return;
+          }
+          if (n.arguments.length > maxCallArgs) {
             context.report({
               node: n,
               messageId: "complexExpression",
               data: { url: VUE_STYLE_GUIDE }
             });
+            return;
           }
+          if (n.arguments.some(isComplexArg)) {
+            context.report({
+              node: n,
+              messageId: "complexExpression",
+              data: { url: VUE_STYLE_GUIDE }
+            });
+            return;
+          }
+          return;
         }
         for (const key in n) {
           if (key === "parent" || key === "loc" || key === "range") continue;
@@ -552,7 +587,7 @@ var consistent_defineprops_emits_default = {
     }
   },
   create(context) {
-    const parserServices = context.parserServices;
+    const parserServices = context.sourceCode?.parserServices ?? context.parserServices;
     if (!parserServices || !parserServices.defineTemplateBodyVisitor) {
       let definePropsCount2 = 0;
       let defineEmitsCount2 = 0;
@@ -685,9 +720,9 @@ var prefer_typed_defineprops_default = {
     }
   },
   create(context) {
-    const parserServices = context.parserServices;
-    const filename = context.filename ?? context.getFilename?.() ?? "";
-    const isTypeScript = filename.endsWith(".ts") || filename.endsWith(".vue") && (filename.includes('lang="ts"') || filename.includes("lang='ts'"));
+    const parserServices = context.sourceCode?.parserServices ?? context.parserServices;
+    const filename = context.filename ?? context.getFilename?.();
+    const isTypeScript = filename.endsWith(".ts") || filename.endsWith(".vue");
     if (!isTypeScript) {
       return {};
     }
@@ -695,7 +730,7 @@ var prefer_typed_defineprops_default = {
       if (filename.endsWith(".ts")) {
         return {
           "CallExpression"(node) {
-            if (node.callee && node.callee.type === "Identifier" && node.callee.typeParameters === void 0 && node.callee.name === "defineProps") {
+            if (node.callee && node.callee.type === "Identifier" && node.callee.typeParameters === void 0 && node.callee.typeArguments === void 0 && node.typeParameters === void 0 && node.typeArguments === void 0 && node.callee.name === "defineProps") {
               context.report({
                 node,
                 messageId: "preferTypedProps",
@@ -711,7 +746,7 @@ var prefer_typed_defineprops_default = {
       {},
       {
         "CallExpression"(node) {
-          if (node.callee && node.callee.type === "Identifier" && node.callee.name === "defineProps" && node.callee.typeParameters === void 0 && node.typeParameters === void 0) {
+          if (node.callee && node.callee.type === "Identifier" && node.callee.name === "defineProps" && node.callee.typeParameters === void 0 && node.callee.typeArguments === void 0 && node.typeParameters === void 0 && node.typeArguments === void 0) {
             if (node.arguments.length > 0) {
               const firstArg = node.arguments[0];
               if (firstArg.type === "ObjectExpression") {
@@ -763,14 +798,11 @@ var require_use_prefix_for_composables_default = {
     }
   },
   create(context) {
-    const filename = context.filename ?? context.getFilename?.() ?? "";
+    const filename = context.filename ?? context.getFilename?.();
     const options = context.options[0] || {};
     const paths = options.paths || DEFAULT_COMPOSABLE_PATHS;
     const isComposableFile = paths.some((pattern) => {
-      const regex = new RegExp(
-        pattern.replace(/\*\*/g, ".*").replace(/\*/g, "[^/]*").replace(/\//g, "/")
-      );
-      return regex.test(filename);
+      return filename.includes("composable") || filename.includes("use");
     });
     if (!isComposableFile) {
       return {};
@@ -878,7 +910,7 @@ var no_composable_conditional_hooks_default = {
     }
   },
   create(context) {
-    const filename = context.filename ?? context.getFilename?.() ?? "";
+    const filename = context.filename ?? context.getFilename?.();
     const isComposableFile = filename.includes("composables/") || filename.includes("composable");
     if (!isComposableFile) {
       return {};
@@ -887,7 +919,7 @@ var no_composable_conditional_hooks_default = {
       if (node.type === "CallExpression" && node.callee && node.callee.type === "Identifier" && VUE_COMPOSABLES.includes(node.callee.name)) {
         let current = parent;
         while (current) {
-          if (current.type === "IfStatement" && isTopLevel(current)) {
+          if (current.type === "IfStatement" || current.type === "ForStatement" || current.type === "WhileStatement" || current.type === "SwitchStatement" || current.type === "ConditionalExpression" || current.type === "LogicalExpression") {
             context.report({
               node,
               messageId: "conditionalHook",
@@ -896,9 +928,7 @@ var no_composable_conditional_hooks_default = {
             return;
           }
           if (current.type === "FunctionDeclaration" || current.type === "FunctionExpression" || current.type === "ArrowFunctionExpression") {
-            if (!isTopLevel(current)) {
-              return;
-            }
+            break;
           }
           current = current.parent;
         }
@@ -938,7 +968,7 @@ var no_composable_dom_access_without_client_guard_default = {
     }
   },
   create(context) {
-    const filename = context.filename ?? context.getFilename?.() ?? "";
+    const filename = context.filename ?? context.getFilename?.();
     const options = context.options[0] || {};
     const allowProcessClient = options.allowProcessClient === true;
     const isComposableFile = filename.includes("composables/") || filename.includes("composable");
@@ -972,6 +1002,9 @@ var no_composable_dom_access_without_client_guard_default = {
       "MemberExpression": checkDomAccess,
       "Identifier"(node) {
         if (["window", "document", "localStorage"].includes(node.name)) {
+          if (node.parent && node.parent.type === "MemberExpression" && node.parent.object === node) {
+            return;
+          }
           checkDomAccess(node);
         }
       }
@@ -1134,7 +1167,7 @@ var pinia_prefer_storeToRefs_destructure_default = {
             if (init.callee.name === "storeToRefs" || init.callee.type === "MemberExpression" && init.callee.property && init.callee.property.name === "storeToRefs") {
               return;
             }
-            const sourceCode = context.getSourceCode();
+            const sourceCode = context.sourceCode ?? context.getSourceCode();
             const storeCallText = sourceCode.getText(init);
             context.report({
               node,

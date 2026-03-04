@@ -184,7 +184,7 @@ const mapItems = computed(() => {
 function createPinElement(baseItem: { id: string; lat: number; lng: number }, isSelected: boolean) {
   const item = baseItem as { id: string; lat: number; lng: number; name: string; index: number }
   
-  // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+   
   const el = import.meta.client ? document.createElement('div') : ({} as HTMLElement)
   el.className = `mapkit-pin${isSelected ? ' is-selected' : ''}`
   el.setAttribute('data-map-pin', '')

@@ -13,12 +13,8 @@ let cacheKey: string | null = null
  * Check if the project is using Nuxt
  * Caches result per working directory
  */
-function getCwd(context: RuleContext<string, any[]>): string {
-  return (context as { cwd?: string; getCwd?: () => string }).cwd ?? (context as { getCwd?: () => string }).getCwd?.() ?? process.cwd()
-}
-
 export function isNuxtMode(context: RuleContext<string, any[]>): boolean {
-  const cwd = getCwd(context)
+  const cwd = context.cwd ?? (context as any).getCwd?.()
   
   // Use cache if same directory
   if (cacheKey === cwd && nuxtCache !== null) {

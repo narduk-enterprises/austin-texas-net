@@ -454,7 +454,7 @@ function buildClusterElement(cluster: any): HTMLElement {
   if (props.createClusterElement) {
     el = props.createClusterElement(cluster, count)
   } else {
-    // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+     
     el = import.meta.client ? document.createElement('div') : ({} as HTMLElement)
     el.className = 'mapkit-cluster'
     el.innerHTML = `<div class="mapkit-cluster-bubble"><span class="mapkit-cluster-count">${count}</span></div>`
@@ -597,7 +597,7 @@ function addAnnotations() {
         const isSelected = selectedId.value === item.id
         const { element, cleanup } = props.createPinElement!(item, isSelected)
 
-        // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+         
         const wrapper = import.meta.client ? document.createElement('div') : ({} as HTMLElement)
         wrapper.setAttribute('data-map-pin', '')
         wrapper.style.cursor = 'pointer'
@@ -681,7 +681,7 @@ function addCenterLabel() {
   // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
   const isDark = import.meta.client && document.documentElement.classList.contains('dark')
 
-  // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+   
   const el = import.meta.client ? document.createElement('div') : ({} as HTMLElement)
   el.style.cssText = `
     font-size: 18px;

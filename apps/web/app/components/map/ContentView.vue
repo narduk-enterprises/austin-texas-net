@@ -21,7 +21,7 @@ function createPinElement(
   spot: MapSpot,
   isSelected: boolean,
 ): { element: HTMLElement; cleanup?: () => void } {
-  // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+   
   const wrapper = import.meta.client ? document.createElement('div') : ({} as HTMLElement)
   const app = createApp({
     setup() {
