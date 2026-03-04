@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/triple-slash-reference -- Nitro auto-import requireAdmin; typecheck needs global from .d.ts */
-/// <reference path="../../../utils/requireAdmin.global.d.ts" />
 import { z } from 'zod'
 
 const querySchema = z.object({
@@ -25,7 +23,7 @@ export default defineEventHandler(async (event) => {
   const startDate = query.startDate ? String(query.startDate) : (start.toISOString().split('T')[0] ?? '')
 
   try {
-    const raw = await googleApiFetch(
+    const data = await googleApiFetch(
       `https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`,
       GA_SCOPES,
       {
@@ -42,9 +40,10 @@ export default defineEventHandler(async (event) => {
           dimensions: [{ name: 'date' }],
         }),
       },
-    )
-    const totals = ((raw as Record<string, unknown>).totals ?? undefined) as Array<{ metricValues?: Array<{ value: string }> }> | undefined
-    const rows = ((raw as Record<string, unknown>).rows ?? undefined) as Array<Record<string, unknown>> | undefined
+    ) as Record<string, unknown>
+
+    const totals = data.totals as Array<{ metricValues?: Array<{ value: string }> }> | undefined
+    const rows = data.rows as Array<Record<string, unknown>> | undefined
 
     return {
       totals: totals?.[0]?.metricValues || [],
