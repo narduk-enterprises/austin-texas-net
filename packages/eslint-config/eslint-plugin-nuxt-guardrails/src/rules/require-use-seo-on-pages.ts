@@ -1,8 +1,7 @@
 /**
  * Rule: nuxt-guardrails/require-use-seo-on-pages
  *
- * Every page in app/pages/ must call useSeo() or usePageSeo() for consistent
- * title, description, and OG image.
+ * Every page in app/pages/ must call useSeo() for consistent title, description, and OG image.
  * See: check-seo-compliance workflow.
  */
 
@@ -32,7 +31,7 @@ export default {
     return {
       CallExpression(node: any) {
         const name = node.callee?.type === 'Identifier' ? node.callee.name : null
-        if (name === 'useSeo' || name === 'usePageSeo') hasUseSeo = true
+        if (name === 'useSeo') hasUseSeo = true
       },
       'Program:exit'(node: any) {
         if (!hasUseSeo) {

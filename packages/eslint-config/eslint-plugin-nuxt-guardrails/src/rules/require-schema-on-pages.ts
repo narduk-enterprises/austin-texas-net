@@ -1,15 +1,13 @@
 /**
  * Rule: nuxt-guardrails/require-schema-on-pages
  *
- * Every public page should call a Schema.org composable (useSchemaOrg,
- * useWebPageSchema, useArticleSchema, etc.).
+ * Every public page should call a Schema.org composable (useWebPageSchema, useArticleSchema, etc.).
  * See: check-seo-compliance workflow.
  */
 
 import type { Rule } from 'eslint'
 
 const SCHEMA_COMPOSABLES = new Set([
-  'useSchemaOrg',
   'useWebPageSchema',
   'useArticleSchema',
   'useProductSchema',
