@@ -34,8 +34,8 @@ logs
 playwright-report/
 test-results/
 # ESLint plugin build artifacts (rebuilt via postinstall)
-eslint-plugin-nuxt-ui/dist/
-eslint-plugin-nuxt-guardrails/dist/
+packages/eslint-config/**/dist/
 
 # ESLint caches
 .eslint-results.json
+.eslintcache
