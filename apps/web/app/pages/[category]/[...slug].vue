@@ -12,7 +12,13 @@ const route = useRoute()
 const { getCategoryBySlug, categories } = useSiteData()
 
 const categorySlug = computed(() => route.params.category as string)
-const slug = computed(() => route.params.slug as string)
+const slugArray = computed(() => {
+  const s = route.params.slug
+  return Array.isArray(s) ? s : [s]
+})
+const slug = computed(() => slugArray.value[0] || '')
+const spotSlug = computed(() => slugArray.value[1] || '')
+
 const category = computed(() => getCategoryBySlug(categorySlug.value))
 const subApp = computed(() => category.value?.subApps.find((a) => a.slug === slug.value))
 

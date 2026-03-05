@@ -99,7 +99,7 @@ export default defineEventHandler(async (event) => {
     const categorySlug = appToCategory.get(spot.contentType)
     if (categorySlug) {
       urls.push({
-        loc: `/${categorySlug}/${spot.contentType}/?spot=${slugify(spot.name)}`,
+        loc: `/${categorySlug}/${spot.contentType}/${slugify(spot.name)}/`,
         changefreq: 'monthly',
         priority: 0.7,
         lastmod: spot.updatedAt || buildTime,

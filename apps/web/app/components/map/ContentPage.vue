@@ -50,8 +50,14 @@ const spotBySlug = computed(() => {
 // ── Selection state (synced with URL) ──────────────────────────
 const selectedId = ref<string | null>(null)
 
-// On mount, check for ?spot= query param and auto-select
-const initialSpotSlug = route.query.spot as string | undefined
+const slugArray = computed(() => {
+  const param = route.params.slug
+  return Array.isArray(param) ? param : [param]
+})
+const basePath = computed(() => `/${route.params.category}/${slugArray.value[0]}`)
+
+// On mount, check for param slug and auto-select
+const initialSpotSlug = slugArray.value[1] as string | undefined
 if (initialSpotSlug) {
   const match = spotBySlug.value.get(initialSpotSlug)
   if (match) {
@@ -59,21 +65,20 @@ if (initialSpotSlug) {
   }
 }
 
-// Sync selectedId → URL query param
+// Sync selectedId → URL param
 watch(selectedId, (newId) => {
   if (import.meta.server) return
   if (newId) {
     const spot = props.spots.find((s) => s.id === newId)
     if (spot) {
-      const slug = slugify(spot.name)
-      if (route.query.spot !== slug) {
-        router.replace({ query: { ...route.query, spot: slug } })
+      const spotSlug = slugify(spot.name)
+      if (slugArray.value[1] !== spotSlug) {
+        router.replace({ path: `${basePath.value}/${spotSlug}/`, query: route.query })
       }
     }
   } else {
-    if (route.query.spot) {
-      const { spot: _, ...rest } = route.query
-      router.replace({ query: Object.keys(rest).length ? rest : undefined })
+    if (slugArray.value[1]) {
+      router.replace({ path: `${basePath.value}/`, query: route.query })
     }
   }
 })
@@ -200,7 +205,7 @@ const localBusinessJsonLd = computed(() => {
       position: i + 1,
       item: {
         ...spotToLocalBusiness(spot),
-        url: `${siteUrl}${route.path}?spot=${slugify(spot.name)}`,
+        url: `${siteUrl}${basePath.value}/${slugify(spot.name)}/`,
       },
     })),
   }
@@ -220,7 +225,7 @@ useHead(() => ({
 
 // ── Spot URL helper (used by SpotList for crawlable links) ─────
 function spotUrl(spot: MapSpot): string {
-  return `${route.path}?spot=${slugify(spot.name)}`
+  return `${basePath.value}/${slugify(spot.name)}/`
 }
 
 function selectOnMap(slug: string) {
