@@ -60,7 +60,7 @@ export default defineNuxtConfig({
     ],
   },
 
-  compatibilityDate: '2025-07-15',
+  compatibilityDate: '2026-03-03',
   devtools: { enabled: true },
   experimental: {
     payloadExtraction: true,
@@ -109,7 +109,7 @@ export default defineNuxtConfig({
       gaMeasurementId: process.env.GA_MEASUREMENT_ID || '',
       posthogPublicKey: process.env.POSTHOG_PUBLIC_KEY || '',
       googleSiteVerification: process.env.GOOGLE_SITE_VERIFICATION || '',
-      appName: process.env.APP_NAME || 'Austin Texas',
+      appName: process.env.APP_NAME || 'austin-texas',
     },
   },
 

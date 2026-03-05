@@ -5,8 +5,8 @@
   "packageManager": "pnpm@10.28.0",
   "scripts": {
     "dev": "doppler run --project austin-texas-net --config dev -- pnpm --filter web dev",
-    "build": "doppler run -- pnpm -r build",
-    "deploy": "doppler run -- pnpm --filter web run deploy",
+    "build": "doppler run --project austin-texas-net --config prd -- pnpm -r build",
+    "ship": "doppler run --project austin-texas-net --config prd -- pnpm --filter web run deploy",
     "build:plugins": "pnpm --filter @narduk/eslint-config build",
     "prelint": "pnpm run build:plugins",
     "lint": "pnpm run prelint && turbo run lint",
@@ -26,8 +26,9 @@
     "dev:kill": "sh scripts/dev-kill.sh",
     "predev": "node tools/check-setup.cjs",
     "prebuild": "node tools/check-setup.cjs",
-    "predeploy": "node tools/check-setup.cjs",
-    "postinstall": "node -e \"if(!require('fs').existsSync('.setup-complete'))console.log('\\n⚠️  Run pnpm run setup before doing anything else! See AGENTS.md.\\n')\""
+    "preship": "node tools/check-setup.cjs",
+    "postinstall": "node -e \"if(!require('fs').existsSync('.setup-complete'))console.log('\\n⚠️  Run pnpm run setup before doing anything else! See AGENTS.md.\\n')\"",
+    "predeploy": "node tools/check-setup.cjs"
   },
   "pnpm": {
     "overrides": {

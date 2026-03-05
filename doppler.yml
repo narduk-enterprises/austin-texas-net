@@ -1,6 +1,0 @@
-# Doppler CLI: project and config for this repo.
-# Used when you run `doppler run` or `pnpm dev` in this directory.
-# Hub: narduk-nuxt-template. Run `pnpm run doppler:sync-hub` to sync hub references.
-setup:
-  project: austin-texas-net
-  config: dev
