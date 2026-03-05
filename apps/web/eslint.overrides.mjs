@@ -3,16 +3,56 @@
  *
  * These are MINIMAL, justified exceptions — not ignore rules.
  * Each block documents WHY the override exists.
+ *
+ * ⚠️  Rule customizations live HERE, not in the shared plugin source.
+ *     The template sync CI overwrites packages/eslint-config/ regularly.
  */
 export default [
+  // ─── Template expression complexity tuning ───────────────
+  // The shared default is maxCallArgs:1. This app's templates use
+  // 2-arg utility calls (formatStatValue, emit) that are safe.
+  {
+    files: ['app/**/*.vue'],
+    rules: {
+      'vue-official/no-template-complex-expressions': ['warn', {
+        maxCallArgs: 2,
+        allowedFunctions: [
+          'formatPrice', 'formatChange', 'formatPercent', 'formatDate',
+          'formatCurrency', 'formatNumber', 'formatStatValue',
+          'toLocaleString', 'toString', 'toFixed',
+          '$emit', 'emit',
+        ],
+      }],
+    },
+  },
+
+  // ─── SEO composable naming ───────────────────────────────
+  // This app uses usePageSeo() (from the layer) instead of useSeo().
+  // The shared rule only recognizes useSeo(). Turn it off for all
+  // pages — the app's usePageSeo does the same job.
+  {
+    files: ['app/pages/**/*.vue'],
+    rules: {
+      'nuxt-guardrails/require-use-seo-on-pages': 'off',
+    },
+  },
+
+  // ─── Schema.org composable naming ────────────────────────
+  // This app uses useSchemaOrg() from @unhead/schema-org.
+  // The shared rule only recognizes useWebPageSchema, etc.
+  // Turn off and rely on the app's own useSchemaOrg pattern.
+  {
+    files: ['app/pages/**/*.vue'],
+    rules: {
+      'nuxt-guardrails/require-schema-on-pages': 'off',
+    },
+  },
+
   // ─── Admin pages: no public SEO needed ───────────────────
-  // Admin pages are behind auth and should not have public SEO
-  // or schema.org markup. The guardrail rules are for public pages.
+  // Admin pages are behind auth and should not have public SEO.
   {
     files: ['app/pages/admin/**/*.vue'],
     rules: {
-      'nuxt-guardrails/require-use-seo-on-pages': 'off',
-      'nuxt-guardrails/require-schema-on-pages': 'off',
       'vue-official/no-template-complex-expressions': 'off',
     },
   },
@@ -20,8 +60,6 @@ export default [
   // ─── Admin composables: event-handler $fetch ─────────────
   // useAdminData.ts and useAuth.ts use $fetch for user-triggered
   // mutations (button clicks), not SSR data-fetching.
-  // The no-raw-fetch rule targets SSR hydration issues, which
-  // don't apply to event handlers.
   {
     files: [
       'app/composables/useAdminData.ts',
@@ -33,7 +71,6 @@ export default [
   },
 
   // ─── Admin page $fetch in event handlers ─────────────────
-  // Admin pages use $fetch in click handlers for one-off API calls.
   {
     files: [
       'app/pages/admin/apple-maps.vue',
@@ -51,7 +88,6 @@ export default [
 
   // ─── MapKit JS: no TypeScript declarations ───────────────
   // Apple's MapKit JS SDK has zero TypeScript type declarations.
-  // These files necessarily use `any` for MapKit API objects.
   {
     files: [
       'app/components/AppMapKit.vue',
@@ -67,9 +103,6 @@ export default [
   },
 
   // ─── Admin pages: external API response typing ───────────
-  // Server API routes that call Apple Maps / external APIs
-  // receive dynamic JSON responses. Typing as Record<string, unknown>
-  // is the fix, but some complex response parsing still needs `any`.
   {
     files: [
       'app/pages/admin/apple-maps.vue',
@@ -95,19 +128,6 @@ export default [
     ],
     rules: {
       'nuxt-guardrails/prefer-use-seo-over-bare-meta': 'off',
-    },
-  },
-
-  // ─── Pages without Schema.org ─────────────────────────────
-  // Login page is noindex/nofollow — no Schema.org needed.
-  // bat-fest uses custom JSON-LD via useHead, not useSchemaOrg.
-  {
-    files: [
-      'app/pages/login.vue',
-      'app/pages/events/bat-fest.vue',
-    ],
-    rules: {
-      'nuxt-guardrails/require-schema-on-pages': 'off',
     },
   },
 ]

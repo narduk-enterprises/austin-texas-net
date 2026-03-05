@@ -6,7 +6,7 @@
 .cache
 
 # Turbo
-.turbo/cache
+.turbo
 
 # Node dependencies
 node_modules
