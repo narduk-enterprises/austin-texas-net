@@ -8,7 +8,6 @@
  * Search Radar keyword: "best swimming holes austin tx" (8,100 monthly volume)
  */
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('outdoors')!
@@ -16,14 +15,13 @@ const siblings = category.subApps.filter((a) => a.slug !== 'swimming-holes')
 const crossLinks = categories.value.filter((c) => c.slug !== 'outdoors').slice(0, 4)
 const { items: breadcrumbs } = useBreadcrumbs()
 
-usePageSeo({
+useSeo({
   title: 'Best Swimming Holes Near Austin, Texas — Springs, Pools & Natural Water',
   description:
     "Complete guide to the best swimming holes near Austin — Barton Springs, Hamilton Pool, Jacob's Well, Krause Springs, and hidden gems with hours, fees, and tips.",
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('outdoors'),
-  },
+      },
 })
 
 useSchemaOrg([

@@ -18,7 +18,7 @@ import {
 } from '~/data/crawfish'
 import type { CrawfishSpot } from '~/data/crawfish'
 
-usePageSeo({
+useSeo({
   title: 'Crawfish Season in Austin TX — Where to Buy, Eat & Boil',
   description:
     'Your complete guide to crawfish season in Austin, Texas. Best places to buy live crawfish by the sack, top crawfish restaurants, and a classic Cajun crawfish boil recipe.',

@@ -4,7 +4,6 @@
  * Mirrors [category]/index.vue but with a hardcoded slug so Nuxt's
  * static-route priority doesn't skip the dynamic catch-all.
  */
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 const slug = 'health'
 const { getCategoryBySlug } = useSiteData()
@@ -14,20 +13,17 @@ if (!category.value) {
   throw createError({ statusCode: 404, statusMessage: 'Category not found', fatal: true })
 }
 
-usePageSeo({
+useSeo({
   ...category.value.seo,
-  ogImageProps: {
+  ogImage: {
     category: category.value.title,
-    categoryColor: getCategoryHexColor(slug),
-  },
+      },
 })
 
-useSchemaOrg([
-  defineWebPage({
+useWebPageSchema({
     name: category.value.seo.title,
     description: category.value.seo.description,
-  }),
-])
+  })
 
 const { data: content } = await useAsyncData(
   `category-content-${slug}`,

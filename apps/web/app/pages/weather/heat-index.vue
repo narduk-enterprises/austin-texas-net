@@ -9,7 +9,6 @@
  */
 import type { NwsCurrentConditions, NwsForecastPeriod } from '~~/server/utils/nws'
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 import { formatTimestamp } from '~/utils/formatTimestamp'
 
 const { getCategoryBySlug, categories } = useSiteData()
@@ -18,22 +17,19 @@ const siblings = category.subApps.filter((a) => a.slug !== 'heat-index')
 const crossLinks = categories.value.filter((c) => c.slug !== 'weather').slice(0, 4)
 const { items: breadcrumbs } = useBreadcrumbs()
 
-usePageSeo({
+useSeo({
   title: 'Austin Heat Index — Feels-Like Temperature & Safety Tips',
   description:
     'Current heat index and feels-like temperature for Austin, TX. Includes wind chill in winter, heat safety levels, and protection tips.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('weather'),
-  },
+      },
 })
 
-useSchemaOrg([
-  defineWebPage({
+useWebPageSchema({
     name: 'Austin Heat Index — Feels-Like Temperature & Safety Tips',
     description: 'Heat index and feels-like temperature tracker for Austin, Texas.',
-  }),
-])
+  })
 
 const { data: currentData } = await useFetch<{
   conditions: NwsCurrentConditions | null

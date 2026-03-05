@@ -20,8 +20,13 @@ const {
   weeklyForecast,
 } = useBatBridgeData()
 
-usePageSeo({
+useSeo({
   title: 'Bat Bridge Sunset | Congress Ave Bat Emergence Countdown',
+  description: 'Austin bat bridge countdown, tonight sunset timing, season status, best viewing spots, and a 7-day emergence outlook.',
+})
+
+useWebPageSchema({
+  name: 'Bat Bridge Sunset | Congress Ave Bat Emergence Countdown',
   description: 'Austin bat bridge countdown, tonight sunset timing, season status, best viewing spots, and a 7-day emergence outlook.',
 })
 
@@ -57,15 +62,9 @@ const attractionJsonLd = computed(() => {
   }
 })
 
-useHead(() => ({
-  script: [
-    {
-      key: 'bat-bridge-jsonld',
-      type: 'application/ld+json',
-      children: JSON.stringify(attractionJsonLd.value),
-    },
-  ],
-}))
+useSchemaOrg([
+  attractionJsonLd.value
+])
 </script>
 
 <template>

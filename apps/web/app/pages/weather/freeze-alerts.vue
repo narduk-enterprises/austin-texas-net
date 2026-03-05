@@ -9,7 +9,6 @@
  */
 import type { NwsCurrentConditions, NwsAlert, NwsForecastPeriod } from '~~/server/utils/nws'
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 import { formatTimestamp } from '~/utils/formatTimestamp'
 
 const { getCategoryBySlug, categories } = useSiteData()
@@ -18,22 +17,19 @@ const siblings = category.subApps.filter((a) => a.slug !== 'freeze-alerts')
 const crossLinks = categories.value.filter((c) => c.slug !== 'weather').slice(0, 4)
 const { items: breadcrumbs } = useBreadcrumbs()
 
-usePageSeo({
+useSeo({
   title: 'Austin Freeze Alerts — Winter Weather Warnings & Pipe Protection',
   description:
     'Austin freeze alerts and winter weather status. Track freeze warnings, frost advisories, and pipe protection alerts for Central Texas.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('weather'),
-  },
+      },
 })
 
-useSchemaOrg([
-  defineWebPage({
+useWebPageSchema({
     name: 'Austin Freeze Alerts — Winter Weather Warnings & Pipe Protection',
     description: 'Freeze warning and winter weather tracker for Austin, Texas.',
-  }),
-])
+  })
 
 const { data: currentData } = await useFetch<{
   conditions: NwsCurrentConditions | null

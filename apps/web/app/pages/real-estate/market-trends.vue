@@ -10,28 +10,24 @@
  * as interactive time-series charts.
  */
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('real-estate')!
 const siblings = category.subApps.filter((a) => a.slug !== 'market-trends' && a.status === 'live')
 const crossLinks = categories.value.filter((c) => c.slug !== 'real-estate').slice(0, 4)
-usePageSeo({
+useSeo({
   title: 'Austin Housing Market Trends — Prices, Inventory & Sales Data',
   description:
     'Track Austin real estate market trends with monthly data on median home prices, homes sold, inventory, and days on market from Redfin.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('real-estate'),
   },
 })
 
-useSchemaOrg([
-  defineWebPage({
-    name: 'Austin Housing Market Trends',
-    description: 'Monthly housing market statistics for the Austin-Round Rock metro area.',
-  }),
-])
+useWebPageSchema({
+  name: 'Austin Housing Market Trends',
+  description: 'Monthly housing market statistics for the Austin-Round Rock metro area.',
+})
 
 interface MarketStat {
   region: string

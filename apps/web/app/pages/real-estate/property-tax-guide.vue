@@ -7,7 +7,6 @@
  * Static editorial page with rates, exemptions, protest tips, and calculator.
  */
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('real-estate')!
@@ -17,22 +16,38 @@ const siblings = category.subApps.filter(
 const crossLinks = categories.value.filter((c) => c.slug !== 'real-estate').slice(0, 4)
 const { items: breadcrumbs } = useBreadcrumbs()
 
-usePageSeo({
+useSeo({
   title: 'Austin Property Tax Guide — Rates, Exemptions & Protest Tips',
   description:
     'Complete guide to Austin property taxes. Current rates, homestead exemptions, protest tips, and an interactive calculator.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('real-estate'),
   },
 })
 
-useSchemaOrg([
-  defineWebPage({
-    name: 'Austin Property Tax Guide',
-    description:
-      'Comprehensive guide to property taxes in Austin, TX with current rates, exemptions, and a tax calculator.',
-  }),
+useWebPageSchema({
+  name: 'Austin Property Tax Guide',
+  description:
+    'Comprehensive guide to property taxes in Austin, TX with current rates, exemptions, and a tax calculator.',
+})
+
+useFAQSchema([
+  {
+    question: 'What is the property tax rate in Austin, Texas?',
+    answer: 'The combined approximate property tax rate for FY2025 in Austin is ~$1.975 per $100 of assessed value. This varies depending on your specific taxing districts.'
+  },
+  {
+    question: 'How does the Texas homestead exemption work?',
+    answer: 'Primary residence owners in Texas get a $100,000 exemption off their school district taxable value. You must file with the Travis Central Appraisal District (TCAD) by April 30th.'
+  },
+  {
+    question: 'What is the over-65 property tax exemption in Austin?',
+    answer: 'Homeowners over 65 or disabled receive an additional $10,000 school exemption plus a tax ceiling, ensuring school taxes never increase.'
+  },
+  {
+    question: 'How do I protest my property taxes in Travis County?',
+    answer: 'You must file a protest by May 15th online at TCAD.org or by mail. Gather comparable sales, document property issues with photos, and attend your hearing to present evidence.'
+  }
 ])
 
 // Calculator state

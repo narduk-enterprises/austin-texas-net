@@ -8,7 +8,6 @@
  */
 import { DROUGHT_MONITOR_MAP_URL, DROUGHT_MONITOR_PAGE_URL } from '~~/server/utils/nws'
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('weather')!
@@ -16,22 +15,19 @@ const siblings = category.subApps.filter((a) => a.slug !== 'drought-status')
 const crossLinks = categories.value.filter((c) => c.slug !== 'weather').slice(0, 4)
 const { items: breadcrumbs } = useBreadcrumbs()
 
-usePageSeo({
+useSeo({
   title: 'Austin Drought Status — U.S. Drought Monitor & Watering Restrictions',
   description:
     'Central Texas drought conditions from the U.S. Drought Monitor. Current drought classification, watering restriction status, and LCRA water supply updates.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('weather'),
-  },
+      },
 })
 
-useSchemaOrg([
-  defineWebPage({
+useWebPageSchema({
     name: 'Austin Drought Status — U.S. Drought Monitor & Watering Restrictions',
     description: 'Drought monitor and watering restriction tracker for Austin and Central Texas.',
-  }),
-])
+  })
 
 const droughtLevels = [
   {

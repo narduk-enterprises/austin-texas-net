@@ -8,21 +8,19 @@
  * Search Radar keyword: "things to do austin this weekend" (33,100 monthly volume)
  */
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('events')!
 const siblings = category.subApps.filter((a) => a.slug !== 'this-weekend')
 const crossLinks = categories.value.filter((c) => c.slug !== 'events').slice(0, 4)
 
-usePageSeo({
+useSeo({
   title: 'Things To Do in Austin This Weekend — Events, Music & Activities',
   description:
     "Your curated guide to what's happening in Austin this weekend — live music, outdoor activities, family events, food festivals, free things to do, and insider picks across ATX.",
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('events'),
-  },
+      },
 })
 
 useSchemaOrg([

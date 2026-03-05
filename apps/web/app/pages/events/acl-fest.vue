@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
+
 
 const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('events')!
 const siblings = category.subApps.filter((a) => a.slug !== 'acl-fest')
 const crossLinks = categories.value.filter((c) => c.slug !== 'events').slice(0, 4)
 
-usePageSeo({
+useSeo({
   title: 'Austin City Limits (ACL) Music Festival Guide',
   description: 'Your guide to the ACL Music Festival held annually in Zilker Park. Find lineup info, dates, survival tips, and transportation options.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('events'),
   },
 })
 
+useWebPageSchema({
+  name: 'Austin City Limits (ACL) Music Festival Guide',
+  description: 'Comprehensive guide to the Austin City Limits Music Festival in Zilker Park.',
+})
+
 useSchemaOrg([
-  defineWebPage({
-    name: 'Austin City Limits (ACL) Music Festival Guide',
-    description: 'Comprehensive guide to the Austin City Limits Music Festival in Zilker Park.',
-  }),
   {
     '@type': 'Event',
     name: 'ACL Fest 2026 — Weekend 1',

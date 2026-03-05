@@ -1,26 +1,22 @@
 <script setup lang="ts">
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('outdoors')!
 const siblings = category.subApps.filter((a) => a.slug !== 'parks-guide')
 const crossLinks = categories.value.filter((c) => c.slug !== 'outdoors').slice(0, 4)
 
-usePageSeo({
+useSeo({
   title: 'Austin Parks Guide — Zilker, Pease & Metropolitan Parks',
   description: 'Explore the best parks in Austin. From the immense Zilker Metropolitan Park to neighborhood green spaces and nature preserves.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('outdoors'),
-  },
+      },
 })
 
-useSchemaOrg([
-  defineWebPage({
+useWebPageSchema({
     name: 'Austin Parks Guide',
     description: 'Comprehensive guide to Austin\'s municipal parks, trails, and greenbelts.',
-  }),
-])
+  })
 </script>
 
 <template>

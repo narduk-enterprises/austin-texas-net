@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { murals, neighborhoods, allTags } from '~/data/murals'
 
-usePageSeo({
+useSeo({
   title: 'Austin Street Art & Murals Map — Find Graffiti & Public Art',
   description: 'Explore Austin\'s best street art, murals, and graffiti on an interactive guide. Discover muralists, photo spots, and hidden gems across the city.',
 })
 
-useSchemaOrg([
-  defineWebPage({ name: 'Austin Street Art & Murals Map' }),
-  defineWebSite({ name: 'Austin Street Art & Murals' }),
-])
+useWebPageSchema({ name: 'Austin Street Art & Murals Map' }),
+  defineWebSite({ name: 'Austin Street Art & Murals' })
 
 const search = ref('')
 const selectedNeighborhood = ref('')

@@ -1,8 +1,13 @@
 <script setup lang="ts">
 definePageMeta({ title: 'Sign In' })
 
-usePageSeo({
+useSeo({
   title: 'Sign In',
+  description: 'Sign in to your Austin-Texas.net account.',
+})
+
+useWebPageSchema({
+  name: 'Sign In',
   description: 'Sign in to your Austin-Texas.net account.',
 })
 

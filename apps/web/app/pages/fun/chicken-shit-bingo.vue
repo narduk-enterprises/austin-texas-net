@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { bingoInfo, faqs, tips } from '~/data/chicken-shit-bingo-locations'
 
-usePageSeo({
+useSeo({
   title: 'Chicken Shit Bingo at Little Longhorn Saloon — Austin TX Guide',
   description: 'Everything about Chicken Shit Bingo at the Little Longhorn Saloon in Austin. Schedule, rules, how to play, what to expect, and tips for first-timers.',
 })
 
-useSchemaOrg([
-  defineWebPage({ name: 'Chicken Shit Bingo Austin Guide' }),
-  defineWebSite({ name: 'Chicken Shit Bingo Tracker' }),
-])
+useWebPageSchema({ name: 'Chicken Shit Bingo Austin Guide' }),
+  defineWebSite({ name: 'Chicken Shit Bingo Tracker' })
 
 const openFaq = ref<number | null>(null)
 const toggleFaq = (id: number) => {

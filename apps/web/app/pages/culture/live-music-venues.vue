@@ -8,7 +8,7 @@
  * Search Radar keyword: "best live music venues austin texas" (9,900 monthly volume)
  */
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
+
 
 const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('culture')!
@@ -16,42 +16,29 @@ const siblings = category.subApps.filter((a) => a.slug !== 'live-music-venues')
 const crossLinks = categories.value.filter((c) => c.slug !== 'culture').slice(0, 4)
 const { items: breadcrumbs } = useBreadcrumbs()
 
-usePageSeo({
+useSeo({
   title: 'Best Live Music Venues in Austin — The Live Music Capital Guide',
   description:
     "Complete guide to Austin's best live music venues — from legendary stages like Stubbs and Continental Club to hidden gems on Red River. Find shows by genre and neighborhood.",
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('culture'),
   },
 })
 
-useSchemaOrg([
-  defineWebPage({
-    name: 'Best Live Music Venues in Austin — The Live Music Capital Guide',
-    description:
-      'Comprehensive guide to live music venues in Austin, Texas — from iconic stages to dive bars, organized by neighborhood and genre.',
-  }),
+useWebPageSchema({
+  name: 'Best Live Music Venues in Austin — The Live Music Capital Guide',
+  description:
+    'Comprehensive guide to live music venues in Austin, Texas — from iconic stages to dive bars, organized by neighborhood and genre.',
+})
+
+useFAQSchema([
   {
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'Where can I see free live music in Austin?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: "Most bars on 6th Street have free live music nightly. The Saxon Pub, C-Boy's Heart & Soul, and Continental Club often have no cover on weeknights. Blues on the Green at Zilker Park is a free summer concert series. Many East Austin bars like Moontower Saloon offer free music.",
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'What is the most famous music venue in Austin?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: "The Continental Club on South Congress is Austin's most iconic venue, operating since 1955. Stubbs BBQ is the most famous for major concerts. Antone's is the legendary blues venue. The Broken Spoke is the last great Texas honky-tonk.",
-        },
-      },
-    ],
+    question: 'Where can I see free live music in Austin?',
+    answer: "Most bars on 6th Street have free live music nightly. The Saxon Pub, C-Boy's Heart & Soul, and Continental Club often have no cover on weeknights. Blues on the Green at Zilker Park is a free summer concert series. Many East Austin bars like Moontower Saloon offer free music.",
+  },
+  {
+    question: 'What is the most famous music venue in Austin?',
+    answer: "The Continental Club on South Congress is Austin's most iconic venue, operating since 1955. Stubbs BBQ is the most famous for major concerts. Antone's is the legendary blues venue. The Broken Spoke is the last great Texas honky-tonk.",
   },
 ])
 

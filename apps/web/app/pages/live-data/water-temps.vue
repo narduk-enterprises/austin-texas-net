@@ -8,7 +8,7 @@
  * panel with the station info and a historical trend chart.
  */
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
+
 
 interface WaterSpot {
   id: string
@@ -28,22 +28,19 @@ const siblings = category.subApps.filter((a) => a.slug !== 'water-temps' && a.st
 const crossLinks = categories.value.filter((c) => c.slug !== 'live-data').slice(0, 4)
 const { items: breadcrumbs } = useBreadcrumbs()
 
-usePageSeo({
+useSeo({
   title: 'Austin Water Temperatures — Live Readings & Map',
   description:
     'Live water temperatures for Barton Springs, Lady Bird Lake, and Austin-area waterways. Real-time USGS data with historical charts.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('live-data'),
   },
 })
 
-useSchemaOrg([
-  defineWebPage({
-    name: 'Austin Water Temperatures — Live Readings',
-    description: 'Live water temperatures from USGS monitoring stations across the Austin area.',
-  }),
-])
+useWebPageSchema({
+  name: 'Austin Water Temperatures — Live Readings',
+  description: 'Live water temperatures from USGS monitoring stations across the Austin area.',
+})
 
 // Fetch spots from API
 const { data: apiData } = await useFetch<{ spots: WaterSpot[] }>('/api/live/water-temps')

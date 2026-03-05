@@ -8,7 +8,6 @@
  * List view shows all zips with price, YoY change, and trend.
  */
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 interface HomePriceSpot {
   id: string
@@ -99,23 +98,20 @@ const siblings = category.subApps.filter(
 const crossLinks = categories.value.filter((c) => c.slug !== 'real-estate').slice(0, 4)
 const { items: breadcrumbs } = useBreadcrumbs()
 
-usePageSeo({
+useSeo({
   title: 'Median Home Prices in Austin by Zip Code — 2025 Data',
   description:
     'Explore median home prices across Austin, TX zip codes. Interactive map with Zillow ZHVI data, year-over-year changes, and neighborhood comparisons.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('real-estate'),
-  },
+      },
 })
 
-useSchemaOrg([
-  defineWebPage({
+useWebPageSchema({
     name: 'Austin Median Home Prices by Zip Code',
     description:
       'Interactive map of median home values across Austin-area zip codes from Zillow Home Value Index data.',
-  }),
-])
+  })
 
 // Fetch data from API
 const { data: apiData } = await useFetch<{

@@ -4,7 +4,6 @@
  * Structural data from useSiteData(). Content from Nuxt Content markdown.
  * Unknown slugs → 404.
  */
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 const route = useRoute()
 const { getCategoryBySlug } = useSiteData()
@@ -16,20 +15,17 @@ if (!category.value) {
   throw createError({ statusCode: 404, statusMessage: 'Category not found', fatal: true })
 }
 
-usePageSeo({
+useSeo({
   ...category.value.seo,
-  ogImageProps: {
+  ogImage: {
     category: category.value.title,
-    categoryColor: getCategoryHexColor(slug.value),
   },
 })
 
-useSchemaOrg([
-  defineWebPage({
-    name: category.value.seo.title,
-    description: category.value.seo.description,
-  }),
-])
+useWebPageSchema({
+  name: category.value.seo.title,
+  description: category.value.seo.description,
+})
 
 // Load overview content + FAQs from Nuxt Content
 const { data: content } = await useAsyncData(

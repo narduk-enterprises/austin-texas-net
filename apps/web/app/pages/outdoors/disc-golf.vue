@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { courses, difficulties } from '~/data/disc-golf-courses'
 
-usePageSeo({
+useSeo({
   title: 'Austin Disc Golf Courses — Course Finder & Reviews',
   description: 'Find every disc golf course in Austin TX. Hole layouts, difficulty ratings, reviews, parking tips, and directions for all skill levels.',
 })
 
-useSchemaOrg([
-  defineWebPage({ name: 'Austin Disc Golf Courses' }),
-  defineWebSite({ name: 'Austin Disc Golf Courses' }),
-])
+useWebPageSchema({ name: 'Austin Disc Golf Courses' }),
+  defineWebSite({ name: 'Austin Disc Golf Courses' })
 
 const selectedDifficulty = ref('all')
 const filteredCourses = computed(() => courses.filter(c => selectedDifficulty.value === 'all' || c.difficulty === selectedDifficulty.value).sort((a, b) => b.rating - a.rating))

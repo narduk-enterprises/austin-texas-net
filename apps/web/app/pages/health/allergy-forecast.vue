@@ -1,26 +1,23 @@
 <script setup lang="ts">
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
+
 
 const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('health')!
 const siblings = category.subApps.filter((a) => a.slug !== 'allergy-forecast')
 const crossLinks = categories.value.filter((c) => c.slug !== 'health').slice(0, 4)
 
-usePageSeo({
+useSeo({
   title: 'Austin Allergy Forecast — Oak, Cedar, Elm & Mold Tracker',
   description: 'Track the daily allergy forecast for Austin TX. Get counts and insights for Cedar, Oak, Elm, Ragweed, and Mold before you head outdoors.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('health'),
   },
 })
 
-useSchemaOrg([
-  defineWebPage({
-    name: 'Austin Allergy Forecast',
-    description: 'Current and 5-day allergy forecast for the Austin area.',
-  }),
-])
+useWebPageSchema({
+  name: 'Austin Allergy Forecast',
+  description: 'Current and 5-day allergy forecast for the Austin area.',
+})
 
 // Placeholder data for the static UI shell
 const mainAllergens = [

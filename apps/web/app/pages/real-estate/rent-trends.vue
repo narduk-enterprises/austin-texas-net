@@ -7,7 +7,6 @@
  * Each pin shows the current median monthly rent for a zip code.
  */
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 interface RentSpot {
   id: string
@@ -67,23 +66,20 @@ const siblings = category.subApps.filter((a) => a.slug !== 'rent-trends' && a.st
 const crossLinks = categories.value.filter((c) => c.slug !== 'real-estate').slice(0, 4)
 const { items: breadcrumbs } = useBreadcrumbs()
 
-usePageSeo({
+useSeo({
   title: 'Austin Rent Prices by Zip Code — 2025 Rental Data',
   description:
     'Explore median rent prices across Austin zip codes. Interactive map with Zillow rent data, year-over-year changes, and neighborhood rental comparisons.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('real-estate'),
   },
 })
 
-useSchemaOrg([
-  defineWebPage({
-    name: 'Austin Rent Prices by Zip Code',
-    description:
-      'Interactive map of median rents across Austin-area zip codes from Zillow Observed Rent Index data.',
-  }),
-])
+useWebPageSchema({
+  name: 'Austin Rent Prices by Zip Code',
+  description:
+    'Interactive map of median rents across Austin-area zip codes from Zillow Observed Rent Index data.',
+})
 
 const { data: apiData } = await useFetch<{
   prices: Array<{ zipCode: string; period: string; medianRent: number; yoyChange: number | null }>

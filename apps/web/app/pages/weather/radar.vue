@@ -10,7 +10,6 @@
 import type { NwsAlert } from '~~/server/utils/nws'
 import { RADAR_STATION, RADAR_EMBED_URL, RADAR_FULL_URL } from '~~/server/utils/nws'
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('weather')!
@@ -18,23 +17,20 @@ const siblings = category.subApps.filter((a) => a.slug !== 'radar')
 const crossLinks = categories.value.filter((c) => c.slug !== 'weather').slice(0, 4)
 const { items: breadcrumbs } = useBreadcrumbs()
 
-usePageSeo({
+useSeo({
   title: 'Austin Weather Radar — Live NEXRAD Rain & Storm Tracker',
   description:
     'Live NEXRAD weather radar for Austin, TX. Track rain, thunderstorms, and severe weather in real-time across Central Texas.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('weather'),
-  },
+      },
 })
 
-useSchemaOrg([
-  defineWebPage({
+useWebPageSchema({
     name: 'Austin Weather Radar — Live NEXRAD Rain & Storm Tracker',
     description:
       'Live NEXRAD weather radar for Austin and Central Texas from the National Weather Service.',
-  }),
-])
+  })
 
 const { data: alertData } = await useFetch<{ alerts: NwsAlert[] }>('/api/weather/alerts')
 const alerts = computed(() => alertData.value?.alerts ?? [])

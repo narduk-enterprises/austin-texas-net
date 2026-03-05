@@ -7,7 +7,6 @@
  * plant safety, emergency resources, and lessons from Winter Storm Uri.
  * Complements /weather/freeze-alerts/ (live NWS warnings).
  */
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('weather')!
@@ -15,14 +14,13 @@ const siblings = category.subApps.filter((a) => a.slug !== 'freeze-prep')
 const crossLinks = categories.value.filter((c) => c.slug !== 'weather').slice(0, 4)
 const { items: breadcrumbs } = useBreadcrumbs()
 
-usePageSeo({
+useSeo({
   title: 'Austin Freeze Prep Guide — Winter Storm Survival Checklist',
   description:
     'Complete freeze preparation guide for Austin, Texas. Pipe protection, plant safety, emergency supplies, power outage survival, and lessons from Winter Storm Uri.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('weather'),
-  },
+      },
 })
 
 useSchemaOrg([

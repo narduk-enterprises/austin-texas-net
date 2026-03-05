@@ -7,7 +7,6 @@ import type {
   OverlayStyle,
 } from '~/components/AppMapKit.vue'
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 /**
  * neighborhoods/index.vue — Data-driven neighborhood directory.
@@ -17,23 +16,20 @@ import { getCategoryHexColor } from '~/utils/categoryHexColors'
 const { getCategoryBySlug } = useSiteData()
 const category = getCategoryBySlug('neighborhoods')!
 
-usePageSeo({
+useSeo({
   title: 'Austin Neighborhoods — Every Corner of the ATX Metro',
   description:
     'Explore 80+ Austin neighborhoods from Leander to Buda — Downtown, South Congress, East Austin, Mueller, and more. Find your perfect area.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('neighborhoods'),
   },
 })
 
-useSchemaOrg([
-  defineWebPage({
-    name: 'Austin Neighborhoods — Every Corner of the ATX Metro',
-    description:
-      'Explore 80+ Austin neighborhoods from Leander to Buda — Downtown, South Congress, East Austin, Mueller, and more.',
-  }),
-])
+useWebPageSchema({
+  name: 'Austin Neighborhoods — Every Corner of the ATX Metro',
+  description:
+    'Explore 80+ Austin neighborhoods from Leander to Buda — Downtown, South Congress, East Austin, Mueller, and more.',
+})
 
 const { items: breadcrumbs } = useBreadcrumbs()
 

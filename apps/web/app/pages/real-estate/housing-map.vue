@@ -5,7 +5,6 @@
  * Composite map combining home price pins and development permit pins.
  */
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 definePageMeta({ layout: 'fullscreen' })
 
@@ -47,22 +46,19 @@ const category = getCategoryBySlug('real-estate')!
 const siblings = category.subApps.filter((a) => a.slug !== 'housing-map' && a.status === 'live')
 const crossLinks = categories.value.filter((c) => c.slug !== 'real-estate').slice(0, 4)
 
-usePageSeo({
+useSeo({
   title: 'Austin Housing Map — Home Prices & New Developments',
   description:
     'Interactive map of Austin housing: median home prices by zip code and new construction permits. See where Austin is growing.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('real-estate'),
-  },
+      },
 })
 
-useSchemaOrg([
-  defineWebPage({
+useWebPageSchema({
     name: 'Austin Housing Map',
     description: 'Composite housing map showing home values and development permits across Austin.',
-  }),
-])
+  })
 
 const { data: priceData } = await useFetch<{
   prices: Array<{ zipCode: string; medianValue: number; period: string }>

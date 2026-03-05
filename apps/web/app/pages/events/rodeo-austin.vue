@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { events, foodVendors, parkingTips, eventTypes } from '~/data/rodeo-events'
 
-usePageSeo({
+useSeo({
   title: 'Rodeo Austin 2026 — Schedule, Concerts, Tickets & Food Guide',
   description: 'Your complete guide to Rodeo Austin 2026. Concert lineup, rodeo schedule, ticket prices, food vendors, parking, and insider tips.',
 })

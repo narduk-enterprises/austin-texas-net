@@ -1,26 +1,22 @@
 <script setup lang="ts">
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('health')!
 const siblings = category.subApps.filter((a) => a.slug !== 'air-quality')
 const crossLinks = categories.value.filter((c) => c.slug !== 'health').slice(0, 4)
 
-usePageSeo({
+useSeo({
   title: 'Austin Air Quality Index (AQI) — Current Conditions',
   description: 'Check real-time air quality in Austin TX. Monitor ozone, PM2.5, and PM10 levels to plan your outdoor activities safely.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('health'),
-  },
+      },
 })
 
-useSchemaOrg([
-  defineWebPage({
+useWebPageSchema({
     name: 'Austin Air Quality Monitor',
     description: 'Current Air Quality Index (AQI) and pollutant levels for Austin, Texas.',
-  }),
-])
+  })
 </script>
 
 <template>

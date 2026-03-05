@@ -10,29 +10,25 @@
  */
 import type { NwsCurrentConditions, NwsAlert } from '~~/server/utils/nws'
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 import { getConditionIcon } from '~/utils/weatherIcons'
 
 const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('weather')!
 const siblings = category.subApps.filter((a) => a.slug !== 'current-conditions')
 const crossLinks = categories.value.filter((c) => c.slug !== 'weather').slice(0, 4)
-usePageSeo({
+useSeo({
   title: 'Austin Weather Now — Current Conditions, Temperature & Wind',
   description:
     'Real-time Austin weather from NWS Camp Mabry — current temperature, humidity, wind speed, barometric pressure, and active weather alerts.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('weather'),
-  },
+      },
 })
 
-useSchemaOrg([
-  defineWebPage({
+useWebPageSchema({
     name: 'Austin Weather Now — Current Conditions, Temperature & Wind',
     description: 'Live weather conditions for Austin, Texas from the National Weather Service.',
-  }),
-])
+  })
 
 const { data: weatherData } = await useFetch<{
   conditions: NwsCurrentConditions | null

@@ -8,7 +8,6 @@
  * List view shows permit details: description, units, valuation, date.
  */
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 interface PermitSpot {
   id: string
@@ -33,23 +32,20 @@ const siblings = category.subApps.filter(
 const crossLinks = categories.value.filter((c) => c.slug !== 'real-estate').slice(0, 4)
 const { items: breadcrumbs } = useBreadcrumbs()
 
-usePageSeo({
+useSeo({
   title: 'New Developments in Austin — Construction Permits & Building Map',
   description:
     'Track new construction in Austin with an interactive map of building permits. See where new homes, apartments, and developments are being built.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('real-estate'),
   },
 })
 
-useSchemaOrg([
-  defineWebPage({
-    name: 'New Developments in Austin',
-    description:
-      'Interactive map of new construction building permits in Austin from City of Austin open data.',
-  }),
-])
+useWebPageSchema({
+  name: 'New Developments in Austin',
+  description:
+    'Interactive map of new construction building permits in Austin from City of Austin open data.',
+})
 
 const { data: apiData } = await useFetch<{ permits: PermitSpot[] }>('/api/real-estate/developments')
 

@@ -5,7 +5,6 @@
  * "coming soon" page when the sub-app is registered but not yet built.
  * Falls through to a 404 if neither category nor sub-app exist.
  */
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 definePageMeta({ layout: 'fullscreen' })
 
@@ -57,24 +56,21 @@ const config = computed(() => ({
   apiEndpoint: `/api/map-spots?category=${slug.value}`,
 }))
 
-usePageSeo({
+useSeo({
   title: subApp.value?.status === 'live' ? displayName.value : `${displayName.value} — Coming Soon`,
   description:
     subApp.value?.description ?? `${displayName.value} is coming soon to Austin-Texas.net.`,
-  ogImageProps: {
+  ogImage: {
     category: category.value.title,
-    categoryColor: getCategoryHexColor(categorySlug.value),
   },
 })
 
-useSchemaOrg([
-  defineWebPage({
-    name:
-      subApp.value?.status === 'live' ? displayName.value : `${displayName.value} — Coming Soon`,
-    description:
-      subApp.value?.description ?? `${displayName.value} is coming soon to Austin-Texas.net.`,
-  }),
-])
+useWebPageSchema({
+  name:
+    subApp.value?.status === 'live' ? displayName.value : `${displayName.value} — Coming Soon`,
+  description:
+    subApp.value?.description ?? `${displayName.value} is coming soon to Austin-Texas.net.`,
+})
 
 // Sibling sub-apps in the same category
 const siblings = computed(() => category.value?.subApps.filter((a) => a.slug !== slug.value) ?? [])

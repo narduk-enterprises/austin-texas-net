@@ -11,7 +11,6 @@
  * Data sourced from iNaturalist's citizen-science platform.
  */
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('outdoors')!
@@ -255,14 +254,13 @@ function formatObsDate(iso: string): string {
   }
 }
 
-usePageSeo({
+useSeo({
   title: 'Austin Bluebonnet Map — Where to See Texas Wildflowers',
   description:
     'Find bluebonnets near Austin with our interactive sighting map. See where Texas bluebonnets are blooming now, best spots, peak season timing, and viewing tips.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('outdoors'),
-  },
+      },
 })
 
 // ── Best spots data ────────────────────────────────────
@@ -343,31 +341,18 @@ const faqs = [
   },
 ]
 
-useSchemaOrg([
-  defineWebPage({
+useWebPageSchema({
     name: 'Austin Bluebonnet Map — Where to See Texas Wildflowers',
     description:
       'Interactive map of Texas bluebonnet sightings near Austin and across the state. Find where wildflowers are blooming, best viewing spots, and peak season timing.',
-  }),
-])
+  })
 
-// FAQPage structured data — injected via useHead for reliable SSR
-useHead({
-  script: [
-    {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: faqs.map((f) => ({
-          '@type': 'Question',
-          name: f.question,
-          acceptedAnswer: { '@type': 'Answer', text: f.answer },
-        })),
-      }),
-    },
-  ],
-})
+useFAQSchema(
+  faqs.map((f) => ({
+    question: f.question,
+    answer: f.answer,
+  }))
+)
 const faqAccordionItems = computed(() =>
   faqs.map((f, i) => ({ label: f.question, content: f.answer, value: String(i) })),
 )

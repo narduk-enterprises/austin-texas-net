@@ -13,18 +13,28 @@ const category = getCategoryBySlug('health')!
 const siblings = category.subApps.filter((a) => a.slug !== 'cedar-pollen')
 const crossLinks = categories.value.filter((c) => c.slug !== 'health').slice(0, 4)
 
-usePageSeo({
+useSeo({
   title: 'Austin Cedar Pollen Count — Live Tracker & Forecast',
   description:
     'Live cedar pollen counts for Austin, TX. Track mountain cedar levels, view 5-day forecasts, historical trends, and get health tips during cedar fever season.',
 })
 
+useWebPageSchema({
+  name: 'Austin Cedar Pollen Count — Live Tracker & Forecast',
+  description:
+    'Real-time cedar pollen tracker for Austin, Texas. Mountain cedar grains/m³, severity levels, 5-day forecast, and seasonal trends.',
+})
+
 useSchemaOrg([
-  defineWebPage({
-    name: 'Austin Cedar Pollen Count — Live Tracker & Forecast',
-    description:
-      'Real-time cedar pollen tracker for Austin, Texas. Mountain cedar grains/m³, severity levels, 5-day forecast, and seasonal trends.',
-  }),
+  {
+    '@type': 'Dataset',
+    name: 'Austin Cedar Pollen Data',
+    description: 'Real-time and historical cedar pollen counts for Austin, Texas. Includes mountain cedar grains/m³ and severity levels.',
+    creator: {
+      '@type': 'Organization',
+      name: 'Georgetown Allergy Center / KXAN'
+    }
+  }
 ])
 
 // ─── Data fetching ─────────────────────────────────────

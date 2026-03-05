@@ -59,28 +59,24 @@ const cityLabel = computed(() => {
   return city && city !== 'Austin' ? `, ${city}` : ''
 })
 
-usePageSeo({
+useSeo({
   title: `${displayName.value}${cityLabel.value} — Austin Neighborhood Guide`,
   description:
     neighborhood.value.description ||
     `Explore ${displayName.value}${cityLabel.value} — local dining, activities, real estate, and everything you need to know about this Austin-area neighborhood.`,
-  ogImageProps: {
+  ogImage: {
     title: displayName.value,
-    description: neighborhood.value.description,
-    region: neighborhood.value.region,
-    city: neighborhood.value.city,
-    zipCode: neighborhood.value.zipCode,
+    description: neighborhood.value.description ?? undefined,
+    category: 'neighborhoods',
   },
 })
 
-useSchemaOrg([
-  defineWebPage({
-    name: `${displayName.value} Neighborhood Guide`,
-    description:
-      neighborhood.value.description ||
-      `Guide to ${displayName.value}${cityLabel.value} — dining, activities, and neighborhood info.`,
-  }),
-])
+useWebPageSchema({
+  name: `${displayName.value} Neighborhood Guide`,
+  description:
+    neighborhood.value.description ||
+    `Guide to ${displayName.value}${cityLabel.value} — dining, activities, and neighborhood info.`,
+})
 
 const { items: breadcrumbs } = useBreadcrumbs()
 

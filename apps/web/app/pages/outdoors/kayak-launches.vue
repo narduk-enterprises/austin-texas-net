@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { launchSites, waterBodies } from '~/data/kayak-launches'
 
-usePageSeo({
+useSeo({
   title: 'Austin Kayak Launch Sites — Paddleboard, Canoe & Kayak Guide',
   description: 'Find the best kayak, canoe, and paddleboard launch sites in Austin TX. Water conditions, parking info, difficulty ratings, and local tips.',
 })
 
-useSchemaOrg([
-  defineWebPage({ name: 'Austin Kayak Launch Sites' }),
-  defineWebSite({ name: 'Austin Kayak Launch Sites' }),
-])
+useWebPageSchema({ name: 'Austin Kayak Launch Sites' }),
+  defineWebSite({ name: 'Austin Kayak Launch Sites' })
 
 const selectedWaterBody = ref('')
 const selectedDifficulty = ref('')

@@ -8,7 +8,6 @@
  */
 import type { NwsForecastPeriod } from '~~/server/utils/nws'
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 import { getConditionIcon } from '~/utils/weatherIcons'
 
 const { getCategoryBySlug, categories } = useSiteData()
@@ -17,23 +16,20 @@ const siblings = category.subApps.filter((a) => a.slug !== '7-day-forecast')
 const crossLinks = categories.value.filter((c) => c.slug !== 'weather').slice(0, 4)
 const { items: breadcrumbs } = useBreadcrumbs()
 
-usePageSeo({
+useSeo({
   title: 'Austin 7-Day Forecast — Daily Highs, Lows & Conditions',
   description:
     'Austin 7-day weather forecast from the National Weather Service — daily temperatures, wind, precipitation chances, and detailed conditions.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('weather'),
-  },
+      },
 })
 
-useSchemaOrg([
-  defineWebPage({
+useWebPageSchema({
     name: 'Austin 7-Day Forecast — Daily Highs, Lows & Conditions',
     description:
       'Extended weather forecast for Austin, Texas — daily and nightly conditions from the NWS.',
-  }),
-])
+  })
 
 const { data: forecastData } = await useFetch<{
   periods: NwsForecastPeriod[]

@@ -1,12 +1,10 @@
 <script setup lang="ts">
-usePageSeo({
+useSeo({
   title: 'Games Portal',
   description: 'ATX Games is the launchpad for playable browser games from ATX Apps.',
 })
 
-useSchemaOrg([
-  defineWebPage({ name: 'ATX Games Portal' }),
-])
+useWebPageSchema({ name: 'ATX Games Portal' })
 
 interface GameCard {
   slug: string

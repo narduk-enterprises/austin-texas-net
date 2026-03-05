@@ -9,7 +9,6 @@
  * Search Radar keyword: "best hiking trails austin tx" (12,100 monthly volume)
  */
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('outdoors')!
@@ -17,14 +16,13 @@ const siblings = category.subApps.filter((a) => a.slug !== 'hiking-trails')
 const crossLinks = categories.value.filter((c) => c.slug !== 'outdoors').slice(0, 4)
 const { items: breadcrumbs } = useBreadcrumbs()
 
-usePageSeo({
+useSeo({
   title: 'Best Hiking Trails in Austin, Texas — Trail Guide & Maps',
   description:
     'Complete guide to the best hiking trails in Austin, TX — Barton Creek Greenbelt, Turkey Creek, Walnut Creek, and more with difficulty ratings, trail distances, and conditions.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('outdoors'),
-  },
+      },
 })
 
 useSchemaOrg([

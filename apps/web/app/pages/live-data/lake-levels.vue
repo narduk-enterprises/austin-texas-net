@@ -8,7 +8,7 @@
  * panel with elevation, capacity, and a historical trend chart.
  */
 
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
+
 
 definePageMeta({ layout: 'fullscreen' })
 
@@ -30,22 +30,31 @@ const category = getCategoryBySlug('live-data')!
 const siblings = category.subApps.filter((a) => a.slug !== 'lake-levels' && a.status === 'live')
 const crossLinks = categories.value.filter((c) => c.slug !== 'live-data').slice(0, 4)
 
-usePageSeo({
+useSeo({
   title: 'Austin Lake Levels — Lake Travis, Lake Austin & More',
   description:
     'Live lake levels for Lake Travis, Lake Austin, Lake Buchanan, and area reservoirs. Real-time elevation, percent full, and historical charts.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('live-data'),
-  },
+      },
 })
 
-useSchemaOrg([
-  defineWebPage({
+useWebPageSchema({
     name: 'Austin Lake Levels — Real-Time Data',
     description:
       'Live reservoir levels for Austin-area lakes sourced from the Texas Water Development Board.',
-  }),
+  })
+
+useSchemaOrg([
+  {
+    '@type': 'Dataset',
+    name: 'Austin-Area Lake Levels',
+    description: 'Current and historical reservoir levels for Austin-area lakes, including Lake Travis and Lake Austin, sourced from the Texas Water Development Board.',
+    creator: {
+      '@type': 'Organization',
+      name: 'Texas Water Development Board (TWDB)'
+    }
+  }
 ])
 
 // Fetch spots from API

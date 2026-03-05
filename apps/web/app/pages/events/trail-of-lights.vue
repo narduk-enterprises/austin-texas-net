@@ -1,18 +1,16 @@
 <script setup lang="ts">
-import { getCategoryHexColor } from '~/utils/categoryHexColors'
 
 const { getCategoryBySlug, categories } = useSiteData()
 const category = getCategoryBySlug('events')!
 const siblings = category.subApps.filter((a) => a.slug !== 'trail-of-lights')
 const crossLinks = categories.value.filter((c) => c.slug !== 'events').slice(0, 4)
 
-usePageSeo({
+useSeo({
   title: 'Austin Trail of Lights Guide',
   description: 'Everything you need to know about the Austin Trail of Lights in Zilker Park. Dates, parking info, and tips for this beloved holiday tradition.',
-  ogImageProps: {
+  ogImage: {
     category: category.title,
-    categoryColor: getCategoryHexColor('events'),
-  },
+      },
 })
 
 useSchemaOrg([

@@ -5,17 +5,15 @@
  */
 definePageMeta({ layout: 'home' })
 
-usePageSeo({
+useSeo({
   title: 'Austin, Texas — Live Local Intelligence',
   description: 'Real-time pollen, water temps, events, and where to go in Austin, Texas.',
 })
 
-useSchemaOrg([
-  defineWebPage({
+useWebPageSchema({
     name: 'Austin, Texas — Live Local Intelligence',
     description: 'Real-time pollen, water temps, events, and where to go in Austin, Texas.',
-  }),
-])
+  })
 </script>
 
 <template>
