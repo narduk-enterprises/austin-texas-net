@@ -19,6 +19,8 @@ export default defineEventHandler((event) => {
       "img-src 'self' data: https:",
       "font-src 'self' https://fonts.gstatic.com",
       `connect-src 'self' https://www.google-analytics.com https://us.i.posthog.com https://us-assets.i.posthog.com https://*.apple-mapkit.com https://*.apple.com${import.meta.dev ? ' http: https: ws: wss:' : ''}`,
+      "worker-src 'self' blob:",
+      "child-src 'self' blob:",
       "frame-ancestors 'none'",
     ].join('; '),
   })
