@@ -70,7 +70,7 @@ const config = computed(() => ({
 useSeo({
   title: subApp.value?.status === 'live' ? displayName.value : `${displayName.value} — Coming Soon`,
   description:
-    subApp.value?.description ?? `${displayName.value} is coming soon to Austin-Texas.net.`,
+    subApp.value?.description ?? (subApp.value?.status === 'live' ? `${displayName.value} is currently under construction on Austin-Texas.net.` : `${displayName.value} is coming soon to Austin-Texas.net.`),
   ogImage: {
     category: category.value.title,
   },
@@ -80,7 +80,7 @@ useWebPageSchema({
   name:
     subApp.value?.status === 'live' ? displayName.value : `${displayName.value} — Coming Soon`,
   description:
-    subApp.value?.description ?? `${displayName.value} is coming soon to Austin-Texas.net.`,
+    subApp.value?.description ?? (subApp.value?.status === 'live' ? `${displayName.value} is currently under construction on Austin-Texas.net.` : `${displayName.value} is coming soon to Austin-Texas.net.`),
 })
 
 // Sibling sub-apps in the same category
@@ -211,11 +211,11 @@ const spots = computed(() => {
         <!-- Badge -->
         <div class="flex justify-center mb-5 animate-fade-up-delay-1">
           <UBadge
-            color="warning"
+            :color="subApp.status === 'live' ? 'success' : 'warning'"
             variant="subtle"
             size="md"
-            label="Coming Soon"
-            icon="i-lucide-clock"
+            :label="subApp.status === 'live' ? 'Under Construction' : 'Coming Soon'"
+            :icon="subApp.status === 'live' ? 'i-lucide-hammer' : 'i-lucide-clock'"
           />
         </div>
 
