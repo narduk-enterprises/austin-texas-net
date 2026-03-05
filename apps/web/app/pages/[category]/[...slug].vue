@@ -30,8 +30,13 @@ if (!category.value || !subApp.value) {
 const isSpots = computed(
   () =>
     subApp.value?.contentType === 'spots' ||
-    ['bbq', 'breakfast-tacos', 'coffee', 'food-trucks', 'happy-hours', 'restaurants'].includes(
-      subApp.value?.contentType || '',
+    [
+      'bbq', 'breakfast-tacos', 'coffee-shops', 'food-trucks', 'happy-hours', 
+      'restaurant-map', 'crawfish-season', 'tex-mex', 'brunch', 'pizza', 
+      'asian-food', 'bars', 'live-music-venues', 'disc-golf', 'swimming-holes', 
+      'hiking-trails'
+    ].includes(
+      subApp.value?.contentType || slug.value,
     ),
 )
 
