@@ -16,6 +16,8 @@ interface AuthUser {
   isAdmin: boolean
 }
 
+const csrfHeaders = { 'X-Requested-With': 'XMLHttpRequest' } as const
+
 export function useAuth() {
   const user = useState<AuthUser | null>('auth-user', () => null)
   const initialized = useState<boolean>('auth-initialized', () => false)
@@ -53,6 +55,7 @@ export function useAuth() {
   async function login(email: string, password: string) {
     const res = await $fetch<{ user: AuthUser }>('/api/auth/login', {
       method: 'POST',
+      headers: csrfHeaders,
       body: { email, password },
     })
     user.value = res.user
@@ -63,6 +66,7 @@ export function useAuth() {
   async function signup(email: string, password: string, name?: string) {
     const res = await $fetch<{ user: AuthUser }>('/api/auth/signup', {
       method: 'POST',
+      headers: csrfHeaders,
       body: { email, password, name },
     })
     user.value = res.user
@@ -71,7 +75,7 @@ export function useAuth() {
   }
 
   async function logout() {
-    await $fetch('/api/auth/logout', { method: 'POST', body: {} })
+    await $fetch('/api/auth/logout', { method: 'POST', headers: csrfHeaders, body: {} })
     user.value = null
   }
 

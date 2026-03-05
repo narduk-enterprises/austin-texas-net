@@ -4,6 +4,10 @@ usePageSeo({
   description: 'ATX Games is the launchpad for playable browser games from ATX Apps.',
 })
 
+useSchemaOrg([
+  defineWebPage({ name: 'ATX Games Portal' }),
+])
+
 interface GameCard {
   slug: string
   name: string

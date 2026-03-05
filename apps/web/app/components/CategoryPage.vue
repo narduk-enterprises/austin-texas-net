@@ -60,6 +60,18 @@ function isDisabled(app: SubApp): boolean {
   return app.status === 'coming-soon' && !app.standaloneUrl
 }
 
+function getComponentType(app: SubApp) {
+  if (isDisabled(app)) return 'div'
+  if (isExternal(app)) return 'a'
+  return NuxtLinkComponent
+}
+
+function handleAppClick(app: SubApp) {
+  if (!isDisabled(app)) {
+    trackAppClick(app.title, getAppHref(app) || app.standaloneUrl || '')
+  }
+}
+
 const NuxtLinkComponent = resolveComponent('NuxtLink')
 
 // Click tracking
@@ -122,7 +134,7 @@ function trackAppClick(appTitle: string, destination: string) {
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-[repeat(auto-fill,minmax(292px,1fr))] gap-4">
           <component
-            :is="isDisabled(app) ? 'div' : isExternal(app) ? 'a' : NuxtLinkComponent"
+            :is="getComponentType(app)"
             v-for="app in category.subApps"
             :key="app.slug"
             :to="!isDisabled(app) && !isExternal(app) ? getAppHref(app) : undefined"
@@ -135,10 +147,7 @@ function trackAppClick(appTitle: string, destination: string) {
                 ? 'opacity-60 cursor-default'
                 : 'cursor-pointer hover:border-premium-accent hover:-translate-y-0.5'
             "
-            @click="
-              !isDisabled(app) &&
-              trackAppClick(app.title, getAppHref(app) || app.standaloneUrl || '')
-            "
+            @click="handleAppClick(app)"
           >
             <div class="flex justify-between items-center mb-2.5">
               <h3 class="text-base font-bold font-display">{{ app.title }}</h3>

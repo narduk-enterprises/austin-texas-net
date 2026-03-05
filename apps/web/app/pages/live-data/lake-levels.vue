@@ -134,6 +134,10 @@ function percentFullBg(pct: number | null): string {
   if (pct >= 50) return 'bg-elevated'
   return 'bg-elevated'
 }
+
+function fillBarStyle(pct: number | null): Record<string, string> {
+  return { width: `${Math.min(pct || 0, 100)}%` }
+}
 </script>
 
 <template>
@@ -297,7 +301,7 @@ function percentFullBg(pct: number | null): string {
               <div
                 class="h-full rounded-full transition-[width] duration-500"
                 :class="percentFullBg(spot.percentFull)"
-                :style="{ width: `${Math.min(spot.percentFull || 0, 100)}%` }"
+                :style="fillBarStyle(spot.percentFull)"
               />
             </div>
             <UIcon

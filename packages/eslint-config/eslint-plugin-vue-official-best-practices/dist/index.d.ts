@@ -296,7 +296,10 @@ declare const _default: {
                 'vue-official/no-setup-top-level-side-effects': string;
                 'vue-official/no-async-computed-getter': string;
                 'vue-official/prefer-shallow-watch': string;
-                'vue-official/no-template-complex-expressions': string;
+                'vue-official/no-template-complex-expressions': (string | {
+                    maxCallArgs: number;
+                    allowedFunctions: string[];
+                })[];
                 'vue-official/consistent-defineprops-emits': string;
                 'vue-official/prefer-typed-defineprops': string;
                 'vue-official/require-use-prefix-for-composables': string;

@@ -45,6 +45,8 @@ export interface AdminRun {
   outputPreview?: string
 }
 
+const csrfHeaders = { 'X-Requested-With': 'XMLHttpRequest' } as const
+
 export function useAdminData() {
   const { data: categoriesData, refresh: refreshCategories } = useFetch<{
     categories: AdminCategory[]
@@ -67,6 +69,7 @@ export function useAdminData() {
   const saveCategory = async (category: Partial<AdminCategory>) => {
     return await $fetch('/api/admin/site-categories', {
       method: 'POST',
+      headers: csrfHeaders,
       body: category,
     })
   }
@@ -74,6 +77,7 @@ export function useAdminData() {
   const saveTopic = async (topic: Partial<AdminTopic>) => {
     return await $fetch('/api/admin/content-pipeline/topics', {
       method: 'POST',
+      headers: csrfHeaders,
       body: topic,
     })
   }
@@ -81,6 +85,7 @@ export function useAdminData() {
   const deleteTopic = async (id: number) => {
     return await $fetch('/api/admin/content-pipeline/topics', {
       method: 'DELETE',
+      headers: csrfHeaders,
       body: { id },
     })
   }
@@ -88,6 +93,7 @@ export function useAdminData() {
   const saveSpot = async (spot: Partial<MapSpot>) => {
     return await $fetch('/api/admin/map-spots', {
       method: 'POST',
+      headers: csrfHeaders,
       body: spot,
     })
   }
@@ -95,6 +101,7 @@ export function useAdminData() {
   const runPipeline = async (topicId: number) => {
     return await $fetch('/api/admin/content-pipeline/run', {
       method: 'POST',
+      headers: csrfHeaders,
       body: { topicId },
     })
   }
@@ -102,12 +109,13 @@ export function useAdminData() {
   const approveRun = async (runId: number, selectedSpotIds: string[]) => {
     return await $fetch('/api/admin/content-pipeline/approve', {
       method: 'POST',
+      headers: csrfHeaders,
       body: { runId, selectedSpotIds },
     })
   }
 
   const seedDefaults = async () => {
-    return await $fetch('/api/admin/content-pipeline/seed', { method: 'POST' })
+    return await $fetch('/api/admin/content-pipeline/seed', { method: 'POST', headers: csrfHeaders })
   }
 
   const generateDescription = async (topicLabel: string, categoryLabel: string) => {
@@ -115,6 +123,7 @@ export function useAdminData() {
       '/api/admin/content-pipeline/generate-description',
       {
         method: 'POST',
+        headers: csrfHeaders,
         body: { topicLabel, categoryLabel },
       },
     )
@@ -123,6 +132,7 @@ export function useAdminData() {
   const aiMagicSpots = async (spots: MapSpot[], topicLabel: string, categoryLabel: string) => {
     return await $fetch<{ spots: MapSpot[] }>('/api/admin/map-spots/ai-magic', {
       method: 'POST',
+      headers: csrfHeaders,
       body: { spots, topicLabel, categoryLabel },
     })
   }
@@ -132,6 +142,7 @@ export function useAdminData() {
       '/api/admin/map-spots/smart-sync',
       {
         method: 'POST',
+        headers: csrfHeaders,
       },
     )
   }

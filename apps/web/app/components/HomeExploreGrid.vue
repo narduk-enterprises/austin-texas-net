@@ -4,7 +4,17 @@
  * No cards, no boxes. Bold headings + sub-links in responsive columns.
  * Background handled at page level.
  */
+import type { Category } from '~/composables/useSiteData'
+
 const { categories } = useSiteData()
+
+function allLiveApps(cat: Category) {
+  return cat.subApps.filter(a => a.status === 'live')
+}
+
+function liveApps(cat: Category) {
+  return allLiveApps(cat).slice(0, 3)
+}
 </script>
 
 <template>
@@ -41,7 +51,7 @@ const { categories } = useSiteData()
           <!-- Sub-app links — each is a big full-width tap target -->
           <div class="pl-[52px]">
             <NuxtLink
-              v-for="app in cat.subApps.filter(a => a.status === 'live').slice(0, 3)"
+              v-for="app in liveApps(cat)"
               :key="app.slug"
               :to="`/${cat.slug}/${app.slug}/`"
               class="flex items-center min-h-[44px] py-2 text-[15px] font-medium text-default/70 hover:text-default active:text-default transition-colors duration-200 cursor-pointer rounded"
@@ -51,7 +61,7 @@ const { categories } = useSiteData()
 
             <!-- Show all link if there are more than 3 live apps -->
             <NuxtLink
-              v-if="cat.subApps.filter(a => a.status === 'live').length > 3"
+              v-if="allLiveApps(cat).length > 3"
               :to="`/${cat.slug}/`"
               class="flex items-center gap-1.5 min-h-[44px] py-2 text-[14px] font-semibold text-primary dark:text-muted hover:text-primary dark:hover:text-muted transition-colors duration-200 cursor-pointer mt-1 rounded"
             >

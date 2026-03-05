@@ -11,12 +11,17 @@ useSchemaOrg([
   defineWebSite({ name: 'Haunted Austin Guide' }),
 ])
 
-const selectedType = ref('')
+const selectedType = ref('all')
 const filteredPlaces = computed(() => {
   return hauntedPlaces
-    .filter(p => !selectedType.value || p.type === selectedType.value)
+    .filter(p => selectedType.value === 'all' || p.type === selectedType.value)
     .sort((a, b) => b.scareFactor - a.scareFactor)
 })
+
+const typeFilterItems = computed(() => [
+  { label: 'All Types', value: 'all' },
+  ...placeTypes.map(t => ({ label: t.charAt(0).toUpperCase() + t.slice(1), value: t })),
+])
 
 const skullIcons = (n: number) => Array.from({ length: 5 }, (_, i) => i < n)
 </script>
@@ -40,7 +45,7 @@ const skullIcons = (n: number) => Array.from({ length: 5 }, (_, i) => i < n)
     <section class="glass-card p-4 sm:p-6">
       <USelect
         v-model="selectedType"
-        :items="[{ label: 'All Types', value: '' }, ...placeTypes.map(t => ({ label: t.charAt(0).toUpperCase() + t.slice(1), value: t }))]"
+        :items="typeFilterItems"
         size="lg"
       />
     </section>

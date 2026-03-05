@@ -1,60 +1,61 @@
 /**
- * App-specific ESLint rule overrides for austin-texas.net
+ * App-level ESLint overrides for austin-texas.net.
  *
- * Disables guardrail rules this app isn't ready for yet.
- * Remove overrides as features are implemented.
+ * These are MINIMAL, justified exceptions — not ignore rules.
+ * Each block documents WHY the override exists.
  */
 export default [
-  // ── SEO guardrails — pages don't have useSeo/schema yet ──
-  {
-    files: ['app/pages/**/*.vue'],
-    rules: {
-      'nuxt-guardrails/require-use-seo-on-pages': 'off',
-      'nuxt-guardrails/require-schema-on-pages': 'off',
-    },
-  },
-
-  // ── Admin pages use $fetch intentionally in event handlers ──
+  // ─── Admin pages: no public SEO needed ───────────────────
+  // Admin pages are behind auth and should not have public SEO
+  // or schema.org markup. The guardrail rules are for public pages.
   {
     files: ['app/pages/admin/**/*.vue'],
     rules: {
-      'nuxt-guardrails/no-raw-fetch': 'off',
-      'nuxt-guardrails/require-csrf-header-on-mutations': 'off',
-      '@typescript-eslint/no-explicit-any': 'off',
-    },
-  },
-
-  // ── Admin composables use $fetch for mutations (not SSR data-fetching) ──
-  {
-    files: ['app/composables/useAdminData.ts', 'app/composables/useAuth.ts'],
-    rules: {
-      'nuxt-guardrails/no-raw-fetch': 'off',
-      'nuxt-guardrails/require-csrf-header-on-mutations': 'off',
-    },
-  },
-
-  // ── Template complexity — many pages use inline expressions (address later) ──
-  {
-    files: ['app/pages/**/*.vue', 'app/components/**/*.vue'],
-    rules: {
+      'nuxt-guardrails/require-use-seo-on-pages': 'off',
+      'nuxt-guardrails/require-schema-on-pages': 'off',
       'vue-official/no-template-complex-expressions': 'off',
     },
   },
 
-  // ── Utility composables without "use" prefix are intentional ──
+  // ─── Admin composables: event-handler $fetch ─────────────
+  // useAdminData.ts and useAuth.ts use $fetch for user-triggered
+  // mutations (button clicks), not SSR data-fetching.
+  // The no-raw-fetch rule targets SSR hydration issues, which
+  // don't apply to event handlers.
   {
-    files: ['app/composables/useSeverity.ts', 'app/composables/useAustinSunset.ts'],
+    files: [
+      'app/composables/useAdminData.ts',
+      'app/composables/useAuth.ts',
+    ],
     rules: {
-      'vue-official/require-use-prefix-for-composables': 'off',
+      'nuxt-guardrails/no-raw-fetch': 'off',
     },
   },
 
-  // ── MapKit JS has no TypeScript declarations ──
+  // ─── Admin page $fetch in event handlers ─────────────────
+  // Admin pages use $fetch in click handlers for one-off API calls.
+  {
+    files: [
+      'app/pages/admin/apple-maps.vue',
+      'app/pages/admin/content-pipeline.vue',
+      'app/pages/admin/grid-crawler.vue',
+      'app/pages/admin/gsc.vue',
+      'app/pages/admin/neighborhoods.vue',
+      'app/pages/admin/radar.vue',
+      'app/pages/admin/posthog.vue',
+    ],
+    rules: {
+      'nuxt-guardrails/no-raw-fetch': 'off',
+    },
+  },
+
+  // ─── MapKit JS: no TypeScript declarations ───────────────
+  // Apple's MapKit JS SDK has zero TypeScript type declarations.
+  // These files necessarily use `any` for MapKit API objects.
   {
     files: [
       'app/components/AppMapKit.vue',
       'app/components/BatViewingSpotsMap.client.vue',
-      'app/components/map/**/*.vue',
       'app/composables/useMapKit.ts',
     ],
     rules: {
@@ -65,37 +66,48 @@ export default [
     },
   },
 
-  // ── Login page uses $fetch for auth flows (user-triggered) ──
+  // ─── Admin pages: external API response typing ───────────
+  // Server API routes that call Apple Maps / external APIs
+  // receive dynamic JSON responses. Typing as Record<string, unknown>
+  // is the fix, but some complex response parsing still needs `any`.
   {
-    files: ['app/pages/login.vue'],
+    files: [
+      'app/pages/admin/apple-maps.vue',
+      'app/pages/admin/grid-crawler.vue',
+      'server/api/admin/apple-maps-test.post.ts',
+      'server/api/map-spots/ingest.post.ts',
+      'server/api/neighborhoods/ingest.post.ts',
+    ],
     rules: {
-      'nuxt-guardrails/no-raw-fetch': 'off',
-      'nuxt-guardrails/require-csrf-header-on-mutations': 'off',
-      'nuxt-guardrails/prefer-use-seo-over-bare-meta': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
 
-  // ── Pages that use useHead() for custom JSON-LD schema (not covered by usePageSeo) ──
+  // ─── JSON-LD / robots: legitimate useHead/useSeoMeta ─────
+  // These pages use useHead() for structured data (JSON-LD)
+  // or useSeoMeta() for robots directives — features that
+  // usePageSeo() doesn't support.
   {
     files: [
       'app/pages/events/bat-fest.vue',
       'app/pages/outdoors/bluebonnets.vue',
+      'app/pages/login.vue',
     ],
     rules: {
       'nuxt-guardrails/prefer-use-seo-over-bare-meta': 'off',
     },
   },
 
-  // ── Server API files — Apple Maps/external API responses use dynamic shapes ──
+  // ─── Pages without Schema.org ─────────────────────────────
+  // Login page is noindex/nofollow — no Schema.org needed.
+  // bat-fest uses custom JSON-LD via useHead, not useSchemaOrg.
   {
     files: [
-      'server/api/admin/**/*.ts',
-      'server/api/map-spots/**/*.ts',
-      'server/api/neighborhoods/**/*.ts',
-      'server/api/indexnow/**/*.ts',
+      'app/pages/login.vue',
+      'app/pages/events/bat-fest.vue',
     ],
     rules: {
-      '@typescript-eslint/no-explicit-any': 'off',
+      'nuxt-guardrails/require-schema-on-pages': 'off',
     },
   },
 ]

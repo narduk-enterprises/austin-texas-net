@@ -368,6 +368,9 @@ useHead({
     },
   ],
 })
+const faqAccordionItems = computed(() =>
+  faqs.map((f, i) => ({ label: f.question, content: f.answer, value: String(i) })),
+)
 </script>
 
 <template>
@@ -584,7 +587,7 @@ useHead({
           Frequently Asked Questions
         </h2>
         <UAccordion
-          :items="faqs.map((f, i) => ({ label: f.question, content: f.answer, value: String(i) }))"
+          :items="faqAccordionItems"
           type="multiple"
         />
       </section>

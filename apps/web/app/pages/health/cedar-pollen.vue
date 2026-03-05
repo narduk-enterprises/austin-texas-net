@@ -125,6 +125,12 @@ const healthTips = computed(() => {
   }
   return base
 })
+
+const cedarDominancePct = computed(() => {
+  if (!allergens.value || allergens.value.cedar <= 0) return 0
+  const a = allergens.value
+  return Math.round((a.cedar / (a.cedar + (a.elm || 0) + (a.mold || 0))) * 100)
+})
 </script>
 
 <template>
@@ -210,15 +216,7 @@ const healthTips = computed(() => {
         <PollenStatCard
           v-if="allergens"
           label="Cedar Dominance"
-          :value="
-            allergens.cedar > 0
-              ? Math.round(
-                  (allergens.cedar /
-                    (allergens.cedar + (allergens.elm || 0) + (allergens.mold || 0))) *
-                    100,
-                )
-              : 0
-          "
+          :value="cedarDominancePct"
           suffix="%"
           color="#EF4444"
         />

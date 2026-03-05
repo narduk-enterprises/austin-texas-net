@@ -1,6 +1,6 @@
 import { activeSeasonContext, dormantSeasonContext } from '~/data/bat-facts'
 import { AUSTIN_BRIDGE_COORDINATES } from '~/data/bat-spots'
-import { AUSTIN_TIME_ZONE, addMinutes, calculateSunset, getZonedDateParts, shiftAustinDate, type ZonedDateParts } from './useAustinSunset'
+import { AUSTIN_TIME_ZONE, addMinutes, calculateSunset, getZonedDateParts, shiftAustinDate, type ZonedDateParts } from '~/utils/austinSunset'
 
 const EMERGENCE_DELAY_MINUTES = 20
 const ARRIVAL_LEAD_MINUTES = 30

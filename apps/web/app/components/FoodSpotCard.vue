@@ -16,6 +16,10 @@ defineProps<{
 defineEmits<{
   directions: [spot: FoodSpot]
 }>()
+
+function appleMapsUrl(spot: FoodSpot): string {
+  return `https://maps.apple.com/?q=${encodeURIComponent(spot.name)}&ll=${spot.lat},${spot.lng}`
+}
 </script>
 
 <template>
@@ -61,7 +65,7 @@ defineEmits<{
           color="neutral"
           icon="i-lucide-external-link"
           aria-label="Open in Apple Maps"
-          :to="`https://maps.apple.com/?q=${encodeURIComponent(spot.name)}&ll=${spot.lat},${spot.lng}`"
+          :to="appleMapsUrl(spot)"
           target="_blank"
           rel="noopener noreferrer"
         />

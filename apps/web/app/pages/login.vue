@@ -31,6 +31,11 @@ const mode = ref<'signin' | 'signup'>('signin')
 const route = useRoute()
 if (route.query.mode === 'signup') mode.value = 'signup'
 
+const emailToggleLabel = computed(() => {
+  if (emailOpen.value) return 'Hide'
+  return mode.value === 'signin' ? 'Sign in with email' : 'Sign up with email'
+})
+
 const tabItems = computed(() => [
   { label: 'Sign In', value: 'signin' },
   { label: 'Sign Up', value: 'signup' },
@@ -152,9 +157,7 @@ async function handleLogout() {
           variant="outline"
           color="neutral"
           :icon="emailOpen ? 'i-lucide-chevron-up' : 'i-lucide-mail'"
-          :label="
-            emailOpen ? 'Hide' : mode === 'signin' ? 'Sign in with email' : 'Sign up with email'
-          "
+          :label="emailToggleLabel"
           @click="emailOpen = !emailOpen"
         />
 

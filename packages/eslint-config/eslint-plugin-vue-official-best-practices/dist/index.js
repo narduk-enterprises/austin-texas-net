@@ -1209,7 +1209,23 @@ var recommended = {
     "vue-official/no-setup-top-level-side-effects": "error",
     "vue-official/no-async-computed-getter": "error",
     "vue-official/prefer-shallow-watch": "warn",
-    "vue-official/no-template-complex-expressions": "warn",
+    "vue-official/no-template-complex-expressions": ["warn", {
+      maxCallArgs: 2,
+      allowedFunctions: [
+        "formatPrice",
+        "formatChange",
+        "formatPercent",
+        "formatDate",
+        "formatCurrency",
+        "formatNumber",
+        "formatStatValue",
+        "toLocaleString",
+        "toString",
+        "toFixed",
+        "$emit",
+        "emit"
+      ]
+    }],
     "vue-official/consistent-defineprops-emits": "error",
     "vue-official/prefer-typed-defineprops": "warn",
     // Composable rules

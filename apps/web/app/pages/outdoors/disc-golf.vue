@@ -11,8 +11,8 @@ useSchemaOrg([
   defineWebSite({ name: 'Austin Disc Golf Courses' }),
 ])
 
-const selectedDifficulty = ref('')
-const filteredCourses = computed(() => courses.filter(c => !selectedDifficulty.value || c.difficulty === selectedDifficulty.value).sort((a, b) => b.rating - a.rating))
+const selectedDifficulty = ref('all')
+const filteredCourses = computed(() => courses.filter(c => selectedDifficulty.value === 'all' || c.difficulty === selectedDifficulty.value).sort((a, b) => b.rating - a.rating))
 
 const diffColor = (d: string) => {
   if (d === 'beginner') return 'bg-elevated/10 text-primary'
@@ -20,6 +20,10 @@ const diffColor = (d: string) => {
   if (d === 'advanced') return 'bg-elevated/10 text-primary'
   return 'bg-elevated/10 text-primary'
 }
+const difficultyFilterItems = computed(() => [
+  { label: 'All Difficulties', value: 'all' },
+  ...difficulties.map(d => ({ label: d.charAt(0).toUpperCase() + d.slice(1), value: d })),
+])
 const totalHoles = computed(() => courses.reduce((sum, c) => sum + c.holes, 0))
 </script>
 
@@ -42,7 +46,7 @@ const totalHoles = computed(() => courses.reduce((sum, c) => sum + c.holes, 0))
     <section class="glass-card p-4 sm:p-6">
       <USelect
         v-model="selectedDifficulty"
-        :items="[{ label: 'All Difficulties', value: '' }, ...difficulties.map(d => ({ label: d.charAt(0).toUpperCase() + d.slice(1), value: d }))]"
+        :items="difficultyFilterItems"
         size="lg"
       />
     </section>
