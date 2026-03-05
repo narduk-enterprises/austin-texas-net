@@ -4,11 +4,12 @@ export default defineNuxtPlugin(() => {
   const runtimeConfig = useRuntimeConfig()
   const posthogApiKey = runtimeConfig.public.posthogPublicKey
   const posthogHost = runtimeConfig.public.posthogHost
+  const appName = runtimeConfig.public.appName || 'Unknown App'
 
   if (!posthogApiKey || import.meta.server) return
 
-  const posthogClient = posthog.init(posthogApiKey as string, {
-    api_host: (posthogHost as string) || 'https://us.i.posthog.com',
+  const posthogClient = posthog.init(posthogApiKey, {
+    api_host: posthogHost || 'https://us.i.posthog.com',
     capture_pageview: false, // We'll handle this manually for Nuxt SPA navigation
     capture_pageleave: true,
     loaded: (ph) => {
@@ -16,19 +17,27 @@ export default defineNuxtPlugin(() => {
     }
   })
 
-  // Differentiate this app in the shared Narduk Analytics workspace
-  posthog.register({ app: runtimeConfig.public.appName })
-
   // Opt out on localhost
-  // if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-  //  posthog.opt_out_capturing()
-  //  return
-  // }
-
-  // Tag internal traffic
-  if (window.location.hostname.endsWith('.pages.dev')) {
-    posthog.register({ is_internal_user: true })
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    posthog.opt_out_capturing()
+    return
   }
+
+  // Expose broadly for any legacy integration
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if (!(window as any).$nuxt) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).$nuxt = {}
+  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (window as any).$nuxt.$posthog = posthog
+
+  // Tag internal traffic and uniquely identify the fleet application
+  const superProperties: Record<string, unknown> = { app: appName }
+  if (window.location.hostname.endsWith('.pages.dev')) {
+    superProperties.is_internal_user = true
+  }
+  posthog.register(superProperties)
 
   // Capture initial pageview since Nuxt router.afterEach does not fire on SSR hydration
   nextTick(() => {
