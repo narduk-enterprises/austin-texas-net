@@ -6,8 +6,7 @@ useSeo({
   description: 'Explore Austin\'s best street art, murals, and graffiti on an interactive guide. Discover muralists, photo spots, and hidden gems across the city.',
 })
 
-useWebPageSchema({ name: 'Austin Street Art & Murals Map' }),
-  defineWebSite({ name: 'Austin Street Art & Murals' })
+useWebPageSchema({ name: 'Austin Street Art & Murals Map' })
 
 const search = ref('')
 const selectedNeighborhood = ref('')

@@ -6,8 +6,7 @@ useSeo({
   description: 'Everything about Chicken Shit Bingo at the Little Longhorn Saloon in Austin. Schedule, rules, how to play, what to expect, and tips for first-timers.',
 })
 
-useWebPageSchema({ name: 'Chicken Shit Bingo Austin Guide' }),
-  defineWebSite({ name: 'Chicken Shit Bingo Tracker' })
+useWebPageSchema({ name: 'Chicken Shit Bingo Austin Guide' })
 
 const openFaq = ref<number | null>(null)
 const toggleFaq = (id: number) => {

@@ -6,8 +6,7 @@ useSeo({
   description: 'Find the best kayak, canoe, and paddleboard launch sites in Austin TX. Water conditions, parking info, difficulty ratings, and local tips.',
 })
 
-useWebPageSchema({ name: 'Austin Kayak Launch Sites' }),
-  defineWebSite({ name: 'Austin Kayak Launch Sites' })
+useWebPageSchema({ name: 'Austin Kayak Launch Sites' })
 
 const selectedWaterBody = ref('')
 const selectedDifficulty = ref('')

@@ -6,8 +6,7 @@ useSeo({
   description: 'Find every disc golf course in Austin TX. Hole layouts, difficulty ratings, reviews, parking tips, and directions for all skill levels.',
 })
 
-useWebPageSchema({ name: 'Austin Disc Golf Courses' }),
-  defineWebSite({ name: 'Austin Disc Golf Courses' })
+useWebPageSchema({ name: 'Austin Disc Golf Courses' })
 
 const selectedDifficulty = ref('all')
 const filteredCourses = computed(() => courses.filter(c => selectedDifficulty.value === 'all' || c.difficulty === selectedDifficulty.value).sort((a, b) => b.rating - a.rating))

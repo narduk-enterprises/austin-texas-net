@@ -6,8 +6,7 @@ useSeo({
   description: 'Explore Austin\'s most haunted locations. Ghost stories, paranormal history, guided tour info, and spine-chilling tales from the Texas capital.',
 })
 
-useWebPageSchema({ name: 'Haunted Austin Guide' }),
-  defineWebSite({ name: 'Haunted Austin Guide' })
+useWebPageSchema({ name: 'Haunted Austin Guide' })
 
 const selectedType = ref('all')
 const filteredPlaces = computed(() => {

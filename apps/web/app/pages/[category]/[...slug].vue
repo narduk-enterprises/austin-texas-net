@@ -17,7 +17,7 @@ const slugArray = computed(() => {
   return Array.isArray(s) ? s : [s]
 })
 const slug = computed(() => slugArray.value[0] || '')
-const spotSlug = computed(() => slugArray.value[1] || '')
+// const spotSlug = computed(() => slugArray.value[1] || '')
 
 const category = computed(() => getCategoryBySlug(categorySlug.value))
 const subApp = computed(() => category.value?.subApps.find((a) => a.slug === slug.value))

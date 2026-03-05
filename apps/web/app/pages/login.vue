@@ -2,6 +2,7 @@
 definePageMeta({ title: 'Sign In' })
 
 useSeo({
+  robots: 'noindex',
   title: 'Sign In',
   description: 'Sign in to your Austin-Texas.net account.',
 })
