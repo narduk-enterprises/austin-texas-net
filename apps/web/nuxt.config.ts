@@ -88,6 +88,11 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    session: {
+      password:
+        process.env.NUXT_SESSION_PASSWORD ||
+        (import.meta.dev ? 'austin-texas-net-dev-session-secret-min-32-chars' : ''),
+    },
     jwtSecret: process.env.JWT_SECRET || 'dev-secret-change-me',
     appleClientId: process.env.APPLE_CLIENT_ID || 'com.atxapps',
     appleTeamId: process.env.APPLE_TEAM_ID || '',
