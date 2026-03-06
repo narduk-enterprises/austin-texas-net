@@ -2,6 +2,3 @@ packages:
   - 'apps/*'
   - 'packages/*'
   - 'layers/*'
-  - 'packages/eslint-config/eslint-plugin-nuxt-ui'
-  - 'packages/eslint-config/eslint-plugin-nuxt-guardrails'
-  - 'packages/eslint-config/eslint-plugin-vue-official-best-practices'
