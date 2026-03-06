@@ -16,7 +16,8 @@ definePageMeta({
   middleware: 'auth',
 })
 
-const { isAdmin } = useAuth()
+const { user } = useAuth();
+const isAdmin = computed(() => user.value?.isAdmin);
 const {
   categories,
   allTopics,

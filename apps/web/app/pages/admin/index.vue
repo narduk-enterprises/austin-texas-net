@@ -5,8 +5,9 @@ definePageMeta({
   middleware: 'auth',
 })
 
-const { user, loggedIn, isAdmin, ensureLoaded, logout } = useAuth()
-await ensureLoaded()
+const { user, isAuthenticated: loggedIn, logout } = useAuth();
+const isAdmin = computed(() => user.value?.isAdmin);
+
 
 async function handleLogout() {
   await logout()

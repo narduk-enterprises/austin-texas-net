@@ -25,8 +25,8 @@ interface GSCPerformance {
   rows?: GSCRow[]
 }
 
-const { ensureLoaded } = useAuth()
-await ensureLoaded()
+
+
 
 const dimension = ref('query')
 

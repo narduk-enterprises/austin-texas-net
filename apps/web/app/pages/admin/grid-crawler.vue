@@ -4,8 +4,8 @@
 <script setup lang="ts">
 definePageMeta({ title: 'Grid Crawler', middleware: 'auth' })
 
-const { ensureLoaded } = useAuth()
-await ensureLoaded()
+
+
 
  
 

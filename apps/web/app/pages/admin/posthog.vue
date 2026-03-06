@@ -46,8 +46,8 @@ interface PHRecording {
   personId: string
 }
 
-const { ensureLoaded } = useAuth()
-await ensureLoaded()
+
+
 
 // Date range selector
 const dateRange = ref('30')

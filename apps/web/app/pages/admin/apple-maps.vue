@@ -2,8 +2,8 @@
 <script setup lang="ts">
 definePageMeta({ title: 'Apple Maps API Tester', middleware: 'auth' })
 
-const { ensureLoaded } = useAuth()
-await ensureLoaded()
+
+
 
  
 

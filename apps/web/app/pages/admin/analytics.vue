@@ -17,8 +17,8 @@ interface GAOverview {
   rows: GARow[]
 }
 
-const { ensureLoaded } = useAuth()
-await ensureLoaded()
+
+
 
 const { data: analyticsData, status } = await useFetch<GAOverview>('/api/admin/ga/overview')
 

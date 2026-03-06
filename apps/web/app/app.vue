@@ -2,7 +2,8 @@
 import type { FooterColumn } from '@nuxt/ui'
 
 const route = useRoute()
-const { loggedIn, isAdmin } = useAuth()
+const { isAuthenticated: loggedIn, user } = useAuth();
+const isAdmin = computed(() => user.value?.isAdmin);
 
 const siteName = useRuntimeConfig().public.appName || 'Austin Texas'
 
