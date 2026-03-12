@@ -1,5 +1,5 @@
-<!-- eslint-disable atx/no-raw-tailwind-colors -- NWS severity-level + radar UI colors -->
-<!-- eslint-disable atx/no-fetch-in-component -- SSR page data fetching -->
+<!-- eslint-disable narduk/no-raw-tailwind-colors -- NWS severity-level + radar UI colors -->
+<!-- eslint-disable narduk/no-fetch-in-component -- SSR page data fetching -->
 <script setup lang="ts">
 /**
  * /weather/radar/ — Austin Weather Radar

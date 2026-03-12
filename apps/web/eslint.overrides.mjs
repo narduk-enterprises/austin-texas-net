@@ -33,7 +33,7 @@ export default [
   {
     files: ['app/pages/**/*.vue'],
     rules: {
-      'nuxt-guardrails/require-use-seo-on-pages': 'off',
+      'narduk/require-use-seo-on-pages': 'off',
     },
   },
 
@@ -44,7 +44,7 @@ export default [
   {
     files: ['app/pages/**/*.vue'],
     rules: {
-      'nuxt-guardrails/require-schema-on-pages': 'off',
+      'narduk/require-schema-on-pages': 'off',
     },
   },
 
@@ -58,15 +58,14 @@ export default [
   },
 
   // ─── Admin composables: event-handler $fetch ─────────────
-  // useAdminData.ts and useAuth.ts use $fetch for user-triggered
+  // useAdminData.ts uses $fetch for user-triggered
   // mutations (button clicks), not SSR data-fetching.
   {
     files: [
       'app/composables/useAdminData.ts',
-      'app/composables/useAuth.ts',
     ],
     rules: {
-      'nuxt-guardrails/no-raw-fetch': 'off',
+      'narduk/no-raw-fetch': 'off',
     },
   },
 
@@ -82,7 +81,7 @@ export default [
       'app/pages/admin/posthog.vue',
     ],
     rules: {
-      'nuxt-guardrails/no-raw-fetch': 'off',
+      'narduk/no-raw-fetch': 'off',
     },
   },
 
@@ -96,8 +95,8 @@ export default [
     ],
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
-      'nuxt-guardrails/no-raw-fetch': 'off',
-      'nuxt-guardrails/no-ssr-dom-access': 'off',
+      'narduk/no-raw-fetch': 'off',
+      'narduk/no-ssr-dom-access': 'off',
       'narduk/no-composable-conditional-hooks': 'off',
     },
   },
@@ -127,7 +126,7 @@ export default [
       'app/pages/login.vue',
     ],
     rules: {
-      'nuxt-guardrails/prefer-use-seo-over-bare-meta': 'off',
+      'narduk/prefer-use-seo-over-bare-meta': 'off',
     },
   },
 ]

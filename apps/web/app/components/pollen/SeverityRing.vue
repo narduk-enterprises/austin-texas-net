@@ -26,7 +26,7 @@ const dashOffset = computed(() => circumference.value * (1 - progress.value))
 
 <template>
   <div class="severity-ring" :style="{ width: `${size}px`, height: `${size}px` }">
-    <!-- eslint-disable-next-line atx/no-inline-svg -->
+    <!-- eslint-disable-next-line narduk/no-inline-svg -- custom SVG arc ring requires precise geometry not achievable with UIcon -->
     <svg :width="size" :height="size" :viewBox="`0 0 ${size} ${size}`">
       <!-- Track -->
       <circle

@@ -1,4 +1,4 @@
-<!-- eslint-disable atx/no-fetch-in-component -- SSR admin page data fetching -->
+<!-- eslint-disable narduk/no-fetch-in-component -- SSR admin page data fetching -->
 <script setup lang="ts">
 import { h, resolveComponent } from 'vue'
 import type { TableColumn } from '@nuxt/ui'
@@ -866,7 +866,7 @@ const categorizedTopics = computed(() => {
                   The Rankings
                 </p>
                 <div class="flex flex-col gap-2.5">
-                  <!-- eslint-disable-next-line atx/no-native-button -- preview card -->
+                  <!-- eslint-disable-next-line narduk/no-native-button -- preview card -->
                   <button
                     v-for="(spot, si) in runOutput.spots"
                     :key="si"
@@ -907,7 +907,7 @@ const categorizedTopics = computed(() => {
                         />
                       </div>
                       <p class="text-xs text-muted truncate">
-                        <!-- eslint-disable-next-line atx/no-raw-tailwind-colors -->
+                        <!-- eslint-disable-next-line narduk/no-raw-tailwind-colors -- primary/muted label colour for spot description -->
                         <span class="font-medium text-primary dark:text-muted">{{
                           spot.knownFor
                         }}</span>
@@ -921,7 +921,7 @@ const categorizedTopics = computed(() => {
                       v-if="spot.rating"
                       class="flex items-center gap-1 text-xs font-bold text-muted shrink-0"
                     >
-                      <!-- eslint-disable-next-line atx/no-raw-tailwind-colors -->
+                      <!-- eslint-disable-next-line narduk/no-raw-tailwind-colors -- muted star icon colour -->
                       <UIcon name="i-lucide-star" class="size-3.5 text-muted" />
                       {{ spot.rating }}
                     </div>
@@ -971,7 +971,7 @@ const categorizedTopics = computed(() => {
   </div>
 </template>
 
-<!-- eslint-disable atx/no-style-block-layout -->
+<!-- eslint-disable narduk/no-style-block-layout -- gradient preview rank cards require scoped CSS -->
 <style scoped>
 .preview-rank-top {
   background: linear-gradient(145deg, #d97706, #7c2d12);

@@ -19,7 +19,7 @@ withDefaults(defineProps<{
 </script>
 
 <template>
-  <!-- eslint-disable atx/no-inline-hex -->
+  <!-- eslint-disable narduk/no-inline-hex -- Satori OG image template requires direct CSS values; Tailwind classes are not supported in this context -->
   <div
     tw="w-full h-full flex flex-col relative overflow-hidden"
     :style="{

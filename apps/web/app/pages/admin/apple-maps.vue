@@ -1,4 +1,4 @@
-<!-- eslint-disable atx/no-fetch-in-component -- Admin tool page -->
+<!-- eslint-disable narduk/no-fetch-in-component -- Admin tool page -->
 <script setup lang="ts">
 definePageMeta({ title: 'Apple Maps API Tester', middleware: 'auth' })
 

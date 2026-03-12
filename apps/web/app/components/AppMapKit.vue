@@ -1,4 +1,4 @@
-<!-- eslint-disable atx/no-fetch-in-component -- $fetch is used to load Texas outline GeoJSON for mask overlay -->
+<!-- eslint-disable narduk/no-fetch-in-component -- $fetch is used to load Texas outline GeoJSON for mask overlay -->
 <script lang="ts">
  
 declare const mapkit: any
@@ -157,7 +157,7 @@ let _texasCoords: Array<[number, number]> | null = null
 
 async function fetchTexasCoords(): Promise<Array<[number, number]>> {
   if (_texasCoords) return _texasCoords
-  // eslint-disable-next-line atx/no-fetch-in-component
+  // eslint-disable-next-line narduk/no-fetch-in-component -- $fetch used for GeoJSON mask data, covered by top-level file disable
   const data = await $fetch<{ geometry: { coordinates: Array<Array<[number, number]>> } }>(
     '/api/geo/texas-outline',
   )
@@ -168,9 +168,9 @@ async function fetchTexasCoords(): Promise<Array<[number, number]>> {
 function getTexasMaskColor(): string {
    
   const isDark = import.meta.client && document.documentElement.classList.contains('dark')
-  /* eslint-disable atx/no-inline-hex -- MapKit overlay mask colours */
+  /* eslint-disable narduk/no-inline-hex -- MapKit overlay mask colours */
   return isDark ? '#0a0a0a' : '#ffffff'
-  /* eslint-enable atx/no-inline-hex */
+  /* eslint-enable narduk/no-inline-hex */
 }
 
 /**
@@ -404,7 +404,7 @@ function extractAllPoints(geometry: GeoJSONGeometry): Array<[number, number]> {
 }
 
 function defaultOverlayStyle(): OverlayStyle {
-  /* eslint-disable atx/no-inline-hex -- MapKit overlay defaults */
+  /* eslint-disable narduk/no-inline-hex -- MapKit overlay defaults */
   return {
     strokeColor: '#065f46',
     strokeOpacity: 1,
@@ -412,7 +412,7 @@ function defaultOverlayStyle(): OverlayStyle {
     fillOpacity: 0.2,
     lineWidth: 1.5,
   }
-  /* eslint-enable atx/no-inline-hex */
+  /* eslint-enable narduk/no-inline-hex */
 }
 
 function buildPolygonRings(geometry: GeoJSONGeometry): Array<any[]> {

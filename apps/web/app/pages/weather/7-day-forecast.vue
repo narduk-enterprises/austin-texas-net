@@ -1,4 +1,4 @@
-<!-- eslint-disable atx/no-fetch-in-component -- SSR page data fetching -->
+<!-- eslint-disable narduk/no-fetch-in-component -- SSR page data fetching -->
 <script setup lang="ts">
 /**
  * /weather/7-day-forecast/ — Austin 7-Day Weather Forecast

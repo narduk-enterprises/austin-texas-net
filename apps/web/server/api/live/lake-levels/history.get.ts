@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
   const db = useDatabase(event)
 
   try {
-    // eslint-disable-next-line atx/prefer-drizzle-operators -- raw SQL query, no Drizzle schema
+    // eslint-disable-next-line narduk/prefer-drizzle-operators -- raw SQL query, no Drizzle schema
     const result = await db.run(sql`
       SELECT elevation, percent_full, conservation_storage, timestamp
       FROM lake_readings

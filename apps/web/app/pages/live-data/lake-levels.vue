@@ -1,4 +1,4 @@
-<!-- eslint-disable atx/no-fetch-in-component -- SSR page data fetching -->
+<!-- eslint-disable narduk/no-fetch-in-component -- SSR page data fetching -->
 <script setup lang="ts">
 /**
  * /live-data/lake-levels/ — Live Lake Levels
@@ -108,10 +108,10 @@ function createPinElement(
 ): { element: HTMLElement } {
   if (import.meta.client) {
     const pct = spot.percentFull != null ? Math.round(spot.percentFull) : null
-    /* eslint-disable atx/no-inline-hex -- MapKit pin fill status gradient */
+    /* eslint-disable narduk/no-inline-hex -- MapKit pin fill status gradient */
     const fillColor =
       pct != null ? (pct >= 80 ? '#22c55e' : pct >= 50 ? '#f59e0b' : '#ef4444') : '#06b6d4'
-    /* eslint-enable atx/no-inline-hex */
+    /* eslint-enable narduk/no-inline-hex */
 
     const el = document.createElement('div')
     el.innerHTML = `

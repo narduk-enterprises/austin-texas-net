@@ -1,5 +1,5 @@
-<!-- eslint-disable atx/no-raw-tailwind-colors -- NWS heat-index / wind-chill scale colors -->
-<!-- eslint-disable atx/no-fetch-in-component -- SSR page data fetching -->
+<!-- eslint-disable narduk/no-raw-tailwind-colors -- NWS heat-index / wind-chill scale colors -->
+<!-- eslint-disable narduk/no-fetch-in-component -- SSR page data fetching -->
 <script setup lang="ts">
 /**
  * /weather/heat-index/ — Austin Heat Index & Feels-Like Tracker

@@ -1,4 +1,4 @@
-<!-- eslint-disable atx/no-fetch-in-component -- SSR admin page data fetching -->
+<!-- eslint-disable narduk/no-fetch-in-component -- SSR admin page data fetching -->
 <script setup lang="ts">
 definePageMeta({
   title: 'Admin Dashboard',

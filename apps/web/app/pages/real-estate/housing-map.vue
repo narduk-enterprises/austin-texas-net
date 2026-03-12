@@ -1,4 +1,4 @@
-<!-- eslint-disable atx/no-fetch-in-component -- SSR page data fetching -->
+<!-- eslint-disable narduk/no-fetch-in-component -- SSR page data fetching -->
 <script setup lang="ts">
 /**
  * /real-estate/housing-map/ — Austin Housing Map
@@ -119,9 +119,9 @@ const selectedItem = computed(() => items.value.find((i) => i.id === selectedId.
 function createPinElement(spot: MapItem, isSelected: boolean): { element: HTMLElement } {
   if (import.meta.client) {
     const isPricePin = spot.type === 'price'
-    /* eslint-disable atx/no-inline-hex -- MapKit pin gradient */
+    /* eslint-disable narduk/no-inline-hex -- MapKit pin gradient */
     const fillColor = isPricePin ? '#3b82f6' : '#22c55e'
-    /* eslint-enable atx/no-inline-hex */
+    /* eslint-enable narduk/no-inline-hex */
 
     const el = document.createElement('div')
     if (isPricePin) {

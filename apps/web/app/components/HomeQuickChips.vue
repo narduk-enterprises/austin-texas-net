@@ -16,7 +16,7 @@ const chips = [
 <template>
   <section class="pb-8 md:pb-12">
     <UContainer>
-      <!-- eslint-disable atx/no-raw-tailwind-colors -- brand stone palette -->
+      <!-- eslint-disable narduk/no-raw-tailwind-colors -- brand stone palette -->
       <div
         class="rounded-2xl bg-muted/60 dark:bg-elevated/50 border border-default/50 dark:border-default p-5 md:p-6 animate-fade-up-delay-2"
       >

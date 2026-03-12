@@ -1,4 +1,4 @@
-<!-- eslint-disable atx/no-fetch-in-component -- SSR page data fetching -->
+<!-- eslint-disable narduk/no-fetch-in-component -- SSR page data fetching -->
 <script setup lang="ts">
 /**
  * /real-estate/rent-trends/ — Rent Price Trends by Zip Code
@@ -130,10 +130,10 @@ function createPinElement(
   if (import.meta.client) {
     const rent = spot.medianRent
 
-    /* eslint-disable atx/no-inline-hex -- MapKit pin gradient */
+    /* eslint-disable narduk/no-inline-hex -- MapKit pin gradient */
     const fillColor =
       rent >= 2500 ? '#7c3aed' : rent >= 1800 ? '#3b82f6' : rent >= 1200 ? '#22c55e' : '#f59e0b'
-    /* eslint-enable atx/no-inline-hex */
+    /* eslint-enable narduk/no-inline-hex */
 
     const el = document.createElement('div')
     el.innerHTML = `

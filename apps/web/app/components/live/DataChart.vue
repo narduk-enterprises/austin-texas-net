@@ -31,7 +31,7 @@ const props = withDefaults(
   {
     title: 'Trend',
     unit: '',
-    accentColor: '#06b6d4', // eslint-disable-line atx/no-inline-hex -- Chart.js default
+    accentColor: '#06b6d4', // eslint-disable-line narduk/no-inline-hex -- Chart.js default
     loading: false,
     embedded: false,
   },

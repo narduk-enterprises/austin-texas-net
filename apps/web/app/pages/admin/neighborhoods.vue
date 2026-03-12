@@ -1,6 +1,6 @@
-<!-- eslint-disable atx/no-fetch-in-component -- SSR admin page data fetching -->
+<!-- eslint-disable narduk/no-fetch-in-component -- SSR admin page data fetching -->
 <!-- eslint-disable @typescript-eslint/no-explicit-any -- TanStack table APIs -->
-<!-- eslint-disable atx/no-raw-tailwind-colors -- Admin star indicator -->
+<!-- eslint-disable narduk/no-raw-tailwind-colors -- Admin star indicator -->
 <script setup lang="ts">
 import { h, resolveComponent } from 'vue'
 

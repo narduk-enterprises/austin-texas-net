@@ -97,7 +97,7 @@ export default defineCachedEventHandler(
     maxAge: 60 * 60 * 1, // 1 hour
     name: 'bluebonnet-observations-d1',
     getKey: (event) => {
-      const query = getQuery(event) // eslint-disable-line atx/require-validated-query -- sync getKey callback, not handler
+      const query = getQuery(event) // eslint-disable-line narduk/require-validated-query -- sync getKey callback, not handler
       return `bluebonnets-d1-${query.year || 'all'}`
     },
   },

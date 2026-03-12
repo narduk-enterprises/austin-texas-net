@@ -1,4 +1,4 @@
-<!-- eslint-disable atx/no-fetch-in-component -- SSR admin page data fetching -->
+<!-- eslint-disable narduk/no-fetch-in-component -- SSR admin page data fetching -->
 <script setup lang="ts">
 definePageMeta({ title: 'PostHog Analytics', middleware: 'auth' })
 
@@ -216,7 +216,7 @@ const posthogRecordingUrl = (id: string) =>
 
       <!-- Date range selector -->
       <div class="flex gap-1 bg-elevated border border-default rounded-xl p-1">
-        <!-- eslint-disable-next-line atx/no-native-button -- custom segmented tab selector -->
+        <!-- eslint-disable-next-line narduk/no-native-button -- custom segmented tab selector -->
         <button
           v-for="opt in dateRangeOptions"
           :key="opt.value"
@@ -259,7 +259,7 @@ const posthogRecordingUrl = (id: string) =>
         </UCard>
         <UCard>
           <div class="flex items-center gap-2 mb-2">
-            <!-- eslint-disable-next-line atx/no-raw-tailwind-colors -- analytics KPI accent -->
+            <!-- eslint-disable-next-line narduk/no-raw-tailwind-colors -- analytics KPI accent -->
             <UIcon name="i-lucide-users" class="size-4 text-primary" />
             <span class="text-xs text-dimmed uppercase tracking-wider font-medium"
               >Unique Visitors</span

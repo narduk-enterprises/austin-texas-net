@@ -1,4 +1,4 @@
-<!-- eslint-disable atx/no-raw-tailwind-colors -->
+<!-- eslint-disable narduk/no-raw-tailwind-colors -- crawfish season indicator colours and badge styles -->
 <script setup lang="ts">
 /**
  * food/crawfish-season.vue — Crawfish Season mini app.
@@ -113,7 +113,7 @@ function handleMapModeToggle(type: MapMode) {
 
 function openDirections(spot: CrawfishSpot) {
   const url = `https://maps.apple.com/?daddr=${spot.lat},${spot.lng}&dirflg=d`
-  // eslint-disable-next-line nuxt-guardrails/no-ssr-dom-access
+  // eslint-disable-next-line narduk/no-ssr-dom-access -- window.open triggered by user click event, not SSR path
   window.open(url, '_blank')
 }
 </script>

@@ -62,7 +62,7 @@ const stars = computed(() => {
                 : undefined
             "
           >
-            <!-- eslint-disable-next-line atx/no-inline-svg -- dynamic icon paths from useMapIcons() -->
+            <!-- eslint-disable-next-line narduk/no-inline-svg -- dynamic icon paths from useMapIcons() -->
             <svg
               class="spot-detail-svg"
               viewBox="0 0 24 24"
@@ -104,11 +104,11 @@ const stars = computed(() => {
         />
         <div v-if="spot.rating" class="flex items-center gap-1 ml-auto">
           <template v-for="i in stars.full" :key="`df${i}`">
-            <!-- eslint-disable-next-line atx/no-raw-tailwind-colors -->
+            <!-- eslint-disable-next-line narduk/no-raw-tailwind-colors -- amber star fill colour -->
             <UIcon name="i-lucide-star" class="size-4 text-muted fill-amber-400" />
           </template>
           <template v-if="stars.half">
-            <!-- eslint-disable-next-line atx/no-raw-tailwind-colors -->
+            <!-- eslint-disable-next-line narduk/no-raw-tailwind-colors -- half-star muted colour -->
             <UIcon name="i-lucide-star-half" class="size-4 text-muted" />
           </template>
           <template v-for="i in stars.empty" :key="`de${i}`">
@@ -120,7 +120,7 @@ const stars = computed(() => {
 
       <!-- Known for -->
       <div v-if="spot.knownFor" class="spot-detail-known-for mb-5">
-        <!-- eslint-disable-next-line atx/no-inline-svg -- dynamic icon paths from useMapIcons() -->
+        <!-- eslint-disable-next-line narduk/no-inline-svg -- dynamic icon paths from useMapIcons() -->
         <svg
           class="spot-detail-known-svg"
           viewBox="0 0 24 24"
@@ -133,7 +133,7 @@ const stars = computed(() => {
           <path v-for="(d, i) in iconPaths" :key="i" :d="d" />
         </svg>
         <div>
-          <!-- eslint-disable atx/no-raw-tailwind-colors -- amber accent colors -->
+          <!-- eslint-disable narduk/no-raw-tailwind-colors -- amber accent colors -->
           <span
             class="text-xs font-bold uppercase tracking-wider text-primary dark:text-muted"
             >Known For</span
@@ -177,7 +177,7 @@ const stars = computed(() => {
   </section>
 </template>
 
-<!-- eslint-disable atx/no-style-block-layout -->
+<!-- eslint-disable narduk/no-style-block-layout -- scoped panel transitions require precise CSS beyond inline classes -->
 <style scoped>
 .spot-detail-panel {
   padding: 20px 24px;

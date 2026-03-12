@@ -41,7 +41,7 @@ const paths = computed(() => getIconPaths(props.icon))
             : undefined
         "
       >
-        <!-- eslint-disable-next-line atx/no-inline-svg -- dynamic icon paths from useMapIcons() -->
+        <!-- eslint-disable-next-line narduk/no-inline-svg -- dynamic icon paths from useMapIcons() -->
         <svg
           class="mapkit-pin-icon"
           viewBox="0 0 24 24"
