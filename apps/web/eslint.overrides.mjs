@@ -14,7 +14,7 @@ export default [
   {
     files: ['app/**/*.vue'],
     rules: {
-      'vue-official/no-template-complex-expressions': ['warn', {
+      'narduk/no-template-complex-expressions': ['warn', {
         maxCallArgs: 2,
         allowedFunctions: [
           'formatPrice', 'formatChange', 'formatPercent', 'formatDate',
@@ -53,7 +53,7 @@ export default [
   {
     files: ['app/pages/admin/**/*.vue'],
     rules: {
-      'vue-official/no-template-complex-expressions': 'off',
+      'narduk/no-template-complex-expressions': 'off',
     },
   },
 
@@ -98,7 +98,7 @@ export default [
       '@typescript-eslint/no-explicit-any': 'off',
       'nuxt-guardrails/no-raw-fetch': 'off',
       'nuxt-guardrails/no-ssr-dom-access': 'off',
-      'vue-official/no-composable-conditional-hooks': 'off',
+      'narduk/no-composable-conditional-hooks': 'off',
     },
   },
 

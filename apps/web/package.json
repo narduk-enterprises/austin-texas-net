@@ -6,7 +6,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "db:migrate": "wrangler d1 execute austin-texas-net-db --local --file=drizzle/0000_initial_schema.sql",
+    "db:migrate": "bash ../../tools/db-migrate.sh austin-texas-net --local --dir drizzle",
     "db:generate": "drizzle-kit generate",
     "db:studio": "drizzle-kit studio",
     "db:seed-from-prod": "bash scripts/seed-from-prod.sh",
@@ -16,11 +16,12 @@
     "deploy": "nuxt build && wrangler deploy",
     "prelint": "test -f .nuxt/eslint.config.mjs || nuxt prepare",
     "lint": "eslint . --max-warnings 0",
-    "quality": "echo 'Turbo dependsOn handles lint + typecheck + format:check'"
+    "quality": "echo 'Turbo dependsOn handles lint + typecheck + format:check'",
+    "db:reset": "bash ../../tools/db-migrate.sh austin-texas-net --local --dir drizzle --reset && pnpm run db:seed",
+    "db:ready": "pnpm run db:migrate && pnpm run db:seed"
   },
   "dependencies": {
     "@narduk-enterprises/narduk-nuxt-template-layer": "workspace:*",
-    "@narduk/eslint-config": "workspace:*",
     "@nuxt/content": "^3.11.2",
     "@nuxt/image": "^2.0.0",
     "@nuxt/ui": "^4.3.0",
@@ -38,7 +39,8 @@
     "vue": "^3.5.27",
     "vue-chartjs": "^5.3.3",
     "vue-router": "^4.6.4",
-    "zod": "^4.3.6"
+    "zod": "^4.3.6",
+    "@narduk-enterprises/eslint-config": "^1.0.11"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250620.0",
