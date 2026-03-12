@@ -1,4 +1,4 @@
-<!-- eslint-disable atx/no-style-block-layout -- core layout shell requires precise CSS for viewport sizing -->
+<!-- eslint-disable narduk/no-style-block-layout -- core layout shell requires precise CSS for viewport sizing -->
 <script setup lang="ts">
 /**
  * SubAppShell — Two-column layout shell for map-based sub-app pages.

@@ -1,4 +1,4 @@
-<!-- eslint-disable atx/no-fetch-in-component -- SSR admin page data fetching -->
+<!-- eslint-disable narduk/no-fetch-in-component -- SSR admin page data fetching -->
 <script setup lang="ts">
 definePageMeta({ title: 'Search Console', middleware: 'auth' })
 
@@ -113,7 +113,7 @@ const formatDate = (d: string) =>
       </div>
 
       <div class="flex gap-1 bg-elevated border border-default rounded-xl p-1">
-        <!-- eslint-disable-next-line atx/no-native-button -- custom segmented tab selector -->
+        <!-- eslint-disable-next-line narduk/no-native-button -- custom segmented tab selector -->
         <button
           v-for="tab in dimensionTabs"
           :key="tab.value"
@@ -235,7 +235,7 @@ const formatDate = (d: string) =>
       </div>
 
       <div v-else class="overflow-x-auto">
-        <!-- eslint-disable-next-line atx/no-native-table -->
+        <!-- eslint-disable-next-line narduk/no-native-table -- GSC data table with fixed column widths not achievable with UTable -->
         <table class="admin-table">
           <thead>
             <tr>

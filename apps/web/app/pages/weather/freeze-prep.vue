@@ -1,4 +1,4 @@
-<!-- eslint-disable atx/no-raw-tailwind-colors, atx/prefer-ulink -- freeze severity indicator colors + external resource links -->
+<!-- eslint-disable narduk/no-raw-tailwind-colors, narduk/prefer-ulink -- freeze severity indicator colors + external resource links -->
 <script setup lang="ts">
 /**
  * /weather/freeze-prep/ — Austin Freeze Preparation Guide

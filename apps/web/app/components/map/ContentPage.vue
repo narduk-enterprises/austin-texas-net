@@ -1,4 +1,4 @@
-<!-- eslint-disable vue/no-v-html, atx/no-fetch-in-component -- CMS HTML; neighborhood filter fetch -->
+<!-- eslint-disable vue/no-v-html, narduk/no-fetch-in-component -- CMS HTML; neighborhood filter fetch -->
 <script setup lang="ts">
 /**
  * MapContentPage — Full page wrapper for the Map Content Type pattern.

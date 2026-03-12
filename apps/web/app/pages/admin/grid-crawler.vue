@@ -1,6 +1,6 @@
-<!-- eslint-disable atx/no-fetch-in-component -- Admin tool page -->
-<!-- eslint-disable atx/no-inline-hex -- Map overlay and palette colors -->
-<!-- eslint-disable atx/no-native-form, atx/no-native-input -- Admin tool checkbox toggles -->
+<!-- eslint-disable narduk/no-fetch-in-component -- Admin tool page -->
+<!-- eslint-disable narduk/no-inline-hex -- Map overlay and palette colors -->
+<!-- eslint-disable narduk/no-native-form, narduk/no-native-input -- Admin tool checkbox toggles -->
 <script setup lang="ts">
 definePageMeta({ title: 'Grid Crawler', middleware: 'auth' })
 
@@ -486,7 +486,7 @@ function clearAddress() {
               :key="name"
               class="flex items-center gap-2"
             >
-              <!-- eslint-disable nuxt-ui/no-unknown-component-prop -->
+              <!-- eslint-disable nuxt-ui/no-unknown-component-prop -- UCheckbox props valid in Nuxt UI v4 but not recognized by linter -->
               <UCheckbox
                 :model-value="!hiddenNeighborhoods.has(name)"
                 @update:model-value="toggleNeighborhood(name)"

@@ -23,8 +23,7 @@ let mapInstance: any | null = null
 let renderedAnnotations: any[] = []
 
 function markerColor(isSelected: boolean) {
-  // eslint-disable-next-line atx/no-inline-hex
-  return isSelected ? '#6d28d9' : '#4338ca'
+  // eslint-disable-next-line narduk/no-inline-hex -- MapKit annotation marker colours
 }
 
 function annotationForSpot(spotId: string) {
@@ -77,8 +76,7 @@ function renderAnnotations() {
         subtitle: spot.subtitle,
         color: markerColor(isSelected),
         glyphText: String(index + 1),
-        // eslint-disable-next-line atx/no-inline-hex
-        glyphColor: '#ffffff',
+        // eslint-disable-next-line narduk/no-inline-hex -- MapKit glyph white text colour
         animates: true,
         displayPriority: isSelected ? 1000 : 500,
       },

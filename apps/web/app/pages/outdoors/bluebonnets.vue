@@ -1,5 +1,5 @@
-<!-- eslint-disable atx/no-fetch-in-component -- SSR page data fetching -->
-<!-- eslint-disable atx/no-native-layout -- External attribution links to iNaturalist -->
+<!-- eslint-disable narduk/no-fetch-in-component -- SSR page data fetching -->
+<!-- eslint-disable narduk/no-native-layout -- External attribution links to iNaturalist -->
 <script setup lang="ts">
 /**
  * Bluebonnet Guide — content-first layout with on-demand interactive map.
@@ -359,7 +359,7 @@ const faqAccordionItems = computed(() =>
 </script>
 
 <template>
-  <!-- eslint-disable atx/no-native-layout -- External attribution links to iNaturalist -->
+  <!-- eslint-disable narduk/no-native-layout -- External attribution links to iNaturalist -->
   <div>
     <SubAppTopbar title="Bluebonnet Sightings Map" />
     <UContainer class="py-8 md:py-12">
@@ -857,7 +857,7 @@ const faqAccordionItems = computed(() =>
   </div>
 </template>
 
-<!-- eslint-disable atx/no-style-block-layout -->
+<!-- eslint-disable narduk/no-style-block-layout -- map CTA card and attribution section require scoped CSS for precise positioning -->
 <style scoped>
 /* ── Map CTA card ──────────────────────────────────────────── */
 .map-cta-card {

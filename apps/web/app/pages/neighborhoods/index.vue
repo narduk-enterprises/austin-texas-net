@@ -1,4 +1,4 @@
-<!-- eslint-disable atx/no-inline-hex, atx/no-fetch-in-component -- GeoJSON colors; SSR page data fetching -->
+<!-- eslint-disable narduk/no-inline-hex, narduk/no-fetch-in-component -- GeoJSON colors; SSR page data fetching -->
 <script setup lang="ts">
 import type {
   GeoJSONFeature,

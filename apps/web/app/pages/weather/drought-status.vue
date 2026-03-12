@@ -1,4 +1,4 @@
-<!-- eslint-disable atx/no-inline-hex -- USDM drought classification standard colors -->
+<!-- eslint-disable narduk/no-inline-hex -- USDM drought classification standard colors -->
 <script setup lang="ts">
 /**
  * /weather/drought-status/ — Central Texas Drought Monitor

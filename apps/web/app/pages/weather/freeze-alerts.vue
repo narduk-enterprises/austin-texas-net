@@ -1,5 +1,5 @@
-<!-- eslint-disable atx/no-raw-tailwind-colors -- NWS severity + freeze-risk indicator colors -->
-<!-- eslint-disable atx/no-fetch-in-component -- SSR page data fetching -->
+<!-- eslint-disable narduk/no-raw-tailwind-colors -- NWS severity + freeze-risk indicator colors -->
+<!-- eslint-disable narduk/no-fetch-in-component -- SSR page data fetching -->
 <script setup lang="ts">
 /**
  * /weather/freeze-alerts/ — Austin Freeze Alert Tracker

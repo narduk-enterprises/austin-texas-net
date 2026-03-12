@@ -28,7 +28,7 @@ const { getIconPaths } = useMapIcons()
   <section class="mb-10 animate-fade-up-delay-1">
     <h2 class="text-xs font-bold uppercase tracking-widest text-muted mb-5">The Rankings</h2>
     <div class="space-y-3">
-      <!-- eslint-disable-next-line atx/no-native-button -- complex card layout with NuxtLink for SEO -->
+      <!-- eslint-disable-next-line narduk/no-native-button -- complex card layout with NuxtLink for SEO -->
       <NuxtLink
         v-for="spot in spots"
         :key="spot.slug"
@@ -53,7 +53,7 @@ const { getIconPaths } = useMapIcons()
                 : undefined
             "
           >
-            <!-- eslint-disable-next-line atx/no-inline-svg -- dynamic icon paths from useMapIcons() -->
+            <!-- eslint-disable-next-line narduk/no-inline-svg -- dynamic icon paths from useMapIcons() -->
             <svg
               class="map-list-svg"
               viewBox="0 0 24 24"
@@ -79,9 +79,9 @@ const { getIconPaths } = useMapIcons()
               size="xs"
             />
           </div>
-          <!-- eslint-disable-next-line atx/no-raw-tailwind-colors -->
+          <!-- eslint-disable-next-line narduk/no-raw-tailwind-colors -- muted paragraph text colour -->
           <p class="text-xs sm:text-sm text-muted truncate">
-            <!-- eslint-disable-next-line atx/no-raw-tailwind-colors -->
+            <!-- eslint-disable-next-line narduk/no-raw-tailwind-colors -- primary/muted label colour -->
             <span class="font-medium text-primary dark:text-muted">{{ spot.knownFor }}</span>
             <span class="mx-1.5 text-dimmed">·</span>
             {{ spot.neighborhood }}
@@ -89,11 +89,11 @@ const { getIconPaths } = useMapIcons()
           </p>
         </div>
         <div v-if="spot.rating" class="map-list-rating shrink-0">
-          <!-- eslint-disable-next-line atx/no-raw-tailwind-colors -->
+          <!-- eslint-disable-next-line narduk/no-raw-tailwind-colors -- muted star icon colour -->
           <UIcon name="i-lucide-star" class="size-3.5 text-muted" />
           <span>{{ spot.rating }}</span>
         </div>
-        <!-- eslint-disable atx/no-raw-tailwind-colors -- amber hover accent -->
+        <!-- eslint-disable narduk/no-raw-tailwind-colors -- amber hover accent -->
         <UIcon
           name="i-lucide-map-pin"
           class="size-4 text-muted group-hover:text-primary transition-colors shrink-0"
@@ -103,7 +103,7 @@ const { getIconPaths } = useMapIcons()
   </section>
 </template>
 
-<!-- eslint-disable atx/no-style-block-layout -->
+<!-- eslint-disable narduk/no-style-block-layout -- list item hover transitions and pin animation require scoped CSS -->
 <style scoped>
 .map-list-item {
   display: flex;

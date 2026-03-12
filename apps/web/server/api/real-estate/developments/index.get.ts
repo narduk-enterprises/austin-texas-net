@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
   const limit = query.limit
 
   try {
-    // eslint-disable-next-line atx/prefer-drizzle-operators -- raw SQL query, not Drizzle query builder
+    // eslint-disable-next-line narduk/prefer-drizzle-operators -- raw SQL query, not Drizzle query builder
     const result = await db.run(sql`
       SELECT * FROM development_permits
       WHERE lat IS NOT NULL AND lng IS NOT NULL

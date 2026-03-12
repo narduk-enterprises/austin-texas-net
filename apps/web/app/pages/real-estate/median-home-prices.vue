@@ -1,4 +1,4 @@
-<!-- eslint-disable atx/no-fetch-in-component -- SSR page data fetching -->
+<!-- eslint-disable narduk/no-fetch-in-component -- SSR page data fetching -->
 <script setup lang="ts">
 /**
  * /real-estate/median-home-prices/ — Median Home Prices by Zip Code
@@ -166,7 +166,7 @@ function createPinElement(
   if (import.meta.client) {
     const value = spot.medianValue
 
-    /* eslint-disable atx/no-inline-hex -- MapKit pin gradient */
+    /* eslint-disable narduk/no-inline-hex -- MapKit pin gradient */
     const fillColor =
       value >= 800000
         ? '#7c3aed'
@@ -175,7 +175,7 @@ function createPinElement(
           : value >= 300000
             ? '#22c55e'
             : '#f59e0b'
-    /* eslint-enable atx/no-inline-hex */
+    /* eslint-enable narduk/no-inline-hex */
 
     const el = document.createElement('div')
     el.innerHTML = `

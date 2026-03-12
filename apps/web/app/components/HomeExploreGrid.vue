@@ -28,7 +28,7 @@ function liveApps(cat: Category) {
           :style="{ animationDelay: `${i * 40}ms` }"
         >
           <!-- Category heading — oversized tap target -->
-          <!-- eslint-disable atx/no-raw-tailwind-colors -- brand hover colors -->
+          <!-- eslint-disable narduk/no-raw-tailwind-colors -- brand hover colors -->
           <NuxtLink
             :to="`/${cat.slug}/`"
             class="group flex items-center gap-3 min-h-[52px] py-3 -mx-3 px-3 rounded-xl hover:bg-muted/60 dark:hover:bg-white/5 active:bg-muted/50 dark:active:bg-white/10 transition-colors duration-200 cursor-pointer"

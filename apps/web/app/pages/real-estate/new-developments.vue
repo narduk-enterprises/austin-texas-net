@@ -1,4 +1,4 @@
-<!-- eslint-disable atx/no-fetch-in-component -- SSR page data fetching -->
+<!-- eslint-disable narduk/no-fetch-in-component -- SSR page data fetching -->
 <script setup lang="ts">
 /**
  * /real-estate/new-developments/ — New Development Permits
@@ -61,10 +61,10 @@ function createPinElement(
   isSelected: boolean,
 ): { element: HTMLElement; cleanup?: () => void } {
   if (import.meta.client) {
-    /* eslint-disable atx/no-inline-hex -- MapKit pin gradient */
+    /* eslint-disable narduk/no-inline-hex -- MapKit pin gradient */
     const fillColor =
       (spot.units ?? 0) >= 50 ? '#7c3aed' : (spot.units ?? 0) >= 10 ? '#3b82f6' : '#22c55e'
-    /* eslint-enable atx/no-inline-hex */
+    /* eslint-enable narduk/no-inline-hex */
 
     const el = document.createElement('div')
     el.innerHTML = `

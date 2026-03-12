@@ -1,5 +1,5 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -- TanStack table APIs use untyped column helpers -->
-<!-- eslint-disable atx/no-raw-tailwind-colors -- Admin-only UI warning indicators -->
+<!-- eslint-disable narduk/no-raw-tailwind-colors -- Admin-only UI warning indicators -->
 <script setup lang="ts">
 import { h, resolveComponent } from 'vue'
 /**
@@ -1310,7 +1310,7 @@ const spotColumns = [
               ]"
             >
               <template #id-cell="{ row }">
-                <!-- eslint-disable nuxt-ui/no-unknown-component-prop -->
+                <!-- eslint-disable nuxt-ui/no-unknown-component-prop -- UCheckbox size prop is valid in Nuxt UI v4 but not recognized by linter -->
                 <UCheckbox
                   size="md"
                   :model-value="selectedSpotsToApprove.includes((row.original as MapSpot).id)"

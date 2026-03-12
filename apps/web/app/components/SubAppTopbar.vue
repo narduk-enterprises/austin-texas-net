@@ -31,7 +31,7 @@ const breadcrumbs = computed(() => {
 </script>
 
 <template>
-  <!-- eslint-disable-next-line atx/no-native-layout -- semantic landmark -->
+  <!-- eslint-disable-next-line narduk/no-native-layout -- semantic landmark -->
   <header
     class="flex items-start justify-between px-4 py-2.5 border-b border-default bg-default shrink-0 z-20"
   >
